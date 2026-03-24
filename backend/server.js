@@ -38,6 +38,76 @@ app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use("/api/auth", authRoutes);
 app.use("/api/blogs", blogRoutes);
 
+// Dynamic Sitemap
+app.get("/sitemap.xml", async (req, res) => {
+  try {
+    const BlogPost = require("./models/BlogPost");
+    const posts = await BlogPost.findAll({
+      attributes: ["slug", "createdAt", "updatedAt"],
+      order: [["createdAt", "DESC"]],
+    });
+
+    const staticPages = [
+      { loc: "/", priority: "1.0", changefreq: "weekly" },
+      { loc: "/about", priority: "0.8", changefreq: "monthly" },
+      { loc: "/services", priority: "0.9", changefreq: "monthly" },
+      { loc: "/services/floral-design", priority: "0.8", changefreq: "monthly" },
+      { loc: "/services/ceiling-design", priority: "0.8", changefreq: "monthly" },
+      { loc: "/services/centerpiece-design", priority: "0.8", changefreq: "monthly" },
+      { loc: "/services/vinyl-floor-wrap", priority: "0.8", changefreq: "monthly" },
+      { loc: "/services/ceremony-decor", priority: "0.8", changefreq: "monthly" },
+      { loc: "/services/draping-services", priority: "0.8", changefreq: "monthly" },
+      { loc: "/services/mandap-design", priority: "0.8", changefreq: "monthly" },
+      { loc: "/services/stage-design", priority: "0.8", changefreq: "monthly" },
+      { loc: "/gallery", priority: "0.8", changefreq: "weekly" },
+      { loc: "/portfolio", priority: "0.8", changefreq: "monthly" },
+      { loc: "/blog", priority: "0.7", changefreq: "weekly" },
+      { loc: "/contact", priority: "0.8", changefreq: "monthly" },
+      { loc: "/faq", priority: "0.6", changefreq: "monthly" },
+    ];
+
+    const BASE = "https://elegantize.com";
+
+    const staticUrls = staticPages
+      .map(
+        (p) => `  <url>
+    <loc>${BASE}${p.loc}</loc>
+    <changefreq>${p.changefreq}</changefreq>
+    <priority>${p.priority}</priority>
+  </url>`
+      )
+      .join("\n");
+
+    const blogUrls = posts
+      .map((post) => {
+        const d = new Date(post.createdAt);
+        const year = d.getFullYear();
+        const month = String(d.getMonth() + 1).padStart(2, "0");
+        const day = String(d.getDate()).padStart(2, "0");
+        const cleanSlug = post.slug.replace(/^\/+/, "");
+        const lastmod = new Date(post.updatedAt).toISOString().split("T")[0];
+        return `  <url>
+    <loc>${BASE}/${year}/${month}/${day}/${cleanSlug}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>`;
+      })
+      .join("\n");
+
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${staticUrls}
+${blogUrls}
+</urlset>`;
+
+    res.header("Content-Type", "application/xml");
+    res.send(xml);
+  } catch (err) {
+    res.status(500).send("Error generating sitemap");
+  }
+});
+
 // Database Connection and Sync
 sequelize
   .authenticate()
