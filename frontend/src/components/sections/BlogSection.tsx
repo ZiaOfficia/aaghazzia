@@ -2,11 +2,8 @@ import { Button } from "../common/Button";
 import { ArrowRight } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
 import { BlogCard } from "../blog/BlogCard";
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { API_BASE_URL } from "../../config";
-import type { BlogPost } from "../../data/blogData";
-import { aboutImage } from "../../data/imageAssets";
+import { blogPosts } from "../../data/blogData";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -17,8 +14,6 @@ const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
-
-import { blogPosts } from "../../data/blogData";
 
 export const BlogSection = () => {
   const recentPosts = blogPosts.slice(0, 3);
