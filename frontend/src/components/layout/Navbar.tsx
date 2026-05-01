@@ -1,23 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Menu, X, ChevronDown, Heart } from "lucide-react";
 import clsx from "clsx";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { servicesData } from "../../data/servicesData";
 
 export const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const { scrollY } = useScroll();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProgramsOpen, setIsProgramsOpen] = useState(false);
   const location = useLocation();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // Smooth scroll interpolation
+  const backgroundColor = useTransform(scrollY, [0, 100], ["rgba(15, 15, 15, 1)", "rgba(15, 15, 15, 0.8)"]);
+  const backdropFilter = useTransform(scrollY, [0, 100], ["blur(0px)", "blur(16px)"]);
+  const paddingTop = useTransform(scrollY, [0, 100], ["1rem", "0.75rem"]);
+  const paddingBottom = useTransform(scrollY, [0, 100], ["1rem", "0.75rem"]);
+  const borderBottomColor = useTransform(scrollY, [0, 100], ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.1)"]);
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -34,12 +33,16 @@ export const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className={clsx(
-        "sticky top-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-accent/95 backdrop-blur-md py-3 shadow-lg"
-          : "bg-accent py-4",
-      )}
+      style={{
+        backgroundColor,
+        backdropFilter,
+        WebkitBackdropFilter: backdropFilter, // For Safari support
+        paddingTop,
+        paddingBottom,
+        borderBottomColor,
+        borderBottomWidth: "1px",
+      }}
+      className="sticky top-0 z-50 shadow-lg"
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}

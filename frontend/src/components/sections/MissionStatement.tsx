@@ -1,5 +1,7 @@
-import { BookOpen, Sparkles, TrendingUp } from "lucide-react";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { BookOpen, Sparkles, TrendingUp, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import { missionImages } from "../../data/imageAssets";
 
 const pillars = [
@@ -11,6 +13,7 @@ const pillars = [
     accent: "from-primary/15 via-primary/5 to-transparent",
     iconBg: "bg-primary",
     image: missionImages.educate,
+    link: "/services",
   },
   {
     icon: Sparkles,
@@ -20,6 +23,7 @@ const pillars = [
     accent: "from-secondary/15 via-secondary/5 to-transparent",
     iconBg: "bg-secondary",
     image: missionImages.empower,
+    link: "/portfolio",
   },
   {
     icon: TrendingUp,
@@ -29,10 +33,13 @@ const pillars = [
     accent: "from-accent/15 via-accent/5 to-transparent",
     iconBg: "bg-accent",
     image: missionImages.elevate,
+    link: "/about",
   },
 ];
 
 export const MissionStatement = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
     <section className="relative py-24 px-6 bg-gradient-soft overflow-hidden">
       {/* Decorative arabesques */}
@@ -86,7 +93,10 @@ export const MissionStatement = () => {
                   className={`relative bg-white border border-primary/10 rounded-tl-[3rem] rounded-br-[3rem] h-full overflow-hidden transition-shadow duration-500 group-hover:shadow-2xl`}
                 >
                   {/* Pillar image — interacts on hover */}
-                  <div className="relative h-44 overflow-hidden">
+                  <div 
+                    className="relative h-44 overflow-hidden cursor-pointer"
+                    onClick={() => setSelectedImage(pillar.image)}
+                  >
                     <img
                       src={pillar.image}
                       alt={pillar.word}
@@ -107,12 +117,13 @@ export const MissionStatement = () => {
                     <span className="absolute top-3 right-5 font-display text-6xl font-black text-white/30 leading-none select-none">
                       0{i + 1}
                     </span>
+                  </div>
 
-                    <div
-                      className={`absolute -bottom-7 left-7 w-14 h-14 ${pillar.iconBg} rounded-tl-2xl rounded-br-2xl flex items-center justify-center text-white shadow-lg group-hover:scale-105 group-hover:rotate-3 transition-transform duration-300 z-10`}
-                    >
-                      <Icon size={24} strokeWidth={1.8} />
-                    </div>
+                  {/* Icon safely outside image container to prevent clipping */}
+                  <div
+                    className={`absolute top-[148px] left-7 w-14 h-14 ${pillar.iconBg} rounded-tl-2xl rounded-br-2xl flex items-center justify-center text-white shadow-lg group-hover:scale-105 group-hover:rotate-3 transition-transform duration-300 z-10`}
+                  >
+                    <Icon size={24} strokeWidth={1.8} />
                   </div>
 
                   <div className="relative p-8 pt-12 lg:p-10 lg:pt-14">
@@ -132,10 +143,13 @@ export const MissionStatement = () => {
                     dangerouslySetInnerHTML={{ __html: pillar.body }}
                   />
 
-                  <div className="relative mt-6 pt-6 border-t border-primary/10 flex items-center gap-2 text-primary text-xs font-bold uppercase tracking-widest">
+                  <Link 
+                    to={pillar.link}
+                    className="relative mt-6 pt-6 border-t border-primary/10 flex items-center gap-2 text-primary text-xs font-bold uppercase tracking-widest hover:text-primary-dark transition-colors"
+                  >
                     <span className="block w-6 h-px bg-primary group-hover:w-12 transition-all duration-500" />
-                    What this looks like
-                  </div>
+                    What this looks like &rarr;
+                  </Link>
                   </div>
                 </div>
               </motion.article>
@@ -152,6 +166,36 @@ export const MissionStatement = () => {
           <span className="block w-12 h-px bg-secondary" />
         </div>
       </div>
+
+      {/* Fullscreen Image Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/90 p-4"
+            onClick={() => setSelectedImage(null)}
+          >
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors"
+            >
+              <X size={32} />
+            </button>
+            <motion.img
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              src={selectedImage}
+              alt="Mission preview"
+              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the image itself
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

@@ -14,22 +14,24 @@ const u = (id: string, w: number, q = 78) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=${q}`;
 
 // ── HERO SLIDES (8 — sliding carousel, Indian school context) ───────
+const lf = (lock: number) => `https://loremflickr.com/1920/1080/india,school,children/all?lock=${lock}`;
+
 export const heroImages = {
-  girlSmiling: u("1605256585681-455837661b76", 1920),       // Indian school girl
-  schoolGroup: u("1611816055460-618287c870bb", 1920),       // Indian students at desks
-  childReading: u("1583468982228-19f19164aee2", 1920),      // Indian child studying
-  classroomTeacher: u("1622837139007-5b3f1ad30776", 1920),  // Indian teacher with students
-  studentBlackboard: u("1605557202138-0d859e9d8336", 1920), // Indian classroom
-  libraryStudy: u("1497486751825-1233686d5d80", 1920),      // children with books
-  kidsLearning: u("1488521787991-ed7bbaae773c", 1920),      // child reading
-  outdoorEducation: u("1456735190827-d1262f71b8a3", 1920),  // Indian children outdoor
+  girlSmiling: lf(211),
+  schoolGroup: lf(122),
+  childReading: lf(33),
+  classroomTeacher: lf(45),
+  studentBlackboard: lf(55),
+  libraryStudy: lf(266),
+  kidsLearning: u("1542810634-71277d95dcbb", 1920),
+  outdoorEducation: lf(85),
 };
 
 // ── MISSION PILLARS (3 — Educate / Empower / Elevate) ───────────────
 export const missionImages = {
-  educate: u("1567521464027-f127ff144326", 800),            // Indian classroom blackboard
-  empower: u("1517486808906-6ca8b3f04846", 800),            // volunteer / mentor with child
-  elevate: u("1607013251379-e6eecfffe234", 800),            // graduation hands raised
+  educate: "https://loremflickr.com/800/600/india,classroom,children/all?lock=501",
+  empower: "https://loremflickr.com/800/600/india,school,kids/all?lock=502",
+  elevate: "https://loremflickr.com/800/600/india,students,success/all?lock=503",
 };
 
 // ── ACTION BLOCKS (3 — Launch / Donate / Volunteer) ─────────────────
@@ -80,14 +82,14 @@ export const donateCtaImage = u("1597392581384-e6c5f3ff9be1", 1920);
 
 // ── GALLERY (8 — masonry grid, all Indian context) ──────────────────
 export const galleryImages = [
-  u("1597392581384-e6c5f3ff9be1", 900),                     // colorful Indian school
-  u("1605256585681-455837661b76", 900),                     // Indian schoolgirl close
-  u("1611816055460-618287c870bb", 900),                     // Indian students
-  u("1622837139007-5b3f1ad30776", 900),                     // Indian teacher
-  u("1583468982228-19f19164aee2", 900),                     // Indian child studying
-  u("1605557202138-0d859e9d8336", 900),                     // Indian classroom
-  u("1469571486292-0ba58a3f068b", 900),                     // volunteers
-  u("1456735190827-d1262f71b8a3", 900),                     // Indian children outdoors
+  "https://loremflickr.com/900/600/india,poor,student/all?lock=301",
+  "https://loremflickr.com/900/600/india,orphan/all?lock=502",
+  "https://loremflickr.com/900/600/india,teacher,student/all?lock=303",
+  "https://loremflickr.com/900/600/india,orphan,child/all?lock=704",
+  "https://loremflickr.com/900/600/india,orphan,kids/all?lock=999",
+  "https://loremflickr.com/900/600/india,education/all?lock=606",
+  "https://loremflickr.com/900/600/india,classroom/all?lock=307",
+  "https://loremflickr.com/900/600/india,poor,kids/all?lock=708",
 ];
 
 // ── INSTAGRAM FEED (6 — Indian education snapshots) ─────────────────

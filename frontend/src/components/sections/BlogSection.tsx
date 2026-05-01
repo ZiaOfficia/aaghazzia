@@ -18,55 +18,10 @@ const itemVariants: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
+import { blogPosts } from "../../data/blogData";
+
 export const BlogSection = () => {
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await fetch(`${API_BASE_URL}/api/blogs?limit=3`);
-        const data = await response.json();
-        const postsArray = Array.isArray(data) ? data : data.blogs || [];
-
-        const formattedPosts: BlogPost[] = postsArray.map(
-          (post: BlogPost & { image_url?: string; createdAt?: string }) => ({
-            id: post.id,
-            title: post.title,
-            slug: post.slug,
-            excerpt: post.excerpt
-              ? post.excerpt
-                  .replace(/<!--[\s\S]*?-->/g, "")
-                  .replace(/<[^>]+>/g, "")
-                  .substring(0, 300)
-              : "",
-            content: post.content,
-            createdAt: post.createdAt,
-            date: new Date(post.createdAt || post.date).toLocaleDateString(),
-            author: post.author,
-            category: post.category,
-            image: post.image_url
-              ? post.image_url.startsWith("http")
-                ? post.image_url
-                : `${API_BASE_URL}${post.image_url}`
-              : aboutImage,
-          }),
-        );
-
-        setBlogPosts(formattedPosts);
-      } catch (error) {
-        console.error("Error fetching blog posts for home:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPosts();
-  }, []);
-
   const recentPosts = blogPosts.slice(0, 3);
-
-  if (loading) return null;
 
   return (
     <motion.section

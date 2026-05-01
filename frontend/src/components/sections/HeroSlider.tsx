@@ -12,27 +12,6 @@ export const HeroSlider = () => {
   const navigate = useNavigate();
   const slideTimer = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // ── Mouse parallax ────────────────────────────────────────────
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const smoothX = useSpring(mouseX, { stiffness: 50, damping: 18 });
-  const smoothY = useSpring(mouseY, { stiffness: 50, damping: 18 });
-  const imgX = useTransform(smoothX, (v) => v * -20);
-  const imgY = useTransform(smoothY, (v) => v * -10);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    mouseX.set(x);
-    mouseY.set(y);
-  };
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-    setIsPaused(false);
-  };
-
   const goTo = (newIndex: number, dir: number) => {
     setCurrent([
       (newIndex + heroSlides.length) % heroSlides.length,
@@ -59,29 +38,25 @@ export const HeroSlider = () => {
   const slideVariants = {
     enter: (dir: number) => ({
       x: dir > 0 ? "100%" : "-100%",
-      scale: 1.05,
       opacity: 0.9,
     }),
     center: {
       x: 0,
-      scale: 1,
       opacity: 1,
     },
     exit: (dir: number) => ({
       x: dir > 0 ? "-100%" : "100%",
-      scale: 1.05,
       opacity: 0.9,
     }),
   };
 
   return (
     <section
-      className="relative h-screen w-full overflow-hidden bg-accent select-none"
+      className="relative h-[60vh] md:h-[75vh] lg:h-[calc(100vh-88px)] w-full overflow-hidden bg-accent select-none"
       onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={handleMouseLeave}
-      onMouseMove={handleMouseMove}
+      onMouseLeave={() => setIsPaused(false)}
     >
-      {/* ─── Sliding image carousel + parallax ─── */}
+      {/* ─── Sliding image carousel ─── */}
       <div className="absolute inset-0 overflow-hidden">
         <AnimatePresence custom={direction} initial={false} mode="sync">
           <motion.div
@@ -93,15 +68,13 @@ export const HeroSlider = () => {
             exit="exit"
             transition={{
               x: { duration: 0.9, ease: [0.65, 0, 0.35, 1] },
-              scale: { duration: 1.2, ease: "easeOut" },
               opacity: { duration: 0.6 },
             }}
             className="absolute inset-0"
           >
-            <motion.img
+            <img
               src={current.image}
               alt={current.title}
-              style={{ x: imgX, y: imgY, scale: 1.08 }}
               className="w-full h-full object-cover"
             />
             {/* Light directional overlay — image stays clearly visible */}
@@ -269,24 +242,7 @@ export const HeroSlider = () => {
         </span>
       </div>
 
-      {/* ─── Floating scroll indicator ─── */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.6 }}
-        className="absolute bottom-8 right-6 md:right-12 z-20 hidden md:flex flex-col items-center gap-2 text-white/70"
-      >
-        <span className="text-[9px] uppercase tracking-[0.4em] [writing-mode:vertical-rl] rotate-180">
-          Scroll
-        </span>
-        <motion.span
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.6 }}
-          className="block"
-        >
-          <ArrowDown size={16} />
-        </motion.span>
-      </motion.div>
+
     </section>
   );
 };

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { Layout } from "./components/layout/Layout";
 import { HomePage } from "./pages/HomePage";
@@ -21,13 +22,18 @@ import BlogEditorPage from "./pages/admin/BlogEditorPage";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
 
 import ScrollToTop from "./components/common/ScrollToTop";
+import { Preloader } from "./components/common/Preloader";
 
 import ThankYouPage from "./pages/ThankYouPage";
 import NotFound from "./pages/NotFound";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
-    <BrowserRouter>
+    <>
+      {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
+      <BrowserRouter>
       <ScrollToTop />
       <Routes>
         {/* Public Routes wrapped in Layout */}
@@ -86,6 +92,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
+    </>
   );
 }
 
