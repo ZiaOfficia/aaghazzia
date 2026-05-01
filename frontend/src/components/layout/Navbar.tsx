@@ -159,9 +159,14 @@ export const Navbar = () => {
                   <Link
                     to={link.path}
                     className="hover:text-secondary transition-colors flex justify-between items-center py-2"
-                    onClick={() =>
-                      !link.hasDropdown && setIsMobileMenuOpen(false)
-                    }
+                    onClick={(e) => {
+                      if (link.hasDropdown) {
+                        e.preventDefault();
+                        setIsProgramsOpen(!isProgramsOpen);
+                      } else {
+                        setIsMobileMenuOpen(false);
+                      }
+                    }}
                   >
                     <motion.span
                       initial={{ x: -20, opacity: 0 }}

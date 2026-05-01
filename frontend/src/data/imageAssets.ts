@@ -17,7 +17,7 @@ const u = (id: string, w: number, q = 78) =>
 const lf = (lock: number) => `https://loremflickr.com/1920/1080/india,school,children/all?lock=${lock}`;
 
 export const heroImages = {
-  girlSmiling: lf(211),
+  girlSmiling: "/images/assets/student-1.png",
   schoolGroup: lf(122),
   childReading: lf(33),
   classroomTeacher: lf(45),
@@ -68,12 +68,11 @@ export const serviceImages = {
 // ── HOW IT WORKS (placeholder — icons only) ─────────────────────────
 export const howItWorksImages = {};
 
-// ── TESTIMONIALS (4 — Indian student / donor / parent / alumnus) ────
 export const testimonialImages = {
-  studentSumaiya: u("1531123897727-8f129e1688ce", 900),     // young Indian woman portrait
-  donorFamily: u("1577896851231-70ef18881754", 900),        // family portrait
-  parentMother: u("1544830281-e2c1b9ade89a", 900),          // mother with child
-  iitAlumnus: u("1571019613454-1cb2f99b2d8b", 900),         // young man portrait
+  studentSumaiya: "/images/assets/student-2.png",     
+  donorFamily: "/images/assets/orphan-1.png",        
+  parentMother: "/images/assets/teacher-2.png",          
+  iitAlumnus: "/images/assets/student-1.png",         
 };
 
 // ── DONATE CTA ──────────────────────────────────────────────────────
