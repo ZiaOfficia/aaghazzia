@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ChevronLeft, ChevronRight, Heart, ArrowDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { heroSlides } from "../../data/content";
 
@@ -95,13 +95,12 @@ export const HeroSlider = () => {
           {Array.from({ length: 11 }).map((_, i) => (
             <span
               key={i}
-              className={`block w-2 h-2 rotate-45 ${
-                i === 5
-                  ? "bg-secondary"
-                  : i === 4 || i === 6
+              className={`block w-2 h-2 rotate-45 ${i === 5
+                ? "bg-secondary"
+                : i === 4 || i === 6
                   ? "bg-primary"
                   : "bg-white/40"
-              }`}
+                }`}
             />
           ))}
         </div>
@@ -213,11 +212,10 @@ export const HeroSlider = () => {
             aria-label={`Go to slide ${i + 1}`}
           >
             <span
-              className={`block transition-all duration-500 ${
-                i === currentIndex
-                  ? "w-1 h-10 bg-secondary"
-                  : "w-1 h-3 bg-white/40 group-hover:bg-white/80 group-hover:h-5"
-              }`}
+              className={`block transition-all duration-500 ${i === currentIndex
+                ? "w-1 h-10 bg-secondary"
+                : "w-1 h-3 bg-white/40 group-hover:bg-white/80 group-hover:h-5"
+                }`}
             />
           </button>
         ))}
