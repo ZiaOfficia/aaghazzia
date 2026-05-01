@@ -39,7 +39,7 @@ export const Footer = () => {
           {/* Brand */}
           <motion.div variants={itemVariants} className="col-span-1">
             <img
-              src="/images/aaghaz-logo.png"
+              src="/images/assets/aaghaz-logo.png"
               alt="Aaghaz Foundation — Educate, Empower"
               className="h-16 w-auto object-contain mb-5"
             />

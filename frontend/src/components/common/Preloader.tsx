@@ -90,7 +90,7 @@ export const Preloader = ({ onComplete }: PreloaderProps) => {
             className="flex flex-col items-center"
           >
             <motion.img
-              src="/images/aaghaz-logo.png"
+              src="/images/assets/aaghaz-logo.png"
               alt="Aaghaz Foundation"
               className="h-24 md:h-32 object-contain drop-shadow-xl"
               animate={{ 

@@ -53,7 +53,7 @@ export const Navbar = () => {
         >
           <Link to="/" className="flex items-center">
             <img
-              src="/images/aaghaz-logo.png"
+              src="/images/assets/aaghaz-logo.png"
               alt="Aaghaz Foundation — Educate, Empower"
               className="h-12 md:h-14 w-auto object-contain"
             />
