@@ -11,7 +11,7 @@ const partners = [
 
 export const ClientsStrip = () => {
   return (
-    <section className="py-16 bg-accent relative overflow-hidden">
+    <section className="py-8 md:py-16 px-4 md:px-0 bg-accent relative overflow-hidden">
       <span className="absolute top-6 left-1/4 text-secondary/40 text-2xl" aria-hidden>
         ✦
       </span>

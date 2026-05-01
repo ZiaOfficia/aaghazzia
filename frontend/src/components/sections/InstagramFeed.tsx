@@ -15,7 +15,7 @@ const posts = instagramImages.map((image, i) => ({
 
 export const InstagramFeed = () => {
   return (
-    <section className="py-24 px-6 bg-white overflow-hidden">
+    <section className="py-12 md:py-24 px-4 md:px-6 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">

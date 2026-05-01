@@ -60,7 +60,7 @@ export const StatsSection = () => {
   const active = stats[activeIndex];
 
   return (
-    <section className="relative py-24 md:py-28 px-6 bg-impact-pattern overflow-hidden">
+    <section className="relative py-12 md:py-24 px-4 md:px-6 bg-impact-pattern overflow-hidden">
       {/* Decorative diamond corners */}
       <span className="absolute top-12 left-12 w-4 h-4 bg-primary rotate-45 opacity-60 hidden lg:block" />
       <span className="absolute top-12 right-12 w-4 h-4 bg-secondary rotate-45 opacity-60 hidden lg:block" />
@@ -75,10 +75,10 @@ export const StatsSection = () => {
             By The Numbers
             <span className="block w-8 h-px bg-primary" />
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-accent">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-accent">
             Quiet work. Loud results.
           </h2>
-          <p className="mt-4 text-text-muted max-w-xl mx-auto text-base md:text-lg">
+          <p className="mt-4 text-text-muted max-w-xl mx-auto text-sm md:text-lg">
             Twenty years of receipts, reports, and follow-up phone calls — boiled
             down to five honest numbers. Hover any stat to see the story behind it.
           </p>
@@ -140,7 +140,7 @@ export const StatsSection = () => {
                     transition={{ duration: 0.4, delay: i * 0.06 }}
                     onMouseEnter={() => setActiveIndex(i)}
                     onClick={() => setActiveIndex(i)}
-                    className={`group relative p-5 md:p-6 cursor-pointer rounded-tl-2xl rounded-br-2xl border-2 transition-all duration-300 ${
+                    className={`group relative p-4 md:p-6 cursor-pointer rounded-tl-2xl rounded-br-2xl border-2 transition-all duration-300 ${
                       isActive
                         ? "bg-white border-primary shadow-xl scale-[1.01]"
                         : "bg-white/40 border-transparent hover:bg-white/70 hover:border-primary/30"
@@ -161,7 +161,7 @@ export const StatsSection = () => {
                       {/* Number + label */}
                       <div className="flex-1 min-w-0 flex items-baseline gap-4 flex-wrap">
                         <span
-                          className={`font-display text-4xl md:text-5xl font-bold transition-colors ${
+                          className={`font-display text-3xl md:text-5xl font-bold transition-colors ${
                             isActive ? "text-primary" : "text-accent"
                           }`}
                         >

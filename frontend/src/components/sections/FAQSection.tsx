@@ -8,7 +8,7 @@ export const FAQSection = () => {
   return (
     <section
       id="faq"
-      className="py-24 px-6 bg-wedding-slate text-white relative overflow-hidden"
+      className="py-12 md:py-24 px-4 md:px-6 bg-wedding-slate text-white relative overflow-hidden"
     >
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">

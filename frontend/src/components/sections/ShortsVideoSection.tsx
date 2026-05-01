@@ -139,7 +139,7 @@ export const ShortsVideoSection = () => {
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
       variants={containerVariants}
-      className="py-24 bg-wedding-slate overflow-hidden"
+      className="py-12 md:py-24 bg-wedding-slate overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">

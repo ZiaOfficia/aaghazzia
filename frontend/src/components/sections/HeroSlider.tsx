@@ -52,7 +52,7 @@ export const HeroSlider = () => {
 
   return (
     <section
-      className="relative h-[60vh] md:h-[75vh] lg:h-[calc(100vh-88px)] w-full overflow-hidden bg-accent select-none"
+      className="relative min-h-[85vh] md:min-h-0 md:h-[75vh] lg:h-[calc(100vh-88px)] w-full overflow-hidden bg-accent select-none"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -111,8 +111,8 @@ export const HeroSlider = () => {
       <div className="absolute bottom-12 right-8 w-20 h-20 border-r-2 border-b-2 border-secondary/60 hidden md:block z-10" />
 
       {/* ─── Content overlay ─── */}
-      <div className="absolute inset-0 z-10 flex items-center">
-        <div className="max-w-7xl mx-auto px-6 w-full">
+      <div className="absolute inset-0 z-10 flex items-center pb-24 sm:pb-20 md:pb-0">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
           <div className="max-w-3xl text-white">
             {/* Animated title chip — only THIS changes with slides */}
             <AnimatePresence mode="wait">
@@ -137,31 +137,31 @@ export const HeroSlider = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -30 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.05] mb-6 drop-shadow-2xl"
+                className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.05] mb-4 sm:mb-6 drop-shadow-2xl"
               >
                 {current.subtitle}
               </motion.h1>
             </AnimatePresence>
 
             {/* Decorative double rule */}
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-4 sm:mb-6">
               <span className="h-px w-12 bg-secondary" />
               <span className="text-secondary text-lg">&#x2726;</span>
               <span className="h-px w-24 bg-secondary/50" />
             </div>
 
             {/* Static descriptive text */}
-            <p className="text-lg md:text-xl text-gray-100 max-w-2xl mb-10 leading-relaxed drop-shadow-lg">
+            <p className="text-sm sm:text-base md:text-xl text-gray-100 max-w-2xl mb-6 sm:mb-10 leading-relaxed drop-shadow-lg">
               Aaghaz Foundation has been opening classroom doors for India&apos;s
               most overlooked children since 2004 — verified scholarships,
               volunteer-led surveys, real reporting back to every donor.
             </p>
 
             {/* ─── FIXED BUTTONS — only two, never change ─── */}
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3 sm:gap-4">
               <button
                 onClick={() => navigate("/contact")}
-                className="group inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white px-8 py-4 text-sm uppercase tracking-widest font-bold rounded-tl-2xl rounded-br-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-0.5"
+                className="group inline-flex items-center gap-2 sm:gap-3 bg-primary hover:bg-primary-dark text-white px-6 py-3 sm:px-8 sm:py-4 text-[10px] sm:text-sm uppercase tracking-widest font-bold rounded-tl-2xl rounded-br-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-0.5"
               >
                 <Heart size={16} fill="currentColor" />
                 Donate Now
@@ -171,7 +171,7 @@ export const HeroSlider = () => {
               </button>
               <button
                 onClick={() => navigate("/about")}
-                className="inline-flex items-center gap-3 border-2 border-secondary text-secondary hover:bg-secondary hover:text-accent px-8 py-4 text-sm uppercase tracking-widest font-bold rounded-tl-2xl rounded-br-2xl transition-all duration-300"
+                className="inline-flex items-center gap-2 sm:gap-3 border-2 border-secondary text-secondary hover:bg-secondary hover:text-accent px-6 py-3 sm:px-8 sm:py-4 text-[10px] sm:text-sm uppercase tracking-widest font-bold rounded-tl-2xl rounded-br-2xl transition-all duration-300"
               >
                 Our Story
               </button>
@@ -183,7 +183,7 @@ export const HeroSlider = () => {
       {/* ─── Side arrows ─── */}
       <button
         onClick={prevSlide}
-        className="group absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 flex w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/10 hover:bg-secondary border border-white/20 hover:border-secondary text-white items-center justify-center backdrop-blur-md transition-all hover:scale-110"
+        className="group absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 hidden sm:flex w-10 h-10 md:w-14 md:h-14 rounded-full bg-white/10 hover:bg-secondary border border-white/20 hover:border-secondary text-white items-center justify-center backdrop-blur-md transition-all hover:scale-110"
         aria-label="Previous slide"
       >
         <ChevronLeft
@@ -193,7 +193,7 @@ export const HeroSlider = () => {
       </button>
       <button
         onClick={nextSlide}
-        className="group absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 flex w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/10 hover:bg-secondary border border-white/20 hover:border-secondary text-white items-center justify-center backdrop-blur-md transition-all hover:scale-110"
+        className="group absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 hidden sm:flex w-10 h-10 md:w-14 md:h-14 rounded-full bg-white/10 hover:bg-secondary border border-white/20 hover:border-secondary text-white items-center justify-center backdrop-blur-md transition-all hover:scale-110"
         aria-label="Next slide"
       >
         <ChevronRight
@@ -222,11 +222,11 @@ export const HeroSlider = () => {
       </div>
 
       {/* ─── Bottom-left slide counter + progress ─── */}
-      <div className="absolute bottom-8 left-6 md:left-12 z-20 flex items-center gap-4 text-white">
-        <span className="font-display text-3xl font-bold text-secondary">
+      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-4 md:left-12 z-20 flex items-center gap-2 sm:gap-4 text-white">
+        <span className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-secondary">
           {String(currentIndex + 1).padStart(2, "0")}
         </span>
-        <div className="w-24 md:w-32 h-px bg-white/20 relative overflow-hidden">
+        <div className="w-16 sm:w-24 md:w-32 h-px bg-white/20 relative overflow-hidden">
           <motion.span
             key={`bar-${currentIndex}-${isPaused}`}
             initial={{ width: "0%" }}
@@ -235,7 +235,7 @@ export const HeroSlider = () => {
             className="absolute left-0 top-0 h-full bg-secondary"
           />
         </div>
-        <span className="text-xs tracking-widest text-white/60">
+        <span className="text-[10px] sm:text-xs tracking-widest text-white/60">
           / {String(heroSlides.length).padStart(2, "0")}
         </span>
       </div>

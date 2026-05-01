@@ -28,7 +28,7 @@ export const ServicesGrid = () => {
   return (
     <motion.section
       id="services"
-      className="py-24 px-6 bg-mosaic-cream relative"
+      className="py-12 md:py-24 px-4 md:px-6 bg-mosaic-cream relative"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
@@ -46,13 +46,13 @@ export const ServicesGrid = () => {
           </motion.p>
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-display text-accent mb-3"
+            className="text-3xl md:text-4xl lg:text-5xl font-display text-accent mb-3"
           >
             Eight on-ramps. One foundation.
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="mt-4 text-text-muted max-w-2xl mx-auto"
+            className="mt-4 text-sm md:text-base text-text-muted max-w-2xl mx-auto"
           >
             Whether you give a thousand rupees or two hours a week, find the
             programme that fits you. They all lead to the same place — a child
@@ -71,7 +71,7 @@ export const ServicesGrid = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="group relative h-[26rem] overflow-hidden rounded-tl-3xl rounded-br-3xl shadow-lg hover:shadow-2xl transition-shadow duration-500"
+                className="group relative h-80 md:h-[26rem] overflow-hidden rounded-tl-3xl rounded-br-3xl shadow-lg hover:shadow-2xl transition-shadow duration-500"
               >
                 <Link to={`/services/${serviceId}`} className="block w-full h-full">
                   <img
@@ -96,10 +96,10 @@ export const ServicesGrid = () => {
                   </span>
 
                   <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
-                    <h4 className="font-display text-2xl mb-3 group-hover:text-secondary transition-colors duration-300">
+                    <h4 className="font-display text-xl md:text-2xl mb-3 group-hover:text-secondary transition-colors duration-300">
                       {service.title}
                     </h4>
-                    <p className="text-sm opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-3 group-hover:translate-y-0 leading-relaxed text-gray-100">
+                    <p className="text-xs md:text-sm opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-3 group-hover:translate-y-0 leading-relaxed text-gray-100 line-clamp-4">
                       {service.description}
                     </p>
                     <div className="mt-3 flex items-center gap-2 text-secondary text-xs font-bold uppercase tracking-widest">

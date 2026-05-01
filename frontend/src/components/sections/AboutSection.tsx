@@ -11,7 +11,7 @@ export const AboutSection = () => {
   return (
     <section
       id="about"
-      className="py-32 px-6 bg-stripes-warm relative"
+      className="py-16 md:py-32 px-4 md:px-6 bg-stripes-warm relative"
     >
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center relative">

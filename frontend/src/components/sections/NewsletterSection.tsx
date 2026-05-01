@@ -2,7 +2,7 @@
 
 const NewsletterSection = () => {
   return (
-      <section className="relative py-32 flex items-center justify-center overflow-hidden">
+      <section className="relative py-16 md:py-32 flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img loading="lazy" decoding="async"

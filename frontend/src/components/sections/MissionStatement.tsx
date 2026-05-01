@@ -41,7 +41,7 @@ export const MissionStatement = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
-    <section className="relative py-24 px-6 bg-gradient-soft overflow-hidden">
+    <section className="relative py-12 md:py-24 px-4 md:px-6 bg-gradient-soft overflow-hidden">
       {/* Decorative arabesques */}
       <span className="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
       <span className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full bg-secondary/10 blur-3xl pointer-events-none" />

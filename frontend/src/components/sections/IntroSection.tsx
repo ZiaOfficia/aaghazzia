@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 export const IntroSection = () => {
   const navigate = useNavigate();
   return (
-    <section className="py-32 px-6 bg-grain-dark text-white relative overflow-hidden">
+    <section className="py-16 md:py-32 px-4 md:px-6 bg-grain-dark text-white relative overflow-hidden">
       {/* Decorative diamond row at top */}
       <div className="absolute top-0 left-0 right-0 flex justify-center overflow-hidden">
         <div className="flex gap-4 -translate-y-1/2">

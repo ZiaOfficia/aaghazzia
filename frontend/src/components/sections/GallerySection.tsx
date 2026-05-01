@@ -22,7 +22,7 @@ export const GallerySection = () => {
   return (
     <motion.section
       id="gallery"
-      className="py-24 px-6 bg-impact-pattern text-center relative"
+      className="py-12 md:py-24 px-4 md:px-6 bg-impact-pattern text-center relative"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}

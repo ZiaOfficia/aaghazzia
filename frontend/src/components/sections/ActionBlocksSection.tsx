@@ -32,7 +32,7 @@ export const ActionBlocksSection = () => {
   ];
 
   return (
-    <section className="py-20 px-6 bg-mesh-rose relative overflow-hidden">
+    <section className="py-12 md:py-20 px-4 md:px-6 bg-mesh-rose relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <p className="inline-flex items-center gap-3 text-primary text-xs font-bold uppercase tracking-[0.4em] mb-4">
@@ -40,7 +40,7 @@ export const ActionBlocksSection = () => {
             Three Ways To Help
             <span className="block w-8 h-px bg-primary" />
           </p>
-          <h2 className="text-3xl md:text-5xl font-display text-accent">
+          <h2 className="text-2xl md:text-3xl lg:text-5xl font-display text-accent">
             <span className="text-gradient-primary">Educate. Empower.</span>{" "}
             Step in.
           </h2>
@@ -61,7 +61,7 @@ export const ActionBlocksSection = () => {
                   to={block.link}
                   className="group flex flex-col h-full bg-white border border-primary/10 shadow-sm rounded-tl-3xl rounded-br-3xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
                 >
-                  <div className="h-52 overflow-hidden relative">
+                  <div className="h-48 md:h-52 overflow-hidden relative">
                     <img
                       src={block.image}
                       alt={block.title}
@@ -72,8 +72,8 @@ export const ActionBlocksSection = () => {
                       <Icon size={20} />
                     </span>
                   </div>
-                  <div className="p-7 flex flex-col flex-grow">
-                    <h3 className="text-2xl font-display font-bold text-accent mb-3 group-hover:text-primary transition-colors">
+                  <div className="p-5 md:p-7 flex flex-col flex-grow">
+                    <h3 className="text-xl md:text-2xl font-display font-bold text-accent mb-3 group-hover:text-primary transition-colors">
                       {block.title}
                     </h3>
                     <p className="text-text-muted text-sm leading-relaxed mb-6 flex-grow">

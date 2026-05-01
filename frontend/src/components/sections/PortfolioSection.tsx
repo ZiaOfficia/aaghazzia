@@ -21,7 +21,7 @@ export const PortfolioSection = () => {
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       variants={containerVariants}
-      className="py-24 bg-stripes-warm relative"
+      className="py-12 md:py-24 px-4 md:px-0 bg-stripes-warm relative"
       id="portfolio"
     >
       <div className="max-w-7xl mx-auto px-6">

@@ -50,7 +50,7 @@ export const ContactSection = () => {
   };
 
   return (
-    <section className="py-24 px-6 relative" id="contact">
+    <section className="py-12 md:py-24 px-4 md:px-6 relative" id="contact">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
         {/* Contact Info (Left) - Unchanged */}
         <div>

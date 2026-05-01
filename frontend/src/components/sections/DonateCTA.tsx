@@ -18,7 +18,7 @@ const trust = [
 
 export const DonateCTA = () => {
   return (
-    <section className="relative py-28 px-6 overflow-hidden">
+    <section className="relative py-12 md:py-28 px-4 md:px-6 overflow-hidden">
       {/* Layered background image + gradient */}
       <div className="absolute inset-0">
         <img

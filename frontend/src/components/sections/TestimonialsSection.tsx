@@ -82,7 +82,7 @@ export const TestimonialsSection = () => {
 
   return (
     <section
-      className="relative py-28 px-6 bg-mesh-rose overflow-hidden"
+      className="relative py-12 md:py-28 px-4 md:px-6 bg-mesh-rose overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -96,10 +96,10 @@ export const TestimonialsSection = () => {
             Real Voices
             <span className="block w-8 h-px bg-primary" />
           </p>
-          <h2 className="text-4xl md:text-6xl font-display font-bold text-accent mb-4 leading-tight">
+          <h2 className="text-3xl md:text-6xl font-display font-bold text-accent mb-4 leading-tight">
             In their own words.
           </h2>
-          <p className="text-text-muted max-w-2xl mx-auto text-lg">
+          <p className="text-text-muted max-w-2xl mx-auto text-base md:text-lg">
             We don&apos;t hire actors and we don&apos;t edit out the awkward
             pauses. These are four of the people Aaghaz has walked beside.
           </p>
@@ -175,7 +175,7 @@ export const TestimonialsSection = () => {
                 transition={{ duration: 0.6 }}
                 className="relative"
               >
-                <p className="font-display text-2xl md:text-3xl lg:text-4xl text-accent leading-relaxed italic mb-8">
+                <p className="font-display text-xl md:text-3xl lg:text-4xl text-accent leading-relaxed italic mb-6 md:mb-8">
                   &ldquo;{story.quote}&rdquo;
                 </p>
               </motion.div>

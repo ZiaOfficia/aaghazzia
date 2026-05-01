@@ -32,10 +32,10 @@ export const Footer = () => {
       whileInView="visible"
       viewport={{ once: true }}
       variants={containerVariants}
-      className="bg-wedding-slate border-t border-primary/30 py-16 px-6 text-white"
+      className="bg-wedding-slate border-t border-primary/30 py-12 md:py-16 px-4 md:px-6 text-white"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-12 md:mb-16">
           {/* Brand */}
           <motion.div variants={itemVariants} className="col-span-1">
             <img

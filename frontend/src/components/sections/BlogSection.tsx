@@ -21,7 +21,7 @@ export const BlogSection = () => {
   return (
     <motion.section
       id="blog"
-      className="py-24 px-6 bg-mosaic-cream relative"
+      className="py-12 md:py-24 px-4 md:px-6 bg-mosaic-cream relative"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}

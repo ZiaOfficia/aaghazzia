@@ -11,7 +11,7 @@ const features = [
 
 export const FeaturedInStrip = () => {
   return (
-    <div className="bg-wedding-slate py-16 relative overflow-hidden">
+    <div className="py-10 md:py-16 px-4 md:px-0 bg-wedding-slate relative overflow-hidden">
       {/* Diamond row at top */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 flex gap-2">
         {Array.from({ length: 5 }).map((_, i) => (
