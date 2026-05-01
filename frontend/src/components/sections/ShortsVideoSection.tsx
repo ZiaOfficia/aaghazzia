@@ -139,22 +139,31 @@ export const ShortsVideoSection = () => {
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
       variants={containerVariants}
-      className="py-24 bg-stone-950 overflow-hidden"
+      className="py-24 bg-wedding-slate overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <motion.p
             variants={itemVariants}
-            className="text-xs uppercase tracking-[0.3em] text-primary mb-3 font-bold"
+            className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.4em] text-secondary mb-3 font-bold"
           >
-            Cinematic Moments
+            <span className="block w-8 h-px bg-secondary" />
+            Voices &amp; Visits
+            <span className="block w-8 h-px bg-secondary" />
           </motion.p>
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-display text-white mb-6"
+            className="text-4xl md:text-5xl font-display text-white mb-3"
           >
-            Captured Emotions
+            Short films from the field
           </motion.h2>
+          <motion.p
+            variants={itemVariants}
+            className="text-gray-300 max-w-2xl mx-auto"
+          >
+            A donor on her way to LCGC. A volunteer&apos;s first survey. A
+            Class XII result. The kind of moments brochures cannot show.
+          </motion.p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

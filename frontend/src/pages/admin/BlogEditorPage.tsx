@@ -20,7 +20,7 @@ const BlogEditorPage: React.FC = () => {
     excerpt: "",
     content: "",
     category: "Technology", // Default
-    author: "Elegantize", // Default
+    author: "Aaghaz Foundation", // Default
     tags: "", // Comma-separated tags
     image_url: "",
     image_alt_text: "",
@@ -42,7 +42,7 @@ const BlogEditorPage: React.FC = () => {
             excerpt: data.excerpt || "",
             content: data.content || "",
             category: data.category || "Technology",
-            author: data.author || "Elegantize",
+            author: data.author || "Aaghaz Foundation",
             tags: data.tags || "",
             image_url: data.image_url || "",
             image_alt_text: data.image_alt_text || "",

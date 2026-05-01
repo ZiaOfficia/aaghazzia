@@ -28,11 +28,10 @@ import { getOptimizedImage } from "../utils/imageUtils";
 const SECTIONS = [
   { id: "overview", label: "Overview" },
   { id: "gallery", label: "Gallery" },
-  { id: "styles", label: "Styles" },
+  { id: "styles", label: "Details" },
   { id: "process", label: "Process" },
   { id: "why-us", label: "Why Choose Us" },
-  { id: "testimonials", label: "Love Stories" },
-  { id: "pricing", label: "Pricing Approach" },
+  { id: "testimonials", label: "Testimonials" },
   { id: "faq", label: "FAQs" },
   { id: "enquiry", label: "Inquiry" },
 ];
@@ -91,7 +90,7 @@ export const ServiceDetailPage = () => {
   return (
     <div className="bg-white">
       <SEO
-        title={`${service.title} - Wedding Services`}
+        title={`${service.title} - Aaghaz Foundation`}
         description={service.intro.description[0]}
         image={service.heroImage}
       />
@@ -153,15 +152,7 @@ export const ServiceDetailPage = () => {
         </div>
       </section>
 
-      {/* Horizontal Enquiry Form */}
-      <section className="py-6 px-4 md:px-6 bg-stone-50">
-        <div className="max-w-7xl mx-auto">
-          <ServiceEnquiryForm
-            serviceName={service.title}
-            variant="horizontal"
-          />
-        </div>
-      </section>
+
 
       {/* Accordion Navigation */}
       <ServiceAccordionNav
@@ -240,15 +231,15 @@ export const ServiceDetailPage = () => {
         </div>
       </section>
 
-      {/* Real Weddings Gallery - Moved after Overview */}
+      {/* Impact Gallery - Moved after Overview */}
       <section className="py-12 px-6 bg-stone-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-display text-gray-900 mb-3">
-              Real Weddings Gallery
+              Impact Gallery
             </h2>
             <p className="text-gray-500 font-light">
-              Moments we've had the honor of creating.
+              Moments of change and impact.
             </p>
           </div>
           <ServiceGalleryGrid images={service.portfolioImages} />
@@ -357,17 +348,9 @@ export const ServiceDetailPage = () => {
         </div>
       </section>
 
-      {/* Horizontal Enquiry Form */}
-      <section className="py-6 px-4 md:px-6 bg-stone-50">
-        <div className="max-w-7xl mx-auto">
-          <ServiceEnquiryForm
-            serviceName={service.title}
-            variant="horizontal"
-          />
-        </div>
-      </section>
 
-      {/* Real Weddings / Why Elegantize / Testimonials */}
+
+      {/* Stories / Why Aaghaz / Testimonials */}
       <section
         id="why-us"
         ref={(el) => {
@@ -420,7 +403,7 @@ export const ServiceDetailPage = () => {
           <div className="max-w-7xl mx-auto mb-20">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-display text-gray-900 mb-3">
-                Love Stories
+                Testimonials
               </h2>
               <div className="w-16 h-px bg-primary mx-auto" />
             </div>
@@ -438,55 +421,7 @@ export const ServiceDetailPage = () => {
         </section>
       )}
 
-      {/* Pricing Approach */}
-      <section
-        id="pricing"
-        ref={(el) => {
-          sectionRefs.current["pricing"] = el;
-        }}
-        className="py-8 md:py-8 px-6 bg-stone-50"
-      >
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-display text-gray-900 mb-8">
-            Our Pricing Approach
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
-            <div className="bg-white p-8 rounded-xl shadow-md border border-stone-100">
-              <h3 className="text-xl font-display text-gray-900 mb-4">
-                Transparent & Custom
-              </h3>
-              <p className="text-gray-600 font-light leading-relaxed">
-                We believe that every wedding is unique, and so are the
-                requirements. Instead of rigid packages, we build a custom
-                proposal tailored to your specific needs, venue scale, and
-                floral preferences. This ensures you only invest in what truly
-                matters to your vision.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-md border border-stone-100">
-              <h3 className="text-xl font-display text-gray-900 mb-4">
-                What's Included
-              </h3>
-              <ul className="space-y-2">
-                {[
-                  "Detailed Design Consultation",
-                  "Premium Material Sourcing",
-                  "Full-Day Installation Team",
-                  "Breakdown & Cleanup",
-                ].map((item, i) => (
-                  <li
-                    key={i}
-                    className="flex items-center gap-2 text-gray-600 font-light"
-                  >
-                    <Check className="w-4 h-4 text-primary" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* FAQ Section - Reused Component */}
       <div
@@ -501,7 +436,7 @@ export const ServiceDetailPage = () => {
       <section className="py-20 px-6 bg-stone-50">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-2xl md:text-3xl font-display text-gray-900 mb-8 text-center">
-            You May Also Love
+            Explore More Programs
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {relatedServices.map((s) => (
@@ -543,10 +478,10 @@ export const ServiceDetailPage = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-5xl font-display mb-4">
-              Your event deserves more than decoration.
+              Your contribution deserves more than gratitude.
             </h2>
             <p className="text-xl text-primary font-display italic">
-              It deserves design.
+              It deserves impact.
             </p>
           </motion.div>
         </div>

@@ -6,24 +6,16 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { API_BASE_URL } from "../../config";
 import type { BlogPost } from "../../data/blogData";
+import { aboutImage } from "../../data/imageAssets";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
+  visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
 };
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
 export const BlogSection = () => {
@@ -33,11 +25,8 @@ export const BlogSection = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        // Fetch only 3 posts for homepage
         const response = await fetch(`${API_BASE_URL}/api/blogs?limit=3`);
         const data = await response.json();
-
-        // Handle both array format (old) and paginated object format (new)
         const postsArray = Array.isArray(data) ? data : data.blogs || [];
 
         const formattedPosts: BlogPost[] = postsArray.map(
@@ -60,7 +49,7 @@ export const BlogSection = () => {
               ? post.image_url.startsWith("http")
                 ? post.image_url
                 : `${API_BASE_URL}${post.image_url}`
-              : "/images/portfolio/dsc00085.webp",
+              : aboutImage,
           }),
         );
 
@@ -77,34 +66,42 @@ export const BlogSection = () => {
 
   const recentPosts = blogPosts.slice(0, 3);
 
-  if (loading) {
-    return null; // Or a loader, but reducing layout shift is better handled by skeleton or min-height. Null is fine for now to avoid flash of wrong content.
-  }
+  if (loading) return null;
 
   return (
     <motion.section
       id="blog"
-      className="py-24 px-6 bg-texture-floral"
+      className="py-24 px-6 bg-mosaic-cream relative"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       variants={containerVariants}
     >
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-secondary" />
+
       <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-end mb-12">
+        <div className="flex justify-between items-end mb-12 flex-wrap gap-4">
           <div>
             <motion.p
               variants={itemVariants}
-              className="text-primary text-xs font-bold uppercase tracking-widest mb-2"
+              className="inline-flex items-center gap-3 text-primary text-xs font-bold uppercase tracking-[0.4em] mb-3"
             >
-              From the Journal
+              <span className="block w-8 h-px bg-primary" />
+              News &amp; Stories
             </motion.p>
             <motion.h2
               variants={itemVariants}
-              className="text-3xl md:text-5xl font-display text-gray-900"
+              className="text-3xl md:text-5xl font-display text-accent"
             >
-              Wedding Inspiration
+              Postcards from the work
             </motion.h2>
+            <motion.p
+              variants={itemVariants}
+              className="text-text-muted mt-2 max-w-md"
+            >
+              Short despatches from press coverage, field visits, and the people
+              who keep Aaghaz going.
+            </motion.p>
           </div>
           <motion.div variants={itemVariants} className="hidden md:block">
             <Button
@@ -128,7 +125,7 @@ export const BlogSection = () => {
         <motion.div variants={itemVariants} className="mt-12 text-center">
           <Link to="/blog">
             <Button variant="primary" icon={ArrowRight}>
-              Read All Blogs
+              All News &amp; Stories
             </Button>
           </Link>
         </motion.div>

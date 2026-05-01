@@ -1,58 +1,64 @@
+// Aaghaz Foundation — Content & Copy
+// Pehla qadam. Phir taleem. Phir tabdeeli.
+// (The first step. Then education. Then transformation.)
+
+import { heroImages } from "./imageAssets";
+
 export const heroSlides = [
   {
-    title: "Floral Design",
-    subtitle: "Where Every Bloom Tells Your Love Story",
-    image: "/images/home/627932fd-b02f-44d5-b215-de33d1df4fc5.webp",
+    title: "Aaghaz · A Beginning",
+    subtitle: "Every child deserves a beginning. We just make sure they get one.",
+    image: heroImages.girlSmiling,
   },
   {
-    title: "Ceiling Design",
-    subtitle: "Turn Your Venue Into a Work of Art Above",
-    image: "/images/home/382098743.webp",
+    title: "Twenty Years. One Promise.",
+    subtitle: "Education out of reach for no one — since 2004.",
+    image: heroImages.schoolGroup,
   },
   {
-    title: "Centerpiece Design",
-    subtitle: "Because Every Table Deserves a Touch of Elegance",
-    image: "/images/home/copy-of-copy-of-dsc00606.webp",
+    title: "From Rs 2,000 to a Movement",
+    subtitle: "What started with one student is now thousands across India.",
+    image: heroImages.childReading,
   },
   {
-    title: "Vinyl Floor Wraps",
-    subtitle: "Make Your First Dance Unforgettable",
-    image: "/images/general/il_1588xn.3666063238_qsa7.webp",
+    title: "Verified. Volunteer-Led. Honest.",
+    subtitle: "Every case is met. Every rupee is traced. Every promise is kept.",
+    image: heroImages.classroomTeacher,
   },
   {
-    title: "Ceremony Decor",
-    subtitle: "Where Forever Begins in Beautiful Surroundings",
-    image: "/images/portfolio/dsc02592.webp",
+    title: "Coaching That Cracks Codes",
+    subtitle: "Rahmani 30 with Aaghaz — IIT, NEET, CA, free of cost in UP.",
+    image: heroImages.studentBlackboard,
   },
   {
-    title: "Draping Service",
-    subtitle: "Soft Fabrics. Timeless Romance.",
-    image: "/images/general/4da02ecaa4ae7e295ff13ff1900ba116.webp",
+    title: "A Quiet Room To Study",
+    subtitle: "LCGC has welcomed Lucknow's children, free, every day since 2011.",
+    image: heroImages.libraryStudy,
   },
   {
-    title: "Mandap Design",
-    subtitle: "Tradition Reimagined with Modern Luxury",
-    image: "/images/portfolio/dsc03995.webp",
+    title: "One Donation. One Future.",
+    subtitle: "Three Indians out of ten cannot read. Help us change that — today.",
+    image: heroImages.kidsLearning,
   },
   {
-    title: "Stage Design",
-    subtitle: "Create the Perfect Moment Everyone Will Remember",
-    image: "/images/home/395791049.webp",
+    title: "Honour Their Name. Fund Their Dream.",
+    subtitle: "Launch a memorial scholarship — and let love finish school.",
+    image: heroImages.outdoorEducation,
   },
 ];
 
 export const introContent = {
-  heading: "Luxury Wedding Decor & Design in New York & New Jersey",
+  heading: "Pehla Qadam. Phir Taleem. Phir Tabdeeli.",
   text: [
-    "At Elegantize, we believe your wedding should feel as extraordinary as your love story. Every couple is unique — and so should be their wedding décor. Our design team blends creativity, technical expertise, and luxury styling to produce weddings that are deeply personal and visually breathtaking.",
-    "Serving New York City, New Jersey, and surrounding areas, we work with couples, planners, and venues to deliver wedding environments that feel elegant, seamless, and unforgettable.",
+    "It began in 2004 with two thousand rupees, three friends, and one student in Lucknow who had nowhere else to turn. Twenty years later, that same idea — that nobody should be left out of a classroom because their family ran out of money — still runs everything we do.",
+    "Aaghaz is not a charity that drops gifts and disappears. We meet every student, visit every home, sit with every family. Then we pay the school directly, follow the child through the year, and report back to the donor who made it possible.",
   ],
 };
 
 export const portfolioContent = {
-  heading: "Real Weddings. Real Experiences.",
+  heading: "Twenty Years. Ten Thousand Stories.",
   description:
-    "We take pride in creating weddings that are not only visually stunning but deeply meaningful. Our portfolio features real couples, real venues, and real celebrations across New York City, New Jersey, and beyond — each designed with a unique story, color palette, and cultural expression.",
+    "Each story below is a child whose life turned, a family that breathed again, a donor who said yes. They are not poster cases — they are people we still call and check in on. Browse a few; they say more about us than any brochure could.",
 };
 
 export const services = [
@@ -60,210 +66,219 @@ export const services = [
     ...heroSlides[0],
     id: 0,
     description:
-      "Luxury floral arrangements, arches, centerpieces, and statement installations using premium seasonal blooms designed for photography and long-lasting beauty.",
+      "Need-based financial assistance for school and college students from underprivileged families. Tuition, books, exam fees, uniforms — whatever stands between a child and the next class.",
   },
   {
     ...heroSlides[1],
     id: 1,
     description:
-      "Chandeliers, fabric draping, hanging florals, and lighting concepts that create dramatic overhead elegance and transform large venues into intimate luxury spaces.",
+      "Annual and memorial scholarships funded by donors who want to honour a loved one or simply invest in a child's future. Every rupee is tracked, every report shared.",
   },
   {
     ...heroSlides[2],
     id: 2,
     description:
-      "Custom table styling, candle designs, and floral arrangements that elevate guest experience and complement your wedding theme.",
+      "Merit-cum-means scholarships of varying amounts awarded after a verified pre-scholarship survey by our volunteer team — never before.",
   },
   {
     ...heroSlides[3],
     id: 3,
     description:
-      "Personalized dance floors, monograms, patterns, and themed floor designs that add a bold and elegant statement to your reception.",
+      "Aaghaz is a volunteer-driven organisation. Our field volunteers identify, verify and mentor each beneficiary — keeping us honest and our students supported.",
   },
   {
     ...heroSlides[4],
     id: 4,
     description:
-      "Aisle décor, arches, floral backdrops, and seating styling designed to highlight your vows and ceremonial moments beautifully.",
+      "In partnership with Rahmani 30, we run free residential and day learning centres in Uttar Pradesh, where students get intensive coaching for IIT-JEE, NEET, CA and competitive exams.",
   },
   {
     ...heroSlides[5],
     id: 5,
     description:
-      "Soft fabric installations that add warmth, romance, and visual depth to ballrooms, tents, and outdoor venues.",
+      "Since 2011 the Lucknow Coaching & Guidance Centre (LCGC) has offered structured tuition, library access and career counselling to children who would otherwise have nowhere to study after school.",
   },
   {
     ...heroSlides[6],
     id: 6,
     description:
-      "Traditional and modern mandap designs crafted to honor cultural rituals while blending seamlessly into luxury wedding environments.",
+      "Your donation directly funds school fees, hostel rent, lab equipment and life-changing mentorship for a verified student. We send you photos, progress reports and the occasional thank-you letter.",
   },
   {
     ...heroSlides[7],
     id: 7,
     description:
-      "Custom wedding stages, sweetheart table backdrops, and focal installations designed for both live viewing and stunning photography.",
+      "Launch a scholarship in the name of a parent, teacher or friend. We co-design the criteria with you and send annual reports on the students it supports.",
   },
 ];
 
 export const whyChooseContent = {
-  heading: "Why Couples Choose Elegantize Weddings",
+  heading: "Why People Stay With Aaghaz",
   description:
-    "Couples across New York and New Jersey trust Elegantize because we deliver more than décor — we deliver flawless wedding experiences.",
+    "We're a small foundation that has held on for two decades because we keep our word. Our donors don't leave. Our volunteers come back. And the students we fund tend to fund the next batch themselves, years later.",
   points: [
-    "Over 10 years of combined experience in luxury wedding design",
-    "More than 150 weddings designed and executed across NY and NJ",
-    "Dedicated in-house design and production team",
-    "Experience with high-end venues, ballrooms, estates, and outdoor spaces",
-    "Seamless coordination with planners, photographers, and venues",
+    "Twenty years on the ground — same office, same email address, same phone.",
+    "Two volunteers visit every household before a single rupee is approved.",
+    "Founder funding covers our overheads — your donation goes 100% to the child.",
+    "LCGC has been open every weekday since 2011. No locks, no waiting list.",
+    "Rahmani 30 partnership has produced IIT and NEET qualifiers from villages.",
   ],
   footer:
-    "Every detail we create is intentional, elegant, and crafted with precision.",
+    "School fees aren't a luxury, and education isn't a favour. It's the one bridge out of poverty we know works — so we keep that bridge open.",
 };
 
 export const aboutContent = {
-  heading: "About Elegantize Weddings",
+  heading: "About Aaghaz Foundation",
   text: [
-    "At Elegantize Weddings, we are dedicated to turning your wedding dreams into reality. With our team’s expertise and passion for creating unforgettable wedding experiences in New York and New Jersey, we specialize in crafting bespoke celebrations that reflect your unique love story.",
-    "Drawing from over 10 years of combined experience and having designed over 150 weddings across New York and New Jersey, we bring both creative vision and logistical mastery to every event. From initial concept to final installation, we manage every design detail with care, professionalism, and artistic excellence.",
-    "We believe that luxury lies in the details — from the way florals frame your ceremony to how lighting transforms your reception. When you entrust us with your wedding day, you gain a dedicated design partner focused on making every moment beautiful and effortless.",
+    "Aaghaz Foundation is a non-profit organisation that was founded in 2004 by journalist Mazhar Farooqui and a few of his friends in Lucknow with just Rs 2,000 and one needy student. What began as a quiet act of solidarity has grown into one of north India's most trusted education-focused charities.",
+    "For over a decade we have impacted thousands of children all over India through our unique scholarship programs, and through our timely intervention in each individual case that is brought to us. We do not run a generic application form — every student is met, every family is visited, every case is built around a real human being.",
+    "Our work is sustained by a network of donors, journalists, teachers and field volunteers who share one belief: that 34% of India is illiterate is unacceptable, and that each of us — in whatever capacity — has a role to play in changing that statistic.",
   ],
-  author: "Raza – Event Decor Specialist",
+  author: "Mazhar Farooqui — Founder",
 };
 
 export const blogPosts = [
   {
-    title: "Top Floral Trends for 2024 Weddings",
-    category: "Trends",
+    title: "Aaghaz Foundation Supports Orphans Living In A Graveyard",
+    category: "News",
     excerpt:
-      "Discover the colors and blooms that are defining the modern luxury wedding scene...",
-    image: "/images/home/382098743-1.webp",
+      "When a Gulf News story revealed children living and studying among graves on the outskirts of Lucknow, Aaghaz volunteers stepped in within 72 hours...",
+    image:
+      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    title: "How to Choose Your Wedding Lighting",
-    category: "Planning",
+    title: "Rs 2 lakh Scholarship in Pune Techie's Name",
+    category: "Scholarships",
     excerpt:
-      "The secret to perfect wedding photos lies in your event lighting choices...",
-    image: "/images/gallery/dsc08998.webp",
+      "A young software engineer's family chose to launch a memorial scholarship in his name — funding three students through their final years of school...",
+    image:
+      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    title: "Modern Decor for Classic Ballrooms",
-    category: "Venues",
+    title: "Aaghaz Opens A School For The Poor In Lucknow",
+    category: "Projects",
     excerpt:
-      "Transforming traditional spaces into modern masterpieces with contemporary design...",
-    image: "/images/gallery/dsc05988-1.webp",
+      "An update on our community classroom programme — and how the Lucknow Coaching & Guidance Centre is now serving 200+ children every week...",
+    image:
+      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
 export const faqs = [
   {
-    question: "What types of events decor do we specialize in?",
+    question: "What does Aaghaz Foundation actually do?",
     answer:
-      "Elegantize Weddings specializes in a wide range of events in New York and New Jersey, including weddings, corporate functions, private celebrations, and more. Our services encompass floral design, ceiling design, centerpiece design, vinyl floor wraps, ceremony decor, and draping services, each tailored to fit the unique needs of your event. We combine creativity with attention to detail, ensuring every element—from the flowers to the floor wrap—is meticulously crafted to enhance the event’s atmosphere. Whether you envision a lavish wedding in New York or a sophisticated corporate gathering in New Jersey, our wedding decoration team brings your vision to life with personalized, stunning decor.",
+      "Aaghaz Foundation is a non-profit organisation supporting meritorious students from economically weak backgrounds across India. We run scholarships, need-based financial assistance for school and college fees, the Rahmani 30 coaching tie-up in Uttar Pradesh, and the Lucknow Coaching & Guidance Centre (LCGC). We were founded in 2004 by journalist Mazhar Farooqui and his friends in Lucknow with just Rs 2,000 and one needy student.",
   },
   {
-    question: "How far in advance should I book Elegantize?",
+    question: "How do you decide who gets a scholarship?",
     answer:
-      "For weddings in New York and New Jersey or large-scale events, we recommend booking at least 6-12 months in advance to secure availability and allow ample time for our detailed planning and design process. Early booking allows us to understand your vision fully, customize each design element and coordinate every detail for a flawless event. Elegantize’s team works closely with you to craft a unique, elegant experience, ensuring every piece fits perfectly into your event’s theme and atmosphere.",
+      "Every student is recommended to us — usually by a teacher, neighbour, journalist or earlier beneficiary. Once recommended, we ask our volunteers to conduct a pre-scholarship survey: a minimum of two volunteers visit the student's home and school to verify the family's financial situation, the child's academic record and their genuine willingness to study. Only after both surveys agree do we onboard the student. This process keeps us honest and protects donors' trust.",
   },
   {
-    question: "Do you offer customizable wedding decoration options?",
+    question: "How can I donate?",
     answer:
-      "Yes, Elegantize offers a variety of wedding packages, each designed to provide different levels of wedding decor services to match your vision and budget. Our packages can include floral design, ceiling design, centerpiece design, vinyl floor wraps, ceremony decor, and draping services, with each element crafted to enhance your wedding’s unique atmosphere. For couples seeking a more personalized touch, we also offer custom packages tailored to your specific needs. Whether you’re planning an intimate celebration or a grand affair, our Wedding Decoration team ensures every detail is thoughtfully curated to create a memorable, elegant experience.",
+      "You can donate any amount, one-time or monthly, through our donation page. 100% of your contribution goes towards student aid — our administrative costs are absorbed by founder funding and volunteer effort. Donations to Aaghaz Foundation are eligible for tax exemption under Section 80G in India. After donating, you will receive a receipt and, if you wish, periodic updates on the students your contribution supports.",
   },
   {
-    question:
-      "What does the process entail when booking decor service with Elegantize?",
+    question: "Can I launch a memorial or named scholarship?",
     answer:
-      "The process begins with an initial consultation, where we sit down to understand your event’s vision, style, and specific needs. During this meeting, we discuss your preferences for decor, themes, colors, and any special elements you want to include. Next, our team creates a custom design plan tailored to your requirements, incorporating all the details we’ve discussed. Once the plan is finalized and approved, we move forward with planning and execution, coordinating all aspects of the decor, from floral arrangements to ceiling design and draping services. Our team ensures every detail is handled with care, making your event truly unforgettable.",
+      "Yes. Many of our donors choose to support Aaghaz by launching a scholarship — often in memory of a parent, sibling, teacher or friend. We work with you to define the criteria (age, gender, region, course of study) and the duration, and we send you annual reports on the students it supports. A typical memorial scholarship starts at Rs 50,000 per student per year, but we are happy to design something at any budget.",
   },
   {
-    question: "Can you accommodate an Outdoor Wedding Event?",
+    question: "How do I become a volunteer?",
     answer:
-      "Absolutely! At Elegantize, we have extensive experience in decorating outdoor wedding events, ensuring every detail is both stunning and practical for outdoor settings. Our process begins with a detailed consultation to understand your vision and the unique aspects of your outdoor venue. We then create a custom design plan that aligns with your style, carefully considering elements like lighting, seating arrangements, and decor placement. Our team ensures that all aspects of the design are cohesive, enhancing the natural beauty of the venue while creating an unforgettable atmosphere for your special day.",
+      "Aaghaz is a volunteer-driven organisation, and we are always looking for more hands. Field volunteers help with pre-scholarship surveys in their own city or town. Online volunteers help with documentation, social media, mentoring students remotely and organising fundraising. Just register through our Become a Field Volunteer page and a member of the team will get in touch within a few working days.",
   },
   {
-    question: "How much will my decor cost?",
+    question: "What is Rahmani 30 and how is Aaghaz connected to it?",
     answer:
-      "Pricing is personalized to fit the unique needs of your event. The process begins with an initial consultation, where we discuss your vision, the scope of the event, and the specific decor elements you’d like to incorporate. Based on this information, we create a tailored proposal that outlines the services and decor options that best fit your style and budget. This allows us to provide a clear, customized pricing structure, ensuring you get the best value for your celebration. We work with you every step of the way to make your dream event a reality.",
+      "Rahmani 30 is a well-known coaching initiative that prepares students from underprivileged backgrounds for IIT-JEE, NEET, CA and other competitive exams. Aaghaz Foundation has tied up with Rahmani 30 to open and run learning centres in Uttar Pradesh, where deserving students undergo intensive residential and day-school coaching at no cost to their families.",
   },
   {
-    question: "Does Elegantize offer wedding packages?",
+    question: "What is the Lucknow Coaching & Guidance Centre (LCGC)?",
     answer:
-      "Yes, we offer a wide range of wedding packages, designed to accommodate various budgets and styles. Our packages include different levels of decor and design services, ensuring that each event receives the perfect combination of elegance and personalization. Whether you’re looking for a simple yet beautiful setup or a more elaborate design, we tailor our offerings to suit your vision. Additionally, we understand that every wedding is unique, so we also offer custom packages designed specifically to meet your individual needs. Whatever your dream wedding looks like, we’re here to bring it to life.",
+      "Since 2011, Aaghaz has been successfully running a facility in Lucknow called the Lucknow Coaching & Guidance Centre (LCGC). It offers structured after-school tuition, a quiet library, computer access and one-on-one career counselling for children from neighbourhoods where these resources simply do not exist. LCGC currently serves 200+ children every week.",
   },
   {
-    question: "How involved can I be in the decor process?",
+    question: "How do I apply for student aid for myself or my child?",
     answer:
-      "At Elegantize, we strongly encourage client collaboration throughout the entire decor planning process. Your input is invaluable to us, as we believe your vision should be at the heart of every design decision. From the initial consultation to the final touches, we work closely with you, ensuring that your ideas and preferences are reflected in the decor. Our team listens carefully and provides expert guidance to enhance your vision, ensuring that every detail aligns perfectly with your expectations. With your collaboration, we create a truly personalized and memorable event that exceeds your dreams and captures your unique style.",
+      "Use the Apply for Student Aid form on our website. Before applying, please read the eligibility criteria and our terms — we cover school fees, college fees, books, hostel, exam fees and similar academic expenses for verified low-income families. We do not provide aid for travel abroad, capitation fees or non-academic expenses. Once your application is submitted, our volunteer team will reach out to schedule a survey.",
   },
   {
-    question: "What makes Elegantize different from other wedding decorators?",
+    question: "Is Aaghaz Foundation registered? Are donations tax-exempt?",
     answer:
-      "Elegantize focus on understanding your unique vision and tailoring every detail to make your celebration truly one-of-a-kind. With an unwavering attention to detail and a passion for trendsetting designs, we ensure that each aspect of your wedding reflects your personal style and creates an unforgettable atmosphere. Our goal is to craft elegant, memorable experiences that leave a lasting impression on both you and your guests. From the smallest detail to the grandest gesture, we strive to make every moment of your wedding day exceptional.",
+      "Yes. Aaghaz Foundation is a registered non-profit organisation in India. Donations made by Indian residents are eligible for tax exemption under Section 80G of the Income Tax Act, and we issue receipts within seven working days of every donation. For NRIs and foreign donors please contact us at aaghaz.foundation@gmail.com to discuss the most appropriate route.",
   },
   {
-    question: "What Decorations are needed for a Wedding?",
+    question: "How can my company partner with Aaghaz?",
     answer:
-      "Essential wedding decorations include captivating centerpieces, romantic lighting, elegant draping, and personalized details like signage and favors. Our decoration expert designers at Elegantize Weddings will help you select the perfect elements to create a cohesive and unforgettable atmosphere for your special day.",
+      "We welcome corporate partnerships — under CSR commitments, employee giving, payroll-linked donations or skill-based volunteering. Your team can adopt a class, launch a corporate-named scholarship, sponsor a learning centre or mentor students online. Write to aaghaz.foundation@gmail.com with your CSR focus areas and we will design a partnership that genuinely moves the needle.",
   },
 ];
 
 export const ctaContent = {
-  heading: "Ready to design your day? Book a free consult",
+  heading: "Become the reason one child finishes school this year.",
   text: [
-    "Contact Elegantize Weddings today to schedule your complimentary consultation and begin your journey toward a stunning wedding experience in New York or New Jersey.",
+    "One in three Indians cannot read this sentence. That's the largest population of unschooled children in the world — bigger than the entire population of most countries. The number is too big to fix overnight, but it shrinks by exactly one every time you fund one child. Today is a good day to be that one.",
   ],
 };
 
 export const shortVideos = [
   {
     id: 1,
-    title: "",
+    title: "Hear from a scholarship student",
     videoUrl:
       "/images/videos/elegantizeevents_reel_11_6_2025_8_30_00-pm3759951878449372084.mp4",
-    thumbnail: "/images/gallery/dsc05988.webp",
+    thumbnail:
+      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: 2,
-    title: "",
+    title: "Inside the Rahmani 30 centre",
     videoUrl:
       "/images/videos/djtm_official_reel_12_18_2025_3_23_36-am3789871397074796955.mp4",
-    thumbnail: "/images/gallery/dsc00360.webp",
+    thumbnail:
+      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: 3,
-    title: "",
+    title: "A day at LCGC, Lucknow",
     videoUrl:
       "/images/videos/elegantizeevents_reel_12_12_2024_10_30_00-pm3521561008227581106.mp4",
-    thumbnail: "/images/gallery/dsc01108.webp",
+    thumbnail:
+      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: 4,
-    title: "",
+    title: "How a pre-scholarship survey works",
     videoUrl:
       "/images/videos/elegantizeevents_reel_12_29_2025_9_30_33-pm3798394431771591975.mp4",
-    thumbnail: "/images/gallery/dsc09950-1.webp",
+    thumbnail:
+      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: 5,
-    title: "",
+    title: "Founder Mazhar Farooqui on 20 years of Aaghaz",
     videoUrl:
       "/images/videos/elegantizeevents_reel_12_29_2025_9_30_33-pm3798394431771591975.mp4",
-    thumbnail: "/images/home/dsc00326.webp",
+    thumbnail:
+      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: 6,
-    title: "",
+    title: "A donor on launching a memorial scholarship",
     videoUrl:
       "/images/videos/elegantizeevents_reel_5_27_2022_1_07_26-am2846867921226300535.mp4",
-    thumbnail: "/images/home/dsc09019.webp",
+    thumbnail:
+      "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: 7,
-    title: "",
+    title: "Volunteers in the field",
     videoUrl:
       "/images/videos/elegantizeevents_reel_11_6_2025_8_30_00-pm3759951878449372084.mp4",
-    thumbnail: "/images/home/c3bc82a9-1671-4455-ad92-a47e6beb5e94.webp",
+    thumbnail:
+      "https://images.unsplash.com/photo-1488998427799-e3362cec87c3?auto=format&fit=crop&w=600&q=80",
   },
 ];

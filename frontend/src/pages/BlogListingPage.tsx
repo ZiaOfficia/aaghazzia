@@ -3,8 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { BlogSidebar } from "../components/blog/BlogSidebar";
 import { BlogCard } from "../components/blog/BlogCard";
 import { motion } from "framer-motion";
-import type { BlogPost } from "../data/blogData";
-import { API_BASE_URL } from "../config";
+import { blogPosts as staticBlogPosts, type BlogPost } from "../data/blogData";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { SEO } from "../components/common/SEO";
 
@@ -33,51 +32,35 @@ export const BlogListingPage = () => {
 
   const itemsPerPage = 10;
 
-  const fetchPosts = useCallback(async (page: number, search: string) => {
+  const fetchPosts = useCallback((page: number, search: string) => {
     setLoading(true);
-    try {
-      const params = new URLSearchParams({
-        page: page.toString(),
-        limit: itemsPerPage.toString(),
-      });
-      if (search) {
-        params.append("search", search);
-      }
 
-      const response = await fetch(`${API_BASE_URL}/api/blogs?${params}`);
-      const data = await response.json();
+    let filteredPosts = staticBlogPosts;
 
-      const formattedPosts: BlogPost[] = data.blogs.map(
-        (post: BlogPost & { image_url?: string; createdAt?: string }) => ({
-          id: post.id,
-          title: post.title,
-          slug: post.slug,
-          excerpt: post.excerpt
-            ? post.excerpt
-                .replace(/<!--[\s\S]*?-->/g, "")
-                .replace(/<[^>]+>/g, "")
-                .substring(0, 300)
-            : "",
-          content: post.content,
-          createdAt: post.createdAt,
-          date: new Date(post.createdAt || post.date).toLocaleDateString(),
-          author: post.author,
-          category: post.category,
-          image: post.image_url
-            ? post.image_url.startsWith("http")
-              ? post.image_url
-              : `${API_BASE_URL}${post.image_url}`
-            : "https://images.unsplash.com/photo-1499750310159-5b600cdf0325",
-        }),
+    if (search) {
+      const searchLower = search.toLowerCase();
+      filteredPosts = staticBlogPosts.filter(
+        (post) =>
+          post.title.toLowerCase().includes(searchLower) ||
+          post.category.toLowerCase().includes(searchLower) ||
+          (post.tags && post.tags.toLowerCase().includes(searchLower))
       );
-
-      setBlogPosts(formattedPosts);
-      setPagination(data.pagination);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching posts:", error);
-      setLoading(false);
     }
+
+    const totalCount = filteredPosts.length;
+    const totalPages = Math.ceil(totalCount / itemsPerPage) || 1;
+    const startIndex = (page - 1) * itemsPerPage;
+    const paginatedPosts = filteredPosts.slice(startIndex, startIndex + itemsPerPage);
+
+    setBlogPosts(paginatedPosts);
+    setPagination({
+      currentPage: page,
+      totalPages,
+      totalCount,
+      hasNextPage: page < totalPages,
+      hasPrevPage: page > 1,
+    });
+    setLoading(false);
   }, []);
 
   useEffect(() => {
@@ -131,8 +114,8 @@ export const BlogListingPage = () => {
   return (
     <div className="pt-15 md:pt-12.5 pb-24 px-4 md:px-6 bg-white">
       <SEO
-        title="Wedding Blog - Trends & Inspiration"
-        description="Explore our latest wedding stories, trends, decor tips, and expert advice to help you plan your dream wedding."
+        title="Aaghaz Foundation Blog - Stories & Impact"
+        description="Explore our latest stories, success narratives, and updates on how Aaghaz Foundation is transforming lives through education."
       />
       {/* Page Header */}
       <div className="max-w-7xl mx-auto mb-16 text-center">
@@ -140,11 +123,10 @@ export const BlogListingPage = () => {
           Our Journal
         </p>
         <h1 className="text-4xl md:text-6xl font-display text-gray-900 mb-6">
-          Wedding Inspiration & Tips
+          Stories of Impact
         </h1>
         <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed">
-          Explore our latest stories, trends, and expert advice to help you plan
-          your dream luxury wedding.
+          Read about our scholars, field operations, and how your contributions are making a lasting difference.
         </p>
         {pagination.totalCount > 0 && (
           <p className="text-sm text-gray-400 mt-4">

@@ -15,10 +15,10 @@ export const LeftFixedEnquiryPanel = () => {
       <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden lg:block">
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-primary text-white py-6 px-2 rounded-l-md shadow-lg hover:bg-opacity-90 transition-all font-bold uppercase tracking-widest text-xs writing-vertical"
+          className="bg-secondary text-white py-6 px-2 rounded-l-md shadow-lg hover:bg-secondary-dark transition-all font-bold uppercase tracking-widest text-xs"
           style={{ writingMode: "vertical-rl" }}
         >
-          Inquire Now
+          Donate / Volunteer
         </button>
       </div>
 
@@ -28,7 +28,7 @@ export const LeftFixedEnquiryPanel = () => {
       >
         <div className="h-full flex flex-col p-6 overflow-y-auto">
           <div className="flex justify-between items-center mb-8">
-            <h3 className="font-display text-xl">Quick Inquiry</h3>
+            <h3 className="font-display text-xl text-accent">Quick Enquiry</h3>
             <button
               onClick={() => setIsOpen(false)}
               className="text-gray-400 hover:text-gray-800"
@@ -107,7 +107,7 @@ export const LeftFixedEnquiryPanel = () => {
             </div>
             <div>
               <label className="block text-xs uppercase tracking-widest font-bold mb-2 text-gray-500">
-                Event Venue
+                City / Location
               </label>
               <input
                 name="venue"
@@ -118,25 +118,28 @@ export const LeftFixedEnquiryPanel = () => {
             </div>
             <div>
               <label className="block text-xs uppercase tracking-widest font-bold mb-2 text-gray-500">
-                Budget Range
+                I'd like to
               </label>
               <select
                 name="budget"
                 required
-                className="w-full bg-stone-50 border border-gray-200 p-2 focus:border-primary focus:outline-none text-gray-500 appearance-none"
+                defaultValue=""
+                className="w-full bg-stone-50 border border-gray-200 p-2 focus:border-primary focus:outline-none text-gray-700 appearance-none"
               >
-                <option value="" disabled selected>
-                  Select Budget
+                <option value="" disabled>
+                  Select an option
                 </option>
-                <option value="$10k - $15k">$10k – $15k</option>
-                <option value="$15k - $20k">$15k – $20k</option>
-                <option value="$20k - $30k">$20k – $30k</option>
-                <option value="$30k and above">$30k and above</option>
+                <option value="donate">Make a donation</option>
+                <option value="scholarship">Launch a scholarship</option>
+                <option value="volunteer">Become a volunteer</option>
+                <option value="apply-aid">Apply for student aid</option>
+                <option value="csr">Discuss a CSR partnership</option>
+                <option value="other">Something else</option>
               </select>
             </div>
             <div>
               <label className="block text-xs uppercase tracking-widest font-bold mb-2 text-gray-500">
-                Event Date
+                Best date to call (optional)
               </label>
               <input
                 name="eventDate"
@@ -145,18 +148,18 @@ export const LeftFixedEnquiryPanel = () => {
               />
             </div>
             <Button type="submit" className="w-full mt-4">
-              Send Request
+              Send Enquiry
             </Button>
           </form>
 
           <div className="mt-auto pt-8 border-t border-gray-100">
-            <div className="flex items-center space-x-3 mb-4 text-sm text-gray-600">
+            <div className="flex items-center space-x-3 mb-4 text-sm text-gray-700">
               <Mail size={16} className="text-primary" />
-              <span>info@elegantize.com</span>
+              <span className="break-all">aaghaz.foundation@gmail.com</span>
             </div>
-            <div className="flex items-center space-x-3 text-sm text-gray-600">
+            <div className="flex items-center space-x-3 text-sm text-gray-700">
               <Calendar size={16} className="text-primary" />
-              <span>Mon - Fri: 9am - 6pm</span>
+              <span>Mon – Sat: 10am – 6pm IST</span>
             </div>
           </div>
         </div>

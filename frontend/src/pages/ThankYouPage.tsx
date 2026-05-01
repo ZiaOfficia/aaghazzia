@@ -44,15 +44,23 @@ const ThankYouPage = () => {
           <CheckCircle className="w-12 h-12 text-green-600" />
         </div>
 
-        <h1 className="text-4xl font-display text-gray-900 mb-6">Thank You!</h1>
+        <h1 className="text-4xl font-display text-accent mb-6">Thank you.</h1>
 
-        <p className="text-xl text-gray-600 mb-4 font-light">
-          Your inquiry has been successfully received.
+        <p className="text-xl text-gray-700 mb-4 font-light">
+          Your message has reached us.
         </p>
 
-        <p className="text-gray-500 mb-10 leading-relaxed">
-          We appreciate you reaching out to Elegantize. Our team will review your
-          details and get back to you within 24 hours to discuss your vision.
+        <p className="text-gray-600 mb-10 leading-relaxed">
+          A real human at Aaghaz Foundation will read your note and write back
+          within a few working days. If your matter is urgent, you can also
+          reach us at{" "}
+          <a
+            href="mailto:aaghaz.foundation@gmail.com"
+            className="text-primary hover:underline"
+          >
+            aaghaz.foundation@gmail.com
+          </a>
+          .
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -67,7 +75,7 @@ const ThankYouPage = () => {
               icon={ArrowRight}
               className="w-full sm:w-auto"
             >
-              Read Our Blog
+              Read Our News
             </Button>
           </Link>
         </div>

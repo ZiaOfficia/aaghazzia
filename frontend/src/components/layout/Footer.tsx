@@ -2,9 +2,11 @@ import {
   Instagram,
   Facebook,
   Youtube,
+  Twitter,
   Phone,
   MapPin,
   Mail,
+  Heart,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -15,20 +17,13 @@ export const Footer = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.8,
-        staggerChildren: 0.1,
-      },
+      transition: { duration: 0.8, staggerChildren: 0.1 },
     },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
   return (
@@ -37,267 +32,149 @@ export const Footer = () => {
       whileInView="visible"
       viewport={{ once: true }}
       variants={containerVariants}
-      className="bg-stone-950 border-t border-white/10 py-16 px-6 text-white text-texture"
+      className="bg-wedding-slate border-t border-primary/30 py-16 px-6 text-white"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 ">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
-          <motion.div
-            variants={itemVariants}
-            className="col-span-1 md:col-span-1"
-          >
-            <div className="text-2xl font-display font-bold tracking-tighter mb-3  text-white">
-              ELEGANTIZE<span className="text-primary">.</span>
-            </div>
-            <p className="text-xs text-gray-400 leading-relaxed uppercase tracking-widest">
-              Elegantize: Where weddings become legends! We’re not just a decor
-              company in New York or in New Jersey; we’re your VIP pass to
-              enchantment. From breathtaking florals to ceiling charm and vinyl
-              floor allure, we’ve got the magic touch.
+          <motion.div variants={itemVariants} className="col-span-1">
+            <img
+              src="/images/aaghaz-logo.png"
+              alt="Aaghaz Foundation — Educate, Empower"
+              className="h-16 w-auto object-contain mb-5"
+            />
+            <p className="text-xs text-gray-300 leading-relaxed">
+              A non-profit founded in 2004 in Lucknow with just Rs 2,000 and one
+              needy student. Two decades on, we still believe one simple thing:
+              empowerment through education builds a more resilient society —
+              one verified scholarship at a time.
             </p>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 mt-6 bg-primary hover:bg-primary-dark text-white px-5 py-2.5 text-xs uppercase tracking-widest font-bold rounded-tl-2xl rounded-br-2xl transition-colors"
+            >
+              <Heart size={14} fill="currentColor" />
+              Donate Today
+            </Link>
           </motion.div>
 
           {/* Navigation */}
-          <motion.div variants={itemVariants} className="lg:ml-17">
-            <h5 className="text-[14px] uppercase tracking-widest font-bold mb-6 text-white">
-              Navigation
+          <motion.div variants={itemVariants} className="lg:ml-8">
+            <h5 className="text-[14px] uppercase tracking-widest font-bold mb-6 text-secondary">
+              Quick Links
             </h5>
-            <ul className="text-xs space-y-4 uppercase tracking-widest text-gray-400">
-              <li>
-                <a href="/" className="hover:text-primary transition-colors">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/about"
-                  className="hover:text-primary transition-colors"
-                >
-                  About
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/services"
-                  className="hover:text-primary transition-colors"
-                >
-                  Services
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/gallery"
-                  className="hover:text-primary transition-colors"
-                >
-                  Gallery
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/portfolio"
-                  className="hover:text-primary transition-colors"
-                >
-                  Portfolio
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/blog"
-                  className="hover:text-primary transition-colors"
-                >
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="/faq" className="hover:text-primary transition-colors">
-                  FAQ
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/contact"
-                  className="hover:text-primary transition-colors"
-                >
-                  Contact
-                </a>
-              </li>
+            <ul className="text-xs space-y-3 uppercase tracking-widest text-gray-300">
+              <li><Link to="/" className="hover:text-secondary transition-colors">Home</Link></li>
+              <li><Link to="/about" className="hover:text-secondary transition-colors">About Us</Link></li>
+              <li><Link to="/services" className="hover:text-secondary transition-colors">What We Do</Link></li>
+              <li><Link to="/services/student-aid" className="hover:text-secondary transition-colors">Apply for Student Aid</Link></li>
+              <li><Link to="/services/become-volunteer" className="hover:text-secondary transition-colors">Become a Volunteer</Link></li>
+              <li><Link to="/services/launch-scholarship" className="hover:text-secondary transition-colors">Launch a Scholarship</Link></li>
+              <li><Link to="/blog" className="hover:text-secondary transition-colors">News &amp; Events</Link></li>
+              <li><Link to="/faq" className="hover:text-secondary transition-colors">FAQ</Link></li>
             </ul>
           </motion.div>
 
-          {/* Connect */}
+          {/* Contact */}
           <motion.div variants={itemVariants}>
-            <h5 className="text-[14px] uppercase tracking-widest font-bold mb-6 text-white">
-              Connect
+            <h5 className="text-[14px] uppercase tracking-widest font-bold mb-6 text-secondary">
+              Reach Us
             </h5>
-            <ul className="text-xs space-y-4 uppercase tracking-widest text-gray-400">
-              <li>
-                <a
-                  href="https://www.instagram.com/elegantizeevents/"
-                  className="hover:text-primary transition-colors flex items-center gap-2"
-                >
-                  <Instagram size={16} /> Instagram
+            <ul className="text-xs space-y-3 text-gray-300">
+              <li className="flex items-start gap-3">
+                <MapPin size={16} className="shrink-0 mt-0.5 text-primary" />
+                <span className="leading-relaxed">
+                  <strong className="text-white">Registered Office</strong>
+                  <br />
+                  57 Ganesh Gunj, Lucknow,
+                  <br />
+                  Uttar Pradesh — 226018, India
+                </span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone size={14} className="text-primary" />
+                <a href="tel:+919876543210" className="hover:text-secondary transition-colors">
+                  +91 98765 43210
                 </a>
               </li>
-              <li>
+              <li className="flex items-center gap-3">
+                <Mail size={14} className="text-primary" />
                 <a
-                  href="https://in.pinterest.com/elegantizeevents/"
-                  className="hover:text-primary transition-colors flex items-center gap-2"
+                  href="mailto:aaghaz.foundation@gmail.com"
+                  className="hover:text-secondary transition-colors break-all"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="shrink-0"
-                  >
-                    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.399.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.173 0 7.41 2.967 7.41 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.246.957-.899 2.152-1.341 2.889.36.109.734.166 1.117.166 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.62 0 12.017 0z" />
-                  </svg>
-                  Pinterest
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.facebook.com/people/Elegantize-Productions/100083099336478/"
-                  className="hover:text-primary transition-colors flex items-center gap-2"
-                >
-                  <Facebook size={16} /> Facebook
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.youtube.com/@elegantize"
-                  className="hover:text-primary transition-colors flex items-center gap-2"
-                >
-                  <Youtube size={16} /> Youtube
+                  aaghaz.foundation@gmail.com
                 </a>
               </li>
             </ul>
 
-            <ul className="text-xs space-y-4 uppercase tracking-widest text-gray-400 mt-3">
-              <li className="hover:text-primary transition-colors flex items-center gap-2">
-                <Phone size={14} /> +1(347)686-4562
-              </li>
-              <li className="hover:text-primary transition-colors flex items-center gap-2">
-                <MapPin size={14} className="shrink-0" />
-                <span>8 Di Tomas Ct, Copiague, NY, 11726</span>
-              </li>
-              <li className="hover:text-primary transition-colors flex items-center gap-2">
-                <Mail size={14} /> info@elegantize.com
-              </li>
-            </ul>
-          </motion.div>
-
-          {/* Featured Section */}
-          <motion.div variants={itemVariants}>
-            <h5 className="text-[14px] uppercase tracking-widest font-bold mb-6 text-white">
-              Also Featured In
-            </h5>
-            <div className="flex flex-wrap items-center gap-5">
-              {/* The Luxury Bride Magazine */}
-              <img
-                loading="lazy"
-                decoding="async"
-                src="/images/general/screenshot-2026-02-10-205318.webp"
-                alt="The Luxury Bride Magazine"
-                className="h-18 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
-              />
-
-              {/* Maharani */}
-              <img
-                loading="lazy"
-                decoding="async"
-                src="/images/general/maharani.webp"
-                alt="Maharani Weddings"
-                className="h-12 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity"
-              />
-
-              {/* Vogue Weddings */}
-              <img
-                loading="lazy"
-                decoding="async"
-                src="/images/general/358054850_1645118269287715_7591891286819020443_n.webp"
-                alt="Vogue Weddings"
-                className="h-16 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500 rounded-sm"
-              />
-
-              {/* Brides */}
-              <img
-                loading="lazy"
-                decoding="async"
-                src="/images/general/212027854_503914070828276_8392782795759379749_n.webp"
-                alt="Brides"
-                className="h-16 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500 rounded-sm"
-              />
-
-              {/* Modern Luxury Weddings */}
-              <img
-                loading="lazy"
-                decoding="async"
-                src="/images/general/497509931_18507082408031379_9071343399086700481_n.webp"
-                alt="Modern Luxury Weddings"
-                className="h-16 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500 rounded-sm"
-              />
-
-              {/* Carats & Cakes */}
-              <img
-                loading="lazy"
-                decoding="async"
-                src="/images/general/568631337_18538482400017750_8428615054160921167_n.webp"
-                alt="Carats & Cakes"
-                className="h-16 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500 rounded-sm"
-              />
-
-              {/* Elle Weddings */}
-              <img
-                loading="lazy"
-                decoding="async"
-                src="/images/general/326374167_520572563502506_3682989526405299889_n.webp"
-                alt="Elle Weddings"
-                className="h-16 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500 rounded-sm"
-              />
-
-              {/* Munaluchi Bride */}
-              <img
-                loading="lazy"
-                decoding="async"
-                src="/images/general/munaluchi_horizontal_black-web.webp"
-                alt="Munaluchi Bride"
-                className="h-10 w-auto object-contain brightness-0 invert opacity-60 hover:opacity-100 transition-all duration-500"
-              />
-
-              {/* Wezoree */}
-
-              <img
-                loading="lazy"
-                decoding="async"
-                src="/images/logos/logo_wezoree_black-01.webp"
-                alt="Wezoree"
-                className="h-8 w-auto object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity"
-              />
+            <h6 className="text-[12px] uppercase tracking-widest font-bold mt-8 mb-4 text-secondary">
+              Follow Us
+            </h6>
+            <div className="flex items-center gap-3">
+              <a href="https://www.facebook.com/aaghazfoundation" aria-label="Facebook"
+                className="w-9 h-9 inline-flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-primary hover:border-primary transition-colors">
+                <Facebook size={15} />
+              </a>
+              <a href="https://www.instagram.com/aaghazfoundation" aria-label="Instagram"
+                className="w-9 h-9 inline-flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-primary hover:border-primary transition-colors">
+                <Instagram size={15} />
+              </a>
+              <a href="https://twitter.com/aaghazfoundation" aria-label="Twitter"
+                className="w-9 h-9 inline-flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-primary hover:border-primary transition-colors">
+                <Twitter size={15} />
+              </a>
+              <a href="https://www.youtube.com/@aaghazfoundation" aria-label="YouTube"
+                className="w-9 h-9 inline-flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-primary hover:border-primary transition-colors">
+                <Youtube size={15} />
+              </a>
             </div>
+          </motion.div>
+
+          {/* Latest News */}
+          <motion.div variants={itemVariants}>
+            <h5 className="text-[14px] uppercase tracking-widest font-bold mb-6 text-secondary">
+              Latest News
+            </h5>
+            <ul className="space-y-4 text-xs text-gray-300">
+              <li className="border-b border-white/10 pb-3">
+                <Link to="/blog" className="hover:text-secondary transition-colors block leading-snug">
+                  Aaghaz Foundation Supports Orphans Living In A Graveyard
+                </Link>
+                <span className="text-[10px] tracking-widest uppercase text-gray-500 mt-1 block">
+                  February 15, 2018
+                </span>
+              </li>
+              <li className="border-b border-white/10 pb-3">
+                <Link to="/blog" className="hover:text-secondary transition-colors block leading-snug">
+                  Rs 2 Lakh Scholarship in Pune Techie&apos;s Name
+                </Link>
+                <span className="text-[10px] tracking-widest uppercase text-gray-500 mt-1 block">
+                  February 15, 2018
+                </span>
+              </li>
+              <li>
+                <Link to="/blog" className="hover:text-secondary transition-colors block leading-snug">
+                  Aaghaz Opens A School For The Poor
+                </Link>
+                <span className="text-[10px] tracking-widest uppercase text-gray-500 mt-1 block">
+                  February 20, 2018
+                </span>
+              </li>
+            </ul>
           </motion.div>
         </div>
 
         {/* Bottom Bar */}
         <motion.div
           variants={itemVariants}
-          className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-gray-500"
+          className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-gray-400"
         >
-          <p>© 2024 Elegantize Weddings. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Aaghaz Foundation. All Rights Reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link
-              to="/privacy-policy"
-              className="hover:text-primary transition-colors"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              to="/terms-of-service"
-              className="hover:text-primary transition-colors"
-            >
-              Terms of Service
-            </Link>
+            <Link to="/privacy-policy" className="hover:text-secondary transition-colors">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="hover:text-secondary transition-colors">Terms of Service</Link>
+            <Link to="/contact" className="hover:text-secondary transition-colors">Contact Us</Link>
           </div>
         </motion.div>
       </div>

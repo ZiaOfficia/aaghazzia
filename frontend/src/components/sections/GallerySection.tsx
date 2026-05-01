@@ -4,42 +4,16 @@ import { X } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-
-const galleryImages = [
-  "/images/gallery/dsc382098743.webp",
-
-  "/images/gallery/dsc18469449.webp",
-
-  "/images/gallery/elegantize_av-39.webp",
-
-  "/images/gallery/dsc8720274.webp",
-
-  "/images/gallery/dsc08933.webp",
-
-  "/images/gallery/dsc00360.webp",
-
-  "/images/gallery/dsc01084.webp",
-
-  "/images/gallery/dsc00073.webp",
-];
+import { galleryImages } from "../../data/imageAssets";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
+  hidden: { opacity: 0, scale: 0.85 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
 export const GallerySection = () => {
@@ -48,85 +22,89 @@ export const GallerySection = () => {
   return (
     <motion.section
       id="gallery"
-      className="py-24 px-6 bg-stone-50 text-center"
+      className="py-24 px-6 bg-impact-pattern text-center relative"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       variants={containerVariants}
     >
       <div className="max-w-7xl mx-auto">
-        <motion.span
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          className="text-primary text-xs font-bold uppercase tracking-widest"
+        <motion.p
+          variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+          className="inline-flex items-center gap-3 text-primary text-xs font-bold uppercase tracking-[0.4em] mb-3"
         >
-          Our Work
-        </motion.span>
+          <span className="block w-8 h-px bg-primary" />
+          Photo Gallery
+          <span className="block w-8 h-px bg-primary" />
+        </motion.p>
         <motion.h2
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          className="text-3xl md:text-5xl font-display mb-12 mt-2 uppercase tracking-widest"
+          variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+          className="text-3xl md:text-5xl font-display mb-3 mt-2 text-accent"
         >
-          Visual Inspiration
+          A few honest pictures
         </motion.h2>
+        <motion.p
+          variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+          className="text-text-muted max-w-xl mx-auto mb-10"
+        >
+          No staged smiles. Just the daily quiet of a learning centre, a survey
+          visit, a graduation hug.
+        </motion.p>
+
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {galleryImages.map((src, index) => (
             <motion.div
               key={index}
               layoutId={`gallery-image-${index}`}
               variants={itemVariants}
-              className="overflow-hidden h-64 group relative cursor-pointer"
+              className="overflow-hidden h-64 group relative cursor-pointer rounded-tl-2xl rounded-br-2xl"
               onClick={() => setSelectedImage(src)}
             >
-              <img loading="lazy" decoding="async"
+              <img
+                loading="lazy"
+                decoding="async"
                 src={src}
                 alt={`Gallery ${index + 1}`}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none" />
+              <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors pointer-events-none" />
             </motion.div>
           ))}
         </div>
+
         <AnimatePresence>
           {selectedImage && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4"
               onClick={() => setSelectedImage(null)}
             >
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-8 right-8 text-white hover:text-gray-300 transition-colors"
+                className="absolute top-8 right-8 text-white hover:text-secondary transition-colors"
                 aria-label="Close"
               >
                 <X size={40} />
               </button>
               <motion.img
-                layoutId={
-                  selectedImage
-                    ? `gallery-image-${galleryImages.indexOf(selectedImage)}`
-                    : undefined
-                }
+                layoutId={`gallery-image-${galleryImages.indexOf(selectedImage)}`}
                 src={selectedImage}
                 alt="Full screen"
                 className="max-w-full max-h-[90vh] object-contain rounded-sm"
-                onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the image
+                onClick={(e) => e.stopPropagation()}
               />
             </motion.div>
           )}
         </AnimatePresence>
+
         <motion.div
           variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
           className="mt-12"
         >
           <Link to="/gallery">
-            <Button variant="primary">View All Projects</Button>
+            <Button variant="primary">View Full Gallery</Button>
           </Link>
         </motion.div>
       </div>

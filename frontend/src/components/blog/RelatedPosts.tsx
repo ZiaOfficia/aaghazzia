@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { API_BASE_URL } from "../../config";
-import type { BlogPost } from "../../data/blogData";
+import { blogPosts as staticBlogPosts, type BlogPost } from "../../data/blogData";
 import { BlogCard } from "./BlogCard";
 
 interface RelatedPostsProps {
@@ -16,74 +15,26 @@ export const RelatedPosts = ({
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchRelatedPosts = async () => {
-      try {
-        // 1. Try fetching by category first
-        const url = `${API_BASE_URL}/api/blogs?search=${encodeURIComponent(
-          category || "",
-        )}&limit=4`;
+    // 1. Try fetching by category first
+    let filteredPosts = staticBlogPosts.filter(
+      (post) =>
+        String(post.id) !== String(currentPostId) &&
+        (category && post.category.toLowerCase() === category.toLowerCase())
+    );
 
-        const response = await fetch(url);
-        const data = await response.json();
-        const postsArray = Array.isArray(data) ? data : data.blogs || [];
+    // 2. If not enough posts, fetch recent posts as fallback
+    if (filteredPosts.length < 3) {
+      const fallbackArray = staticBlogPosts.filter(
+        (p) =>
+          String(p.id) !== String(currentPostId) &&
+          !filteredPosts.find((fp) => fp.id === p.id)
+      );
 
-        // Filter out current post
-        let filteredPosts = postsArray.filter(
-          (post: any) => String(post.id) !== String(currentPostId),
-        );
+      filteredPosts = [...filteredPosts, ...fallbackArray];
+    }
 
-        // 2. If not enough posts, fetch recent posts as fallback
-        if (filteredPosts.length < 3) {
-          const fallbackResponse = await fetch(
-            `${API_BASE_URL}/api/blogs?limit=4`,
-          );
-          const fallbackData = await fallbackResponse.json();
-          const fallbackArray = Array.isArray(fallbackData)
-            ? fallbackData
-            : fallbackData.blogs || [];
-
-          const newPosts = fallbackArray.filter(
-            (p: any) =>
-              String(p.id) !== String(currentPostId) &&
-              !filteredPosts.find((fp: any) => fp.id === p.id),
-          );
-
-          filteredPosts = [...filteredPosts, ...newPosts];
-        }
-
-        const formattedPosts: BlogPost[] = filteredPosts
-          .slice(0, 3) // ensure max 3
-          .map((post: any) => ({
-            id: post.id,
-            title: post.title,
-            slug: post.slug,
-            excerpt: post.excerpt
-              ? post.excerpt
-                  .replace(/<!--[\s\S]*?-->/g, "")
-                  .replace(/<[^>]+>/g, "")
-                  .substring(0, 150) + "..."
-              : "",
-            content: post.content,
-            createdAt: post.createdAt || post.date,
-            date: new Date(post.createdAt || post.date).toLocaleDateString(),
-            author: post.author,
-            category: post.category,
-            image: post.image_url
-              ? post.image_url.startsWith("http")
-                ? post.image_url
-                : `${API_BASE_URL}${post.image_url}`
-              : "https://images.unsplash.com/photo-1499750310159-5b600cdf0325",
-          }));
-
-        setPosts(formattedPosts);
-      } catch (error) {
-        console.error("Error fetching related posts:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchRelatedPosts();
+    setPosts(filteredPosts.slice(0, 3));
+    setLoading(false);
   }, [category, currentPostId]);
 
   if (loading || posts.length === 0) return null;

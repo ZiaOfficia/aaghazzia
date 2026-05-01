@@ -6,21 +6,12 @@ import { Link } from "react-router-dom";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
+  visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
 };
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
 export const PortfolioSection = () => {
@@ -30,34 +21,38 @@ export const PortfolioSection = () => {
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       variants={containerVariants}
-      className="py-24 bg-texture-floral"
+      className="py-24 bg-stripes-warm relative"
       id="portfolio"
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <motion.p
             variants={itemVariants}
-            className="text-xs uppercase tracking-[0.3em] text-gray-500 mb-4"
+            className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.4em] text-primary font-bold mb-4"
           >
-            Curated Collection
+            <span className="block w-8 h-px bg-primary" />
+            Stories of Impact
+            <span className="block w-8 h-px bg-primary" />
           </motion.p>
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-display mb-6 text-gray-900"
+            className="text-4xl md:text-5xl font-display mb-6 text-accent"
           >
-            {portfolioContent.heading}
+            <span className="text-gradient-eggplant">
+              {portfolioContent.heading}
+            </span>
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            className="text-text-muted max-w-3xl mx-auto leading-relaxed"
           >
             {portfolioContent.description}
           </motion.p>
           <div className="mt-8">
             <motion.div variants={itemVariants}>
               <Link to="/portfolio">
-                <Button className="bg-primary text-white hover:bg-stone-800 border-none px-8 py-3">
-                  View All Weddings
+                <Button className="bg-primary text-white hover:bg-primary-dark border-none px-8 py-3">
+                  See All Stories
                 </Button>
               </Link>
             </motion.div>
@@ -72,7 +67,7 @@ export const PortfolioSection = () => {
               className="group cursor-pointer"
             >
               <Link to={`/portfolio/${item.id}`}>
-                <div className="relative overflow-hidden aspect-4/5 mb-6">
+                <div className="relative overflow-hidden aspect-4/5 mb-6 rounded-tl-3xl rounded-br-3xl">
                   <motion.img
                     src={item.heroImage}
                     alt={item.title}
@@ -80,14 +75,14 @@ export const PortfolioSection = () => {
                     transition={{ duration: 0.7 }}
                     className="w-full h-full object-cover transition-transform duration-700"
                   />
-                  <div className="absolute top-4 left-4 bg-white/90 px-3 py-1 text-[10px] uppercase tracking-widest font-bold">
+                  <div className="absolute top-4 left-4 bg-secondary text-accent px-3 py-1 text-[10px] uppercase tracking-widest font-bold rounded-tl-lg rounded-br-lg">
                     {item.services}
                   </div>
                 </div>
-                <h3 className="font-display text-2xl group-hover:text-primary transition-colors">
+                <h3 className="font-display text-2xl text-accent group-hover:text-primary transition-colors">
                   {item.title}
                 </h3>
-                <p className="text-sm text-gray-500 mt-2 uppercase tracking-wide">
+                <p className="text-sm text-text-muted mt-2 uppercase tracking-wide">
                   {item.location}
                 </p>
               </Link>
@@ -97,7 +92,7 @@ export const PortfolioSection = () => {
 
         <motion.div className="text-center" variants={itemVariants}>
           <Link to="/portfolio">
-            <Button variant="primary">View All Projects</Button>
+            <Button variant="primary">View All Stories</Button>
           </Link>
         </motion.div>
       </div>

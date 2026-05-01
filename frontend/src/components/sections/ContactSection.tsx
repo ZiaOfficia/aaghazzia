@@ -64,27 +64,27 @@ export const ContactSection = () => {
           </div>
           <div className="space-y-6">
             <div className="flex items-center space-x-4">
-              <span className="p-2 bg-stone-100 rounded-full text-primary">
+              <span className="p-2 bg-primary/10 rounded-full text-primary">
                 <Phone size={20} />
               </span>
               <span className="text-sm uppercase tracking-widest text-gray-800">
-                +1(347)686-4562
+                +91 98765 43210
               </span>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="p-2 bg-stone-100 rounded-full text-primary">
+              <span className="p-2 bg-primary/10 rounded-full text-primary">
                 <MapPin size={20} />
               </span>
               <span className="text-sm uppercase tracking-widest text-gray-800">
-                8 Di Tomas Ct, Copiague, NY, 11726
+                57 Ganesh Gunj, Lucknow, UP — 226018
               </span>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="p-2 bg-stone-100 rounded-full text-primary">
+              <span className="p-2 bg-primary/10 rounded-full text-primary">
                 <Mail size={20} />
               </span>
-              <span className="text-sm uppercase tracking-widest text-gray-800">
-                info@elegantize.com
+              <span className="text-sm uppercase tracking-widest text-gray-800 break-all">
+                aaghaz.foundation@gmail.com
               </span>
             </div>
           </div>
@@ -155,20 +155,27 @@ export const ContactSection = () => {
           </div>
           <div>
             <label className="block text-[10px] uppercase tracking-widest font-bold mb-2 text-gray-500">
-              Wedding Date
+              I am writing to you about
             </label>
-            <input
-              type="date"
+            <select
               value={formData.weddingDate}
               onChange={(e) =>
                 setFormData({ ...formData, weddingDate: e.target.value })
               }
-              className="w-full bg-stone-50 border border-gray-200 focus:outline-none focus:border-primary p-3 text-gray-500"
-            />
+              className="w-full bg-stone-50 border border-gray-200 focus:outline-none focus:border-primary p-3 text-gray-700"
+            >
+              <option value="">Select an option</option>
+              <option value="donate">Making a donation</option>
+              <option value="scholarship">Launching a scholarship</option>
+              <option value="volunteer">Becoming a volunteer</option>
+              <option value="apply-aid">Applying for student aid</option>
+              <option value="csr">Corporate / CSR partnership</option>
+              <option value="other">Something else</option>
+            </select>
           </div>
           <div>
             <label className="block text-[10px] uppercase tracking-widest font-bold mb-2 text-gray-500">
-              Tell us about your vision
+              Your message
             </label>
             <textarea
               rows={4}
@@ -177,13 +184,14 @@ export const ContactSection = () => {
                 setFormData({ ...formData, message: e.target.value })
               }
               className="w-full bg-stone-50 border border-gray-200 focus:outline-none focus:border-primary p-3 resize-none"
+              placeholder="Tell us how you'd like to get involved..."
             ></textarea>
           </div>
           <Button
             type="submit"
             className="w-full py-4 tracking-[0.2em]"
           >
-            Request Consultation
+            Send Message
           </Button>
         </form>
       </div>

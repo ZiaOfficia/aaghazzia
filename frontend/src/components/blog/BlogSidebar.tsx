@@ -2,8 +2,7 @@ import { Search, Facebook, Instagram, Youtube } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button } from "../common/Button";
-import { API_BASE_URL } from "../../config";
-import { getBlogPostUrl } from "../../data/blogData";
+import { getBlogPostUrl, blogPosts as staticBlogPosts } from "../../data/blogData";
 
 interface SidebarPost {
   id: string;
@@ -20,32 +19,15 @@ export const BlogSidebar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchRecentPosts = async () => {
-      try {
-        const response = await fetch(`${API_BASE_URL}/api/blogs`);
-        if (response.ok) {
-          const data = await response.json();
-          const posts = data.blogs || [];
-          const formatted = posts.slice(0, 4).map((post: any) => ({
-            id: post.id,
-            title: post.title,
-            slug: post.slug,
-            createdAt: post.createdAt,
-            date: new Date(post.createdAt).toLocaleDateString(),
-            image: post.image_url
-              ? post.image_url.startsWith("http")
-                ? post.image_url
-                : `${API_BASE_URL}${post.image_url}`
-              : "https://images.unsplash.com/photo-1499750310159-5b600cdf0325",
-          }));
-          setRecentPosts(formatted);
-        }
-      } catch (error) {
-        console.error("Error fetching recent posts:", error);
-      }
-    };
-
-    fetchRecentPosts();
+    const formatted = staticBlogPosts.slice(0, 4).map((post) => ({
+      id: post.id,
+      title: post.title,
+      slug: post.slug,
+      createdAt: post.createdAt,
+      date: post.date,
+      image: post.image,
+    }));
+    setRecentPosts(formatted);
   }, []);
 
   const handleSearch = (e: React.FormEvent) => {
@@ -150,7 +132,7 @@ export const BlogSidebar = () => {
         <div className="flex gap-4">
           <div className="flex gap-4">
             <a
-              href="https://www.facebook.com/people/Elegantize-Productions/100083099336478/"
+              href="https://www.facebook.com/aaghazfoundation"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 bg-stone-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-all duration-300 rounded-full"
@@ -158,7 +140,7 @@ export const BlogSidebar = () => {
               <Facebook size={18} />
             </a>
             <a
-              href="https://www.instagram.com/elegantizeevents/"
+              href="https://www.instagram.com/aaghazfoundation"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 bg-stone-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-all duration-300 rounded-full"
@@ -166,7 +148,7 @@ export const BlogSidebar = () => {
               <Instagram size={18} />
             </a>
             <a
-              href="https://in.pinterest.com/elegantizeevents/"
+              href="https://twitter.com/aaghazfoundation"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 bg-stone-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-all duration-300 rounded-full"
@@ -183,7 +165,7 @@ export const BlogSidebar = () => {
               </svg>
             </a>
             <a
-              href="https://www.youtube.com/@elegantize"
+              href="https://www.youtube.com/@aaghazfoundation"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 bg-stone-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-all duration-300 rounded-full"

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Heart } from "lucide-react";
 import clsx from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
@@ -8,7 +8,7 @@ import { servicesData } from "../../data/servicesData";
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isProgramsOpen, setIsProgramsOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -19,35 +19,14 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Helper to determine link path
-  const getLinkPath = (href: string) => {
-    if (href === "#") return "/";
-    if (href.startsWith("#")) {
-      // If on home page, use hash. If not, use /#hash
-      return location.pathname === "/" ? href : `/${href}`;
-    }
-    return href; // External or absolute
-  };
-
   const navLinks = [
-    { name: "Home", href: "#", isRouterLink: true, path: "/" },
-    { name: "About", href: "/about", isRouterLink: true, path: "/about" },
-    {
-      name: "Services",
-      href: "/services",
-      isRouterLink: true,
-      path: "/services",
-      hasDropdown: true,
-    },
-    { name: "Gallery", href: "/gallery", isRouterLink: true, path: "/gallery" },
-    {
-      name: "Portfolio",
-      href: "/portfolio",
-      isRouterLink: true,
-      path: "/portfolio",
-    },
-    { name: "Blog", href: "/blog", isRouterLink: true, path: "/blog" },
-    { name: "FAQ", href: "/faq", isRouterLink: true, path: "/faq" },
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "What We Do", path: "/services", hasDropdown: true },
+    { name: "Gallery", path: "/gallery" },
+    { name: "Stories", path: "/portfolio" },
+    { name: "News", path: "/blog" },
+    { name: "FAQ", path: "/faq" },
   ];
 
   return (
@@ -58,86 +37,68 @@ export const Navbar = () => {
       className={clsx(
         "sticky top-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-gray-100 py-4 shadow-sm"
-          : "bg-transparent py-6",
+          ? "bg-accent/95 backdrop-blur-md py-3 shadow-lg"
+          : "bg-accent py-4",
       )}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <motion.div
           className="flex items-center"
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.03 }}
           transition={{ duration: 0.2 }}
         >
-          <Link to="/">
+          <Link to="/" className="flex items-center">
             <img
-              loading="lazy"
-              decoding="async"
-              src="/images/logos/elegantize-logo.webp"
-              alt="Elegantize Logo"
-              className="h-12 w-auto object-contain"
+              src="/images/aaghaz-logo.png"
+              alt="Aaghaz Foundation — Educate, Empower"
+              className="h-12 md:h-14 w-auto object-contain"
             />
           </Link>
         </motion.div>
 
         {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center space-x-10 text-xs font-bold uppercase tracking-widest text-gray-600">
+        <div className="hidden lg:flex items-center space-x-8 text-xs font-bold uppercase tracking-widest text-white/85">
           {navLinks.map((link) => (
             <div
               key={link.name}
               className="relative group"
-              onMouseEnter={() => link.hasDropdown && setIsServicesOpen(true)}
-              onMouseLeave={() => link.hasDropdown && setIsServicesOpen(false)}
+              onMouseEnter={() => link.hasDropdown && setIsProgramsOpen(true)}
+              onMouseLeave={() => link.hasDropdown && setIsProgramsOpen(false)}
             >
-              {link.isRouterLink ? (
-                <Link
-                  to={link.path!}
-                  className={clsx(
-                    "hover:text-primary transition-colors duration-300 relative group flex items-center gap-1",
-                    location.pathname === link.path && "text-primary",
-                  )}
-                >
-                  {link.name}
-                  {link.hasDropdown && <ChevronDown size={14} />}
-                  <motion.span
-                    className="absolute -bottom-1 left-0 h-0.5 bg-primary"
-                    initial={{ width: "0%" }}
-                    whileHover={{ width: "100%" }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </Link>
-              ) : (
-                <a
-                  href={getLinkPath(link.href)}
-                  className="hover:text-primary transition-colors duration-300 relative group"
-                >
-                  {link.name}
-                  <motion.span
-                    className="absolute -bottom-1 left-0 h-0.5 bg-primary"
-                    initial={{ width: "0%" }}
-                    whileHover={{ width: "100%" }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </a>
-              )}
+              <Link
+                to={link.path}
+                className={clsx(
+                  "hover:text-secondary transition-colors duration-300 relative group flex items-center gap-1",
+                  location.pathname === link.path && "text-secondary",
+                )}
+              >
+                {link.name}
+                {link.hasDropdown && <ChevronDown size={14} />}
+                <motion.span
+                  className="absolute -bottom-1 left-0 h-0.5 bg-secondary"
+                  initial={{ width: "0%" }}
+                  whileHover={{ width: "100%" }}
+                  transition={{ duration: 0.3 }}
+                />
+              </Link>
 
-              {/* Dropdown Menu */}
               {link.hasDropdown && (
                 <AnimatePresence>
-                  {isServicesOpen && (
+                  {isProgramsOpen && (
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-64"
+                      className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-72"
                     >
-                      <div className="bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden py-2">
+                      <div className="bg-accent border border-secondary/30 rounded-xl shadow-2xl overflow-hidden py-2">
                         {servicesData.map((service) => (
                           <Link
                             key={service.id}
                             to={`/services/${service.id}`}
-                            className="block px-6 py-3 text-[10px] text-gray-600 hover:text-primary hover:bg-stone-50 transition-colors"
+                            className="block px-6 py-3 text-[10px] text-white/80 hover:text-secondary hover:bg-primary/15 transition-colors font-bold uppercase tracking-widest"
                           >
                             {service.title}
                           </Link>
@@ -151,26 +112,34 @@ export const Navbar = () => {
           ))}
         </div>
 
-        {/* CTA Button */}
-        <div className="hidden lg:block">
+        {/* CTA */}
+        <div className="hidden lg:flex items-center gap-3">
           <Link
             to="/contact"
-            className="inline-block bg-[linear-gradient(to_right,theme(colors.primary)_50%,black_50%)] bg-[length:200%_100%] bg-left hover:bg-right text-white px-8 py-3 text-xs uppercase tracking-widest font-bold transition-all duration-500 transform hover:scale-105 active:scale-95"
+            className="text-xs uppercase tracking-widest font-bold text-white/85 hover:text-secondary transition-colors"
           >
-            Get In Touch
+            Volunteer
+          </Link>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-6 py-3 text-xs uppercase tracking-widest font-bold transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-tl-2xl rounded-br-2xl shadow-md hover:shadow-lg"
+          >
+            <Heart size={14} fill="currentColor" />
+            Donate
           </Link>
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="lg:hidden text-gray-900"
+          className="lg:hidden text-white"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
         >
           {isMobileMenuOpen ? <X /> : <Menu />}
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -178,71 +147,54 @@ export const Navbar = () => {
             animate={{ opacity: 1, height: "100vh" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 overflow-y-auto shadow-lg"
+            className="lg:hidden absolute top-full left-0 w-full bg-accent border-t border-primary/30 overflow-y-auto shadow-lg"
             style={{ maxHeight: "calc(100vh - 80px)" }}
           >
-            <div className="flex flex-col space-y-4 p-6 text-sm font-medium uppercase tracking-widest text-gray-800 pb-20">
+            <div className="flex flex-col space-y-4 p-6 text-sm font-medium uppercase tracking-widest text-white/90 pb-20">
               {navLinks.map((link, i) => (
                 <div key={link.name}>
-                  {link.isRouterLink ? (
-                    <Link
-                      to={link.path!}
-                      className="hover:text-primary transition-colors flex justify-between items-center py-2"
-                      onClick={() =>
-                        !link.hasDropdown && setIsMobileMenuOpen(false)
-                      }
+                  <Link
+                    to={link.path}
+                    className="hover:text-secondary transition-colors flex justify-between items-center py-2"
+                    onClick={() =>
+                      !link.hasDropdown && setIsMobileMenuOpen(false)
+                    }
+                  >
+                    <motion.span
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: i * 0.05 }}
                     >
-                      <motion.span
-                        initial={{ x: -20, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: i * 0.1 }}
-                      >
-                        {link.name}
-                      </motion.span>
-                      {link.hasDropdown && (
-                        <ChevronDown
-                          size={14}
-                          className={clsx(
-                            "transition-transform",
-                            isServicesOpen && "rotate-180",
-                          )}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            setIsServicesOpen(!isServicesOpen);
-                          }}
-                        />
-                      )}
-                    </Link>
-                  ) : (
-                    <a
-                      href={getLinkPath(link.href)}
-                      className="hover:text-primary transition-colors block py-2"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      <motion.span
-                        initial={{ x: -20, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: i * 0.1 }}
-                      >
-                        {link.name}
-                      </motion.span>
-                    </a>
-                  )}
+                      {link.name}
+                    </motion.span>
+                    {link.hasDropdown && (
+                      <ChevronDown
+                        size={14}
+                        className={clsx(
+                          "transition-transform",
+                          isProgramsOpen && "rotate-180",
+                        )}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setIsProgramsOpen(!isProgramsOpen);
+                        }}
+                      />
+                    )}
+                  </Link>
 
-                  {/* Mobile Submenu */}
-                  {link.hasDropdown && isServicesOpen && (
+                  {link.hasDropdown && isProgramsOpen && (
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
-                      className="bg-stone-50 rounded-lg overflow-hidden ml-4 mt-2"
+                      className="bg-primary/10 rounded-lg overflow-hidden ml-4 mt-2"
                     >
                       {servicesData.map((service) => (
                         <Link
                           key={service.id}
                           to={`/services/${service.id}`}
-                          className="block px-4 py-3 text-xs text-gray-600 border-b border-gray-100 last:border-none"
+                          className="block px-4 py-3 text-xs text-white/80 border-b border-white/10 last:border-none"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           {service.title}
@@ -254,10 +206,17 @@ export const Navbar = () => {
               ))}
               <Link
                 to="/contact"
-                className="bg-primary text-white px-6 py-3 text-center text-xs font-bold uppercase tracking-widest mt-4 block"
+                className="bg-primary text-white px-6 py-3 text-center text-xs font-bold uppercase tracking-widest mt-4 block rounded-tl-2xl rounded-br-2xl"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Book a Consultation
+                Donate Now
+              </Link>
+              <Link
+                to="/contact"
+                className="border-2 border-secondary text-secondary px-6 py-3 text-center text-xs font-bold uppercase tracking-widest block rounded-tl-2xl rounded-br-2xl"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Volunteer With Us
               </Link>
             </div>
           </motion.div>

@@ -30,18 +30,15 @@ export const PortfolioListingPage = () => {
   return (
     <div className="bg-white min-h-screen pt-[60px] md:pt-[50px]">
       <SEO
-        title="Our Portfolio - Real Weddings"
-        description="View our portfolio of real weddings and events designed by Elegantize in New York and New Jersey."
+        title="Stories of Impact — Aaghaz Foundation"
+        description="Real-world stories from twenty years of work — students supported, scholarships launched, and communities reached by Aaghaz Foundation across India."
       />
       {/* Header */}
       <section className="bg-stone-900 text-white py-60 px-6 text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-30">
           <img loading="lazy" decoding="async"
-            src={getOptimizedImage(
-              "/images/portfolio/ak-196-2.webp",
-              1920,
-            )}
-            alt="Portfolio Header"
+            src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1920&q=80"
+            alt="Stories of Impact — Aaghaz Foundation"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-stone-900/60" />
@@ -52,15 +49,16 @@ export const PortfolioListingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-7xl font-display mb-6"
           >
-            Real Weddings
+            Stories of Impact
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-xl font-light text-stone-300"
+            className="text-xl font-light text-stone-200"
           >
-            A collection of our most cherished celebrations.
+            Real students, real volunteers, real change — twenty years and
+            counting.
           </motion.p>
         </div>
       </section>

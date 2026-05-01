@@ -1,167 +1,171 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
-  Calendar,
-  Utensils,
-  Flower2,
+  GraduationCap,
+  HandCoins,
+  Heart,
   ArrowRight,
-  LampCeiling,
-  LampFloor,
-  ShirtIcon,
-  Theater,
-  TheaterIcon,
   ChevronRight,
+  Users,
+  BookOpen,
+  Award,
+  Gift,
 } from "lucide-react";
 import { SEO } from "../components/common/SEO";
 import NewsletterSection from "../components/sections/NewsletterSection";
 import { useState } from "react";
-import { getOptimizedImage } from "../utils/imageUtils";
 
 export const ServicesPage = () => {
   const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
 
   const faqs = [
     {
-      question:
-        "What types of events does Elegantize specialize in decorating?",
+      question: "How does Aaghaz decide who gets help?",
       answer:
-        "Elegantize specializes in decorating a wide range of events, including weddings, corporate events, private parties, and more. Whether you’re planning an intimate gathering or a lavish affair, we have the expertise to elevate your event decor to the next level.",
+        "Every recommended student is verified through an in-person pre-scholarship survey by at least two volunteers. Only after both reports agree do we onboard the student. We do not run a generic application form — every case is real, met and documented.",
     },
     {
-      question: "How far in advance should I book Elegantize for my event?",
+      question: "Are donations tax-exempt?",
       answer:
-        "We recommend booking Elegantize as early as possible to ensure availability for your desired date. Our calendar fills up quickly, especially during peak wedding and event seasons. Contact us to discuss your event date and secure our services in advance.",
+        "Yes. Aaghaz Foundation is a registered non-profit and donations made by Indian residents are eligible for tax exemption under Section 80G of the Income Tax Act. Receipts are issued within seven working days of every donation.",
     },
     {
-      question:
-        "Can Elegantize accommodate specific themes or design preferences for my event?",
+      question: "Can I direct my donation to a specific programme?",
       answer:
-        "Absolutely! At Elegantize, we pride ourselves on our versatility and ability to tailor our decor to match your unique vision. Whether you have a specific theme in mind or prefer a custom design, our team will work closely with you to bring your ideas to life.",
+        "Absolutely. You can earmark your contribution to Student Aid, the LCGC learning centre, the Rahmani 30 cohort or a memorial scholarship in someone's name — and we will report back specifically on that programme.",
     },
     {
-      question: "What is included in Elegantize's event decor services?",
+      question: "How do I become a volunteer?",
       answer:
-        "Our event decor services typically include a consultation to discuss your vision, design concept development, decor setup and installation, and teardown after the event. We offer a range of decor options, including floral arrangements, table settings, backdrops, lighting, and more.",
+        "Use the Become a Volunteer page to register your interest. A team member will reach out within a few working days to understand your availability and city, walk you through orientation, and pair you with an experienced volunteer for your first survey or mentee.",
     },
     {
-      question:
-        "How do I request a quote for event decor services from Elegantize?",
+      question: "How do I apply for student aid for myself or my child?",
       answer:
-        "Requesting a quote from Elegantize is easy! Simply fill out our online contact form or reach out to us via email or phone. Provide us with details about your event, including the date, location, estimated guest count, and any specific decor preferences or requirements. We’ll promptly get back to you with a customized quote tailored to your needs.",
+        "Use the Apply for Student Aid form on our website. We cover school fees, college tuition, exam fees, books, uniforms and hostel for verified low-income families. Our volunteer team will reach out to schedule a survey, usually within a week.",
     },
   ];
-  const services = [
+
+  const programs = [
     {
-      id: "floral-design",
-      icon: <Flower2 className="w-8 h-8 text-primary" />,
-      title: "Floral Design",
+      id: "student-aid",
+      icon: <GraduationCap className="w-8 h-8 text-primary" />,
+      title: "Student Aid",
       description:
-        "At Elegantize Weddings, flowers aren’t just decorations—they’re storytellers. Each bloom reflects a chapter of your love story, and we take pride in crafting floral designs for wedding decoration that speak from the heart. As the best wedding floral designers in NYC, we create lush, artful arrangements inspired by nature’s timeless beauty and your unique vision. ",
+        "Need-based financial assistance for school and college students from underprivileged families across India. Tuition, books, exam fees, uniforms — whatever stands between a child and the next class.",
       features: [
-        "Custom Bouquets and Boutonnieres",
-        "Show-Stopping Ceremony Decor",
-        "Enchanting Reception Centerpieces",
-        "Unique Floral Installations",
+        "School &amp; exam fees",
+        "College &amp; university tuition",
+        "Books, uniforms &amp; stationery",
+        "Hostel &amp; daily living support",
       ],
-      image: "/images/general/play-with-white-pink-bookeventz.webp",
+      image:
+        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80",
     },
     {
-      id: "ceiling-design",
-      icon: <LampCeiling className="w-8 h-8 text-primary" />,
-      title: "Ceiling Design",
+      id: "scholarships",
+      icon: <Award className="w-8 h-8 text-primary" />,
+      title: "Scholarships",
       description:
-        "At Elegantize Weddings, we believe your love story deserves to be celebrated beneath a canopy of elegance and wonder. Our ceiling design for weddings in the United States transforms venues into magical spaces that captivate hearts and create lasting memories. Whether you envision cascading floral installations, draped fabrics, or glimmering chandeliers, our team specializes in curating wedding ceiling decor in New York and New Jersey that reflects your unique style.",
+        "Annual, merit-cum-means and memorial scholarships for students across India. Every scholarship is awarded after a verified pre-scholarship survey, and donors receive an annual report on the students their contribution has supported.",
       features: [
-        "Draping Services",
-        "Floral Ceiling Décor",
-        "Lighting EnhancementsCustom Installations",
-        "Custom Installations",
+        "Memorial scholarships",
+        "Annual general scholarship pool",
+        "Corporate / CSR-funded cohorts",
+        "Subject-specific awards (girls in STEM, civil services)",
       ],
-      image: "/images/home/382098743.webp",
+      image:
+        "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=1600&q=80",
     },
     {
-      id: "centerpiece-design",
-      icon: <Utensils className="w-8 h-8 text-primary" />,
-      title: "Centerpiece Design",
+      id: "financial-assistance",
+      icon: <HandCoins className="w-8 h-8 text-primary" />,
+      title: "Financial Assistance",
       description:
-        "Your wedding day is a canvas, and every detail should reflect your unique love story. At Elegantize Weddings, we specialize in crafting wedding centerpiece decor in New York that captures the essence of your celebration. Whether you’re dreaming of classic elegance, rustic charm, or modern sophistication, our unique wedding centerpiece designs in the United States will bring your vision to life.",
+        "Sometimes a family is doing everything right and is still one missed fee instalment away from a child dropping out. We provide timely financial assistance — sometimes a one-time intervention, sometimes ongoing year-on-year.",
       features: [
-        "Classic Floral Centerpieces",
-        "Rustic Elegance",
-        "Modern and Minimalist Designs",
-        "Seasonal & Thematic Centerpieces",
+        "Last-minute fee crises",
+        "Loss of an earning parent",
+        "Medical emergencies that derail education",
+        "Recurring monthly support",
       ],
-      image: "/images/general/noivaansiosa.webp",
+      image:
+        "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1600&q=80",
     },
     {
-      id: "vinyl-floor-wrap",
-      icon: <LampFloor className="w-8 h-8 text-primary" />,
-      title: "Vinyl Floor Wraps",
+      id: "rahmani-30",
+      icon: <BookOpen className="w-8 h-8 text-primary" />,
+      title: "Rahmani 30 Initiative",
       description:
-        "At Elegantize Weddings, we believe every detail of your big day should reflect your unique style and love story. One of the most impactful ways to personalize your wedding venue is through wedding floor wrap decoration in New York. From elegant monograms to breathtaking designs, our vinyl floor wrap wedding services turn ordinary floors into extraordinary showcases of beauty and creativity.",
+        "Aaghaz has tied up with Rahmani 30 to open and operate learning centres in Uttar Pradesh, where students from underprivileged backgrounds undergo intensive coaching for IIT-JEE, NEET, CA and other competitive examinations.",
       features: [
-        "Custom Designs Tailored to You",
-        "High-Quality Materials",
-        "Seamless Installation",
-        "Personalized Vinyl Floor Wrap",
+        "Free coaching, no hidden costs",
+        "Boarding &amp; meals on site",
+        "Mock tests &amp; mentorship",
+        "Career placement support",
       ],
-      image: "/images/general/il_1588xn.3666063238_qsa7.webp",
+      image:
+        "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1600&q=80",
     },
     {
-      id: "ceremony-decor",
-      icon: <Calendar className="w-8 h-8 text-primary" />,
-      title: "Ceremony Decor",
+      id: "lcgc",
+      icon: <BookOpen className="w-8 h-8 text-primary" />,
+      title: "LCGC — Lucknow Coaching &amp; Guidance Centre",
       description:
-        "At Elegantize Weddings, we specialize in creating breathtaking wedding ceremony decorations in New York and New Jersey that set the stage for your “I Do” moment. Whether you envision a grand celebration or a rustic, intimate affair, our designs reflect your unique love story, ensuring your ceremony is as unforgettable as the vows you exchange.",
+        "Since 2011, Aaghaz has been running a facility in Lucknow called the Lucknow Coaching & Guidance Centre (LCGC). It offers structured after-school tuition, a quiet library, computer access and one-on-one career counselling — all free.",
       features: [
-        "Personalized Aisle Designs",
-        "Showstopping Arches & Altars",
-        "Rustic Wedding Themes",
-        "Cultural & Traditional Designs",
+        "Daily after-school tuition",
+        "Library &amp; computer access",
+        "Career counselling",
+        "Soft skills &amp; spoken English",
       ],
-      image: "/images/portfolio/dsc02592.webp",
+      image:
+        "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1600&q=80",
     },
     {
-      id: "draping-services",
-      icon: <ShirtIcon className="w-8 h-8 text-primary" />,
-      title: "Draping Services",
+      id: "become-volunteer",
+      icon: <Users className="w-8 h-8 text-primary" />,
+      title: "Become a Volunteer",
       description:
-        "At Elegantize Weddings, we specialize in crafting stunning wedding decor draping services in New York and New Jersey that add sophistication and charm to your special day. Draping décor has the power to transform any venue, creating a magical ambiance that enhances the beauty of your wedding ceremony or reception.",
+        "Aaghaz is a volunteer-driven organisation. If you have two free hours a week and a willingness to listen, you can change a life. We need volunteers in cities and small towns across India — especially in UP, Bihar, Maharashtra and the NCR.",
       features: [
-        "Elegant Ceiling Draping for Weddings",
-        "Romantic Backdrops and Walls",
-        "Wedding Reception Draping",
-        "Custom Aisle and Ceremony Draping",
+        "Pre-scholarship field surveys",
+        "Online mentorship",
+        "Communications &amp; content",
+        "Fundraising lead",
       ],
-      image: "/images/general/4da02ecaa4ae7e295ff13ff1900ba116.webp",
+      image:
+        "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1600&q=80",
     },
     {
-      id: "mandap-design",
-      icon: <Theater className="w-8 h-8 text-primary" />,
-      title: "Mandap Design",
+      id: "join-as-donor",
+      icon: <Heart className="w-8 h-8 text-primary" />,
+      title: "Join us as Donor",
       description:
-        "Celebrate love in style with the best mandap decoration that turns your wedding into a masterpiece. At Elegantize, we bring together tradition and modern elegance to create breathtaking setups that reflect your story. From vibrant floral themes to grand cultural settings, our expertise in Indian wedding decoration ensures every detail feels magical. For couples in the USA, we design mandaps that are not just beautiful but unforgettable.",
+        "Join the Aaghaz donor base by registering with us. A team member will get in touch with you to walk you through the kind of support you'd like to provide and answer any questions you may have. 100% of your donation goes towards student aid.",
       features: [
-        "Traditional Indian Mandap Designs",
-        "Modern & Contemporary Mandap Decoration",
-        "Luxury Destination Wedding Mandaps",
-        // "Opulent & Emotional Décor",
+        "One-time or monthly giving",
+        "Sponsor a child end-to-end",
+        "80G tax-exemption receipts",
+        "Annual progress reports",
       ],
-      image: "/images/portfolio/dsc03995.webp",
+      image:
+        "https://images.unsplash.com/photo-1488998427799-e3362cec87c3?auto=format&fit=crop&w=1600&q=80",
     },
     {
-      id: "stage-design",
-      icon: <TheaterIcon className="w-8 h-8 text-primary" />,
-      title: "Stage Design",
+      id: "launch-scholarship",
+      icon: <Gift className="w-8 h-8 text-primary" />,
+      title: "Launch Scholarship",
       description:
-        "At Elegantize Wedding, we specialize in creating the most beautiful wedding stage decoration that reflects your style and vision. Our expert designers bring together creativity and elegance to craft stages that leave lasting impressions. From grand luxury setups to low cost wedding stage decoration options, we customize every detail to suit your budget. We focus on modern trends, personalized themes, and innovative designs that make your big day truly unforgettable. With us, your wedding stage becomes more than just décor – it becomes the centerpiece of your celebration in the USA.",
+        "Honour someone you love. Many of our donors choose to support Aaghaz by launching a scholarship in the name of a parent, sibling, teacher or friend. We co-design the criteria with you and report annually on the students it has supported.",
       features: [
-        "Luxury Stage Designs for Unforgettable Weddings",
-        "Affordable & Stylish Stage Decoration Options",
-        "Personalized Themes & Customized Touches",
-        // "Opulent & Emotional Décor",
+        "Single-year, single-student tributes",
+        "Three-year cohort scholarships",
+        "Annual rolling cohorts in perpetuity",
+        "Subject or region-specific awards",
       ],
-      image: "/images/home/395791049.webp",
+      image:
+        "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=1600&q=80",
     },
   ];
 
@@ -172,26 +176,28 @@ export const ServicesPage = () => {
   return (
     <div className="pt-[60px] md:pt-[50px]">
       <SEO
-        title="Our Services - Wedding Decor & Design"
-        description="Explore our comprehensive wedding services including floral design, mandaps, event planning, and custom styling."
+        title="What We Do — Aaghaz Foundation Programs"
+        description="Explore Aaghaz Foundation's programs — Student Aid, Scholarships, Financial Assistance, the Rahmani 30 Initiative, the LCGC learning centre, and ways for you to donate or volunteer."
       />
       {/* Hero Section */}
       <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img loading="lazy" decoding="async"
-            src={getOptimizedImage("/images/gallery/dsc00073-2.webp", 1920)}
-            alt="Luxury Wedding Setting"
+          <img
+            loading="lazy"
+            decoding="async"
+            src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=1920&q=80"
+            alt="Children studying — Aaghaz Foundation"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-accent/60" />
         </div>
         <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-block text-primary text-xs md:text-sm font-bold uppercase tracking-[0.2em] mb-4"
+            className="inline-block text-secondary text-xs md:text-sm font-bold uppercase tracking-[0.3em] mb-4"
           >
-            Capabilities & Expertise
+            What We Do
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -199,16 +205,16 @@ export const ServicesPage = () => {
             transition={{ delay: 0.2 }}
             className="text-4xl md:text-6xl lg:text-7xl font-display mb-6"
           >
-            DISCOVER OUR WEDDING DECORATION SERVICES IN NYC & NJ
+            Programs that change a child's trajectory
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-lg md:text-xl text-white/90 font-light max-w-2xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-white/95 font-light max-w-2xl mx-auto leading-relaxed"
           >
-            Delve into our Decor Offerings & Elevate your Wedding Events to New
-            Heights.
+            Verified scholarships, free coaching centres and the volunteer
+            network that keeps it all honest.
           </motion.p>
         </div>
       </section>
@@ -216,24 +222,25 @@ export const ServicesPage = () => {
       {/* Intro Text */}
       <section className="py-24 px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-display text-gray-900 mb-8">
-            Tailored to Perfection
+          <h2 className="text-3xl md:text-4xl font-display text-accent mb-8">
+            One foundation. Many on-ramps.
           </h2>
           <p className="text-gray-600 leading-relaxed mb-12">
-            Elegantize offers a wide range of services to cater to your event
-            decor needs. Whether you’re planning a wedding, corporate event, or
-            private celebration, our team is here to bring your vision to life.
+            Whether you are a student looking for financial help, a donor who
+            wants to invest in a child's future, a volunteer with a few hours
+            each week, or a company looking for a meaningful CSR partnership —
+            there is a way in. Browse the programs below to find yours.
           </p>
-          <div className="w-24 h-px bg-primary mx-auto" />
+          <div className="w-24 h-px bg-secondary mx-auto" />
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Programs Grid */}
       <section className="py-12 px-6 bg-stone-50">
         <div className="max-w-7xl mx-auto space-y-32">
-          {services.map((service, index) => (
+          {programs.map((program, index) => (
             <motion.div
-              key={service.id}
+              key={program.id}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -244,11 +251,13 @@ export const ServicesPage = () => {
             >
               {/* Image Side */}
               <div className="w-full lg:w-1/2 relative group">
-                <div className="absolute inset-0 bg-[#8ca18e] transform translate-x-4 translate-y-4 transition-transform duration-500 group-hover:translate-x-6 group-hover:translate-y-6" />
+                <div className="absolute inset-0 bg-primary transform translate-x-4 translate-y-4 transition-transform duration-500 group-hover:translate-x-6 group-hover:translate-y-6" />
                 <div className="relative overflow-hidden aspect-[5/6] lg:aspect-[4/5]">
-                  <img loading="lazy" decoding="async"
-                    src={getOptimizedImage(service.image, 1200)}
-                    alt={service.title}
+                  <img
+                    loading="lazy"
+                    decoding="async"
+                    src={program.image}
+                    alt={program.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </div>
@@ -257,38 +266,39 @@ export const ServicesPage = () => {
               {/* Content Side */}
               <div className="w-full lg:w-1/2 text-center lg:text-left">
                 <div className="flex justify-center lg:justify-start mb-6">
-                  <div className="p-4 bg-white border border-stone-200 rounded-full">
-                    {service.icon}
+                  <div className="p-4 bg-white border border-primary/20 rounded-full shadow-sm">
+                    {program.icon}
                   </div>
                 </div>
-                <h3 className="text-3xl md:text-4xl font-display text-gray-900 mb-6">
-                  {service.title}
+                <h3 className="text-3xl md:text-4xl font-display text-accent mb-6">
+                  {program.title}
                 </h3>
                 <p className="text-gray-600 leading-relaxed mb-8">
-                  {service.description}
+                  {program.description}
                 </p>
-                <div className="bg-white p-8 border border-stone-100 shadow-sm relative">
-                  <h4 className="font-display text-lg mb-4 text-gray-800">
-                    Services Include
+                <div className="bg-white p-8 border border-primary/10 shadow-sm relative">
+                  <h4 className="font-display text-lg mb-4 text-accent">
+                    What's included
                   </h4>
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-6 text-left">
-                    {service.features.map((feature, idx) => (
+                    {program.features.map((feature, idx) => (
                       <li
                         key={idx}
                         className="flex items-start text-sm text-gray-600"
                       >
-                        <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 mr-3 flex-shrink-0" />
-                        {feature}
+                        <span className="w-1.5 h-1.5 bg-secondary rounded-full mt-2 mr-3 flex-shrink-0" />
+                        <span dangerouslySetInnerHTML={{ __html: feature }} />
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div className="mt-8">
                   <Link
-                    to={`/services/${service.id}`}
-                    className="inline-flex items-center text-primary uppercase text-xs font-bold tracking-widest hover:text-gray-900 transition-colors"
+                    to={`/services/${program.id}`}
+                    className="inline-flex items-center text-primary uppercase text-xs font-bold tracking-widest hover:text-accent transition-colors"
                   >
-                    {service.title} <ArrowRight className="ml-2 w-4 h-4" />
+                    Learn more about {program.title}{" "}
+                    <ArrowRight className="ml-2 w-4 h-4" />
                   </Link>
                 </div>
               </div>
@@ -297,19 +307,26 @@ export const ServicesPage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* FAQ Section */}
       <section className="py-32 px-6 bg-white text-stone-800">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-display mb-6">FAQs?</h2>
-            <p className="text-gray-500  text-xl font-bold">
-              Wedding Event Decor Related Questions
+            <h2 className="text-4xl md:text-6xl font-display mb-6 text-accent">
+              FAQs
+            </h2>
+            <p className="text-gray-700 text-xl font-bold">
+              Common questions about how we work
             </p>
-            <p className="text-gray-500 font-light text-sm">
-              We’re here to address all your wedding event decor inquiries and
-              turn your vision into a stunning reality! Let’s connect and
-              explore how Elegantize can transform your special occasion into an
-              unforgettable experience.
+            <p className="text-gray-500 font-light text-sm mt-2 max-w-2xl mx-auto">
+              We've answered the questions donors, volunteers and parents ask
+              us most often. If yours isn't here, write to{" "}
+              <a
+                href="mailto:aaghaz.foundation@gmail.com"
+                className="text-primary hover:underline"
+              >
+                aaghaz.foundation@gmail.com
+              </a>
+              .
             </p>
           </div>
 
@@ -318,7 +335,7 @@ export const ServicesPage = () => {
               <div key={index} className="py-8">
                 <button
                   onClick={() => toggleAccordion(index)}
-                  className="w-full flex justify-between items-center text-left font-display text-xl md:text-2xl hover:text-[#8ca18e] transition-colors"
+                  className="w-full flex justify-between items-center text-left font-display text-xl md:text-2xl hover:text-primary transition-colors"
                 >
                   <span className="pr-8">{faq.question}</span>
                   <span

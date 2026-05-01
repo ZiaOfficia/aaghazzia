@@ -1,188 +1,240 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { useState, useEffect } from "react";
+import { testimonialImages } from "../../data/imageAssets";
+
+interface Story {
+  image: string;
+  quote: string;
+  author: string;
+  role: string;
+  location: string;
+  year: string;
+}
+
+const stories: Story[] = [
+  {
+    image: testimonialImages.studentSumaiya,
+    quote:
+      "I was about to drop out after Class X because my father could not pay the board fees. Aaghaz volunteers came home, met my mother, and within a week the fees were paid. Today I am in the second year of my B.Sc.",
+    author: "Sumaiya R.",
+    role: "Aaghaz Scholarship Student",
+    location: "Lucknow, UP",
+    year: "Class of 2026",
+  },
+  {
+    image: testimonialImages.donorFamily,
+    quote:
+      "We launched a scholarship in our son's name. Knowing that students are completing their education in his memory has helped our family heal in a way we did not expect.",
+    author: "The Khan Family",
+    role: "Memorial Scholarship Donors",
+    location: "Pune, MH",
+    year: "Donor since 2019",
+  },
+  {
+    image: testimonialImages.parentMother,
+    quote:
+      "We had no idea organisations like this existed. The volunteers were respectful, the process was clear, and we never felt like we were begging. They treated my daughter like a person, not a case file.",
+    author: "Shahnaz Begum",
+    role: "Mother of an Aaghaz beneficiary",
+    location: "Hardoi, UP",
+    year: "Family supported since 2022",
+  },
+  {
+    image: testimonialImages.iitAlumnus,
+    quote:
+      "I had never even heard the word IIT before the Rahmani test. Two years later, I was inside one. Aaghaz did not just fund me — they believed in me first.",
+    author: "Mohammad Ayaan",
+    role: "Aaghaz × Rahmani 30 Alumnus",
+    location: "Now at IIT Delhi",
+    year: "Class of 2024",
+  },
+];
 
 export const TestimonialsSection = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const slides = [
-    {
-      image: "/images/portfolio/whatsapp-image-2023-09-27-at-12.17.56.webp",
-      quote:
-        "If you're fortunate enough to have Elegantize as your event decor specialist, consider yourselves truly blessed. We highly endorse their services!",
-      author: "Adrian & Kyle",
-      link: "#",
-    },
-    // {
-    //   image:
-    //     "/images/gallery/dsc09950.webp",
-    //   quote:
-    //     "Elegantize transformed our venue into a fairytale. The attention to detail was simply unmatched. Truly a magical experience!",
-    //   author: "Sarah & Mike",
-    //   link: "#",
-    // },
-    {
-      image: "/images/portfolio/kiranfritdjof-weddingphotos-1135.webp",
-      quote:
-        "Choosing Elegantize for our wedding decor was one of the best decisions we made. Their attention to detail and creative flair transformed our wedding venue in New York into a dream come true. Highly recommended!",
-      author: "Devan & Ashish",
-      link: "#",
-    },
-    {
-      image: "/images/portfolio/dsc00122.webp",
-      quote:
-        "Elegantize Weddings exceeded all our expectations and brought our vision to life in the most spectacular way. From the initial consultation to the final touches in our wedding, Elegantize team's professionalism and expertise shone through. We couldn't be happier with the results!",
-      author: "Judi & Chris",
-      link: "#",
-    },
-    // {
-    //   image:
-    //     "/images/gallery/dsc00038.webp",
-    //   quote:
-    //     "From the initial consultation to the final reveal, the team at Elegantize exceeded all our expectations.",
-    //   author: "Amanda & Robert",
-    //   link: "#",
-    // },
-  ];
-
-  const nextSlide = () => {
+  const next = () => {
     setDirection(1);
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    setIndex((prev) => (prev + 1) % stories.length);
   };
-
-  const prevSlide = () => {
+  const prev = () => {
     setDirection(-1);
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    setIndex((prev) => (prev - 1 + stories.length) % stories.length);
   };
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      nextSlide();
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [currentSlide]);
+    if (isPaused) return;
+    const t = setInterval(next, 7000);
+    return () => clearInterval(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isPaused]);
 
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? "100%" : "-100%",
-      opacity: 1, // Ensure opacity is 1
-    }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction: number) => ({
-      zIndex: 0,
-      x: direction < 0 ? "100%" : "-100%",
-      opacity: 1, // Keep opacity 1 so it doesn't fade
-    }),
+  const story = stories[index];
+
+  const variants = {
+    enter: (dir: number) => ({ opacity: 0, x: dir > 0 ? 60 : -60 }),
+    center: { opacity: 1, x: 0 },
+    exit: (dir: number) => ({ opacity: 0, x: dir > 0 ? -60 : 60 }),
   };
 
   return (
-    <section className="bg-stone-50 pt-24">
-      {/* Main Mid Heading */}
-      <div className="text-center mb-12 px-6">
-        <span className="text-xs font-bold uppercase tracking-[0.2em] text-stone-500 mb-3 block">
-          Client Stories
-        </span>
-        <h2 className="text-4xl md:text-6xl font-display text-stone-900">
-          Kind Words
-        </h2>
-      </div>
+    <section
+      className="relative py-28 px-6 bg-mesh-rose overflow-hidden"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <span className="absolute -top-40 -left-20 w-96 h-96 rounded-full bg-primary/15 blur-3xl pointer-events-none" />
+      <span className="absolute -bottom-40 -right-20 w-96 h-96 rounded-full bg-secondary/15 blur-3xl pointer-events-none" />
 
-      {/* Split Content */}
-      <div className="flex flex-col md:flex-row sm:min-h-[70vh] lg:flex-row min-h-[50vh] lg:max-h-[70vh] w-full overflow-hidden border-t border-stone-200">
-        {/* LEFT COLUMN: IMAGE */}
-        <div className="w-full md:w-1/2 relative min-h-[400px] bg-stone-200 overflow-hidden group">
-          <AnimatePresence initial={false} custom={direction}>
-            <motion.div
-              key={currentSlide}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.2 },
-              }}
-              className="absolute inset-0"
-            >
-              <img loading="lazy" decoding="async"
-                src={slides[currentSlide].image}
-                alt="Highlight"
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
-          </AnimatePresence>
+      <div className="max-w-7xl mx-auto relative">
+        <div className="text-center mb-16">
+          <p className="inline-flex items-center gap-3 text-primary text-xs font-bold uppercase tracking-[0.4em] mb-4">
+            <span className="block w-8 h-px bg-primary" />
+            Real Voices
+            <span className="block w-8 h-px bg-primary" />
+          </p>
+          <h2 className="text-4xl md:text-6xl font-display font-bold text-accent mb-4 leading-tight">
+            In their own words.
+          </h2>
+          <p className="text-text-muted max-w-2xl mx-auto text-lg">
+            We don&apos;t hire actors and we don&apos;t edit out the awkward
+            pauses. These are four of the people Aaghaz has walked beside.
+          </p>
         </div>
 
-        {/* RIGHT COLUMN: TEXT */}
-        <div className="w-full md:w-1/2 bg-stone-200 flex flex-col justify-center p-8 md:p-20 relative">
-          <div className="max-w-xl mx-auto w-full">
-            <div className="relative">
-              {/* Decorative Opening Quote Mark */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          {/* Image side */}
+          <div className="lg:col-span-5 relative">
+            <div className="absolute -top-4 -left-4 w-full h-full border-2 border-primary/40 rounded-tl-[3rem] rounded-br-[3rem]" />
+            <div className="relative aspect-[4/5] overflow-hidden rounded-tl-[3rem] rounded-br-[3rem] shadow-2xl">
+              <AnimatePresence custom={direction} mode="wait">
+                <motion.img
+                  key={index}
+                  custom={direction}
+                  variants={variants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  src={story.image}
+                  alt={story.author}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </AnimatePresence>
 
-              {/* Fixed Height Container to prevent jumping */}
-              <div className="min-h-[330px] md:min-h-[280px] relative">
+              {/* Author label overlay */}
+              <div
+                className="absolute bottom-0 left-0 right-0 p-6 text-white"
+                style={{
+                  background:
+                    "linear-gradient(to top, rgba(15,15,15,0.92) 0%, transparent 100%)",
+                }}
+              >
                 <AnimatePresence mode="wait">
                   <motion.div
-                    key={`text-${currentSlide}`}
+                    key={`label-${index}`}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4 }}
-                    className="absolute inset-0"
                   >
-                    <h3 className="text-xl md:text-2xl font-light italic leading-relaxed text-stone-800 font-serif relative z-10">
-                      <span className="text-4xl text-stone-900 mr-2 font-serif opacity-50 align-top">
-                        &ldquo;
-                      </span>
-                      {slides[currentSlide].quote}
-                      <span className="text-4xl text-stone-900 ml-2 font-serif opacity-50 align-top">
-                        &rdquo;
-                      </span>
-                    </h3>
-
-                    <div className="flex flex-col gap-2 border-l-2 mt-6 border-primary pl-6">
-                      <p className="text-2xl font-display tracking-wide font-bold text-stone-900">
-                        {slides[currentSlide].author}
-                      </p>
-                      <a
-                        href={slides[currentSlide].link}
-                        className="text-xs uppercase tracking-widest text-stone-500 hover:text-primary transition-colors font-medium flex items-center gap-2 group cursor-pointer"
-                      >
-                        View Gallery{" "}
-                        <span className="text-primary opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-[-10px] group-hover:translate-x-0 duration-300">
-                          →
-                        </span>
-                      </a>
-                    </div>
+                    <p className="text-secondary text-[10px] uppercase tracking-[0.3em] font-bold mb-1">
+                      {story.role}
+                    </p>
+                    <p className="font-display text-2xl font-bold">
+                      {story.author}
+                    </p>
+                    <p className="text-xs text-gray-300 mt-1">
+                      {story.location} · {story.year}
+                    </p>
                   </motion.div>
                 </AnimatePresence>
               </div>
+            </div>
+          </div>
 
-              {/* Decorative Closing Quote Mark */}
+          {/* Quote side */}
+          <div className="lg:col-span-7 relative">
+            <Quote
+              size={64}
+              className="absolute -top-8 -left-2 text-primary/15"
+              fill="currentColor"
+            />
+
+            <AnimatePresence custom={direction} mode="wait">
+              <motion.div
+                key={`quote-${index}`}
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.6 }}
+                className="relative"
+              >
+                <p className="font-display text-2xl md:text-3xl lg:text-4xl text-accent leading-relaxed italic mb-8">
+                  &ldquo;{story.quote}&rdquo;
+                </p>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Controls and progress */}
+            <div className="flex items-center justify-between gap-6 pt-6 border-t border-primary/15">
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={prev}
+                  className="w-12 h-12 rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors flex items-center justify-center"
+                  aria-label="Previous story"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+                <button
+                  onClick={next}
+                  className="w-12 h-12 rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors flex items-center justify-center"
+                  aria-label="Next story"
+                >
+                  <ChevronRight size={20} />
+                </button>
+              </div>
+
+              {/* Slim progress + counter */}
+              <div className="flex-1 flex items-center gap-4 max-w-xs">
+                <span className="font-display text-2xl font-bold text-primary">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div className="flex-1 h-px bg-primary/20 relative overflow-hidden">
+                  <motion.span
+                    key={`bar-${index}-${isPaused}`}
+                    initial={{ width: "0%" }}
+                    animate={{ width: isPaused ? "30%" : "100%" }}
+                    transition={{ duration: isPaused ? 0.3 : 7, ease: "linear" }}
+                    className="absolute left-0 top-0 h-full bg-primary"
+                  />
+                </div>
+                <span className="text-xs text-text-muted">
+                  / {String(stories.length).padStart(2, "0")}
+                </span>
+              </div>
             </div>
 
-            {/* CONTROLS */}
-            <div className="flex items-center gap-4 mt-10 bg-stone-100/50 p-2 rounded-full w-max backdrop-blur-sm">
-              <button
-                onClick={prevSlide}
-                className="w-12 h-12 rounded-full border border-stone-300 flex items-center justify-center hover:bg-stone-900 hover:text-white hover:border-stone-900 transition-all duration-300 text-stone-600 bg-white"
-                aria-label="Previous Slide"
-              >
-                <ChevronLeft size={20} />
-              </button>
-              <button
-                onClick={nextSlide}
-                className="w-12 h-12 rounded-full border border-stone-300 flex items-center justify-center hover:bg-stone-900 hover:text-white hover:border-stone-900 transition-all duration-300 text-stone-600 bg-white"
-                aria-label="Next Slide"
-              >
-                <ChevronRight size={20} />
-              </button>
+            {/* Quick-jump dots */}
+            <div className="mt-5 flex gap-2">
+              {stories.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => {
+                    setDirection(i > index ? 1 : -1);
+                    setIndex(i);
+                  }}
+                  className={`h-1 rounded-full transition-all duration-500 ${
+                    i === index ? "bg-primary w-12" : "bg-primary/30 w-4 hover:bg-primary/60"
+                  }`}
+                  aria-label={`Story ${i + 1}`}
+                />
+              ))}
             </div>
           </div>
         </div>

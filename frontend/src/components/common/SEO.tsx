@@ -12,20 +12,20 @@ interface SEOProps {
 
 export const SEO = ({
   title,
-  description = "Luxury wedding decor and event design in New York & New Jersey. Elegantize specializes in custom mandaps, floral arrangements, and premium event styling.",
+  description = "Aaghaz Foundation is a non-profit founded in 2004 in Lucknow. We support meritorious students from economically weak backgrounds across India through scholarships, financial assistance, mentorship and learning centres.",
   keywords,
-  name = "Elegantize Weddings",
+  name = "Aaghaz Foundation",
   type = "website",
-  image = "/og-image.jpg", // Ensure this default image exists or update path
+  image = "/og-image.jpg",
   url,
 }: SEOProps) => {
-  const siteUrl = "https://elegantize.com"; // Update with actual domain
+  const siteUrl = "https://aaghazfoundation.com";
   const fullUrl = url ? `${siteUrl}${url}` : siteUrl;
 
   return (
     <Helmet>
       {/* Standard metadata tags */}
-      <title>{title} | Elegantize Weddings</title>
+      <title>{title} | Aaghaz Foundation</title>
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
 

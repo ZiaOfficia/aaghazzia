@@ -7,8 +7,8 @@ export const PrivacyPolicyPage = () => {
   return (
     <div className="bg-white min-h-screen pt-[60px] md:pt-[50px]">
       <SEO
-        title="Privacy Policy"
-        description="Privacy Policy for Elegantize Weddings."
+        title="Privacy Policy — Aaghaz Foundation"
+        description="Privacy Policy for Aaghaz Foundation. How we collect, use and protect donor and applicant information."
       />
       <div className="max-w-4xl mx-auto px-6 py-12 md:py-20 shadow-sm border border-stone-100">
         <h1 className="text-4xl font-serif text-stone-900 mb-8">
@@ -20,7 +20,7 @@ export const PrivacyPolicyPage = () => {
 
         <div className="prose prose-stone max-w-none text-stone-600">
           <p className="mb-6">
-            At Elegantize, we value your privacy and are committed to protecting
+            At Aaghaz Foundation, we value your privacy and are committed to protecting
             your personal information. This Privacy Policy outlines how we
             collect, use, and safeguard your data when you visit our website or
             use our wedding decoration services. By using our website, you agree
@@ -31,10 +31,10 @@ export const PrivacyPolicyPage = () => {
             Who We Are
           </h2>
           <p className="mb-6">
-            Elegantize provides wedding decoration services across New York and
+            Aaghaz Foundation provides wedding decoration services across New York and
             New Jersey. Our goal is to create a personalized, memorable event
             experience for your special day. Our website address is:
-            [https://elegantize.com].
+            [https://aaghazfoundation.com].
           </p>
 
           <h2 className="text-2xl font-serif text-stone-900 mt-8 mb-4">
@@ -57,7 +57,7 @@ export const PrivacyPolicyPage = () => {
           <ul className="list-disc pl-5 mb-6 space-y-2">
             <li>Respond to inquiries</li>
             <li>Communicate regarding our services</li>
-            <li>Personalize your experience with Elegantize</li>
+            <li>Personalize your experience with Aaghaz Foundation</li>
           </ul>
           <p className="mb-6">
             We do not collect payment or sensitive personal data through our
@@ -185,10 +185,10 @@ export const PrivacyPolicyPage = () => {
           </p>
           <div className="bg-stone-50 p-6 rounded-lg border border-stone-200">
             <h3 className="font-serif text-lg text-stone-900 mb-2">
-              Elegantize Support Team
+              Aaghaz Foundation Support Team
             </h3>
             <p className="mb-1">
-              <strong>Email:</strong> info@elegantize.com
+              <strong>Email:</strong> info@aaghazfoundation.com
             </p>
             <p className="mb-1">
               <strong>Phone:</strong> +1 (347) 686-4562

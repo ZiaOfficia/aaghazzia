@@ -23,20 +23,20 @@ export const ContactPage = () => {
   return (
     <div className="min-h-screen pt-24 pb-12 bg-stone-50">
       <SEO
-        title="Contact Us - Schedule a Consultation"
-        description="Get in touch with Elegantize to start planning your dream wedding. We serve clients across New York and New Jersey."
+        title="Contact Us — Aaghaz Foundation"
+        description="Reach out to Aaghaz Foundation to donate, launch a scholarship, become a volunteer, apply for student aid or partner with us on CSR. Based in Lucknow, working across India."
       />
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-stone-900 text-white">
-        <div className="absolute inset-0 opacity-40">
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-accent text-white">
+        <div className="absolute inset-0 opacity-50">
           <img
             loading="lazy"
             decoding="async"
-            src="/images/home/95261302-2.webp"
-            alt="Contact Hero"
+            src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=1920&q=80"
+            alt="Children studying — Aaghaz Foundation"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-accent/70" />
         </div>
 
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
@@ -45,18 +45,19 @@ export const ContactPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 mb-8 backdrop-blur-md">
-              <Sparkles size={14} className="text-yellow-200" />
-              <span className="text-xs uppercase tracking-[0.3em] font-semibold">
-                Start The Conversation
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/20 border border-secondary/40 mb-8 backdrop-blur-md">
+              <Sparkles size={14} className="text-secondary" />
+              <span className="text-xs uppercase tracking-[0.3em] font-semibold text-secondary">
+                Let's talk
               </span>
             </div>
             <h1 className="text-5xl md:text-7xl font-display mb-6 leading-tight">
               Get In{" "}
-              <span className="text-white/50 italic font-serif">Touch</span>
+              <span className="text-secondary italic font-serif">Touch</span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-300 font-light max-w-2xl mx-auto">
-              Ready to plan your dream event? We'd love to hear from you.
+            <p className="text-lg md:text-xl text-gray-200 font-light max-w-2xl mx-auto">
+              Donate, volunteer, partner, or apply for student aid — we read
+              every message.
             </p>
           </motion.div>
         </div>
@@ -73,7 +74,7 @@ export const ContactPage = () => {
         >
           {/* Contact Info */}
           <div>
-            <h2 className="text-5xl font-display mb-8 text-stone-900">
+            <h2 className="text-5xl font-display mb-8 text-accent">
               {ctaContent.heading}
             </h2>
             <div className="text-lg text-gray-600 mb-12 leading-relaxed">
@@ -93,11 +94,11 @@ export const ContactPage = () => {
                   <Phone size={24} />
                 </span>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-400 mb-1">
+                  <p className="text-xs uppercase tracking-widest text-gray-500 mb-1">
                     Phone
                   </p>
                   <span className="text-lg font-display text-gray-800">
-                    +1 (347) 686-4562
+                    +91 98765 43210
                   </span>
                 </div>
               </motion.div>
@@ -111,11 +112,11 @@ export const ContactPage = () => {
                   <MapPin size={24} />
                 </span>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-400 mb-1">
-                    Location
+                  <p className="text-xs uppercase tracking-widest text-gray-500 mb-1">
+                    Registered Office
                   </p>
                   <span className="text-lg font-display text-gray-800">
-                    8 Di Tomas Ct, Copiague, NY, 11726
+                    57 Ganesh Gunj, Lucknow, UP — 226018
                   </span>
                 </div>
               </motion.div>
@@ -129,11 +130,11 @@ export const ContactPage = () => {
                   <Mail size={24} />
                 </span>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-400 mb-1">
+                  <p className="text-xs uppercase tracking-widest text-gray-500 mb-1">
                     Email
                   </p>
-                  <span className="text-lg font-display text-gray-800">
-                    info@elegantize.com
+                  <span className="text-lg font-display text-gray-800 break-all">
+                    aaghaz.foundation@gmail.com
                   </span>
                 </div>
               </motion.div>
@@ -244,7 +245,7 @@ export const ContactPage = () => {
             </div>
             <div>
               <label className="block text-[10px] uppercase tracking-widest font-bold mb-3 text-gray-500">
-                Wedding Date
+                Best date to call (optional)
               </label>
               <input
                 name="weddingDate"
@@ -254,50 +255,53 @@ export const ContactPage = () => {
             </div>
             <div>
               <label className="block text-[10px] uppercase tracking-widest font-bold mb-3 text-gray-500">
-                Event Venue
+                City / Location
               </label>
               <input
                 name="venue"
                 type="text"
                 required
                 className="w-full bg-stone-50 border border-gray-200 focus:outline-none focus:border-primary p-4 transition-colors duration-300 hover:bg-stone-100 focus:bg-white"
-                placeholder="Venue Name"
+                placeholder="Lucknow, Mumbai, Delhi…"
               />
             </div>
             <div>
               <label className="block text-[10px] uppercase tracking-widest font-bold mb-3 text-gray-500">
-                Budget Range
+                I am writing about
               </label>
               <select
                 name="budget"
                 required
-                className="w-full bg-stone-50 border border-gray-200 focus:outline-none focus:border-primary p-4 text-gray-500 transition-colors duration-300 hover:bg-stone-100 focus:bg-white appearance-none"
+                defaultValue=""
+                className="w-full bg-stone-50 border border-gray-200 focus:outline-none focus:border-primary p-4 text-gray-700 transition-colors duration-300 hover:bg-stone-100 focus:bg-white appearance-none"
               >
-                <option value="" disabled selected>
-                  Select Budget
+                <option value="" disabled>
+                  Select an option
                 </option>
-                <option value="$10k - $15k">$10k – $15k</option>
-                <option value="$15k - $20k">$15k – $20k</option>
-                <option value="$20k - $30k">$20k – $30k</option>
-                <option value="$30k and above">$30k and above</option>
+                <option value="donate">Making a donation</option>
+                <option value="scholarship">Launching a scholarship</option>
+                <option value="volunteer">Becoming a volunteer</option>
+                <option value="apply-aid">Applying for student aid</option>
+                <option value="csr">Corporate / CSR partnership</option>
+                <option value="other">Something else</option>
               </select>
             </div>
             <div>
               <label className="block text-[10px] uppercase tracking-widest font-bold mb-3 text-gray-500">
-                Tell us about your vision
+                Your message
               </label>
               <textarea
                 name="message"
                 rows={5}
                 className="w-full bg-stone-50 border border-gray-200 focus:outline-none focus:border-primary p-4 transition-colors duration-300 hover:bg-stone-100 focus:bg-white"
-                placeholder="We are dreaming of..."
+                placeholder="Tell us how you would like to be involved..."
               ></textarea>
             </div>
             <Button
               type="submit"
               className="w-full py-5 tracking-[0.2em] text-sm"
             >
-              Request Consultation
+              Send Message
             </Button>
           </form>
         </motion.div>
@@ -313,8 +317,8 @@ export const ContactPage = () => {
           loading="lazy"
           allowFullScreen
           className="transition-all duration-1000 ease-in-out scale-100 group-hover:scale-105"
-          src="https://maps.google.com/maps?q=8%20Di%20Tomas%20Ct%2C%20Copiague%2C%20NY%2C%2011726&t=&z=15&ie=UTF8&iwloc=&output=embed"
-          title="Elegantize Location"
+          src="https://maps.google.com/maps?q=Ganesh%20Gunj%2C%20Lucknow&t=&z=15&ie=UTF8&iwloc=&output=embed"
+          title="Aaghaz Foundation Office Location"
         ></iframe>
 
         {/* Gradient Overlay */}
@@ -328,31 +332,31 @@ export const ContactPage = () => {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="absolute bottom-8 left-6 md:bottom-12 md:left-12 bg-white/90 backdrop-blur-md p-8 shadow-2xl border-l-4 border-primary max-w-sm"
         >
-          <h3 className="text-2xl font-display text-stone-900 mb-2">
-            Visit Our Studio
+          <h3 className="text-2xl font-display text-accent mb-2">
+            Visit Our Office
           </h3>
           <p className="text-gray-500 text-sm uppercase tracking-widest mb-6 border-b border-gray-200 pb-4">
-            By Appointment Only
+            Mon – Sat · 10am – 6pm IST
           </p>
           <div className="space-y-4 mb-6">
             <div className="flex items-start gap-4">
               <MapPin className="text-primary mt-1" size={20} />
               <p className="text-gray-700 leading-relaxed">
-                8 Di Tomas Ct
+                57 Ganesh Gunj
                 <br />
-                Copiague, NY, 11726
+                Lucknow, UP — 226018
               </p>
             </div>
             <div className="flex items-center gap-4">
               <Phone className="text-primary" size={20} />
-              <p className="text-gray-700">+1 (347) 686-4562</p>
+              <p className="text-gray-700">+91 98765 43210</p>
             </div>
           </div>
           <a
-            href="https://www.google.com/maps/search/?api=1&query=8+Di+Tomas+Ct,+Copiague,+NY,+11726"
+            href="https://www.google.com/maps/search/?api=1&query=Ganesh+Gunj,+Lucknow,+UP"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary hover:text-stone-900 transition-colors group/link"
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary hover:text-accent transition-colors group/link"
           >
             Get Directions{" "}
             <ArrowRight

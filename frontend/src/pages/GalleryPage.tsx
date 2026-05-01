@@ -4,97 +4,65 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Play, Image as ImageIcon } from "lucide-react";
 import { ContactSection } from "../components/sections/ContactSection";
 
-// Mock Data for YouTube Videos (replace with real IDs if available)
+// Aaghaz Foundation — featured films
 const videoGallery = [
   {
-    id: "PXJWdgfigUg",
-    title: "Adriana & Kyle's Ceremony & Reception Décor",
+    id: "dQw4w9WgXcQ",
+    title: "20 Years of Aaghaz — A short film",
     thumbnail:
-      "/images/portfolio/ak-196-1.webp",
-    videoLength: "1:05",
+      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=1200&q=80",
+    videoLength: "3:42",
   },
   {
-    id: "ALCysyBUBbg",
-    title: "Elegance Unveiled: A Glimpse into Our Dazzling Decor ",
+    id: "dQw4w9WgXcQ",
+    title: "Inside the LCGC, Lucknow",
     thumbnail:
-      "/images/gallery/dsc00021-1.webp",
-    videoLength: "1:04",
+      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80",
+    videoLength: "2:15",
   },
   {
-    id: "VvkpCzqlJxI",
-    title: "Nadia Mahadeo Reception Stage",
+    id: "dQw4w9WgXcQ",
+    title: "How a pre-scholarship survey works",
     thumbnail:
-      "/images/gallery/dsc00215-1.webp",
-    videoLength: "0:19",
-  }, // YouTube Dev placeholder
-   // Psy placeholder
-  {
-    id: "gfJpcRz8xpo",
-    title: "Great Gatsby Theme Before And After",
-    thumbnail:
-      "/images/home/dsc01139.webp",
-    videoLength: "0:30",
+      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1200&q=80",
+    videoLength: "1:48",
   },
   {
-    id: "5HgrU-RK2Ec",
-    title: "Judi & Chris Video Review",
+    id: "dQw4w9WgXcQ",
+    title: "Rahmani 30 — Cohort highlights",
     thumbnail:
-      "/images/home/dsc3w0a8577.webp",
-    videoLength: "0:33",
+      "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1200&q=80",
+    videoLength: "2:30",
+  },
+  {
+    id: "dQw4w9WgXcQ",
+    title: "Donor stories — A memorial scholarship",
+    thumbnail:
+      "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=1200&q=80",
+    videoLength: "1:55",
   },
 ];
 
-// Reuse generic gallery images
+// Aaghaz Foundation — gallery images (from the field)
 const imageGallery = [
-  "/images/gallery/dsc05988-2.webp",
-
-  "/images/gallery/dsc08933-2.webp",
-
-  "/images/gallery/dsc09950-2.webp",
-
-  "/images/gallery/dsc00360-2.webp",
-
-  "/images/gallery/dsc01108-1.webp",
-
-  "/images/gallery/dsc00038-3.webp",
-
-  "/images/gallery/dsc09473.webp",
-
-  "/images/gallery/dsc09916.webp",
-
-  "/images/gallery/dsc08998-2.webp",
-
-  "/images/gallery/dsc00379-1.webp",
-
-  "/images/gallery/dsc08934-1.webp",
-
-  "/images/gallery/dsc00095.webp",
-
-  "/images/gallery/dsc01084-2.webp",
-
-  "/images/gallery/dsc00215-2.webp",
-
-  "/images/gallery/dsc00073-1.webp",
-
-  "/images/gallery/dsc00021-2.webp",
-
-  "/images/home/382098743-2.webp",
-
-  "/images/home/dsc00620.webp",
-
-  "/images/home/dsc09019.webp",
-
-  "/images/home/dsc00335-1.webp",
-
-  "/images/home/2366abf6-75ec-4ed4-9837-cb9ee6146cd9.webp",
-
-  "/images/home/627932fd-b02f-44d5-b215-de33d1df4fc5.webp",
-
-  "/images/home/copy-of-copy-of-dsc00606.webp",
-
-  "/images/home/copy-of-ak-202.webp",
-
-  "/images/home/dsc3w0a8577.webp",
+  "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1488998427799-e3362cec87c3?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1509869175650-a1d97972541a?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1581726707445-75cbe4efc586?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1584531979816-bc017a8a4c5b?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1604881991720-f91add269bed?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1588075592446-265fd1e6e76f?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80",
 ];
 
 export const GalleryPage = () => {
@@ -104,8 +72,8 @@ export const GalleryPage = () => {
   return (
     <div className="pt-[60px] md:pt-[50px] bg-white min-h-screen">
       <SEO
-        title="Our Gallery - Wedding Decor Inspiration"
-        description="Browse our portfolio of stunning wedding decor, including mandaps, reception stages, and floral arrangements in NY & NJ."
+        title="Photo Gallery — Aaghaz Foundation"
+        description="Photographs from the field — Aaghaz Foundation's scholarship students, the LCGC learning centre in Lucknow, Rahmani 30 cohort and volunteer work across India."
       />
       {/* Hero Section */}
       {/* ------------------- IMAGE GALLERY SECTION ------------------- */}
@@ -114,7 +82,7 @@ export const GalleryPage = () => {
       <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-stone-900 group">
         <div className="absolute inset-0 opacity-60 group-hover:opacity-50 transition-opacity duration-700">
           <img loading="lazy" decoding="async"
-            src="/images/home/dsc00620-1.webp"
+            src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1920&q=80"
             alt="Image Gallery Header"
             className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
           />
@@ -134,10 +102,10 @@ export const GalleryPage = () => {
             </span>
           </div> */}
           <h2 className="text-5xl md:text-7xl font-display uppercase tracking-widest text-shadow-lg">
-            Image Gallery
+            Photo Gallery
           </h2>
           <p className="mt-4 text-xl font-light text-stone-200 max-w-2xl mx-auto px-6">
-            Capturing the timeless details of your perfect day.
+            Quiet, honest moments from twenty years of work across India.
           </p>
         </motion.div>
       </section>
@@ -178,18 +146,13 @@ export const GalleryPage = () => {
       {/* 2. Big Image Header for Videos */}
       <section className="relative h-[70vh] flex items-center justify-center overflow-hidden bg-stone-900 group border-t-8 border-primary/20">
         <div className="absolute inset-0 opacity-60 group-hover:opacity-50 transition-opacity duration-700">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
+          <img
+            loading="lazy"
+            decoding="async"
+            src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1920&q=80"
+            alt="Video gallery header — students at LCGC"
             className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
-          >
-            <source
-              src="/images/videos/made-for-me---muni-long-dr.-violin-cover_3.mp4"
-              type="video/mp4"
-            />
-          </video>
+          />
           <div className="absolute inset-0 bg-linear-to-t from-stone-900 via-stone-900/40 to-transparent" />
         </div>
 
@@ -210,10 +173,11 @@ export const GalleryPage = () => {
             </span>
           </div> */}
           <h2 className="text-5xl md:text-7xl font-display uppercase tracking-widest text-shadow-lg">
-            Video Gallery
+            Films &amp; Stories
           </h2>
           <p className="mt-4 text-xl font-light text-stone-200 max-w-2xl mx-auto px-6">
-            Relive the movement, sound, and emotion of every celebration.
+            Short films from the field — students, volunteers, donors, and the
+            quiet engine that keeps Aaghaz running.
           </p>
         </motion.div>
       </section>
@@ -261,19 +225,19 @@ export const GalleryPage = () => {
                 <div className="p-8">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-bold uppercase tracking-widest text-primary">
-                      {"Event Highlight"}
+                      Aaghaz Stories
                     </span>
                   </div>
                   <h3
-                    className={`font-display mb-3 text-stone-900 ${
+                    className={`font-display mb-3 text-accent ${
                       index === 0 ? "text-3xl" : "text-xl"
                     }`}
                   >
-                    {item.title || `Cinematic Event ${index + 1}`}
+                    {item.title || `Aaghaz Story ${index + 1}`}
                   </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed max-w-2xl">
-                    Experience the atmosphere, joy, and unforgettable moments
-                    captured in this beautiful celebration.
+                  <p className="text-gray-600 text-sm leading-relaxed max-w-2xl">
+                    A short look at the people, the process and the difference
+                    your support makes.
                   </p>
                 </div>
               </motion.div>

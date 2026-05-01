@@ -1,51 +1,17 @@
 import { motion } from "framer-motion";
 import { Instagram, Heart, MessageCircle } from "lucide-react";
 import { getOptimizedImage } from "../../utils/imageUtils";
+import { instagramImages } from "../../data/imageAssets";
 
-const posts = [
-  {
-    id: 1,
-    image:
-      "/images/misc/screenshot-2026-02-07-171357.webp",
-    likes: 245,
-    comments: 12,
-  },
-  {
-    id: 2,
-    image:
-      "/images/misc/screenshot-2026-02-07-171204.webp",
-    likes: 189,
-    comments: 8,
-  },
-  {
-    id: 3,
-    image:
-      "/images/misc/screenshot-2026-02-07-171508.webp",
-    likes: 312,
-    comments: 24,
-  },
-  {
-    id: 4,
-    image:
-      "/images/misc/screenshot-2026-02-07-171258.webp",
-    likes: 156,
-    comments: 5,
-  },
-  {
-    id: 5,
-    image:
-      "/images/misc/screenshot-2026-02-07-171320.webp",
-    likes: 278,
-    comments: 18,
-  },
-  {
-    id: 6,
-    image:
-      "/images/misc/screenshot-2026-02-07-171436.webp",
-    likes: 198,
-    comments: 9,
-  },
-];
+const postLikes = [245, 189, 312, 156, 278, 198];
+const postComments = [12, 8, 24, 5, 18, 9];
+
+const posts = instagramImages.map((image, i) => ({
+  id: i + 1,
+  image,
+  likes: postLikes[i],
+  comments: postComments[i],
+}));
 
 export const InstagramFeed = () => {
   return (
@@ -66,28 +32,28 @@ export const InstagramFeed = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-display text-gray-900 mb-4"
+            className="text-3xl md:text-5xl font-display text-accent mb-4"
           >
-            Follow Us On Instagram
+            Follow our journey on Instagram
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-gray-500 font-light text-lg mb-8"
+            className="text-gray-600 font-light text-lg mb-8"
           >
-            @elegantizeevents
+            @aaghazfoundation
           </motion.p>
           <motion.a
-            href="https://www.instagram.com/elegantizeevents/"
+            href="https://www.instagram.com/aaghazfoundation"
             target="_blank"
             rel="noopener noreferrer"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="inline-block px-8 py-3 bg-primary text-white text-xs font-bold uppercase tracking-widest hover:bg-stone-900 transition-colors duration-300"
+            className="inline-block px-8 py-3 bg-primary text-white text-xs font-bold uppercase tracking-widest hover:bg-primary-dark rounded-full transition-colors duration-300"
           >
             View Profile
           </motion.a>
@@ -98,7 +64,7 @@ export const InstagramFeed = () => {
           {posts.map((post, idx) => (
             <motion.a
               key={post.id}
-              href="https://www.instagram.com/elegantizeevents/"
+              href="https://www.instagram.com/aaghazfoundation"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, scale: 0.9 }}

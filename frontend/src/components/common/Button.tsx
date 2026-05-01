@@ -23,9 +23,9 @@ export const Button = ({
 
   const variants = {
     primary:
-      "bg-[linear-gradient(to_right,theme(colors.primary)_50%,black_50%)] bg-[length:200%_100%] bg-left hover:bg-right text-white border-none",
+      "bg-primary hover:bg-primary-dark text-white border-2 border-primary hover:border-primary-dark rounded-tl-2xl rounded-br-2xl shadow-md hover:shadow-xl hover:-translate-y-0.5",
     outline:
-      "border border-white/40 hover:bg-white hover:text-black text-white",
+      "border-2 border-secondary hover:bg-secondary hover:text-accent text-secondary bg-transparent rounded-tl-2xl rounded-br-2xl",
     text: "border-b-2 border-primary pb-1 hover:text-primary text-gray-900 dark:text-white bg-transparent px-0 py-0",
   };
 
@@ -35,7 +35,6 @@ export const Button = ({
     lg: "text-xs px-8 py-4",
   };
 
-  // Text variant shouldn't strictly follow padding sizes
   const sizeStyles = variant === "text" ? "" : sizes[size];
 
   return (

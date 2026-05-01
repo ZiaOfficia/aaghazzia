@@ -23,8 +23,8 @@ export const PortfolioDetailPage = () => {
   return (
     <div className="bg-stone-50 min-h-screen">
       <SEO
-        title={`${portfolio.title} - Real Wedding Gallery`}
-        description={`Explore the ${portfolio.title} wedding at ${portfolio.location}, designed by Elegantize.`}
+        title={`${portfolio.title} — Aaghaz Story`}
+        description={`${portfolio.title} — an Aaghaz Foundation story from ${portfolio.location}.`}
         image={portfolio.heroImage}
       />
       {/* 1. Hero Section */}

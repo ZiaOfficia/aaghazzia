@@ -8,7 +8,7 @@ export const TermsOfServicePage = () => {
     <div className="bg-white min-h-screen pt-[60px] md:pt-[50px]">
       <SEO
         title="Terms of Service"
-        description="Terms of Service for Elegantize Weddings."
+        description="Terms of Service for Aaghaz Foundation Weddings."
       />
       <div className="max-w-4xl mx-auto px-6 py-12 md:py-20 shadow-sm border border-stone-100">
         <h1 className="text-4xl font-serif text-stone-900 mb-8">
@@ -20,9 +20,9 @@ export const TermsOfServicePage = () => {
 
         <div className="prose prose-stone max-w-none text-stone-600">
           <p className="mb-6">
-            Welcome to Elegantize! These Terms of Service (“Terms”) govern your
+            Welcome to Aaghaz Foundation! These Terms of Service (“Terms”) govern your
             access to and use of our wedding decoration services, as well as the
-            website elegantize.com. By using our services or visiting our
+            website aaghazfoundation.com. By using our services or visiting our
             website, you agree to these Terms. Please read them carefully. If
             you do not agree with any part of these Terms, please refrain from
             using our services or website.
@@ -32,7 +32,7 @@ export const TermsOfServicePage = () => {
             Acceptance of Terms
           </h2>
           <p className="mb-6">
-            By accessing or using elegantize.com or utilizing our wedding
+            By accessing or using aaghazfoundation.com or utilizing our wedding
             decoration services, you agree to these Terms, along with our
             Privacy Policy and Cookie Policy. These Terms apply to all users,
             clients, and visitors who access or use our website and services.
@@ -42,7 +42,7 @@ export const TermsOfServicePage = () => {
             Services Overview
           </h2>
           <p className="mb-6">
-            Elegantize specializes in wedding decoration services. Our offerings
+            Aaghaz Foundation specializes in wedding decoration services. Our offerings
             include, but are not limited to, consultation, event coordination,
             venue decoration, floral arrangements, lighting, and related
             services. Specific details of the services provided will be outlined
@@ -108,7 +108,7 @@ export const TermsOfServicePage = () => {
               of the cancellation.
             </li>
             <li>
-              <strong>Cancellation by Elegantize:</strong> In exceptional
+              <strong>Cancellation by Aaghaz Foundation:</strong> In exceptional
               circumstances, such as unforeseen events or failure to meet
               payment terms, we reserve the right to cancel services. In such
               cases, we will provide a full refund of any payments made,
@@ -140,7 +140,7 @@ export const TermsOfServicePage = () => {
               the event venue are secured.
             </li>
             <li>
-              Communicate promptly with Elegantize throughout the planning
+              Communicate promptly with Aaghaz Foundation throughout the planning
               process to avoid delays or misunderstandings.
             </li>
           </ul>
@@ -156,18 +156,18 @@ export const TermsOfServicePage = () => {
             During the planning and execution of our services, we may
             collaborate with or recommend third-party vendors (e.g.,
             photographers, caterers, florists). While we work with trusted
-            partners, Elegantize is not responsible for the actions or services
+            partners, Aaghaz Foundation is not responsible for the actions or services
             of these third-party vendors. Any agreements made with them are
-            separate from your contract with Elegantize.
+            separate from your contract with Aaghaz Foundation.
           </p>
 
           <h2 className="text-2xl font-serif text-stone-900 mt-8 mb-4">
             Intellectual Property
           </h2>
           <p className="mb-6">
-            All content and materials provided by Elegantize, including website
+            All content and materials provided by Aaghaz Foundation, including website
             content, designs, logos, and images, are the intellectual property
-            of Elegantize or our licensors. You may not reproduce, distribute,
+            of Aaghaz Foundation or our licensors. You may not reproduce, distribute,
             or create derivative works based on our content without our written
             consent.
           </p>
@@ -176,7 +176,7 @@ export const TermsOfServicePage = () => {
             Limitation of Liability
           </h2>
           <p className="mb-6">
-            To the fullest extent permitted by law, Elegantize will not be
+            To the fullest extent permitted by law, Aaghaz Foundation will not be
             liable for any indirect, incidental, or consequential damages
             arising from the use of our services or website, including but not
             limited to delays, cancellations, or events beyond our control.
@@ -193,7 +193,7 @@ export const TermsOfServicePage = () => {
             Force Majeure
           </h2>
           <p className="mb-6">
-            Elegantize will not be responsible for delays, cancellations, or
+            Aaghaz Foundation will not be responsible for delays, cancellations, or
             failure to perform services due to events beyond our control, such
             as natural disasters, pandemics, strikes, or other events classified
             as force majeure. In such cases, we will work with you to reschedule
@@ -204,7 +204,7 @@ export const TermsOfServicePage = () => {
             Indemnification
           </h2>
           <p className="mb-6">
-            You agree to indemnify and hold Elegantize, its officers, directors,
+            You agree to indemnify and hold Aaghaz Foundation, its officers, directors,
             employees, and agents harmless from any claims, damages,
             liabilities, or expenses arising from your use of our services,
             breach of these Terms, or violation of any third-party rights.
@@ -240,10 +240,10 @@ export const TermsOfServicePage = () => {
           </p>
           <div className="bg-stone-50 p-6 rounded-lg border border-stone-200">
             <h3 className="font-serif text-lg text-stone-900 mb-2">
-              Elegantize Support Team
+              Aaghaz Foundation Support Team
             </h3>
             <p className="mb-1">
-              <strong>Email:</strong> info@elegantize.com
+              <strong>Email:</strong> info@aaghazfoundation.com
             </p>
             <p className="mb-1">
               <strong>Phone:</strong> +1 (347) 686-4562
@@ -253,7 +253,7 @@ export const TermsOfServicePage = () => {
             </p>
           </div>
           <p className="mt-6 italic">
-            Thank you for choosing Elegantize! We look forward to making your
+            Thank you for choosing Aaghaz Foundation! We look forward to making your
             wedding day a truly unforgettable experience.
           </p>
         </div>

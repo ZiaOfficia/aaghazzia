@@ -79,11 +79,13 @@ export const HorizontalEnquiryForm = () => {
       <div className="max-w-7xl mx-auto">
         <div className="bg-white shadow-xl p-6 md:p-8 flex flex-col md:flex-row items-start gap-6 border-t-4 border-primary">
           <div className="w-full md:w-1/4">
-            <h3 className="font-display text-xl text-gray-900">
-              Begin your Inquiry
+            <h3 className="font-display text-xl text-accent">
+              Get in touch with Aaghaz
             </h3>
-            <p className="text-sm text-gray-500 mt-2">
-              Tell us about your event and we'll get back to you shortly.
+            <p className="text-sm text-gray-600 mt-2">
+              Tell us how you'd like to help — donate, volunteer, partner or
+              apply for student aid — and a team member will write back within
+              a few working days.
             </p>
           </div>
 
@@ -119,21 +121,27 @@ export const HorizontalEnquiryForm = () => {
                 }
                 className="w-full bg-stone-50 border-none px-4 py-3 focus:ring-1 focus:ring-primary text-gray-600"
               />
-              <input
-                type="text"
-                placeholder="Event Date *"
-                onFocus={(e) => (e.target.type = "date")}
-                onBlur={(e) => (e.target.type = "text")}
+              <select
                 required
                 value={formData.date}
                 onChange={(e) =>
                   setFormData({ ...formData, date: e.target.value })
                 }
-                className="w-full bg-stone-50 border-none px-4 py-3 focus:ring-1 focus:ring-primary text-gray-600"
-              />
+                className="w-full bg-stone-50 border-none px-4 py-3 focus:ring-1 focus:ring-primary text-gray-600 appearance-none"
+              >
+                <option value="" disabled>
+                  I'd like to...
+                </option>
+                <option value="donate">Make a donation</option>
+                <option value="scholarship">Launch a scholarship</option>
+                <option value="volunteer">Become a volunteer</option>
+                <option value="apply-aid">Apply for student aid</option>
+                <option value="csr">Discuss a CSR partnership</option>
+                <option value="other">Something else</option>
+              </select>
               <input
                 type="text"
-                placeholder="Event Venue"
+                placeholder="City / Location"
                 required
                 value={formData.venue}
                 onChange={(e) =>
@@ -150,17 +158,18 @@ export const HorizontalEnquiryForm = () => {
                 className="w-full bg-stone-50 border-none px-4 py-3 focus:ring-1 focus:ring-primary text-gray-600 appearance-none"
               >
                 <option value="" disabled>
-                  Budget Range
+                  Indicative amount (optional)
                 </option>
-                <option value="$10k - $15k">$10k – $15k</option>
-                <option value="$15k - $20k">$15k – $20k</option>
-                <option value="$20k - $30k">$20k – $30k</option>
-                <option value="$30k and above">$30k and above</option>
+                <option value="under-1k">Under Rs 1,000</option>
+                <option value="1k-5k">Rs 1,000 – 5,000</option>
+                <option value="5k-25k">Rs 5,000 – 25,000</option>
+                <option value="25k-plus">Rs 25,000 and above</option>
+                <option value="not-applicable">Not applicable</option>
               </select>
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="Your Message"
+                  placeholder="Your message"
                   required
                   value={formData.message}
                   onChange={(e) =>
@@ -175,7 +184,7 @@ export const HorizontalEnquiryForm = () => {
                 className="w-full"
                 onClick={handleSubmit}
               >
-                Check Availability
+                Send Enquiry
               </Button>
             </div>
           </div>
