@@ -137,6 +137,74 @@
   background: var(--color-line);
 }
 
+/* ──────────────────────────────────────────────────────────
+   ARTICLE CONTENT (blog posts and legal pages)
+   ────────────────────────────────────────────────────────── */
+.article-content {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--color-ink);
+  overflow-wrap: break-word;
+}
+.article-content > * + * {
+  margin-top: 1.25em;
+}
+.article-content h2 {
+  margin-top: 2.2em;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.article-content h3 {
+  margin-top: 1.8em;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
+}
+.article-content a {
+  color: var(--color-terracotta);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.article-content strong {
+  font-weight: 600;
+}
+.article-content ul,
+.article-content ol {
+  padding-left: 1.5rem;
+}
+.article-content ul {
+  list-style: disc;
+}
+.article-content ol {
+  list-style: decimal;
+}
+.article-content li + li {
+  margin-top: 0.5em;
+}
+.article-content li::marker {
+  color: var(--color-terracotta);
+}
+.article-content img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-block: 2em;
+  border-radius: 6px;
+}
+.article-content blockquote {
+  border-left: 2px solid var(--color-terracotta);
+  padding-left: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-style: italic;
+}
+.article-content iframe,
+.article-content video {
+  width: 100%;
+}
+
 /* Prose helpers (blog content) */
 .prose ul {
   list-style-type: disc !important;

@@ -1,34 +1,15 @@
-import { Search, Facebook, Instagram, Youtube, Twitter } from "lucide-react";
+import { Search } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect, useMemo } from "react";
-import { Button } from "../common/Button";
+import { useMemo, useState } from "react";
 import { getBlogPostUrl, blogPosts as staticBlogPosts } from "../../data/blogData";
-
-interface SidebarPost {
-  id: string;
-  title: string;
-  slug: string;
-  createdAt?: string;
-  date: string;
-  image: string;
-}
+import { ButtonLink } from "../ui/ButtonLink";
+import { fieldClass } from "../ui/formStyles";
 
 export const BlogSidebar = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [recentPosts, setRecentPosts] = useState<SidebarPost[]>([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const formatted = staticBlogPosts.slice(0, 4).map((post) => ({
-      id: post.id,
-      title: post.title,
-      slug: post.slug,
-      createdAt: post.createdAt,
-      date: post.date,
-      image: post.image,
-    }));
-    setRecentPosts(formatted);
-  }, []);
+  const recentPosts = staticBlogPosts.slice(0, 4);
 
   // Compute dynamic categories and counts
   const categoriesWithCounts = useMemo(() => {
@@ -45,138 +26,82 @@ export const BlogSidebar = () => {
   };
 
   return (
-    <div className="space-y-8 relative">
-      {/* Search Widget */}
-      <div className="bg-stone-50/50 backdrop-blur-sm p-6 rounded-2xl border border-stone-100 shadow-sm">
-        <h3 className="font-display text-lg font-semibold mb-4 text-stone-900">Search Stories</h3>
-        <form onSubmit={handleSearch} className="relative">
+    <aside className="space-y-10" aria-label="Blog sidebar">
+      <form onSubmit={handleSearch} role="search">
+        <label htmlFor="blog-search" className="font-display text-xl font-semibold">
+          Search stories
+        </label>
+        <div className="relative mt-3">
           <input
-            type="text"
+            id="blog-search"
+            type="search"
             placeholder="Search..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-white border border-stone-200 rounded-xl pl-4 pr-10 py-3 text-sm focus:border-primary focus:outline-none transition-colors"
+            className={`${fieldClass} pr-12`}
           />
           <button
             type="submit"
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-primary transition-colors"
+            className="absolute right-1 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center text-muted hover:text-terracotta"
             aria-label="Submit search"
           >
-            <Search size={16} />
+            <Search size={18} aria-hidden="true" />
           </button>
-        </form>
-      </div>
+        </div>
+      </form>
 
-      {/* Dynamic Categories Widget */}
-      <div className="bg-stone-50/50 backdrop-blur-sm p-6 rounded-2xl border border-stone-100 shadow-sm">
-        <h3 className="font-display text-lg font-semibold mb-4 text-stone-900">Categories</h3>
-        <ul className="space-y-2.5 text-sm text-stone-600">
+      <nav aria-labelledby="blog-categories">
+        <h2 id="blog-categories" className="font-display text-xl font-semibold">
+          Categories
+        </h2>
+        <ul className="mt-3 divide-y divide-line border-y border-line">
           {categoriesWithCounts.map((category) => (
-            <li key={category.name} className="border-b border-stone-100/50 pb-2 last:border-0 last:pb-0">
+            <li key={category.name}>
               <Link
-                to={`/blog?search=${encodeURIComponent(category.name)}`}
-                className="flex justify-between items-center hover:text-primary transition-colors group"
+                to={`/blog?category=${encodeURIComponent(category.name)}`}
+                className="flex min-h-11 items-center justify-between py-2 hover:text-terracotta"
               >
-                <span className="group-hover:translate-x-1 transition-transform">{category.name}</span>
-                <span className="text-xs text-stone-450 bg-stone-100 px-2 py-0.5 rounded-full font-mono">
-                  ({category.count})
+                <span>{category.name}</span>
+                <span className="text-sm text-muted">{category.count}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <section aria-labelledby="recent-stories">
+        <h2 id="recent-stories" className="font-display text-xl font-semibold">
+          Recent stories
+        </h2>
+        <ul className="mt-4 space-y-4">
+          {recentPosts.map((post) => (
+            <li key={post.id}>
+              <Link to={getBlogPostUrl(post.slug, post.createdAt)} className="group flex gap-4">
+                <div className="h-16 w-16 shrink-0 overflow-hidden rounded-md bg-sand">
+                  <img loading="lazy" decoding="async" src={post.image} alt="" className="h-full w-full object-cover" />
+                </div>
+                <span className="min-w-0">
+                  <span className="line-clamp-2 font-semibold leading-snug group-hover:text-terracotta">{post.title}</span>
+                  <span className="mt-1 block text-sm text-muted">{post.date}</span>
                 </span>
               </Link>
             </li>
           ))}
         </ul>
-      </div>
+      </section>
 
-      {/* Recent Posts Widget */}
-      <div className="bg-stone-50/50 backdrop-blur-sm p-6 rounded-2xl border border-stone-100 shadow-sm">
-        <h3 className="font-display text-lg font-semibold mb-5 text-stone-900">Recent Stories</h3>
-        <div className="space-y-4">
-          {recentPosts.map((post) => (
-            <Link
-              key={post.id}
-              to={getBlogPostUrl(post.slug, post.createdAt)}
-              className="flex gap-4 group"
-            >
-              <div className="w-16 h-16 shrink-0 overflow-hidden rounded-xl border border-stone-100">
-                <img
-                  loading="lazy"
-                  decoding="async"
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              <div className="min-w-0 flex flex-col justify-center">
-                <h4 className="font-display text-sm font-semibold leading-snug text-stone-800 group-hover:text-primary transition-colors line-clamp-2">
-                  {post.title}
-                </h4>
-                <p className="text-[11px] text-stone-400 mt-1">{post.date}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* Sponsor a Student Callout */}
-      <div className="bg-stone-950 text-white p-8 text-center rounded-2xl border border-stone-850 relative overflow-hidden bg-wedding-texture">
-        <div className="relative z-10">
-          <span className="text-[9px] text-primary uppercase font-bold tracking-widest bg-primary/10 px-3 py-1 rounded-full mb-3 inline-block">
-            Support Our Mission
-          </span>
-          <h3 className="font-display text-xl mb-2 font-semibold">Sponsor a Student</h3>
-          <p className="text-stone-400 text-xs mb-6 leading-relaxed">
-            With just Rs 2,000, you can pay a poor student's school fees and help them study.
-          </p>
-          <Link to="/contact">
-            <Button variant="outline" className="w-full border-primary text-white hover:bg-primary hover:border-primary transition-all duration-300">
-              Sponsor Now
-            </Button>
-          </Link>
-        </div>
-      </div>
-
-      {/* Social Follow Widget */}
-      <div className="bg-stone-50/50 backdrop-blur-sm p-6 rounded-2xl border border-stone-100 shadow-sm">
-        <h3 className="font-display text-lg font-semibold mb-4 text-stone-900">Follow Us</h3>
-        <div className="flex gap-3">
-          <a
-            href="https://www.facebook.com/aaghazfoundation"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-9 h-9 bg-white border border-stone-250 flex items-center justify-center text-stone-600 hover:bg-primary hover:border-primary hover:text-white transition-all duration-300 rounded-full shadow-sm"
-            aria-label="Follow us on Facebook"
-          >
-            <Facebook size={16} />
-          </a>
-          <a
-            href="https://www.instagram.com/aaghazfoundation"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-9 h-9 bg-white border border-stone-250 flex items-center justify-center text-stone-600 hover:bg-primary hover:border-primary hover:text-white transition-all duration-300 rounded-full shadow-sm"
-            aria-label="Follow us on Instagram"
-          >
-            <Instagram size={16} />
-          </a>
-          <a
-            href="https://twitter.com/aaghazfoundation"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-9 h-9 bg-white border border-stone-250 flex items-center justify-center text-stone-600 hover:bg-primary hover:border-primary hover:text-white transition-all duration-300 rounded-full shadow-sm"
-            aria-label="Follow us on Twitter X"
-          >
-            <Twitter size={16} />
-          </a>
-          <a
-            href="https://www.youtube.com/@aaghazfoundation"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-9 h-9 bg-white border border-stone-250 flex items-center justify-center text-stone-600 hover:bg-primary hover:border-primary hover:text-white transition-all duration-300 rounded-full shadow-sm"
-            aria-label="Follow us on YouTube"
-          >
-            <Youtube size={16} />
-          </a>
-        </div>
-      </div>
-    </div>
+      <section aria-labelledby="sponsor-callout" className="rounded-md bg-ink p-6 text-cream">
+        <p className="text-sm font-semibold text-sand-light">Support Our Mission</p>
+        <h2 id="sponsor-callout" className="mt-2 font-display text-2xl font-semibold">
+          Sponsor a Student
+        </h2>
+        <p className="mt-2 text-cream/75">
+          With just Rs 2,000, you can pay a poor student's school fees and help them study.
+        </p>
+        <ButtonLink to="/contact" variant="inverse" className="mt-5 w-full">
+          Sponsor Now
+        </ButtonLink>
+      </section>
+    </aside>
   );
 };

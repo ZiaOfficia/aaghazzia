@@ -1,45 +1,42 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { X } from "lucide-react";
 import { SEO } from "../components/common/SEO";
-import { motion, AnimatePresence } from "framer-motion";
-import { X, Play, Image as ImageIcon } from "lucide-react";
 import { ContactSection } from "../components/sections/ContactSection";
+import { ServiceGalleryGrid } from "../components/services";
+import { PageHeader } from "../components/ui/PageHeader";
+import { Section } from "../components/ui/Section";
+import { SectionHeading } from "../components/ui/SectionHeading";
+
+// Placeholder YouTube ID used before real films were added. Films that still
+// use it are hidden. Replace `id` with the real YouTube video ID to show a film.
+const PLACEHOLDER_VIDEO_ID = "dQw4w9WgXcQ";
 
 // Aaghaz Foundation — featured films
 const videoGallery = [
   {
-    id: "dQw4w9WgXcQ",
+    id: PLACEHOLDER_VIDEO_ID,
     title: "20 Years of Aaghaz — A short film",
-    thumbnail:
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=1200&q=80",
-    videoLength: "3:42",
+    thumbnail: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    id: "dQw4w9WgXcQ",
+    id: PLACEHOLDER_VIDEO_ID,
     title: "Inside the LCGC, Lucknow",
-    thumbnail:
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80",
-    videoLength: "2:15",
+    thumbnail: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    id: "dQw4w9WgXcQ",
+    id: PLACEHOLDER_VIDEO_ID,
     title: "How a pre-scholarship survey works",
-    thumbnail:
-      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1200&q=80",
-    videoLength: "1:48",
+    thumbnail: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    id: "dQw4w9WgXcQ",
+    id: PLACEHOLDER_VIDEO_ID,
     title: "Rahmani 30 — Cohort highlights",
-    thumbnail:
-      "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1200&q=80",
-    videoLength: "2:30",
+    thumbnail: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    id: "dQw4w9WgXcQ",
+    id: PLACEHOLDER_VIDEO_ID,
     title: "Donor stories — A memorial scholarship",
-    thumbnail:
-      "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=1200&q=80",
-    videoLength: "1:55",
+    thumbnail: "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
@@ -65,253 +62,84 @@ const imageGallery = [
   "https://loremflickr.com/900/600/india,children/all?lock=2018",
 ];
 
+const films = videoGallery.filter((v) => v.id !== PLACEHOLDER_VIDEO_ID);
+
 export const GalleryPage = () => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    if (selectedVideo && !dialog.open) dialog.showModal();
+    if (!selectedVideo && dialog.open) dialog.close();
+  }, [selectedVideo]);
 
   return (
-    <div className="pt-[60px] md:pt-[50px] bg-white min-h-screen">
+    <>
       <SEO
         title="Photo Gallery — Aaghaz Foundation"
         description="Photographs from the field — Aaghaz Foundation's scholarship students, the LCGC learning centre in Lucknow, Rahmani 30 cohort and volunteer work across India."
       />
-      {/* Hero Section */}
-      {/* ------------------- IMAGE GALLERY SECTION ------------------- */}
 
-      {/* 1. Big Image Header for Images */}
-      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-stone-900 group">
-        <div className="absolute inset-0 opacity-60 group-hover:opacity-50 transition-opacity duration-700">
-          <img loading="lazy" decoding="async"
-            src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1920&q=80"
-            alt="Image Gallery Header"
-            className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
+      <PageHeader eyebrow="Gallery" title="Photo Gallery" intro="More than two decades of Aaghaz, in pictures." />
+
+      <Section aria-label="Photos" tone="cream" className="!pt-0">
+        <ServiceGalleryGrid images={imageGallery} title="Aaghaz Foundation" limit={imageGallery.length} />
+      </Section>
+
+      {films.length > 0 && (
+        <Section aria-labelledby="films-heading" tone="sand">
+          <SectionHeading
+            id="films-heading"
+            title="Films & Stories"
+            intro="Short videos about our students, volunteers, donors, and how Aaghaz works."
           />
-          <div className="absolute inset-0 bg-linear-to-t from-stone-900 via-stone-900/40 to-transparent" />
-        </div>
+          <ul className="mt-12 grid gap-10 md:grid-cols-2">
+            {films.map((film) => (
+              <li key={film.id + film.title}>
+                <button type="button" onClick={() => setSelectedVideo(film.id)} className="group block w-full text-left">
+                  <div className="aspect-video overflow-hidden rounded-md bg-cream">
+                    <img loading="lazy" src={film.thumbnail} alt="" className="h-full w-full object-cover" />
+                  </div>
+                  <span className="mt-4 block font-display text-xl font-semibold group-hover:text-terracotta">
+                    {film.title}
+                  </span>
+                  <span className="mt-1 block text-muted">A short video showing the difference your support makes.</span>
+                </button>
+              </li>
+            ))}
+          </ul>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative z-10 text-center text-white"
-        >
-          {/* <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
-            <ImageIcon size={16} className="text-primary-300" />
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary-100">
-              Photography
-            </span>
-          </div> */}
-          <h2 className="text-5xl md:text-7xl font-display uppercase tracking-widest text-shadow-lg">
-            Photo Gallery
-          </h2>
-          <p className="mt-4 text-xl font-light text-stone-200 max-w-2xl mx-auto px-6">
-            More than two decades of Aaghaz, in pictures.
-          </p>
-        </motion.div>
-      </section>
-
-      {/* Image Grid */}
-      <section className="py-20 px-4 md:px-12 bg-white">
-        <div className="max-w-8xl mx-auto">
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
-            {imageGallery.map((src, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: (index % 3) * 0.1, duration: 0.5 }}
-                className="break-inside-avoid relative group cursor-pointer overflow-hidden rounded-sm shadow-md hover:shadow-2xl transition-all duration-500"
-                onClick={() => setSelectedImage(src)}
-              >
-                <img
-                  src={src}
-                  alt={`Gallery ${index}`}
-                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[0.2] group-hover:grayscale-0"
-                  loading="lazy"
+          <dialog
+            ref={dialogRef}
+            onClose={() => setSelectedVideo(null)}
+            className="m-auto w-[92vw] max-w-5xl bg-transparent p-0 backdrop:bg-ink/90"
+          >
+            {selectedVideo && (
+              <div className="relative aspect-video">
+                <iframe
+                  className="h-full w-full rounded-md"
+                  src={`https://www.youtube.com/embed/${selectedVideo}?autoplay=1`}
+                  title="Aaghaz Foundation video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 will-change-[opacity]">
-                  <div className="p-4 bg-white/90 rounded-full border border-white/20 text-stone-900 transform scale-90 group-hover:scale-100 transition-transform duration-300">
-                    <ImageIcon size={28} strokeWidth={1.5} />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ------------------- VIDEO GALLERY SECTION ------------------- */}
-
-      {/* 2. Big Image Header for Videos */}
-      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden bg-stone-900 group border-t-8 border-primary/20">
-        <div className="absolute inset-0 opacity-60 group-hover:opacity-50 transition-opacity duration-700">
-          <img
-            loading="lazy"
-            decoding="async"
-            src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1920&q=80"
-            alt="Video gallery header — students at LCGC"
-            className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
-          />
-          <div className="absolute inset-0 bg-linear-to-t from-stone-900 via-stone-900/40 to-transparent" />
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative z-10 text-center text-white"
-        >
-          {/* <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
-            <Play
-              size={16}
-              className="text-secondary-300"
-              fill="currentColor"
-            />
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-secondary-100">
-              Cinematography
-            </span>
-          </div> */}
-          <h2 className="text-5xl md:text-7xl font-display uppercase tracking-widest text-shadow-lg">
-            Films &amp; Stories
-          </h2>
-          <p className="mt-4 text-xl font-light text-stone-200 max-w-2xl mx-auto px-6">
-            Short videos about our students, volunteers, donors, and how Aaghaz works.
-          </p>
-        </motion.div>
-      </section>
-
-      {/* Video Grid */}
-      <section className="py-20 px-4 md:px-12 bg-stone-100">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {videoGallery.map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className={`bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group ${
-                  index === 0 ? "md:col-span-2" : ""
-                }`}
-                onClick={() => setSelectedVideo(item.id)}
-              >
-                <div
-                  className={`relative overflow-hidden cursor-pointer ${
-                    index === 0
-                      ? "aspect-video md:aspect-[21/9]"
-                      : "aspect-video"
-                  }`}
+                <button
+                  type="button"
+                  onClick={() => setSelectedVideo(null)}
+                  aria-label="Close video"
+                  className="absolute -top-14 right-0 flex h-11 w-11 items-center justify-center rounded-md bg-ink text-cream"
                 >
-                  <img loading="lazy" decoding="async"
-                    src={item.thumbnail} // Placeholder thumbnail
-                    alt="Video Thumbnail"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center pl-2 shadow-2xl group-hover:scale-110 transition-transform duration-300 text-stone-900">
-                      <Play size={32} fill="currentColor" />
-                    </div>
-                  </div>
+                  <X size={22} aria-hidden="true" />
+                </button>
+              </div>
+            )}
+          </dialog>
+        </Section>
+      )}
 
-                  {/* Duration Badge (Mock) */}
-                  <div className="absolute bottom-4 right-4 bg-black/80 text-white text-xs px-2 py-1 rounded">
-                    {item.videoLength ||
-                      (index === 0 ? "Highlight Reel" : "4:15")}
-                  </div>
-                </div>
-                <div className="p-8">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-bold uppercase tracking-widest text-primary">
-                      Aaghaz Stories
-                    </span>
-                  </div>
-                  <h3
-                    className={`font-display mb-3 text-accent ${
-                      index === 0 ? "text-3xl" : "text-xl"
-                    }`}
-                  >
-                    {item.title || `Aaghaz Story ${index + 1}`}
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed max-w-2xl">
-                    A short video showing the difference your support makes.
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ------------------- MODALS ------------------- */}
-
-      {/* Image Modal */}
-      <AnimatePresence>
-        {selectedImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4"
-            onClick={() => setSelectedImage(null)}
-          >
-            <button
-              className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors"
-              onClick={() => setSelectedImage(null)}
-            >
-              <X size={40} />
-            </button>
-            <motion.img
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              src={selectedImage}
-              alt="Fullscreen"
-              className="max-w-full max-h-[90vh] object-contain rounded shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Video Modal */}
-      <AnimatePresence>
-        {selectedVideo && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4"
-            onClick={() => setSelectedVideo(null)}
-          >
-            <button
-              className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors"
-              onClick={() => setSelectedVideo(null)}
-            >
-              <X size={40} />
-            </button>
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              className="w-full max-w-5xl aspect-video bg-black rounded shadow-2xl overflow-hidden"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <iframe
-                width="100%"
-                height="100%"
-                src={`https://www.youtube.com/embed/${selectedVideo}?autoplay=1`}
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* ------------------- INQUIRY SECTION ------------------- */}
       <ContactSection />
-    </div>
+    </>
   );
 };

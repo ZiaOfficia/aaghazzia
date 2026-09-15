@@ -1,156 +1,81 @@
-import { motion, type Variants } from "framer-motion";
+import type { ReactNode } from "react";
 import { ContactSection } from "../components/sections/ContactSection";
 import { SEO } from "../components/common/SEO";
+import { PageHeader } from "../components/ui/PageHeader";
+import { Container } from "../components/ui/Container";
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-};
+const ssImg = (name: string) => `/images/suceessstories/${encodeURIComponent(name)}.jpeg`;
 
-const stagger: Variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-};
-
-const ssImg = (name: string) =>
-  `/images/suceessstories/${encodeURIComponent(name)}.jpeg`;
-
-const StoryImage = ({ name, alt, ratio }: { name: string; alt?: string; ratio?: string; wide?: boolean }) => (
-  <div className={`rounded-2xl overflow-hidden w-full shadow-md${ratio ? ` aspect-[${ratio}]` : ""}`}>
-    <img
-      src={ssImg(name)}
-      alt={alt ?? name}
-      loading="lazy"
-      decoding="async"
-      className={`w-full block${ratio ? " h-full object-cover" : " h-auto"}`}
-    />
+const StoryImage = ({ name, alt }: { name: string; alt?: string }) => (
+  <div className="aspect-[4/3] overflow-hidden rounded-md bg-sand">
+    <img src={ssImg(name)} alt={alt ?? name} loading="lazy" decoding="async" className="h-full w-full object-cover" />
   </div>
 );
 
-const SectionHeading = ({ title }: { title: string }) => (
-  <motion.div variants={fadeUp} className="mb-12">
-    <p className="text-[11px] uppercase tracking-[0.25em] font-semibold text-primary mb-3">Aaghaz Foundation</p>
-    <h2 className="text-3xl md:text-4xl font-display text-stone-900 tracking-tight leading-tight">{title}</h2>
-    <div className="mt-4 h-px bg-gradient-to-r from-primary/50 via-stone-200 to-transparent" />
-  </motion.div>
+const StorySection = ({ id, title, children }: { id: string; title: string; children: ReactNode }) => (
+  <section aria-labelledby={id} className="border-t border-line pt-12 md:pt-16">
+    <h2 id={id} className="font-display text-3xl font-semibold md:text-4xl">
+      {title}
+    </h2>
+    <div className="mt-10 space-y-10">{children}</div>
+  </section>
+);
+
+const StoryText = ({ children }: { children: ReactNode }) => (
+  <p className="text-lg leading-relaxed text-muted [&_strong]:font-semibold [&_strong]:text-ink">{children}</p>
 );
 
 const OthersList = ({ items }: { items: string[] }) => (
-  <motion.div variants={fadeUp} className="mt-8 bg-stone-50 rounded-2xl p-6 border border-stone-100 shadow-sm">
-    <p className="text-[11px] uppercase tracking-[0.25em] font-bold text-stone-400 mb-5">Also Supported</p>
-    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-      {items.map((item, i) => (
-        <li key={i} className="flex items-start gap-2.5 text-stone-600 text-sm leading-snug">
-          <svg className="mt-0.5 w-3.5 h-3.5 flex-shrink-0 text-primary" fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth={2.5}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l3.5 3.5L13 4.5" />
-          </svg>
-          {item}
-        </li>
+  <div className="rounded-md bg-sand p-6 md:p-8">
+    <h3 className="font-sans text-sm font-semibold">Also supported</h3>
+    <ul className="mt-4 grid list-disc gap-x-10 gap-y-2 pl-5 text-muted marker:text-terracotta sm:grid-cols-2">
+      {items.map((item) => (
+        <li key={item}>{item}</li>
       ))}
     </ul>
-  </motion.div>
-);
-
-const PersonCard = ({
-  description,
-  imageName,
-}: {
-  description: string;
-  imageName: string;
-}) => (
-  <motion.div variants={fadeUp} className="flex flex-col rounded-2xl overflow-hidden bg-white shadow-sm ring-1 ring-stone-100">
-    <StoryImage name={imageName} ratio="4/3" />
-    <div className="p-5">
-      <p className="text-stone-600 text-sm leading-relaxed">{description}</p>
-    </div>
-  </motion.div>
+  </div>
 );
 
 export const SuccessStoriesPage = () => {
   return (
-    <div className="bg-white min-h-screen pt-[60px] md:pt-[50px]">
+    <>
       <SEO
         title="Success Stories — Aaghaz Foundation"
         description="Doctors, lawyers, engineers, teachers and more — real lives transformed through the support of Aaghaz Foundation across India."
       />
 
-      {/* Hero */}
-      <section className="bg-stone-900 text-white py-48 px-6 text-center relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            loading="lazy"
-            decoding="async"
-            src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1920&q=80"
-            alt="Success Stories"
-            className="w-full h-full object-cover opacity-25"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-stone-900/60 via-stone-900/70 to-stone-900/90" />
-        </div>
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-[11px] uppercase tracking-[0.3em] font-semibold text-primary mb-5"
-          >
-            Success Stories
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-display mb-6 tracking-tight"
-          >
-            Stories from Aaghaz
-          </motion.h1>
-          <motion.div
-            initial={{ opacity: 0, scaleX: 0 }}
-            animate={{ opacity: 1, scaleX: 1 }}
-            transition={{ delay: 0.15, duration: 0.5 }}
-            className="mx-auto mb-6 w-16 h-px bg-primary/70 origin-center"
-          />
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-lg font-light text-stone-300 max-w-2xl mx-auto leading-relaxed"
-          >
-            Meet some of the students we have supported and read about the people and work behind Aaghaz.
-          </motion.p>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Success Stories"
+        title="Stories from Aaghaz"
+        intro="Meet some of the students we have supported and read about the people and work behind Aaghaz."
+      />
 
-      <div className="max-w-6xl mx-auto px-6 py-20 space-y-24">
-
-        {/* ── DOCTORS ── */}
-        <motion.section variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-          <SectionHeading title="Doctors Nurtured by Aaghaz" />
-
-          {/* Dr. Mominul Islam — 2 images + description */}
-          <motion.div variants={fadeUp} className="mb-10">
-            <div className="grid grid-cols-2 gap-4 mb-4">
-              <StoryImage name="His childhood home" ratio="4/3" />
-              <StoryImage name="Dr. Mominul Islam today" ratio="4/3" />
+      <Container className="space-y-16 pb-20 md:space-y-24 md:pb-28">
+        <StorySection id="doctors" title="Doctors Nurtured by Aaghaz">
+          <div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <StoryImage name="His childhood home" />
+              <StoryImage name="Dr. Mominul Islam today" />
             </div>
-            <p className="text-stone-600 text-base leading-loose">
-              This is the mud house where Dr. Mominul Islam grew up with his family. Today, he works as a child surgeon at Bengal Medical College.
-            </p>
-          </motion.div>
+            <div className="mt-6 max-w-3xl">
+              <StoryText>
+                This is the mud house where Dr. Mominul Islam grew up with his family. Today, he works as a child surgeon at Bengal Medical College.
+              </StoryText>
+            </div>
+          </div>
 
-          {/* Dr. Arbaaz + Dr. Ashraful side by side */}
-          <motion.div variants={stagger} className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-10">
-            <motion.div variants={fadeUp} className="flex flex-col gap-4">
-              <StoryImage name="Dr. Arbaaz" ratio="4/3" />
-              <p className="text-stone-600 text-base leading-loose">
+          <div className="grid items-start gap-10 md:grid-cols-2">
+            <div className="space-y-5">
+              <StoryImage name="Dr. Arbaaz" />
+              <StoryText>
                 Dr. Arbaaz grew up in Karnataka. His father was paralyzed, but Arbaaz studied hard and got rank 85 in the NEET exam. Today, he works as a doctor at AIIMS, Delhi.
-              </p>
-            </motion.div>
-            <motion.div variants={fadeUp} className="flex flex-col gap-4">
-              <StoryImage name="Dr Md Ashraful Haque" ratio="4/3" />
-              <p className="text-stone-600 text-base leading-loose">
-                Dr Md Ashraful Haque — Burdwan Medical College.
-              </p>
-            </motion.div>
-          </motion.div>
+              </StoryText>
+            </div>
+            <div className="space-y-5">
+              <StoryImage name="Dr Md Ashraful Haque" />
+              <StoryText>Dr Md Ashraful Haque — Burdwan Medical College.</StoryText>
+            </div>
+          </div>
 
           <OthersList
             items={[
@@ -162,19 +87,15 @@ export const SuccessStoriesPage = () => {
               "Dr Javed Khan (King George's Medical University, Lucknow)",
             ]}
           />
-        </motion.section>
+        </StorySection>
 
-        {/* ── PARAMEDICAL ACHIEVERS ── */}
-        <motion.section variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-          <SectionHeading title="Paramedical Achievers" />
-
-          <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-10">
-            <StoryImage name="Yasmeen Zahra" ratio="4/3" />
-            <p className="text-stone-600 text-base leading-loose">
+        <StorySection id="paramedical" title="Paramedical Achievers">
+          <div className="grid items-center gap-10 md:grid-cols-2">
+            <StoryImage name="Yasmeen Zahra" />
+            <StoryText>
               <strong>Yasmeen Zahra</strong> works as a nurse at Mayo Hospital in Lucknow. After her husband lost his job during COVID-19, she studied nursing to support her family.
-            </p>
-          </motion.div>
-
+            </StoryText>
+          </div>
           <OthersList
             items={[
               "Muzna Ayesha Ansari – Ophthalmologist",
@@ -186,19 +107,15 @@ export const SuccessStoriesPage = () => {
               "Simran – Nurse, Delhi",
             ]}
           />
-        </motion.section>
+        </StorySection>
 
-        {/* ── PROFESSORS, TEACHERS & PHD ── */}
-        <motion.section variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-          <SectionHeading title="Professors, Teachers and PhD Scholars" />
-
-          <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-10">
-            <StoryImage name="Anam Mehendi Abidi" ratio="4/3" />
-            <p className="text-stone-600 text-base leading-loose">
+        <StorySection id="teachers" title="Professors, Teachers and PhD Scholars">
+          <div className="grid items-center gap-10 md:grid-cols-2">
+            <StoryImage name="Anam Mehendi Abidi" />
+            <StoryText>
               <strong>Anam Mehendi Abidi</strong> is an Assistant Professor at Calcutta University. A local newspaper wrote about her when she finished her master's degree, where she thanked Aaghaz for paying her fees.
-            </p>
-          </motion.div>
-
+            </StoryText>
+          </div>
           <OthersList
             items={[
               "Wasma Asif – Ed-tech Master Teacher",
@@ -209,41 +126,35 @@ export const SuccessStoriesPage = () => {
               "Maherukh Arzoo – PhD Scholar, Jodhpur",
             ]}
           />
-        </motion.section>
+        </StorySection>
 
-        {/* ── LAWYERS ── */}
-        <motion.section variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-          <SectionHeading title="Powered by Aaghaz: From Scholars Turned Lawyers" />
+        <StorySection id="lawyers" title="Powered by Aaghaz: From Scholars Turned Lawyers">
+          <div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <StoryImage name="Yasmeen's Home (Volunteer Visit)" />
+              <StoryImage name="Advocate Yasmeen Parveen Today" />
+            </div>
+            <div className="mt-6 max-w-3xl">
+              <StoryText>
+                <strong>Yasmeen Parveen</strong> grew up in a slum in Noida. Her mother worked in houses and her father was very sick. She studied law in Mumbai with Aaghaz's help and is now training to become a lawyer. The left photo shows our volunteer visiting her Noida home to check details, and the right photo shows her today.
+              </StoryText>
+            </div>
+          </div>
 
-          {/* 2-image block: Yasmeen Parveen */}
-          <motion.div variants={stagger} className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-            <motion.div variants={fadeUp}>
-              <StoryImage name="Yasmeen's Home (Volunteer Visit)" ratio="4/3" />
-            </motion.div>
-            <motion.div variants={fadeUp}>
-              <StoryImage name="Advocate Yasmeen Parveen Today" ratio="4/3" />
-            </motion.div>
-          </motion.div>
-          <motion.div variants={fadeUp} className="mb-10">
-            <p className="text-stone-600 text-base leading-loose">
-              <strong>Yasmeen Parveen</strong> grew up in a slum in Noida. Her mother worked in houses and her father was very sick. She studied law in Mumbai with Aaghaz's help and is now training to become a lawyer. The left photo shows our volunteer visiting her Noida home to check details, and the right photo shows her today.
-            </p>
-          </motion.div>
-
-          <motion.div variants={stagger} className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-10">
-            <motion.div variants={fadeUp} className="flex flex-col gap-4">
-              <StoryImage name="Jahan Ara Shaikh" ratio="4/3" />
-              <p className="text-stone-600 text-base leading-loose">
+          <div className="grid items-start gap-10 md:grid-cols-2">
+            <div className="space-y-5">
+              <StoryImage name="Jahan Ara Shaikh" />
+              <StoryText>
                 <strong>Jahan Ara Shaikh</strong> lost both her parents as a child. She worked in a doctor's clinic during the day to survive. During COVID-19, she decided to study law, and Aaghaz paid her college fees. Today, she is a practicing lawyer at the Bombay High Court.
-              </p>
-            </motion.div>
-            <motion.div variants={fadeUp} className="flex flex-col gap-4">
-              <StoryImage name="Shumaila" ratio="4/3" />
-              <p className="text-stone-600 text-base leading-loose">
+              </StoryText>
+            </div>
+            <div className="space-y-5">
+              <StoryImage name="Shumaila" />
+              <StoryText>
                 <strong>Shumaila</strong> lost her father early. She grew up in Old Delhi and did small jobs to support her family. Later, she studied law with Aaghaz's support and is now a lawyer at the Delhi High Court.
-              </p>
-            </motion.div>
-          </motion.div>
+              </StoryText>
+            </div>
+          </div>
 
           <OthersList
             items={[
@@ -252,19 +163,15 @@ export const SuccessStoriesPage = () => {
               "Hamid Manzoor Wani – High Court of Jammu and Kashmir, Srinagar Wing",
             ]}
           />
-        </motion.section>
+        </StorySection>
 
-        {/* ── ENGINEERS ── */}
-        <motion.section variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-          <SectionHeading title="Engineers" />
-
-          <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-10">
-            <StoryImage name="Afree Javed" ratio="4/3" />
-            <p className="text-stone-600 text-base leading-loose">
+        <StorySection id="engineers" title="Engineers">
+          <div className="grid items-center gap-10 md:grid-cols-2">
+            <StoryImage name="Afree Javed" />
+            <StoryText>
               <strong>Afree Javed</strong> works as a Java Developer at Lowe's India. Aaghaz paid her fees, and she topped her college exams. Today, she earns over Rs 18 lakhs a year.
-            </p>
-          </motion.div>
-
+            </StoryText>
+          </div>
           <OthersList
             items={[
               "Mohd Shaheer – IIT Allahabad",
@@ -284,11 +191,9 @@ export const SuccessStoriesPage = () => {
               "Sufiyaan – CS Engineer",
             ]}
           />
-        </motion.section>
+        </StorySection>
 
-        {/* ── CA AND CS ── */}
-        <motion.section variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-          <SectionHeading title="CA and CS" />
+        <StorySection id="ca-cs" title="CA and CS">
           <OthersList
             items={[
               "Khurshid Alam – CA",
@@ -298,23 +203,19 @@ export const SuccessStoriesPage = () => {
               "Ayesha Fatima – Accountant",
             ]}
           />
-        </motion.section>
+        </StorySection>
 
-        {/* ── OTHERS ── */}
-        <motion.section variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-          <SectionHeading title="Others" />
-
-          <motion.div variants={stagger} className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-10">
-            <PersonCard
-              imageName="Yusuf"
-              description="Yusuf — Hotelier, ITC Hotel."
-            />
-            <PersonCard
-              imageName="Tasneem Fatima"
-              description="Tasneem Fatima — Journalist, Newslaundry."
-            />
-          </motion.div>
-
+        <StorySection id="others" title="Others">
+          <div className="grid items-start gap-10 md:grid-cols-2">
+            <div className="space-y-5">
+              <StoryImage name="Yusuf" />
+              <StoryText>Yusuf — Hotelier, ITC Hotel.</StoryText>
+            </div>
+            <div className="space-y-5">
+              <StoryImage name="Tasneem Fatima" />
+              <StoryText>Tasneem Fatima — Journalist, Newslaundry.</StoryText>
+            </div>
+          </div>
           <OthersList
             items={[
               "Buland Zehra – Food Technologist",
@@ -322,70 +223,50 @@ export const SuccessStoriesPage = () => {
               "Rachael Anthony – Journalist",
             ]}
           />
-        </motion.section>
+        </StorySection>
 
-        {/* ── Noida Case ── */}
-        <motion.section variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-          <SectionHeading title="Noida Case" />
+        <StorySection id="noida-case" title="Noida Case">
+          <div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <StoryImage name="AftabAlam1" alt="Aftab Alam's Family" />
+              <StoryImage name="AftabAlam2" alt="Mohd Shajid & Mohd Shahid" />
+            </div>
+            <div className="mt-6 max-w-3xl">
+              <StoryText>
+                After cab driver Aftab Alam passed away in 2020, Aaghaz paid the college fees for his sons, gave them tablets to study, and provided monthly help for home expenses.
+              </StoryText>
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-lg text-muted marker:text-terracotta">
+                <li>
+                  <strong className="font-semibold text-ink">Mohd Shajid</strong> — B.Tech, NSUT Delhi
+                </li>
+                <li>
+                  <strong className="font-semibold text-ink">Mohd Shahid</strong> — B.Sc (Hons) Botany, Dayal Singh College, Delhi University
+                </li>
+              </ul>
+            </div>
+          </div>
+        </StorySection>
 
-          <motion.div variants={stagger} className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
-            <motion.div variants={fadeUp}>
-              <StoryImage name="AftabAlam1" alt="Aftab Alam's Family" ratio="4/3" />
-            </motion.div>
-            <motion.div variants={fadeUp}>
-              <StoryImage name="AftabAlam2" alt="Mohd Shajid & Mohd Shahid" ratio="4/3" />
-            </motion.div>
-          </motion.div>
-
-          <motion.div variants={fadeUp}>
-            <p className="text-stone-600 text-base leading-loose">
-              After cab driver Aftab Alam passed away in 2020, Aaghaz paid the college fees for his sons, gave them tablets to study, and provided monthly help for home expenses.
-            </p>
-            <ul className="mt-4 space-y-2">
-              <li className="flex items-start gap-2 text-stone-700 text-sm">
-                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                <span><strong>Mohd Shajid</strong> — B.Tech, NSUT Delhi</span>
-              </li>
-              <li className="flex items-start gap-2 text-stone-700 text-sm">
-                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                <span><strong>Mohd Shahid</strong> — B.Sc (Hons) Botany, Dayal Singh College, Delhi University</span>
-              </li>
-            </ul>
-          </motion.div>
-        </motion.section>
-
-        {/* ── ALIGARH COACHING ── */}
-        <motion.section variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-          <SectionHeading title="Aligarh Coaching" />
-
-          <motion.div variants={fadeUp} className="bg-primary/5 border-l-4 border-primary rounded-r-xl p-6 md:p-8">
-            <p className="text-stone-600 text-base leading-loose">
+        <StorySection id="aligarh-coaching" title="Aligarh Coaching">
+          <div className="max-w-3xl space-y-4 border-l-2 border-terracotta pl-6">
+            <StoryText>
               Aaghaz paid for free coaching classes for 29 students preparing for the Class 11 admission exams at AMU. We are happy that <strong>13 of these students got selected</strong>.
-            </p>
-            <p className="text-stone-600 text-base leading-loose mt-4">
+            </StoryText>
+            <StoryText>
               The total cost was <strong>Rs 2.95 lakhs</strong>, which is about <strong>Rs 10,000 per student</strong> for the whole year. This was a great success, and these selected students can now apply for higher professional courses more easily.
-            </p>
-          </motion.div>
-        </motion.section>
+            </StoryText>
+          </div>
+        </StorySection>
 
-        {/* Closing note */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="text-center py-12 border-t border-stone-100"
-        >
-          <div className="mx-auto mb-5 w-10 h-px bg-primary/40" />
-          <p className="text-stone-400 text-base max-w-2xl mx-auto italic leading-relaxed font-light">
+        <figure className="border-t border-line pt-12 text-center">
+          <blockquote className="mx-auto max-w-2xl font-display text-xl italic leading-relaxed text-muted">
             "These are just a few of the many students Aaghaz has helped. Many have finished their studies and got good jobs, and others are still studying to achieve their dreams."
-          </p>
-          <p className="mt-4 text-[11px] uppercase tracking-[0.25em] text-stone-400 font-semibold">— Aaghaz Foundation</p>
-        </motion.div>
-
-      </div>
+          </blockquote>
+          <figcaption className="mt-4 text-sm text-muted">— Aaghaz Foundation</figcaption>
+        </figure>
+      </Container>
 
       <ContactSection />
-    </div>
+    </>
   );
 };

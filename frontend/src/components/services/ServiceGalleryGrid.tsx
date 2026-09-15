@@ -5,9 +5,11 @@ import { getOptimizedImage } from "../../utils/imageUtils";
 interface ServiceGalleryGridProps {
   images: string[];
   title?: string;
+  /** Maximum photos to show (default 6). */
+  limit?: number;
 }
 
-export const ServiceGalleryGrid = ({ images, title = "Programme" }: ServiceGalleryGridProps) => {
+export const ServiceGalleryGrid = ({ images, title = "Programme", limit = 6 }: ServiceGalleryGridProps) => {
   const [selected, setSelected] = useState<string | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -21,7 +23,7 @@ export const ServiceGalleryGrid = ({ images, title = "Programme" }: ServiceGalle
   return (
     <>
       <ul className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
-        {images.slice(0, 6).map((img, idx) => (
+        {images.slice(0, limit).map((img, idx) => (
           <li key={img}>
             <button
               type="button"
