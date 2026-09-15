@@ -1,21 +1,26 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { MapPin, Mail, Phone } from "lucide-react";
-import { Button } from "../common/Button";
 import { ctaContent } from "../../data/content";
 import { submitToGoogleSheets } from "../../utils/googleSheets";
 import { sendEmailNotification } from "../../utils/emailNotification";
+import { Section } from "../ui/Section";
+import { buttonStyles } from "../ui/buttonStyles";
+import { fieldClass, labelClass } from "../ui/formStyles";
 
-export const ContactSection = () => {
+export const ContactSection = ({ tone = "sand" }: { tone?: "cream" | "sand" }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phone: "",
-    weddingDate: "",
+    topic: "",
     message: "",
   });
+
+  const update = (field: keyof typeof formData) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
+      setFormData({ ...formData, [field]: e.target.value });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,7 +31,7 @@ export const ContactSection = () => {
         name: `${formData.firstName} ${formData.lastName}`.trim(),
         email: formData.email,
         phone: formData.phone,
-        eventDate: formData.weddingDate,
+        eventDate: formData.topic,
         message: formData.message,
         serviceName: "General Contact",
       });
@@ -35,7 +40,7 @@ export const ContactSection = () => {
         name: `${formData.firstName} ${formData.lastName}`.trim(),
         email: formData.email,
         phone: formData.phone,
-        eventDate: formData.weddingDate,
+        eventDate: formData.topic,
         message: formData.message,
         source: "Contact Section",
       });
@@ -50,120 +55,53 @@ export const ContactSection = () => {
   };
 
   return (
-    <section className="py-12 md:py-24 px-4 md:px-6 relative" id="contact">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
-        {/* Contact Info (Left) - Unchanged */}
-        <div>
-          <h2 className="text-5xl font-display mb-8">{ctaContent.heading}</h2>
-          <div className="text-lg text-gray-600 mb-12">
-            {ctaContent.text.map((p, i) => (
-              <p key={i} className="mb-4">
-                {p}
-              </p>
+    <Section id="contact" aria-labelledby="contact-heading" tone={tone}>
+      <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="lg:col-span-5">
+          <p className="mb-3 text-sm font-semibold text-terracotta">Contact Us</p>
+          <h2 id="contact-heading" className="font-display text-3xl font-semibold sm:text-4xl">
+            {ctaContent.heading}
+          </h2>
+          <div className="mt-6 space-y-4 text-lg text-muted">
+            {ctaContent.text.map((p) => (
+              <p key={p}>{p}</p>
             ))}
           </div>
-          <div className="space-y-6">
-            <div className="flex items-center space-x-4">
-              <span className="p-2 bg-primary/10 rounded-full text-primary">
-                <Phone size={20} />
-              </span>
-              <span className="text-sm uppercase tracking-widest text-gray-800">
-                +91 98765 43210
-              </span>
-            </div>
-            <div className="flex items-center space-x-4">
-              <span className="p-2 bg-primary/10 rounded-full text-primary">
-                <MapPin size={20} />
-              </span>
-              <span className="text-sm uppercase tracking-widest text-gray-800">
-                57 Ganesh Gunj, Lucknow, UP — 226018
-              </span>
-            </div>
-            <div className="flex items-center space-x-4">
-              <span className="p-2 bg-primary/10 rounded-full text-primary">
-                <Mail size={20} />
-              </span>
-              <span className="text-sm uppercase tracking-widest text-gray-800 break-all">
+          <address className="mt-8 space-y-2 not-italic">
+            <p>
+              <a href="tel:+919876543210" className="hover:text-terracotta">+91 98765 43210</a>
+            </p>
+            <p>57 Ganesh Gunj, Lucknow, UP — 226018</p>
+            <p>
+              <a href="mailto:aaghaz.foundation@gmail.com" className="break-all hover:text-terracotta">
                 aaghaz.foundation@gmail.com
-              </span>
-            </div>
-          </div>
+              </a>
+            </p>
+          </address>
         </div>
 
-        {/* Contact Form (Right) */}
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white p-10 border border-t-4 border-gray-100 border-t-primary shadow-lg space-y-6"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <form onSubmit={handleSubmit} className={`space-y-5 rounded-md p-6 sm:p-8 lg:col-span-7 ${tone === "sand" ? "bg-cream" : "bg-sand"}`}>
+          <div className="grid gap-5 sm:grid-cols-2">
             <div>
-              <label className="block text-[10px] uppercase tracking-widest font-bold mb-2 text-gray-500">
-                First Name
-              </label>
-              <input
-                type="text"
-                required
-                value={formData.firstName}
-                onChange={(e) =>
-                  setFormData({ ...formData, firstName: e.target.value })
-                }
-                className="w-full bg-stone-50 border border-gray-200 focus:outline-none focus:border-primary p-3"
-              />
+              <label htmlFor="contact-first-name" className={labelClass}>First name</label>
+              <input id="contact-first-name" type="text" required autoComplete="given-name" value={formData.firstName} onChange={update("firstName")} className={fieldClass} />
             </div>
             <div>
-              <label className="block text-[10px] uppercase tracking-widest font-bold mb-2 text-gray-500">
-                Last Name
-              </label>
-              <input
-                type="text"
-                value={formData.lastName}
-                onChange={(e) =>
-                  setFormData({ ...formData, lastName: e.target.value })
-                }
-                className="w-full bg-stone-50 border border-gray-200 focus:outline-none focus:border-primary p-3"
-              />
+              <label htmlFor="contact-last-name" className={labelClass}>Last name</label>
+              <input id="contact-last-name" type="text" autoComplete="family-name" value={formData.lastName} onChange={update("lastName")} className={fieldClass} />
             </div>
           </div>
           <div>
-            <label className="block text-[10px] uppercase tracking-widest font-bold mb-2 text-gray-500">
-              Email Address
-            </label>
-            <input
-              type="email"
-              required
-              value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
-              className="w-full bg-stone-50 border border-gray-200 focus:outline-none focus:border-primary p-3"
-            />
+            <label htmlFor="contact-email" className={labelClass}>Email address</label>
+            <input id="contact-email" type="email" required autoComplete="email" value={formData.email} onChange={update("email")} className={fieldClass} />
           </div>
           <div>
-            <label className="block text-[10px] uppercase tracking-widest font-bold mb-2 text-gray-500">
-              Phone Number
-            </label>
-            <input
-              type="tel"
-              required
-              value={formData.phone}
-              onChange={(e) =>
-                setFormData({ ...formData, phone: e.target.value })
-              }
-              className="w-full bg-stone-50 border border-gray-200 focus:outline-none focus:border-primary p-3"
-              placeholder="e.g. 9876543210"
-            />
+            <label htmlFor="contact-phone" className={labelClass}>Phone number</label>
+            <input id="contact-phone" type="tel" required autoComplete="tel" value={formData.phone} onChange={update("phone")} className={fieldClass} placeholder="e.g. 9876543210" />
           </div>
           <div>
-            <label className="block text-[10px] uppercase tracking-widest font-bold mb-2 text-gray-500">
-              I want to talk about
-            </label>
-            <select
-              value={formData.weddingDate}
-              onChange={(e) =>
-                setFormData({ ...formData, weddingDate: e.target.value })
-              }
-              className="w-full bg-stone-50 border border-gray-200 focus:outline-none focus:border-primary p-3 text-gray-700"
-            >
+            <label htmlFor="contact-topic" className={labelClass}>I want to talk about</label>
+            <select id="contact-topic" value={formData.topic} onChange={update("topic")} className={fieldClass}>
               <option value="">Select an option</option>
               <option value="donate">Making a donation</option>
               <option value="scholarship">Starting a scholarship</option>
@@ -174,27 +112,14 @@ export const ContactSection = () => {
             </select>
           </div>
           <div>
-            <label className="block text-[10px] uppercase tracking-widest font-bold mb-2 text-gray-500">
-              Your message
-            </label>
-            <textarea
-              rows={4}
-              value={formData.message}
-              onChange={(e) =>
-                setFormData({ ...formData, message: e.target.value })
-              }
-              className="w-full bg-stone-50 border border-gray-200 focus:outline-none focus:border-primary p-3 resize-none"
-              placeholder="Tell us how you'd like to get involved..."
-            ></textarea>
+            <label htmlFor="contact-message" className={labelClass}>Your message</label>
+            <textarea id="contact-message" rows={4} value={formData.message} onChange={update("message")} className={`${fieldClass} resize-y`} placeholder="Tell us how you'd like to get involved..." />
           </div>
-          <Button
-            type="submit"
-            className="w-full py-4 tracking-[0.2em]"
-          >
-            Send Message
-          </Button>
+          <button type="submit" className={buttonStyles("primary", "w-full sm:w-auto")}>
+            Send message
+          </button>
         </form>
       </div>
-    </section>
+    </Section>
   );
 };

@@ -1,235 +1,257 @@
-import { useState } from "react";
-import { Menu, X, ChevronDown, Heart } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { ChevronDown, Menu, X } from "lucide-react";
 import clsx from "clsx";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { Link, useLocation } from "react-router-dom";
-import { servicesData } from "../../data/servicesData";
+import { ButtonLink } from "../ui/ButtonLink";
+import { Container } from "../ui/Container";
+
+// The current logo is a white wordmark, so the header uses the dark ink
+// surface. When a dark version of the logo is available, switch LOGO_SRC and
+// set HEADER_ON_DARK to false for a light cream header.
+const LOGO_SRC = "/images/assets/aaghaz-logo.png";
+const HEADER_ON_DARK = true;
+
+const programmeLinks = [
+  { name: "Student Aid", path: "/services/student-aid" },
+  { name: "Scholarships", path: "/services/scholarships" },
+  { name: "Financial Assistance", path: "/services/financial-assistance" },
+  { name: "Computer Learning", path: "/services/computer-center" },
+  { name: "Community Learning", path: "/services/madarsa-initiative" },
+  { name: "Named & Memorial Scholarships", path: "/services/memorial-scholarship" },
+];
+
+const involvedLinks = [
+  { name: "Become a Donor", path: "/services/join-as-donor" },
+  { name: "Start a Scholarship", path: "/services/launch-scholarship" },
+  { name: "Become a Volunteer", path: "/services/become-volunteer" },
+];
+
+const navLinks = [
+  { name: "About", path: "/about" },
+  { name: "What We Do", path: "/services", hasDropdown: true },
+  { name: "Success Stories", path: "/success-stories" },
+  { name: "Gallery", path: "/gallery" },
+  { name: "News", path: "/blog" },
+  { name: "FAQ", path: "/faq" },
+];
 
 export const Navbar = () => {
-  const { scrollY } = useScroll();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isProgramsOpen, setIsProgramsOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLLIElement>(null);
   const location = useLocation();
 
-  // Smooth scroll interpolation
-  const backgroundColor = useTransform(scrollY, [0, 100], ["rgba(15, 15, 15, 1)", "rgba(15, 15, 15, 0.8)"]);
-  const backdropFilter = useTransform(scrollY, [0, 100], ["blur(0px)", "blur(16px)"]);
-  const paddingTop = useTransform(scrollY, [0, 100], ["1rem", "0.75rem"]);
-  const paddingBottom = useTransform(scrollY, [0, 100], ["1rem", "0.75rem"]);
-  const borderBottomColor = useTransform(scrollY, [0, 100], ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.1)"]);
+  // Close menus on navigation.
+  const [lastPath, setLastPath] = useState(location.pathname);
+  if (lastPath !== location.pathname) {
+    setLastPath(location.pathname);
+    setMobileOpen(false);
+    setDropdownOpen(false);
+  }
 
-  const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "What We Do", path: "/services", hasDropdown: true },
-    { name: "Gallery", path: "/gallery" },
-    { name: "Success Stories", path: "/success-stories" },
-    { name: "News", path: "/blog" },
-    { name: "FAQ", path: "/faq" },
-  ];
+  // Close the dropdown on outside click or Escape.
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setDropdownOpen(false);
+        setMobileOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onClick);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onClick);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, []);
+
+  // Prevent the page behind the mobile menu from scrolling.
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
+  const linkBase = HEADER_ON_DARK
+    ? "text-cream/85 hover:text-white"
+    : "text-ink/80 hover:text-ink";
+  const linkActive = HEADER_ON_DARK ? "text-white" : "text-ink";
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      style={{
-        backgroundColor,
-        backdropFilter,
-        WebkitBackdropFilter: backdropFilter, // For Safari support
-        paddingTop,
-        paddingBottom,
-        borderBottomColor,
-        borderBottomWidth: "1px",
-      }}
-      className="sticky top-0 z-50 shadow-lg"
+    <header
+      className={clsx(
+        "sticky top-0 z-50 border-b",
+        HEADER_ON_DARK ? "bg-ink border-ink-soft" : "bg-cream border-line",
+      )}
     >
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        {/* Logo */}
-        <motion.div
-          className="flex items-center"
-          whileHover={{ scale: 1.03 }}
-          transition={{ duration: 0.2 }}
-        >
-          <Link to="/" className="flex items-center">
-            <img
-              src="/images/assets/aaghaz-logo.png"
-              alt="Aaghaz Foundation — Educate, Empower"
-              className="h-12 md:h-14 w-auto object-contain"
-            />
-          </Link>
-        </motion.div>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-ink"
+      >
+        Skip to content
+      </a>
 
-        {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center space-x-8 text-xs font-bold uppercase tracking-widest text-white/85">
-          {navLinks.map((link) => (
-            <div
-              key={link.name}
-              className="relative group"
-              onMouseEnter={() => link.hasDropdown && setIsProgramsOpen(true)}
-              onMouseLeave={() => link.hasDropdown && setIsProgramsOpen(false)}
-            >
-              <Link
-                to={link.path}
-                className={clsx(
-                  "hover:text-secondary transition-colors duration-300 relative group flex items-center gap-1",
-                  location.pathname === link.path && "text-secondary",
-                )}
-              >
-                {link.name}
-                {link.hasDropdown && <ChevronDown size={14} />}
-                <motion.span
-                  className="absolute -bottom-1 left-0 h-0.5 bg-secondary"
-                  initial={{ width: "0%" }}
-                  whileHover={{ width: "100%" }}
-                  transition={{ duration: 0.3 }}
-                />
-              </Link>
+      <Container className="flex h-18 items-center justify-between gap-6 md:h-20">
+        <Link to="/" className="flex shrink-0 items-center" aria-label="Aaghaz Foundation — home">
+          <img src={LOGO_SRC} alt="Aaghaz Foundation" className="h-10 w-auto md:h-12" />
+        </Link>
 
-              {link.hasDropdown && (
-                <AnimatePresence>
-                  {isProgramsOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-72"
-                    >
-                      <div className="bg-accent border border-secondary/30 rounded-xl shadow-2xl overflow-hidden py-2">
-                        {servicesData.map((service) => (
+        {/* Desktop navigation */}
+        <nav aria-label="Main" className="hidden xl:block">
+          <ul className="flex items-center gap-7 text-[0.95rem] font-medium">
+            {navLinks.map((link) =>
+              link.hasDropdown ? (
+                <li
+                  key={link.name}
+                  ref={dropdownRef}
+                  className="relative"
+                  onMouseEnter={() => setDropdownOpen(true)}
+                  onMouseLeave={() => setDropdownOpen(false)}
+                >
+                  <button
+                    type="button"
+                    aria-expanded={dropdownOpen}
+                    aria-controls="programmes-menu"
+                    onClick={() => setDropdownOpen((o) => !o)}
+                    className={clsx(
+                      "flex min-h-11 items-center gap-1 transition-colors",
+                      location.pathname.startsWith("/services") ? linkActive : linkBase,
+                    )}
+                  >
+                    {link.name}
+                    <ChevronDown
+                      size={16}
+                      aria-hidden="true"
+                      className={clsx("transition-transform", dropdownOpen && "rotate-180")}
+                    />
+                  </button>
+
+                  {dropdownOpen && (
+                    <div id="programmes-menu" className="absolute left-1/2 top-full w-[34rem] -translate-x-1/2 pt-2">
+                      <div className="grid grid-cols-2 gap-8 rounded-md border border-line bg-white p-7 text-ink shadow-lg">
+                        <div>
+                          <p className="mb-3 text-sm font-semibold text-muted">Programmes</p>
+                          <ul className="space-y-1">
+                            {programmeLinks.map((item) => (
+                              <li key={item.path}>
+                                <Link to={item.path} className="block py-1.5 hover:text-terracotta">
+                                  {item.name}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="mb-3 text-sm font-semibold text-muted">Get involved</p>
+                          <ul className="space-y-1">
+                            {involvedLinks.map((item) => (
+                              <li key={item.path}>
+                                <Link to={item.path} className="block py-1.5 hover:text-terracotta">
+                                  {item.name}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
                           <Link
-                            key={service.id}
-                            to={`/services/${service.id}`}
-                            className="block px-6 py-3 text-[10px] text-white/80 hover:text-secondary hover:bg-primary/15 transition-colors font-bold uppercase tracking-widest"
+                            to="/services"
+                            className="mt-5 inline-block text-sm font-semibold text-terracotta underline underline-offset-4"
                           >
-                            {service.title}
+                            All of our work
                           </Link>
-                        ))}
+                        </div>
                       </div>
-                    </motion.div>
+                    </div>
                   )}
-                </AnimatePresence>
-              )}
-            </div>
-          ))}
-        </div>
+                </li>
+              ) : (
+                <li key={link.name}>
+                  <NavLink
+                    to={link.path}
+                    className={({ isActive }) =>
+                      clsx("flex min-h-11 items-center transition-colors", isActive ? linkActive : linkBase)
+                    }
+                  >
+                    {link.name}
+                  </NavLink>
+                </li>
+              ),
+            )}
+          </ul>
+        </nav>
 
-        {/* CTA */}
-        <div className="hidden lg:flex items-center gap-3">
-          <Link
-            to="/contact"
-            className="text-xs uppercase tracking-widest font-bold text-white/85 hover:text-secondary transition-colors"
-          >
+        <div className="hidden items-center gap-5 xl:flex">
+          <Link to="/services/become-volunteer" className={clsx("font-medium transition-colors", linkBase)}>
             Volunteer
           </Link>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-6 py-3 text-xs uppercase tracking-widest font-bold transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-tl-2xl rounded-br-2xl shadow-md hover:shadow-lg"
-          >
-            <Heart size={14} fill="currentColor" />
-            Donate
-          </Link>
+          <ButtonLink to="/services/join-as-donor">Support a Student</ButtonLink>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile toggle */}
         <button
-          className="lg:hidden text-white"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
+          type="button"
+          className={clsx(
+            "flex h-11 w-11 items-center justify-center rounded-md xl:hidden",
+            HEADER_ON_DARK ? "text-cream" : "text-ink",
+          )}
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          onClick={() => setMobileOpen((o) => !o)}
         >
-          {isMobileMenuOpen ? <X /> : <Menu />}
+          {mobileOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
-      </div>
+      </Container>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "100vh" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="lg:hidden absolute top-full left-0 w-full bg-accent border-t border-primary/30 overflow-y-auto shadow-lg"
-            style={{ maxHeight: "calc(100vh - 80px)" }}
-          >
-            <div className="flex flex-col space-y-4 p-6 text-sm font-medium uppercase tracking-widest text-white/90 pb-20">
-              {navLinks.map((link, i) => (
-                <div key={link.name}>
-                  <Link
-                    to={link.path}
-                    className="hover:text-secondary transition-colors flex justify-between items-center py-2"
-                    onClick={(e) => {
-                      if (link.hasDropdown) {
-                        e.preventDefault();
-                        setIsProgramsOpen(!isProgramsOpen);
-                      } else {
-                        setIsMobileMenuOpen(false);
-                      }
-                    }}
-                  >
-                    <motion.span
-                      initial={{ x: -20, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ delay: i * 0.05 }}
-                    >
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div
+          id="mobile-menu"
+          className="fixed inset-x-0 bottom-0 top-18 overflow-y-auto bg-cream text-ink md:top-20 xl:hidden"
+        >
+          <Container className="py-8">
+            <nav aria-label="Mobile">
+              <ul className="divide-y divide-line border-y border-line text-lg">
+                <li>
+                  <Link to="/" className="block py-4">Home</Link>
+                </li>
+                {navLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link to={link.path} className="block py-4">
                       {link.name}
-                    </motion.span>
+                    </Link>
                     {link.hasDropdown && (
-                      <ChevronDown
-                        size={14}
-                        className={clsx(
-                          "transition-transform",
-                          isProgramsOpen && "rotate-180",
-                        )}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          setIsProgramsOpen(!isProgramsOpen);
-                        }}
-                      />
+                      <ul className="-mt-1 mb-4 grid gap-1 pl-4 text-base text-muted">
+                        {[...programmeLinks, ...involvedLinks].map((item) => (
+                          <li key={item.path}>
+                            <Link to={item.path} className="block py-2 hover:text-terracotta">
+                              {item.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
                     )}
-                  </Link>
-
-                  {link.hasDropdown && isProgramsOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="bg-primary/10 rounded-lg overflow-hidden ml-4 mt-2"
-                    >
-                      {servicesData.map((service) => (
-                        <Link
-                          key={service.id}
-                          to={`/services/${service.id}`}
-                          className="block px-4 py-3 text-xs text-white/80 border-b border-white/10 last:border-none"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          {service.title}
-                        </Link>
-                      ))}
-                    </motion.div>
-                  )}
-                </div>
-              ))}
-              <Link
-                to="/contact"
-                className="bg-primary text-white px-6 py-3 text-center text-xs font-bold uppercase tracking-widest mt-4 block rounded-tl-2xl rounded-br-2xl"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Donate Now
-              </Link>
-              <Link
-                to="/contact"
-                className="border-2 border-secondary text-secondary px-6 py-3 text-center text-xs font-bold uppercase tracking-widest block rounded-tl-2xl rounded-br-2xl"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Volunteer With Us
-              </Link>
+                  </li>
+                ))}
+                <li>
+                  <Link to="/contact" className="block py-4">Contact</Link>
+                </li>
+              </ul>
+            </nav>
+            <div className="mt-8 grid gap-3">
+              <ButtonLink to="/services/join-as-donor">Support a Student</ButtonLink>
+              <ButtonLink to="/services/become-volunteer" variant="secondary">
+                Volunteer Your Time
+              </ButtonLink>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+          </Container>
+        </div>
+      )}
+    </header>
   );
 };

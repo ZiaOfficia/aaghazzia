@@ -1,557 +1,219 @@
-import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import {
-  GraduationCap,
-  HandCoins,
-  Heart,
-  ArrowRight,
-  ChevronRight,
-  Users,
-  Award,
-  Gift,
-  Sparkles,
-} from "lucide-react";
 import { SEO } from "../components/common/SEO";
 import NewsletterSection from "../components/sections/NewsletterSection";
-import { useState } from "react";
+import { ServicesGrid } from "../components/sections/ServicesGrid";
+import { FAQList } from "../components/sections/FAQSection";
+import { whatWeDoContent } from "../data/content";
+import { photos } from "../data/imageAssets";
+import { PageHeader } from "../components/ui/PageHeader";
+import { Section } from "../components/ui/Section";
+import { SectionHeading } from "../components/ui/SectionHeading";
+import { ButtonLink } from "../components/ui/ButtonLink";
+
+const faqs = [
+  {
+    question: "How does Aaghaz decide who gets help?",
+    answer:
+      "Every student who asks for help is visited by our volunteers at home. We only help students who really need it. We do not approve cases without checking in person.",
+  },
+  {
+    question: "Are donations tax-deductible in India?",
+    answer:
+      "Eligible donations may qualify for deduction under Section 80G of the Income-tax Act, subject to applicable rules. Aaghaz issues receipts for eligible donations.",
+  },
+  {
+    question: "Can I direct my donation to a specific programme?",
+    answer:
+      "Yes. You can choose to support Student Aid or a memorial scholarship. We will use your donation only for that program and send you updates.",
+  },
+  {
+    question: "How do I become a volunteer?",
+    answer:
+      "Go to our Become a Volunteer page and sign up. A team member will call you within a few days to guide you and assign your first home visit with an experienced volunteer.",
+  },
+  {
+    question: "How do I apply for student aid for myself or my child?",
+    answer:
+      "Fill the application form on our website. We help pay fees, books, uniforms, and hostel costs for poor families. Our volunteers will call you to visit your home.",
+  },
+];
+
+const programs = [
+  {
+    id: "student-aid",
+    title: "Student Aid",
+    description:
+      "We help eligible students with school and college fees, examination costs, books, uniforms and other essential educational expenses. Every application is verified before assistance is approved.",
+    features: [
+      "School and exam fees",
+      "College and university fees",
+      "Textbooks, notebooks, and uniforms",
+      "Hostel rent and food help",
+    ],
+    image: photos.boyStudying,
+  },
+  {
+    id: "scholarships",
+    title: "Scholarships",
+    description:
+      "Scholarships funded by donors to help students finish their studies. Every student is checked in person, and donors get a progress report every year.",
+    features: [
+      "Scholarships in memory of loved ones",
+      "General scholarship pool",
+      "Company sponsored student groups",
+      "Special awards for girl students",
+    ],
+    image: photos.youngWomanStudent,
+  },
+  {
+    id: "financial-assistance",
+    title: "Financial Assistance",
+    description:
+      "Quick financial help for families facing sudden problems. We give one-time or monthly fee support to keep kids in school.",
+    features: [
+      "Help during sudden fee deadlines",
+      "Support if the earning parent passes away",
+      "Help when family medical bills are high",
+      "Monthly fee support",
+    ],
+    image: photos.familyPortrait,
+  },
+  {
+    id: "become-volunteer",
+    title: "Become a Volunteer",
+    description:
+      "Aaghaz runs because of volunteers. If you have two free hours a week, you can help a child study. We need volunteers in cities and towns across India.",
+    features: [
+      "In-person student home visits",
+      "Online teaching and guiding",
+      "Help with writing and photos",
+      "Organizing local fundraising",
+    ],
+    image: photos.volunteersWithChildren,
+  },
+  {
+    id: "join-as-donor",
+    title: "Join us as Donor",
+    description:
+      "Register as an Aaghaz donor and choose how you would like to contribute. You can make a one-time contribution, give regularly or support a verified student directly through our donor platform.",
+    features: [
+      "One-time or monthly donations",
+      "Sponsor a child's yearly fees",
+      "80G tax benefit receipts",
+      "Yearly progress reports",
+    ],
+    image: photos.donorsGroup,
+  },
+  {
+    id: "launch-scholarship",
+    title: "Launch Scholarship",
+    description:
+      "Start a scholarship in the name of a parent, teacher, or friend to honor their memory. You choose the rules, and we send you yearly reports.",
+    features: [
+      "Scholarships for a single year",
+      "Three-year college fee support",
+      "Ongoing scholarships every year",
+      "Choose who to help (like girls only)",
+    ],
+    image: photos.memorialPlaque,
+  },
+];
 
 export const ServicesPage = () => {
-  const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
-
-  const faqs = [
-    {
-      question: "How does Aaghaz decide who gets help?",
-      answer:
-        "Every student who asks for help is visited by our volunteers at home. We only help students who really need it. We do not approve cases without checking in person.",
-    },
-    {
-      question: "Are donations tax-exempt?",
-      answer:
-        "Yes. Aaghaz is a registered charity. Donors in India get tax benefits under Section 80G. We send donation receipts within 7 days.",
-    },
-    {
-      question: "Can I direct my donation to a specific programme?",
-      answer:
-        "Yes. You can choose to support Student Aid or a memorial scholarship. We will use your donation only for that program and send you updates.",
-    },
-    {
-      question: "How do I become a volunteer?",
-      answer:
-        "Go to our Become a Volunteer page and sign up. A team member will call you within a few days to guide you and assign your first home visit with an experienced volunteer.",
-    },
-    {
-      question: "How do I apply for student aid for myself or my child?",
-      answer:
-        "Fill the application form on our website. We help pay fees, books, uniforms, and hostel costs for poor families. Our volunteers will call you to visit your home.",
-    },
-  ];
-
-  const programs = [
-    {
-      id: "student-aid",
-      icon: <GraduationCap className="w-8 h-8 text-primary" />,
-      title: "Student Aid",
-      description:
-        "Help with fees, books, exam fees, and uniforms for school and college students from poor families.",
-      features: [
-        "School and exam fees",
-        "College and university fees",
-        "Textbooks, notebooks, and uniforms",
-        "Hostel rent and food help",
-      ],
-      image:
-        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80",
-    },
-    {
-      id: "scholarships",
-      icon: <Award className="w-8 h-8 text-primary" />,
-      title: "Scholarships",
-      description:
-        "Scholarships funded by donors to help students finish their studies. Every student is checked in person, and donors get a progress report every year.",
-      features: [
-        "Scholarships in memory of loved ones",
-        "General scholarship pool",
-        "Company sponsored student groups",
-        "Special awards for girl students",
-      ],
-      image:
-        "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=1600&q=80",
-    },
-    {
-      id: "financial-assistance",
-      icon: <HandCoins className="w-8 h-8 text-primary" />,
-      title: "Financial Assistance",
-      description:
-        "Quick financial help for families facing sudden problems. We give one-time or monthly fee support to keep kids in school.",
-      features: [
-        "Help during sudden fee deadlines",
-        "Support if the earning parent passes away",
-        "Help when family medical bills are high",
-        "Monthly fee support",
-      ],
-      image:
-        "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1600&q=80",
-    },
-    {
-      id: "become-volunteer",
-      icon: <Users className="w-8 h-8 text-primary" />,
-      title: "Become a Volunteer",
-      description:
-        "Aaghaz runs because of volunteers. If you have two free hours a week, you can help a child study. We need volunteers in cities and towns across India.",
-      features: [
-        "In-person student home visits",
-        "Online teaching and guiding",
-        "Help with writing and photos",
-        "Organizing local fundraising",
-      ],
-      image:
-        "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1600&q=80",
-    },
-    {
-      id: "join-as-donor",
-      icon: <Heart className="w-8 h-8 text-primary" />,
-      title: "Join us as Donor",
-      description:
-        "Register to join our donor base. We will call you to discuss how you can help. 100% of your donation is spent on paying student fees.",
-      features: [
-        "One-time or monthly donations",
-        "Sponsor a child's yearly fees",
-        "80G tax benefit receipts",
-        "Yearly progress reports",
-      ],
-      image:
-        "https://images.unsplash.com/photo-1488998427799-e3362cec87c3?auto=format&fit=crop&w=1600&q=80",
-    },
-    {
-      id: "launch-scholarship",
-      icon: <Gift className="w-8 h-8 text-primary" />,
-      title: "Launch Scholarship",
-      description:
-        "Start a scholarship in the name of a parent, teacher, or friend to honor their memory. You choose the rules, and we send you yearly reports.",
-      features: [
-        "Scholarships for a single year",
-        "Three-year college fee support",
-        "Ongoing scholarships every year",
-        "Choose who to help (like girls only)",
-      ],
-      image:
-        "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=1600&q=80",
-    },
-  ];
-
-  const toggleAccordion = (index: number) => {
-    setActiveAccordion(activeAccordion === index ? null : index);
-  };
-
   return (
-    <div className="pt-[60px] md:pt-[50px]">
+    <>
       <SEO
         title="What We Do — Aaghaz Foundation Programs"
         description="Explore Aaghaz Foundation's programs — Student Aid, Scholarships, Financial Assistance, and ways for you to donate or volunteer."
       />
-      {/* Hero Section */}
-      <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            loading="lazy"
-            decoding="async"
-            src="https://images.unsplash.com/photo-1497486751825-1233686d5d85?auto=format&fit=crop&w=1920&q=80"
-            alt="Children studying — Aaghaz Foundation"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-accent/60" />
-        </div>
-        <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-block text-secondary text-xs md:text-sm font-bold uppercase tracking-[0.3em] mb-4"
-          >
-            What We Do
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-display mb-6"
-          >
-            Programs that help a child study and succeed
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="text-lg md:text-xl text-white/95 font-light max-w-2xl mx-auto leading-relaxed"
-          >
-            Checked scholarships, free coaching centers, and a volunteer network that works honestly.
-          </motion.p>
-        </div>
-      </section>
 
-      {/* Intro Text */}
-      <section className="py-24 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-display text-accent mb-8">
-            One foundation. Many ways to help.
-          </h2>
-          <p className="text-gray-600 leading-relaxed mb-12">
-            Whether you are a student looking for help, a donor wanting to help a child,
-            a volunteer with two hours a week, or a company looking to partner — there
-            is a way to join. Look at our programs below.
-          </p>
-          <div className="w-24 h-px bg-secondary mx-auto" />
-        </div>
-      </section>
+      <PageHeader eyebrow={whatWeDoContent.label} title={whatWeDoContent.heading} intro={whatWeDoContent.intro} />
 
-      {/* What We Do - Comprehensive Overview */}
-      <section className="py-24 px-6 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5">
-        <div className="max-w-7xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full border border-primary/20 mb-8">
-              <span className="w-3 h-3 bg-secondary rounded-full animate-pulse"></span>
-              <span className="text-primary text-sm font-bold uppercase tracking-widest">What We Do</span>
-              <span className="w-3 h-3 bg-secondary rounded-full animate-pulse"></span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-display text-accent mb-6 leading-tight">
-              Programs that help a child study and succeed
-            </h2>
-            <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
-              Aaghaz Foundation helps kids study. From school fee aid to scholarships in memory of loved ones, we make sure no bright child stops studying because of money.
-            </p>
-          </div>
+      {/* The five programmes */}
+      <ServicesGrid withHeading={false} />
 
-          {/* Key Statistics */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="bg-white rounded-2xl p-8 text-center shadow-lg border border-primary/10"
-            >
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="w-8 h-8 text-primary" />
-              </div>
-              <div className="text-3xl font-display font-bold text-primary mb-2">80+</div>
-              <div className="text-sm text-gray-600 uppercase tracking-widest font-bold">Memorial Scholarships</div>
-              <div className="text-xs text-gray-500 mt-1">Across India</div>
-            </motion.div>
+      {/* All programmes and ways to help */}
+      <Section aria-labelledby="ways-to-help" tone="sand">
+        <SectionHeading
+          id="ways-to-help"
+          title="One foundation. Many ways to help."
+          intro="Whether you are a student looking for help, a donor wanting to help a child, a volunteer with two hours a week, or a company looking to partner — there is a way to join. Look at our programs below."
+        />
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-white rounded-2xl p-8 text-center shadow-lg border border-primary/10"
-            >
-              <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Heart className="w-8 h-8 text-secondary" />
-              </div>
-              <div className="text-3xl font-display font-bold text-secondary mb-2">Rs 1 Crore</div>
-              <div className="text-sm text-gray-600 uppercase tracking-widest font-bold">Annual Disbursement</div>
-              <div className="text-xs text-gray-500 mt-1">For Education</div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-white rounded-2xl p-8 text-center shadow-lg border border-primary/10"
-            >
-              <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-accent" />
-              </div>
-              <div className="text-3xl font-display font-bold text-accent mb-2">1000+</div>
-              <div className="text-sm text-gray-600 uppercase tracking-widest font-bold">Students Supported</div>
-              <div className="text-xs text-gray-500 mt-1">Annually</div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-white rounded-2xl p-8 text-center shadow-lg border border-primary/10"
-            >
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <GraduationCap className="w-8 h-8 text-primary" />
-              </div>
-              <div className="text-3xl font-display font-bold text-primary mb-2">6</div>
-              <div className="text-sm text-gray-600 uppercase tracking-widest font-bold">Program Categories</div>
-              <div className="text-xs text-gray-500 mt-1">Comprehensive Support</div>
-            </motion.div>
-          </div>
-
-          {/* How We Help */}
-          <div className="mb-20">
-            <h3 className="text-2xl md:text-3xl font-display text-accent text-center mb-12">
-              How We Help
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="bg-white rounded-xl p-6 shadow-md border border-primary/10"
-              >
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <GraduationCap className="w-6 h-6 text-primary" />
-                </div>
-                <h4 className="font-display text-lg text-accent mb-3">Student Aid</h4>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Help with school and college fees for kids from poor families. Covers fees, books, uniforms, and hostel.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="bg-white rounded-xl p-6 shadow-md border border-primary/10"
-              >
-                <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Award className="w-6 h-6 text-secondary" />
-                </div>
-                <h4 className="font-display text-lg text-accent mb-3">Scholarships</h4>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Yearly scholarships for clever students across India, given after checking their homes in person.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="bg-white rounded-xl p-6 shadow-md border border-primary/10"
-              >
-                <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-                  <HandCoins className="w-6 h-6 text-accent" />
-                </div>
-                <h4 className="font-display text-lg text-accent mb-3">Financial Assistance</h4>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Quick help for families facing sudden problems, keeping children in school with one-time or ongoing fee support.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="bg-white rounded-xl p-6 shadow-md border border-primary/10"
-              >
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Users className="w-6 h-6 text-primary" />
-                </div>
-                <h4 className="font-display text-lg text-accent mb-3">Volunteer Network</h4>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  A group run by volunteers who check details and guide students. Join our volunteer network in India.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="bg-white rounded-xl p-6 shadow-md border border-primary/10"
-              >
-                <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Heart className="w-6 h-6 text-secondary" />
-                </div>
-                <h4 className="font-display text-lg text-accent mb-3">Donor Partnerships</h4>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Join our donor community to sponsor a child or help a program. 100% of your donation is used for student fees.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                className="bg-white rounded-xl p-6 shadow-md border border-primary/10"
-              >
-                <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-                  <Gift className="w-6 h-6 text-accent" />
-                </div>
-                <h4 className="font-display text-lg text-accent mb-3">Launch Scholarships</h4>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Start a scholarship in memory of a loved one. You choose the rules, and we send you yearly updates.
-                </p>
-              </motion.div>
-            </div>
-          </div>
-
-          {/* Memorial Scholarship Spotlight */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border border-primary/10 text-center"
-          >
-            <div className="inline-flex items-center gap-3 bg-primary/10 px-4 py-2 rounded-full mb-6">
-              <Sparkles size={14} className="text-secondary" />
-              <span className="text-sm font-bold uppercase tracking-widest text-primary">Featured Program</span>
-              <Sparkles size={14} className="text-secondary" />
-            </div>
-            <h3 className="text-2xl md:text-3xl font-display text-accent mb-4">
-              Memorial Scholarships
-            </h3>
-            <p className="text-gray-700 leading-relaxed mb-6 max-w-3xl mx-auto">
-              Aaghaz Foundation runs more than 80 scholarships in memory of loved ones across India. We give nearly Rs 1 crore every year to help hundreds of poor students and orphans finish their studies.
-            </p>
-            <Link
-              to="/services/memorial-scholarship"
-              className="inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white px-8 py-4 text-sm uppercase tracking-widest font-bold rounded-tl-2xl rounded-br-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-0.5"
-            >
-              Find out more about Memorial Scholarships
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Programs Grid */}
-      <section className="py-12 px-6 bg-stone-50">
-        <div className="max-w-7xl mx-auto space-y-32">
+        <div className="mt-16 space-y-16 md:space-y-24">
           {programs.map((program, index) => (
-            <motion.div
+            <article
               key={program.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
-              className={`flex flex-col lg:flex-row gap-12 lg:gap-24 items-center ${
-                index % 2 === 1 ? "lg:flex-row-reverse" : ""
-              }`}
+              aria-labelledby={`program-${program.id}`}
+              className="grid items-center gap-8 md:grid-cols-2 md:gap-14"
             >
-              {/* Image Side */}
-              <div className="w-full lg:w-1/2 relative group">
-                <div className="absolute inset-0 bg-primary transform translate-x-4 translate-y-4 transition-transform duration-500 group-hover:translate-x-6 group-hover:translate-y-6" />
-                <div className="relative overflow-hidden aspect-[5/6] lg:aspect-[4/5]">
-                  <img
-                    loading="lazy"
-                    decoding="async"
-                    src={program.image}
-                    alt={program.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                </div>
+              <div className={`aspect-[4/3] overflow-hidden rounded-md bg-cream ${index % 2 === 1 ? "md:order-2" : ""}`}>
+                <img loading="lazy" decoding="async" src={program.image} alt="" className="h-full w-full object-cover" />
               </div>
-
-              {/* Content Side */}
-              <div className="w-full lg:w-1/2 text-center lg:text-left">
-                <div className="flex justify-center lg:justify-start mb-6">
-                  <div className="p-4 bg-white border border-primary/20 rounded-full shadow-sm">
-                    {program.icon}
-                  </div>
-                </div>
-                <h3 className="text-3xl md:text-4xl font-display text-accent mb-6">
+              <div>
+                <h3 id={`program-${program.id}`} className="font-display text-3xl font-semibold">
                   {program.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed mb-8">
-                  {program.description}
-                </p>
-                <div className="bg-white p-8 border border-primary/10 shadow-sm relative">
-                  <h4 className="font-display text-lg mb-4 text-accent">
-                    What we cover
-                  </h4>
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-6 text-left">
-                    {program.features.map((feature, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-start text-sm text-gray-600"
-                      >
-                        <span className="w-1.5 h-1.5 bg-secondary rounded-full mt-2 mr-3 flex-shrink-0" />
-                        <span dangerouslySetInnerHTML={{ __html: feature }} />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="mt-8">
-                  <Link
-                    to={`/services/${program.id}`}
-                    className="inline-flex items-center text-primary uppercase text-xs font-bold tracking-widest hover:text-accent transition-colors"
-                  >
-                    Learn more about {program.title}{" "}
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Link>
-                </div>
+                <p className="mt-4 text-lg text-muted">{program.description}</p>
+                <h4 className="mt-6 font-sans text-sm font-semibold">What we cover</h4>
+                <ul className="mt-3 grid list-disc gap-x-8 gap-y-1 pl-5 text-muted marker:text-terracotta sm:grid-cols-2">
+                  {program.features.map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
+                <Link
+                  to={`/services/${program.id}`}
+                  className="mt-6 inline-block font-semibold text-terracotta underline decoration-terracotta/30 underline-offset-4 hover:decoration-terracotta"
+                >
+                  Learn more about {program.title}
+                </Link>
               </div>
-            </motion.div>
+            </article>
           ))}
         </div>
-      </section>
+      </Section>
 
-      {/* FAQ Section */}
-      <section className="py-32 px-6 bg-white text-stone-800">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-display mb-6 text-accent">
-              FAQs
-            </h2>
-            <p className="text-gray-700 text-xl font-bold">
-              Common questions about our programs
-            </p>
-            <p className="text-gray-500 font-light text-sm mt-2 max-w-2xl mx-auto">
-              Here are answers to the questions donors, volunteers, and parents ask us most often. If you have another question, email us at{" "}
-              <a
-                href="mailto:aaghaz.foundation@gmail.com"
-                className="text-primary hover:underline"
-              >
-                aaghaz.foundation@gmail.com
-              </a>
-              .
-            </p>
+      {/* Memorial Scholarships */}
+      <Section aria-labelledby="memorial-spotlight" tone="cream">
+        <div className="max-w-3xl">
+          <SectionHeading
+            id="memorial-spotlight"
+            eyebrow="Featured Program"
+            title="Memorial Scholarships"
+            intro="Aaghaz Foundation runs more than 80 scholarships in memory of loved ones across India. We give nearly Rs 1 crore every year to help hundreds of poor students and orphans finish their studies."
+          />
+          <ButtonLink to="/services/memorial-scholarship" className="mt-8">
+            Find out more about Memorial Scholarships
+          </ButtonLink>
+        </div>
+      </Section>
+
+      {/* FAQs */}
+      <Section aria-labelledby="programme-faqs" tone="sand">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <SectionHeading
+              id="programme-faqs"
+              eyebrow="FAQs"
+              title="Common questions about our programs"
+              intro={
+                <>
+                  Here are answers to the questions donors, volunteers, and parents ask us most often. If you have another question, email us at{" "}
+                  <a href="mailto:aaghaz.foundation@gmail.com" className="text-terracotta underline underline-offset-4">
+                    aaghaz.foundation@gmail.com
+                  </a>
+                  .
+                </>
+              }
+            />
           </div>
-
-          <div className="divide-y divide-stone-200">
-            {faqs.map((faq, index) => (
-              <div key={index} className="py-8">
-                <button
-                  onClick={() => toggleAccordion(index)}
-                  className="w-full flex justify-between items-center text-left font-display text-xl md:text-2xl hover:text-primary transition-colors"
-                >
-                  <span className="pr-8">{faq.question}</span>
-                  <span
-                    className="shrink-0 transition-transform duration-300"
-                    style={{
-                      transform:
-                        activeAccordion === index
-                          ? "rotate(180deg)"
-                          : "rotate(0deg)",
-                    }}
-                  >
-                    <ChevronRight size={24} />
-                  </span>
-                </button>
-                <AnimatePresence>
-                  {activeAccordion === index && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="overflow-hidden"
-                    >
-                      <p className="pt-6 font-light text-gray-600 text-lg leading-relaxed max-w-2xl">
-                        {faq.answer}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ))}
+          <div className="lg:col-span-8">
+            <FAQList items={faqs} />
           </div>
         </div>
-      </section>
+      </Section>
+
       <NewsletterSection />
-    </div>
+    </>
   );
 };

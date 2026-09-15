@@ -1,29 +1,27 @@
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Layout } from "../components/layout/Layout";
+import { Container } from "../components/ui/Container";
+import { ButtonLink } from "../components/ui/ButtonLink";
 
 const NotFound = () => {
   return (
-    <>
+    <Layout>
       <Helmet>
         <title>404 — Page Not Found | Aaghaz Foundation</title>
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
-      <div className="min-h-screen bg-stone-950 flex items-center justify-center text-white px-6">
-        <div className="text-center max-w-md">
-          <p className="text-6xl font-display font-bold text-primary mb-4">404</p>
-          <h1 className="text-2xl font-display tracking-tight mb-4">Page Not Found</h1>
-          <p className="text-gray-400 text-sm mb-8 leading-relaxed">
-            The page you're looking for doesn't exist or has been moved.
-          </p>
-          <Link
-            to="/"
-            className="inline-block bg-primary text-white text-xs uppercase tracking-widest font-bold py-3 px-8 hover:bg-primary-dark transition-colors"
-          >
-            Back to Home
-          </Link>
+      <Container width="narrow" className="py-20 md:py-32">
+        <p className="font-display text-6xl font-semibold text-terracotta">404</p>
+        <h1 className="mt-4 font-display text-3xl font-semibold sm:text-4xl">Page Not Found</h1>
+        <p className="mt-4 text-lg text-muted">The page you're looking for doesn't exist or has been moved.</p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <ButtonLink to="/">Back to Home</ButtonLink>
+          <ButtonLink to="/contact" variant="secondary">
+            Contact Us
+          </ButtonLink>
         </div>
-      </div>
-    </>
+      </Container>
+    </Layout>
   );
 };
 

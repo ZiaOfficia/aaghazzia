@@ -1,8 +1,6 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { CheckCircle, Home, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
-import { Button } from "../components/common/Button";
+import { Container } from "../components/ui/Container";
+import { ButtonLink } from "../components/ui/ButtonLink";
 
 // Declare gtag for TypeScript
 declare global {
@@ -34,53 +32,24 @@ const ThankYouPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-stone-50 flex items-center justify-center px-6 py-24">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="max-w-xl w-full bg-white p-12 rounded-2xl shadow-xl text-center border-t-8 border-primary"
-      >
-        <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8">
-          <CheckCircle className="w-12 h-12 text-green-600" />
-        </div>
-
-        <h1 className="text-4xl font-display text-accent mb-6">Thank you.</h1>
-
-        <p className="text-xl text-gray-700 mb-4 font-light">
-          We have received your message.
-        </p>
-
-        <p className="text-gray-600 mb-10 leading-relaxed">
-          Our team at Aaghaz Foundation will read your message and write back
-          to you within a few days. If your matter is urgent, you can also
-          email us at{" "}
-          <a
-            href="mailto:aaghaz.foundation@gmail.com"
-            className="text-primary hover:underline"
-          >
-            aaghaz.foundation@gmail.com
-          </a>
-          .
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to="/">
-            <Button variant="primary" icon={Home} className="w-full sm:w-auto">
-              Return Home
-            </Button>
-          </Link>
-          <Link to="/blog">
-            <Button
-              variant="primary"
-              icon={ArrowRight}
-              className="w-full sm:w-auto"
-            >
-              Read Our News
-            </Button>
-          </Link>
-        </div>
-      </motion.div>
-    </div>
+    <Container width="narrow" className="py-20 md:py-32">
+      <p className="text-sm font-semibold text-terracotta">Message sent</p>
+      <h1 className="mt-3 font-display text-4xl font-semibold sm:text-5xl">Thank you.</h1>
+      <p className="mt-6 text-xl">We have received your message.</p>
+      <p className="mt-4 text-lg text-muted">
+        Our team at Aaghaz Foundation will read your message and write back to you within a few days. If your matter is urgent, you can also email us at{" "}
+        <a href="mailto:aaghaz.foundation@gmail.com" className="font-semibold text-terracotta underline underline-offset-4">
+          aaghaz.foundation@gmail.com
+        </a>
+        .
+      </p>
+      <div className="mt-10 flex flex-wrap gap-3">
+        <ButtonLink to="/">Return Home</ButtonLink>
+        <ButtonLink to="/blog" variant="secondary">
+          Read Our News
+        </ButtonLink>
+      </div>
+    </Container>
   );
 };
 

@@ -1,183 +1,211 @@
 @import "tailwindcss";
 
-@theme {
-  /* Palette pulled from the Aaghaz Foundation logo */
-  --color-primary: #E14060;          /* Coral Pink — "aaghaz" wordmark */
-  --color-primary-dark: #BD2A48;
-  --color-secondary: #F5811C;        /* Tagline Orange — "EDUCATE | EMPOWER" */
-  --color-secondary-dark: #D26309;
-  --color-accent: #0F0F0F;           /* Logo Black */
-  --color-accent-soft: #1F1F1F;
-  --color-background-light: #FBF6EE; /* Soft Cream */
-  --color-background-cream: #FFF8EE;
-  --color-background-dark: #0F0F0F;
-  --color-text-main: #1A1A1A;
-  --color-text-muted: #4A4A4A;
-  --color-text-light: #EFE6DC;
-
-  --font-display: "Outfit", "Inter", sans-serif;
-  --font-sans: "Inter", "Outfit", sans-serif;
-
-  --animate-fade-in: fade-in 1s ease-out;
-  --animate-slide-up: slide-up 0.8s ease-out;
-}
-
 /* ──────────────────────────────────────────────────────────
-   PATTERN UTILITIES — Coral / Orange / Black
+   AAGHAZ DESIGN TOKENS
+   Warm cream ground, deep ink text, one terracotta accent.
    ────────────────────────────────────────────────────────── */
+@theme {
+  /* Core palette */
+  --color-cream: #FAF6EF;            /* page background */
+  --color-sand: #F1EADF;             /* alternate sections */
+  --color-ink: #1F2A33;              /* headings, body, dark sections */
+  --color-ink-soft: #2B3843;         /* hover on dark surfaces */
+  --color-muted: #5B6670;            /* secondary text */
+  --color-line: #E4DACB;             /* thin dividers */
+  --color-terracotta: #B03A2E;       /* the single accent */
+  --color-terracotta-dark: #8F2E24;
+  --color-sand-light: #E8D9C3;       /* accent text on dark surfaces */
 
-.bg-texture-floral {
-  background-color: var(--color-background-cream);
-  background-image:
-    repeating-linear-gradient(
-      135deg,
-      transparent 0px,
-      transparent 28px,
-      rgba(225, 64, 96, 0.04) 28px,
-      rgba(225, 64, 96, 0.04) 30px
-    ),
-    radial-gradient(circle at 80% 0%, rgba(245, 129, 28, 0.10), transparent 50%);
-  background-size: auto, cover;
+  /* Legacy names — mapped onto the new palette so pages not yet
+     redesigned pick up the calmer look automatically. */
+  --color-primary: #B03A2E;
+  --color-primary-dark: #8F2E24;
+  --color-secondary: #E8D9C3;
+  --color-secondary-dark: #B03A2E;
+  --color-accent: #1F2A33;
+  --color-accent-soft: #2B3843;
+  --color-background-light: #FAF6EF;
+  --color-background-cream: #FAF6EF;
+  --color-background-dark: #1F2A33;
+  --color-text-main: #1F2A33;
+  --color-text-muted: #5B6670;
+  --color-text-light: #F1EADF;
+
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
-.bg-texture-marble {
-  background-color: var(--color-background-light);
-  background-image:
-    radial-gradient(rgba(15, 15, 15, 0.07) 1px, transparent 1px),
-    radial-gradient(circle at 30% 70%, rgba(225, 64, 96, 0.05), transparent 60%);
-  background-size: 22px 22px, cover;
-}
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
 
-.bg-texture-gold {
-  background-color: var(--color-primary);
-  background-image:
-    radial-gradient(circle at 20% 20%, rgba(245, 129, 28, 0.30), transparent 45%),
-    radial-gradient(circle at 80% 80%, rgba(15, 15, 15, 0.40), transparent 50%),
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23FFF8EE' stroke-opacity='0.07'%3E%3Cpath d='M30 0 L30 60 M0 30 L60 30 M0 0 L60 60 M60 0 L0 60'/%3E%3C/g%3E%3C/svg%3E"),
-    linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-}
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
 
-.bg-texture-amber {
-  background-color: var(--color-secondary);
-  background-image:
-    radial-gradient(circle at 0% 0%, rgba(255, 248, 238, 0.30), transparent 50%),
-    linear-gradient(135deg, var(--color-secondary), var(--color-secondary-dark));
-}
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: inherit;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
 
-.bg-mesh-rose {
-  background-color: #FCE9ED;
-  background-image:
-    radial-gradient(at 20% 20%, rgba(225, 64, 96, 0.20), transparent 50%),
-    radial-gradient(at 80% 30%, rgba(245, 129, 28, 0.20), transparent 55%),
-    radial-gradient(at 60% 90%, rgba(15, 15, 15, 0.10), transparent 50%);
-}
+  p {
+    text-wrap: pretty;
+  }
 
-.bg-stripes-warm {
-  background-color: var(--color-background-cream);
-  background-image: repeating-linear-gradient(
-    45deg,
-    rgba(225, 64, 96, 0.05) 0px,
-    rgba(225, 64, 96, 0.05) 2px,
-    transparent 2px,
-    transparent 14px
-  );
-}
+  /* Keep in-page anchors clear of the sticky header. */
+  [id] {
+    scroll-margin-top: 6rem;
+  }
 
-.bg-mosaic-cream {
-  background-color: var(--color-background-cream);
-  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23E14060' stroke-opacity='0.08' stroke-width='1'%3E%3Cpath d='M20 0 L40 20 L20 40 L0 20 Z'/%3E%3C/g%3E%3C/svg%3E");
-}
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  summary {
+    outline-offset: 3px;
+  }
 
-@keyframes fade-in {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+  :focus-visible {
+    outline: 2px solid var(--color-terracotta);
+    outline-offset: 3px;
+  }
 
-@keyframes slide-up {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+  ::selection {
+    background: var(--color-terracotta);
+    color: #fff;
+  }
 
-@layer utilities {
-  .luxury-gradient {
-    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6));
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
-.bg-grain-dark {
-  background-color: var(--color-background-dark);
-  background-image:
-    radial-gradient(circle at 30% 10%, rgba(225, 64, 96, 0.20), transparent 55%),
-    radial-gradient(circle at 70% 90%, rgba(245, 129, 28, 0.18), transparent 55%),
-    linear-gradient(160deg, #1F1F1F, #0F0F0F);
-}
-
-.bg-wedding-texture {
-  background-color: var(--color-background-dark);
-  background-image:
-    radial-gradient(circle at 50% 0%, rgba(225, 64, 96, 0.18), transparent 60%),
-    radial-gradient(circle at 100% 100%, rgba(245, 129, 28, 0.14), transparent 50%),
-    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5811C' fill-opacity='0.07'%3E%3Cpath d='M30 0 L36 24 L60 30 L36 36 L30 60 L24 36 L0 30 L24 24 Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-
-.bg-wedding-slate {
-  background-color: #0F0F0F;
-  background-image: url("data:image/svg+xml,%3Csvg width='52' height='52' viewBox='0 0 52 52' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5811C' fill-opacity='0.06'%3E%3Cpath d='M26 0 L30 22 L52 26 L30 30 L26 52 L22 30 L0 26 L22 22 Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
-    radial-gradient(circle at 50% 0%, #2A1A1F, #0F0F0F);
-}
-
-.bg-gradient-soft {
-  background-color: var(--color-background-cream);
-  background-image:
-    radial-gradient(circle at 0% 0%, rgba(225, 64, 96, 0.10), transparent 50%),
-    radial-gradient(circle at 100% 100%, rgba(245, 129, 28, 0.12), transparent 50%),
-    linear-gradient(to bottom, #FFFFFF, var(--color-background-cream));
-}
-
+/* ──────────────────────────────────────────────────────────
+   LEGACY DECORATIVE UTILITIES
+   Flattened to plain surfaces. Remove each class once no page
+   uses it any more.
+   ────────────────────────────────────────────────────────── */
+.bg-texture-floral,
+.bg-texture-marble,
+.bg-stripes-warm,
+.bg-mosaic-cream,
+.bg-gradient-soft,
 .bg-impact-pattern {
-  background-color: var(--color-background-cream);
-  background-image:
-    radial-gradient(circle at 0% 0%, rgba(225, 64, 96, 0.14), transparent 45%),
-    radial-gradient(circle at 100% 100%, rgba(245, 129, 28, 0.16), transparent 45%),
-    radial-gradient(circle at 50% 50%, rgba(15, 15, 15, 0.04), transparent 60%);
+  background: var(--color-cream);
 }
 
-.text-gradient-primary {
-  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+.bg-mesh-rose {
+  background: var(--color-sand);
 }
 
+.bg-texture-gold,
+.bg-texture-amber {
+  background: var(--color-terracotta);
+}
+
+.bg-grain-dark,
+.bg-wedding-texture,
+.bg-wedding-slate {
+  background: var(--color-ink);
+}
+
+.text-gradient-primary,
 .text-gradient-eggplant {
-  background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--color-terracotta);
 }
 
 .divider-arabesque {
-  height: 32px;
-  background-image:
-    linear-gradient(to right, transparent, var(--color-primary) 20%, var(--color-secondary) 50%, var(--color-primary) 80%, transparent);
-  background-size: 100% 1px;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: relative;
-}
-.divider-arabesque::before {
-  content: "✦";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--color-secondary);
-  background: var(--color-background-cream);
-  padding: 0 14px;
-  font-size: 14px;
+  height: 1px;
+  background: var(--color-line);
 }
 
-/* Prose helpers (kept) */
+/* ──────────────────────────────────────────────────────────
+   ARTICLE CONTENT (blog posts and legal pages)
+   ────────────────────────────────────────────────────────── */
+.article-content {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--color-ink);
+  overflow-wrap: break-word;
+}
+.article-content > * + * {
+  margin-top: 1.25em;
+}
+.article-content h2 {
+  margin-top: 2.2em;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.article-content h3 {
+  margin-top: 1.8em;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
+}
+.article-content a {
+  color: var(--color-terracotta);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.article-content strong {
+  font-weight: 600;
+}
+.article-content ul,
+.article-content ol {
+  padding-left: 1.5rem;
+}
+.article-content ul {
+  list-style: disc;
+}
+.article-content ol {
+  list-style: decimal;
+}
+.article-content li + li {
+  margin-top: 0.5em;
+}
+.article-content li::marker {
+  color: var(--color-terracotta);
+}
+.article-content img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-block: 2em;
+  border-radius: 6px;
+}
+.article-content blockquote {
+  border-left: 2px solid var(--color-terracotta);
+  padding-left: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-style: italic;
+}
+.article-content iframe,
+.article-content video {
+  width: 100%;
+}
+
+/* Prose helpers (blog content) */
 .prose ul {
   list-style-type: disc !important;
   list-style-position: outside !important;

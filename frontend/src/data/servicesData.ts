@@ -44,40 +44,40 @@ export interface ServiceData {
   };
 }
 
-import { serviceImages } from "./imageAssets";
+import { photos, serviceImages } from "./imageAssets";
 
 export const servicesData: ServiceData[] = [
   {
     id: "student-aid",
     title: "Student Aid",
     heroImage: serviceImages.studentAid,
-    heroTitle: "STUDENT AID — HELPING DESERVING KIDS STAY IN SCHOOL",
+    heroTitle: "Student Aid Programme",
     intro: {
-      heading: "STUDENT AID PROGRAM",
+      heading: "Student Aid Programme",
       subheading:
         "Help with fees for school and college students in India.",
       description: [
-        "Before you apply for financial help, please read the rules below. Aaghaz Foundation helps bright students from poor families. We cover school fees, college fees, exam fees, books, uniforms, and hostel costs.",
-        "Our volunteer team will visit every applicant's home in person. We do not approve applications blindly. We check every detail and track every rupee."
+        "Before applying, please read the eligibility requirements carefully. Aaghaz supports students in India whose education is at risk because of financial hardship. Depending on need, assistance may cover school or college fees, examination fees, books, uniforms and other essential education-related costs.",
+        "Every application goes through a verification process before support is approved. Our volunteers review the information provided, visit the student and their family, and where necessary verify details with the school or college.",
       ],
     },
     whyChooseUs: {
       title: "Who Can Get Help",
       items: [
         {
-          title: "Real need for money",
+          title: "Financial need",
           description:
-            "Your family's total income must be low, matching your state's limits for poor families.",
+            "Aaghaz supports students in India whose education is at risk because of financial hardship.",
         },
         {
-          title: "Good marks in school",
+          title: "Academic commitment",
           description:
-            "We support students who study hard. Usually, you need at least 60% marks in your last exams. We are flexible if you are the first in your family to study.",
+            "Your application should include your academic records. The student's academic record is considered before assistance is approved.",
         },
         {
-          title: "A known reference",
+          title: "Verified application",
           description:
-            "A teacher, neighbor, journalist, or social worker must be able to confirm your family's situation.",
+            "Every application goes through a verification process before support is approved.",
         },
       ],
     },
@@ -87,49 +87,48 @@ export const servicesData: ServiceData[] = [
         {
           title: "School & Exam Fees",
           description:
-            "From Class 1 to Class 12 — we cover yearly school fees, board exam fees, and admission charges.",
+            "Support may include school fees, admission charges and examination fees for students from Class 1 to Class 12.",
         },
         {
-          title: "College Tuition",
+          title: "College & Professional Courses",
           description:
-            "We cover college fees for degrees and professional courses, depending on how much help your family needs.",
+            "We support eligible students with tuition fees for undergraduate, postgraduate and professional courses, based on their financial need.",
         },
         {
-          title: "Books, Uniforms & Bags",
+          title: "Books, Uniforms & Study Materials",
           description:
-            "We help pay for school uniforms, textbooks, notebooks, and bags.",
+            "Support can include textbooks, notebooks, uniforms, school bags and other essential study materials.",
         },
         {
-          title: "Hostel & Food",
+          title: "Hostel & Living Costs",
           description:
-            "If a student has to live away from home, we help pay for their hostel rent and food.",
+            "Where studying requires a student to live away from home, Aaghaz may help with approved hostel and meal costs.",
         },
       ],
     },
     process: {
       title: "How to Apply",
-      description:
-        "Here is what happens when you apply for student aid:",
+      description: "",
       steps: [
         {
-          title: "1. Fill the form",
+          title: "1. Submit your application",
           description:
-            "Submit the Apply for Student Aid form on our website with your basic details and marksheets.",
+            "Complete the Apply for Student Aid form and upload the required documents, including your academic records.",
         },
         {
-          title: "2. Volunteer visit",
+          title: "2. Verification",
           description:
-            "At least two volunteers will visit your home and school to meet your family.",
+            "If your application meets our initial criteria, two Aaghaz volunteers will be assigned to verify your case. This includes a home visit and, where necessary, checks with your school or college.",
         },
         {
-          title: "3. Team review",
+          title: "3. Review",
           description:
-            "We review the case and decide how much help we can give you.",
+            "Our team reviews the application and the volunteers' reports before making a decision. If approved, we decide the amount and duration of support based on your needs and circumstances.",
         },
         {
-          title: "4. Fee payment",
+          title: "4. Payment & follow-up",
           description:
-            "We pay the fees directly to your school or college. Our volunteers keep in touch with you throughout the year.",
+            "Approved fees are paid directly to your school or college. Our volunteers stay in touch and follow your progress during the period of support.",
         },
       ],
     },
@@ -148,12 +147,12 @@ export const servicesData: ServiceData[] = [
       },
     ],
     portfolioImages: [
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80",
+      photos.boyStudying,
+      photos.girlStudyingBed,
+      photos.girlStudyingDesk,
+      photos.girlWalkingToSchool,
+      photos.girlWriting,
+      photos.twoGirlsStudying,
     ],
   },
 
@@ -251,12 +250,12 @@ export const servicesData: ServiceData[] = [
       },
     ],
     portfolioImages: [
-      "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80",
+      photos.youngWomanStudent,
+      photos.girlHijabPortrait,
+      photos.scholarshipVisitGroup,
+      photos.schoolgirlPortrait,
+      photos.girlReadingGarden,
+      photos.boyPortrait,
     ],
   },
 
@@ -341,12 +340,12 @@ export const servicesData: ServiceData[] = [
       ],
     },
     portfolioImages: [
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=900&q=80",
+      photos.familyPortrait,
+      photos.girlSchoolBagShop,
+      photos.girlPortrait,
+      photos.bookDistribution,
+      photos.girlLookingUp,
+      photos.childrenByField,
     ],
   },
 
@@ -522,16 +521,17 @@ export const servicesData: ServiceData[] = [
 
   {
     id: "madarsa-initiative",
-    title: "Madarsa Initiative",
+    title: "Community Learning",
     heroImage: serviceImages.madarsaInitiative,
-    heroTitle: "MADARSA INITIATIVE — MODERN EDUCATION FOR ALL",
+    heroTitle: "Community Learning Initiative",
     intro: {
-      heading: "MADARSA INITIATIVE",
+      heading: "Community Learning Initiative",
       subheading:
-        "Helping madarsa students learn modern school subjects and skills.",
+        "Affordable learning opportunities in underserved communities.",
       description: [
-        "Our Madarsa program helps students learn regular school subjects along with their religious studies. We work with madarsas to provide books and teachers for math, science, and computers.",
-        "This program teaches language, math, science, and computer skills to help madarsa students find good jobs and go for higher studies.",
+        "Aaghaz works with NEIEA (New Equitable and Innovative Educational Association) to provide affordable, modern education to students from underserved communities.",
+        "Hundreds of girls are currently benefiting from the initiative at learning centres in Lucknow and Aligarh. The programme combines classroom teaching with technology and modern learning methods, giving students access to educational support that might otherwise be beyond their reach.",
+        "The initiative also supports students from traditional educational institutions and orphanages.",
       ],
     },
     whyChooseUs: {
@@ -606,12 +606,12 @@ export const servicesData: ServiceData[] = [
       ],
     },
     portfolioImages: [
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=900&q=80",
+      photos.twoGirlsStudying,
+      photos.classroomTeacher,
+      photos.girlStudyingDesk,
+      photos.studyRoom,
+      photos.childrenWithBooks,
+      photos.girlHijabPortrait,
     ],
   },
 
@@ -736,12 +736,12 @@ export const servicesData: ServiceData[] = [
       },
     ],
     portfolioImages: [
-      "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80",
+      photos.memorialPlaque,
+      photos.scholarshipVisitGroup,
+      photos.scholarshipVisitChildren,
+      photos.childrenWithBooks,
+      photos.youngWomanStudent,
+      photos.girlWithPeacock,
     ],
     faqs: [
       {
@@ -785,33 +785,32 @@ export const servicesData: ServiceData[] = [
     id: "become-volunteer",
     title: "Become a Volunteer",
     heroImage: serviceImages.becomeVolunteer,
-    heroTitle: "BECOME AN AAGHAZ FIELD VOLUNTEER",
+    heroTitle: "Become a Volunteer",
     intro: {
-      heading: "AAGHAZ RUNS BECAUSE OF VOLUNTEERS",
-      subheading:
-        "Our volunteers are the heart of Aaghaz. Join us to help a child finish school.",
+      heading: "Become an Aaghaz Volunteer",
+      subheading: "Give your time",
       description: [
-        "Aaghaz is a volunteer-run group. Volunteers help us find students who need help, visit their homes to check details, and guide the students through their school year.",
-        "If you have two hours a week and want to help, you can make a big difference. We need volunteers in cities and towns across India, especially in UP, Bihar, Maharashtra, and Delhi NCR.",
+        "Aaghaz has been built around volunteers since 2004. They help us find and verify students, stay in touch with families and support students through their education.",
+        "If you can give us a few hours of your time, we would like to hear from you. We welcome volunteers across India, with a particular need in Uttar Pradesh, Bihar, Maharashtra and Delhi NCR.",
       ],
     },
     whyChooseUs: {
       title: "What Volunteers Do",
       items: [
         {
-          title: "Home visits",
+          title: "Student verification",
           description:
-            "Visit a student's home and school to check their details in person before we approve fees.",
+            "Visit applicants and their families and help us verify cases before assistance is approved.",
         },
         {
-          title: "Mentorship",
+          title: "Mentoring",
           description:
-            "Stay in touch with one or two students, call them, and help them with their studies.",
+            "Stay connected with students and offer guidance through their education.",
         },
         {
-          title: "Online help",
+          title: "Remote support",
           description:
-            "Help us with typing work, writing stories, managing social media, or talking to donors.",
+            "Use your skills to help Aaghaz with administrative, digital and other work from wherever you are.",
         },
       ],
     },
@@ -867,12 +866,12 @@ export const servicesData: ServiceData[] = [
       ],
     },
     portfolioImages: [
-      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=900&q=80",
+      photos.volunteersWithChildren,
+      photos.tutoringComputer,
+      photos.childrenWithVolunteer,
+      photos.fieldMeeting,
+      photos.childrenLinedUp,
+      photos.visitorsWithSchoolgirls,
     ],
   },
 
@@ -880,38 +879,35 @@ export const servicesData: ServiceData[] = [
     id: "join-as-donor",
     title: "Join us as Donor",
     heroImage: serviceImages.joinDonor,
-    heroTitle: "JOIN US AS A DONOR — FUND A CHILD'S FUTURE",
+    heroTitle: "Become a Donor",
     intro: {
-      heading: "BECOME AN AAGHAZ DONOR",
-      subheading:
-        "One-time, monthly, or memorial donations — we track and report every rupee.",
+      heading: "Become an Aaghaz Donor",
+      subheading: "Support a student",
       description: [
-        "Register on our website to join our group of donors. A team member will call you to explain how you can help and answer any questions.",
-        "Donations to Aaghaz get tax deduction benefits under Section 80G in India. Our founders pay for all office costs, so 100% of your donation is spent on paying student fees.",
+        "Register on our website to join the Aaghaz donor community. You can view verified student cases, choose how you would like to help and keep track of the support you provide.",
+        "Eligible donations may qualify for tax deduction under Section 80G of the Income-tax Act in India.",
       ],
     },
     whyChooseUs: {
-      title: "Ways to Donate",
+      title: "Ways to Contribute",
       items: [
         {
-          title: "One-time donation",
-          description:
-            "Donate any amount once. We will use it for the student who needs it most right now.",
+          title: "One-time contribution",
+          description: "Contribute when you choose.",
         },
         {
-          title: "Monthly donation",
-          description:
-            "Set up a small monthly donation. This is the best way to help a child finish school year after year.",
+          title: "Regular giving",
+          description: "Provide continuing support to Aaghaz students.",
         },
         {
-          title: "Sponsor a child",
+          title: "Support a student",
           description:
-            "Pay the full yearly fees of one specific student and get their progress updates.",
+            "View verified student cases and choose a student you would like to support.",
         },
         {
-          title: "Memorial Scholarship",
+          title: "Named or memorial scholarship",
           description:
-            "Start a scholarship in the name of a loved one and get yearly reports.",
+            "Create a scholarship in your name or in honour or memory of someone.",
         },
       ],
     },
@@ -957,22 +953,22 @@ export const servicesData: ServiceData[] = [
         {
           title: "3. Donate online",
           description:
-            "Donate via online payment, bank transfer (NEFT/UPI), or foreign transfer.",
+            "Donate via online payment or bank transfer (NEFT/UPI).",
         },
         {
           title: "4. Receipts & reports",
           description:
-            "Get your 80G tax receipt within 7 days, and yearly progress updates of the kids you helped.",
+            "Aaghaz issues receipts for eligible donations, and you can keep track of the support you provide.",
         },
       ],
     },
     portfolioImages: [
-      "https://images.unsplash.com/photo-1488998427799-e3362cec87c3?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80",
+      photos.donorsGroup,
+      photos.bookDistribution,
+      photos.scholarshipVisitGroup,
+      photos.girlReadingGarden,
+      photos.childrenLinedUp,
+      photos.girlStudyingBed,
     ],
   },
 
@@ -980,38 +976,37 @@ export const servicesData: ServiceData[] = [
     id: "launch-scholarship",
     title: "Launch Scholarship",
     heroImage: serviceImages.launchScholarship,
-    heroTitle: "Start a Scholarship in a Loved One's Name",
+    heroTitle: "Start a Scholarship",
     intro: {
-      heading: "Start a Memorial or Named Scholarship",
-      subheading:
-        "Start a scholarship in the name of a parent, teacher, or friend.",
+      heading: "Start a Named or Memorial Scholarship",
+      subheading: "Create something that lasts",
       description: [
-        "A memorial scholarship is a beautiful way to remember someone special. It pays for the fees of a poor student who would otherwise have to leave school.",
-        "We set up the rules together with you (name, criteria, and budget) and send you a progress report of the student every year.",
+        "A named or memorial scholarship can give a student the opportunity to continue their education while recognising someone or something important to you.",
+        "We work with you to define the scholarship and its budget and criteria. Students are selected from cases verified by Aaghaz, and we keep you updated on their progress.",
       ],
     },
     whyChooseUs: {
       title: "What You Can Decide",
       items: [
         {
-          title: "Name & Dedication",
+          title: "Name & dedication",
           description:
-            "Choose the name for the scholarship, like 'The XYZ Memorial Scholarship'.",
+            "Choose the person or purpose the scholarship will honour.",
         },
         {
-          title: "Who is eligible",
+          title: "Who it supports",
           description:
-            "Choose the region, age, gender, or study course for the students you want to help.",
+            "Set broad criteria, such as the type of education or students you would like the scholarship to support.",
         },
         {
-          title: "Duration & number of kids",
+          title: "Duration & number of students",
           description:
-            "Decide how many years you want to run the scholarship and how many kids it covers.",
+            "Decide how much you would like to contribute and whether the scholarship will run for one year or longer.",
         },
         {
-          title: "Report updates",
+          title: "Progress updates",
           description:
-            "We send yearly updates with photos and marks of the students you helped.",
+            "We keep you informed about the students supported through your scholarship.",
         },
       ],
     },
@@ -1067,12 +1062,12 @@ export const servicesData: ServiceData[] = [
       ],
     },
     portfolioImages: [
-      "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1488998427799-e3362cec87c3?auto=format&fit=crop&w=900&q=80",
+      photos.memorialPlaque,
+      photos.scholarshipVisitChildren,
+      photos.youngWomanStudent,
+      photos.girlHijabPortrait,
+      photos.studyRoom,
+      photos.schoolgirlPortrait,
     ],
   },
 ];
