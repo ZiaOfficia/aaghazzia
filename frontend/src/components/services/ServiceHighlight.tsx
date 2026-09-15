@@ -223,17 +223,17 @@ const ServiceSpecificHighlight = ({ service }: { service: ServiceData }) => {
   const getBriefDescription = () => {
     switch (service.id) {
       case "student-aid":
-        return "Need-based financial assistance for school and college students from underprivileged families. Covers tuition, books, uniforms, and hostel fees.";
+        return "Aaghaz began in Lucknow in 2004 with ₹2,000 and one student who needed help continuing his education. Today, we support students across India with school and college fees and other educational costs. We believe helping more young people complete their education is one of the most practical ways to build a stronger India.";
       case "scholarships":
         return "Annual, merit-cum-means scholarships for students across India. Every scholarship is awarded after verified pre-scholarship surveys.";
       case "financial-assistance":
         return "Timely financial assistance for families facing unexpected crises. One-time or ongoing support to prevent educational disruption.";
       case "become-volunteer":
-        return "Volunteer-driven organization with field surveys and mentorship. Join our network of dedicated volunteers across India.";
+        return "Our volunteers help us verify student applications, stay in touch with students and provide guidance and mentoring. You can volunteer in person or support our work remotely.";
       case "join-as-donor":
-        return "Join our donor community. Support specific programs or sponsor children end-to-end. 100% of donations go to student aid.";
+        return "Register as an Aaghaz donor and choose how you would like to contribute. You can make a one-time contribution, give regularly or support a verified student directly through our donor platform.";
       case "launch-scholarship":
-        return "Honor loved ones by launching memorial scholarships. We co-design criteria and provide annual progress reports.";
+        return "Set up a scholarship in your name or in honour or memory of someone important to you. You decide the broad purpose and budget, and we help structure the scholarship and identify eligible students.";
       default:
         return service.intro.description[0] || "Learn more about this Aaghaz Foundation program.";
     }

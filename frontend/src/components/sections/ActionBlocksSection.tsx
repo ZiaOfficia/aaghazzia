@@ -8,7 +8,8 @@ export const ActionBlocksSection = () => {
     {
       icon: Award,
       title: "Start a Scholarship",
-      text: "You can start a scholarship in your name or to remember a loved one. We will help you choose the rules and send you updates every year.",
+      subtitle: "Create something that lasts",
+      text: "Set up a scholarship in your name or in honour or memory of someone important to you. You decide the broad purpose and budget, and we help structure the scholarship and identify eligible students.",
       image: actionImages.launchScholarship,
       link: "/services/launch-scholarship",
       cta: "Learn More",
@@ -16,7 +17,8 @@ export const ActionBlocksSection = () => {
     {
       icon: Heart,
       title: "Become a Donor",
-      text: "Sign up with us to become a regular donor. Our team will contact you to explain how you can help and answer your questions.",
+      subtitle: "Support a student",
+      text: "Register as an Aaghaz donor and choose how you would like to contribute. You can make a one-time contribution, give regularly or support a verified student directly through our donor platform.",
       image: actionImages.joinDonor,
       link: "/services/join-as-donor",
       cta: "Learn More",
@@ -24,7 +26,8 @@ export const ActionBlocksSection = () => {
     {
       icon: Users,
       title: "Become a Volunteer",
-      text: "We are run by volunteers. You can help us find students who need money for school, or assist our team online and on the ground.",
+      subtitle: "Give your time",
+      text: "Our volunteers help us verify student applications, stay in touch with students and provide guidance and mentoring. You can volunteer in person or support our work remotely.",
       image: actionImages.becomeVolunteer,
       link: "/services/become-volunteer",
       cta: "Learn More",
@@ -41,9 +44,12 @@ export const ActionBlocksSection = () => {
             <span className="block w-8 h-px bg-primary" />
           </p>
           <h2 className="text-2xl md:text-3xl lg:text-5xl font-display text-accent">
-            <span className="text-gradient-primary">Educate. Empower.</span>{" "}
-            Get Involved.
+            Choose how you would like{" "}
+            <span className="text-gradient-primary">to help</span>
           </h2>
+          <p className="mt-4 text-text-muted max-w-2xl mx-auto text-sm md:text-lg">
+            Support a student, create a scholarship or give your time. There are different ways to be part of Aaghaz.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -73,9 +79,12 @@ export const ActionBlocksSection = () => {
                     </span>
                   </div>
                   <div className="p-5 md:p-7 flex flex-col flex-grow">
-                    <h3 className="text-xl md:text-2xl font-display font-bold text-accent mb-3 group-hover:text-primary transition-colors">
+                    <h3 className="text-xl md:text-2xl font-display font-bold text-accent mb-1 group-hover:text-primary transition-colors">
                       {block.title}
                     </h3>
+                    <p className="text-[10px] uppercase tracking-[0.3em] text-secondary font-bold mb-3">
+                      {block.subtitle}
+                    </p>
                     <p className="text-text-muted text-sm leading-relaxed mb-6 flex-grow">
                       {block.text}
                     </p>

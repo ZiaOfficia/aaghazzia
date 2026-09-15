@@ -1,6 +1,6 @@
 import { aboutContent } from "../../data/content";
 import { motion, type Variants } from "framer-motion";
-import { aboutImage } from "../../data/imageAssets";
+import { founderImage } from "../../data/imageAssets";
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -44,25 +44,10 @@ export const AboutSection = () => {
                   </motion.p>
                 ))}
               </div>
-
-              <motion.div
-                variants={itemVariants}
-                className="mt-12 flex items-center gap-4"
-              >
-                <div className="h-px w-12 bg-secondary" />
-                <div>
-                  <p className="font-display text-2xl text-accent">
-                    {aboutContent.author.split("—")[0].trim()}
-                  </p>
-                  <p className="text-xs uppercase tracking-widest text-text-muted">
-                    {aboutContent.author.split("—")[1]?.trim() || "Founder"}
-                  </p>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
 
-          {/* Right image — orphan child reading */}
+          {/* Right image — founder photo with quote */}
           <motion.div
             className="w-full md:w-1/2 absolute top-0 right-0 h-full hidden md:block z-0"
             initial={{ opacity: 0, x: 50 }}
@@ -74,21 +59,37 @@ export const AboutSection = () => {
             <img
               loading="lazy"
               decoding="async"
-              alt="A young Indian student smiling — Aaghaz Foundation beneficiary"
+              alt="Mazhar Farooqui — Founder, Aaghaz Foundation"
               className="w-full h-full object-cover opacity-95 rounded-tl-3xl rounded-br-3xl"
-              src={aboutImage}
+              src={founderImage}
             />
+            <figure className="absolute bottom-6 right-6 left-[30%] lg:left-[35%] bg-accent/85 backdrop-blur-sm text-white p-6 lg:p-8 rounded-tl-2xl rounded-br-2xl border-l-4 border-secondary shadow-2xl">
+              <blockquote className="font-display italic text-base lg:text-xl leading-relaxed">
+                “{aboutContent.quote}”
+              </blockquote>
+              <figcaption className="mt-4 text-xs uppercase tracking-widest text-secondary font-bold">
+                {aboutContent.quoteAuthor}
+              </figcaption>
+            </figure>
           </motion.div>
 
-          {/* Mobile fallback image */}
+          {/* Mobile fallback image + quote */}
           <div className="w-full md:hidden mt-8">
             <img
               loading="lazy"
               decoding="async"
-              alt="A young Indian student — Aaghaz Foundation"
+              alt="Mazhar Farooqui — Founder, Aaghaz Foundation"
               className="w-full h-100 object-cover rounded-tl-3xl rounded-br-3xl"
-              src={aboutImage}
+              src={founderImage}
             />
+            <figure className="mt-4 bg-accent text-white p-6 rounded-tl-2xl rounded-br-2xl border-l-4 border-secondary shadow-xl">
+              <blockquote className="font-display italic text-lg leading-relaxed">
+                “{aboutContent.quote}”
+              </blockquote>
+              <figcaption className="mt-4 text-xs uppercase tracking-widest text-secondary font-bold">
+                {aboutContent.quoteAuthor}
+              </figcaption>
+            </figure>
           </div>
         </div>
       </div>

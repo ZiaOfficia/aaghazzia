@@ -28,7 +28,7 @@ export const FAQPage = () => {
     <div className="bg-stone-950 min-h-screen text-stone-200">
       <SEO
         title="FAQs — Aaghaz Foundation"
-        description="Frequently asked questions about Aaghaz Foundation — donations, scholarships, the verification process, volunteering, tax exemption, and how to apply for student aid."
+        description="Common questions about Aaghaz Foundation, how we support students, how donations work and how you can get involved."
       />
       {/* Hero Section */}
       <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-stone-900 text-white">
@@ -59,7 +59,7 @@ export const FAQPage = () => {
               <span className="text-secondary italic font-serif">Questions</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-200 font-light max-w-2xl mx-auto">
-              Common questions about Aaghaz Foundation — how we check student cases, how donations work, and how you can help.
+              Common questions about Aaghaz Foundation, how we support students, how donations work and how you can get involved.
             </p>
           </motion.div>
         </div>
@@ -145,14 +145,14 @@ export const FAQPage = () => {
             Still have questions?
           </h2>
           <p className="text-gray-400 mb-10 text-lg font-light">
-            Cannot find what you are looking for? Email us at{" "}
+            If you cannot find the answer you need, email us at{" "}
             <a
               href="mailto:aaghaz.foundation@gmail.com"
               className="text-secondary hover:underline"
             >
               aaghaz.foundation@gmail.com
-            </a>{" "}
-            — we read and answer every message.
+            </a>
+            . If you live outside India and would like to contribute, please contact us before transferring any funds.
           </p>
           <a href="/contact">
             <Button size="lg" icon={ArrowRight}>

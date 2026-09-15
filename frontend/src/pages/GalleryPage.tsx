@@ -105,7 +105,7 @@ export const GalleryPage = () => {
             Photo Gallery
           </h2>
           <p className="mt-4 text-xl font-light text-stone-200 max-w-2xl mx-auto px-6">
-            Photos from our work across India over the last 20 years.
+            More than two decades of Aaghaz, in pictures.
           </p>
         </motion.div>
       </section>

@@ -8,46 +8,50 @@ interface Story {
   quote: string;
   author: string;
   role: string;
-  location: string;
-  year: string;
 }
 
 const stories: Story[] = [
   {
-    image: testimonialImages.studentSumaiya,
+    image: testimonialImages.yasminParveen,
+    author: "Yasmin Parveen",
+    role: "Advocate",
     quote:
-      "I was going to leave school after Class 10 because we had no money for board fees. Aaghaz volunteers visited our home, and paid my fees within a week. Now I am studying in my second year of college.",
-    author: "Sumaiya R.",
-    role: "Aaghaz Scholarship Student",
-    location: "Lucknow, UP",
-    year: "Class of 2026",
+      "There was a time when completing my law degree seemed very difficult because I simply did not have the financial means. I received support throughout my five-year course, including a monthly stipend, and even help with medical treatment when I fell ill. I was able to finish my studies and become an advocate. It was a dream I had worked towards for years, and today I am living it.",
   },
   {
-    image: testimonialImages.donorFamily,
+    image: testimonialImages.aamirHannan,
+    author: "Aamir Hannan",
+    role: "Software Engineer",
     quote:
-      "We started a scholarship in our son's name. Knowing that students are finishing their studies in his memory has brought our family peace.",
-    author: "The Khan Family",
-    role: "Memorial Scholarship Donors",
-    location: "Pune, MH",
-    year: "Donor since 2019",
+      "I received the Coding Ninjas course through Aaghaz at a stage when I wanted to improve my coding but did not have access to the kind of training I needed. The course helped me build both my skills and confidence. I recently received a Software Engineer offer of around ₹23 LPA. For me, that offer is much more than a salary package. It shows how far I have been able to come.",
   },
   {
-    image: testimonialImages.parentMother,
+    image: testimonialImages.irtiqaKhan,
+    author: "Irtiqa Khan",
+    role: "Clinical Research Coordinator, Anveshna Healthcare",
     quote:
-      "We did not know there were organizations like this. The volunteers were very respectful and the process was simple. They treated my daughter with love and respect.",
-    author: "Shahnaz Begum",
-    role: "Mother of a student",
-    location: "Hardoi, UP",
-    year: "Family supported since 2022",
+      "I wanted to build a career in clinical research, and the support I received during my Master’s helped me complete my studies and pursue that goal. In February 2026, I joined Lady Hardinge Medical College as a Clinical Research Coordinator in the Department of Psychiatry. I now manage site activities and mentor interns. Being able to work in the field I studied for and become independent is something I had always wanted.",
   },
   {
-    image: testimonialImages.iitAlumnus,
+    image: testimonialImages.mominulIslam,
+    author: "Dr. Mominul Islam",
+    role: "Paediatric Surgery, Medical College Kolkata",
     quote:
-      "I had never heard of IIT before. Two years after taking the entrance test, I got admission in IIT Delhi. Aaghaz did not just pay my fees — they believed in me first.",
-    author: "Mohammad Ayaan",
-    role: "Aaghaz × Rahmani 30 Alumnus",
-    location: "Now at IIT Delhi",
-    year: "Class of 2024",
+      "Becoming a doctor was my dream, but getting through medical college required far more than ambition. I received support throughout my MBBS for college and hostel fees, books and even my monthly expenses. That meant I could concentrate on my studies instead of constantly worrying about how the next fee would be paid. Today, I am a doctor working in paediatric surgery at Medical College Kolkata, doing the work I once hoped I would get the chance to do.",
+  },
+  {
+    image: testimonialImages.shibaSami,
+    author: "Dr. Shiba Sami",
+    role: "BDS, Government Dental College, Bengaluru",
+    quote:
+      "I always wanted to become a dentist, but pursuing a professional degree can be difficult when finances are limited. The support I received helped me continue my BDS at a government dental college in Bengaluru without that uncertainty hanging over my studies. I completed my degree and became a dentist. Looking back, what mattered most was having support at a stage when giving up would have been much easier than carrying on.",
+  },
+  {
+    image: testimonialImages.imranMustafaMalik,
+    author: "Dr. Imran Mustafa Malik",
+    role: "PG Resident, Anaesthesiology & Critical Care, GMC Srinagar",
+    quote:
+      "My family was struggling to meet the educational expenses of all of us, and there was only so much they could manage. The scholarship came when I needed it most and eased a burden that could easily have interrupted my studies. I was able to continue medical college and become a doctor. Today, as a postgraduate resident in Anaesthesiology and Critical Care at GMC Srinagar, I am pursuing the career I had once only hoped would be possible.",
   },
 ];
 
@@ -67,7 +71,7 @@ export const TestimonialsSection = () => {
 
   useEffect(() => {
     if (isPaused) return;
-    const t = setInterval(next, 7000);
+    const t = setInterval(next, 12000);
     return () => clearInterval(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPaused]);
@@ -93,14 +97,14 @@ export const TestimonialsSection = () => {
         <div className="text-center mb-16">
           <p className="inline-flex items-center gap-3 text-primary text-xs font-bold uppercase tracking-[0.4em] mb-4">
             <span className="block w-8 h-px bg-primary" />
-            Real Voices
+            Success Stories
             <span className="block w-8 h-px bg-primary" />
           </p>
           <h2 className="text-3xl md:text-6xl font-display font-bold text-accent mb-4 leading-tight">
-            Stories from Our Students and Donors
+            Stories from Aaghaz
           </h2>
           <p className="text-text-muted max-w-2xl mx-auto text-base md:text-lg">
-            Read real stories from the students we support and the donors who help us.
+            Meet some of the students we have supported and read about the people and work behind Aaghaz.
           </p>
         </div>
 
@@ -120,7 +124,7 @@ export const TestimonialsSection = () => {
                   transition={{ duration: 0.6, ease: "easeOut" }}
                   src={story.image}
                   alt={story.author}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-cover object-top"
                 />
               </AnimatePresence>
 
@@ -140,14 +144,11 @@ export const TestimonialsSection = () => {
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4 }}
                   >
-                    <p className="text-secondary text-[10px] uppercase tracking-[0.3em] font-bold mb-1">
-                      {story.role}
-                    </p>
                     <p className="font-display text-2xl font-bold">
                       {story.author}
                     </p>
-                    <p className="text-xs text-gray-300 mt-1">
-                      {story.location} · {story.year}
+                    <p className="text-secondary text-[10px] uppercase tracking-[0.2em] font-bold mt-1 leading-relaxed">
+                      {story.role}
                     </p>
                   </motion.div>
                 </AnimatePresence>
@@ -174,7 +175,7 @@ export const TestimonialsSection = () => {
                 transition={{ duration: 0.6 }}
                 className="relative"
               >
-                <p className="font-display text-xl md:text-3xl lg:text-4xl text-accent leading-relaxed italic mb-6 md:mb-8">
+                <p className="font-display text-lg md:text-xl lg:text-2xl text-accent leading-relaxed italic mb-6 md:mb-8">
                   &ldquo;{story.quote}&rdquo;
                 </p>
               </motion.div>
@@ -209,7 +210,7 @@ export const TestimonialsSection = () => {
                     key={`bar-${index}-${isPaused}`}
                     initial={{ width: "0%" }}
                     animate={{ width: isPaused ? "30%" : "100%" }}
-                    transition={{ duration: isPaused ? 0.3 : 7, ease: "linear" }}
+                    transition={{ duration: isPaused ? 0.3 : 12, ease: "linear" }}
                     className="absolute left-0 top-0 h-full bg-primary"
                   />
                 </div>

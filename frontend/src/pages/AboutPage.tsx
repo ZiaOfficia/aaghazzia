@@ -6,7 +6,8 @@ import { ChevronRight } from "lucide-react";
 import { ClientsStrip } from "../components/sections/ClientsStrip";
 import { ContactSection } from "../components/sections/ContactSection";
 // import { AboutSection } from "../components/sections/AboutSection";
-import { aboutContent } from "../data/content";
+import { aboutContent, faqs, ourStoryContent } from "../data/content";
+import { founderImage } from "../data/imageAssets";
 import NewsletterSection from "../components/sections/NewsletterSection";
 import { TestimonialsSection } from "../components/sections/TestimonialsSection";
 
@@ -39,34 +40,6 @@ const heroImages = [
 
 export const AboutPage = () => {
   const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
-
-  const faqs = [
-    {
-      question: "When was Aaghaz Foundation started?",
-      answer:
-        "Aaghaz Foundation was started in 2004 by journalist Mazhar Farooqui and his friends in Lucknow. They started with just Rs 2,000 to help one poor student. We have been helping kids study ever since.",
-    },
-    {
-      question: "Where is Aaghaz based and where do you work?",
-      answer:
-        "Our main office is in Lucknow, Uttar Pradesh. We work mostly in Uttar Pradesh, but we help poor students all over India. We also have volunteers in Delhi NCR, Mumbai, Pune, Bihar, and other big cities.",
-    },
-    {
-      question: "How do you check if a student really needs help?",
-      answer:
-        "At least two volunteers visit the student's home and school in person. They check the family's income and the child's school marks to make sure they really need help. We only support verified students.",
-    },
-    {
-      question: "Do I get a tax benefit if I donate to Aaghaz?",
-      answer:
-        "Yes. Aaghaz Foundation is a registered charity. Donors in India get tax deduction benefits under Section 80G of the Income Tax Act. We send donation receipts within 7 days.",
-    },
-    {
-      question: "How can I help Aaghaz other than donating money?",
-      answer:
-        "You can join us as a volunteer. You can help by visiting student homes for checking details, or help online with computer work, writing stories, or teaching students. If you have two hours a week, visit our Become a Volunteer page.",
-    },
-  ];
 
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
 
@@ -181,11 +154,11 @@ export const AboutPage = () => {
                 variants={itemVariants}
                 className="text-4xl md:text-6xl font-display text-accent mb-8 leading-tight"
               >
-                {aboutContent.heading}
+                {ourStoryContent.heading}
               </motion.h2>
 
               <div className="space-y-6 text-gray-600 font-light text-lg leading-relaxed">
-                {aboutContent.text.map((paragraph, index) => (
+                {ourStoryContent.text.map((paragraph, index) => (
                   <motion.p key={index} variants={itemVariants}>
                     {paragraph}
                   </motion.p>
@@ -254,18 +227,15 @@ export const AboutPage = () => {
             variants={fadeInLeft}
             className="relative lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 bg-white p-12 lg:p-20 max-w-2xl shadow-2xl z-10 lg:-ml-24 mt-[-80px] lg:mt-0"
           >
-            <h4 className="text-xs uppercase tracking-[0.3em] text-primary mb-4 font-bold">
-              Volunteer-Driven · Verified
-            </h4>
             <h2 className="text-4xl md:text-5xl font-display text-accent mb-8">
-              How we work — and why it works
+              Every application is checked
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mb-8 font-light">
-              We do not give help just by looking at forms. When someone recommends
-              a student who needs help with fees, at least two volunteers visit
-              their home and school in person. We only help the student when both
-              volunteers confirm they really need it. This personal check is the key
-              to our work.
+              Before Aaghaz supports a student, at least two volunteers visit the
+              student and their family. They verify the information provided and,
+              where necessary, check details with the school or college. The case
+              is then reviewed by the Aaghaz team before any financial assistance
+              is approved.
             </p>
             <a
               href="/contact"
@@ -301,7 +271,7 @@ export const AboutPage = () => {
               className="mb-8 relative"
             >
               <img loading="lazy" decoding="async"
-                src="https://images.unsplash.com/photo-1559548331-f9cb98280344?auto=format&fit=crop&w=900&q=80"
+                src={founderImage}
                 alt="Mazhar Farooqui — Founder"
                 className="w-full h-[480px] object-cover transition-all duration-1000 ease-out"
               />
@@ -311,14 +281,53 @@ export const AboutPage = () => {
                 Mazhar Farooqui
               </h3>
               <p className="text-primary font-serif italic text-lg mb-6">
-                Founder &amp; Trustee
+                Founder &amp; President
               </p>
-              <p className="text-gray-600 font-light leading-relaxed">
-                Mazhar is a senior journalist who started Aaghaz in 2004 with just
-                Rs 2,000 to help one poor student. Even today, he personally reads
-                the home visit reports and approves the help. He believes Aaghaz
-                has run for 20 years because of our kind donors, teachers, and volunteers.
-              </p>
+              <div className="space-y-4 text-gray-600 font-light leading-relaxed">
+                <p>
+                  <a
+                    href="https://mazharfarooqui.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    Mazhar Farooqui
+                  </a>{" "}
+                  aka Maz is an award-winning investigative journalist and author
+                  who founded Aaghaz in Lucknow in 2004 after seeing children in his
+                  neighbourhood out of school because their families could not
+                  afford their education.
+                </p>
+                <p>
+                  He started with ₹2,000 and one student. More than two decades
+                  later, Mazhar remains closely involved with Aaghaz and personally
+                  reviews student verification reports before financial assistance
+                  is approved.
+                </p>
+                <p>
+                  During a journalism career spanning more than 25 years in India
+                  and the UAE, Mazhar has become known for investigations into
+                  fraud, crime and financial wrongdoing. His work has received
+                  several awards and has led to action against individuals and
+                  companies investigated in his reports. He is the author of{" "}
+                  <em>The Maz Files: Scoops, Scams and Showdowns</em> and the
+                  founder of Check First Intel, a Dubai-based due diligence and
+                  risk intelligence firm.
+                </p>
+                <p>
+                  What began as a small effort among friends has since grown into a
+                  network of donors, volunteers and former students supporting
+                  education across India.
+                </p>
+              </div>
+              <figure className="mt-8 border-l-4 border-secondary pl-6">
+                <blockquote className="font-display italic text-xl md:text-2xl text-accent leading-relaxed">
+                  “{aboutContent.quote}”
+                </blockquote>
+                <figcaption className="mt-3 text-xs uppercase tracking-widest text-primary font-bold">
+                  {aboutContent.quoteAuthor}
+                </figcaption>
+              </figure>
             </div>
           </div>
 
@@ -342,14 +351,27 @@ export const AboutPage = () => {
                 Our Volunteer Network
               </h3>
               <p className="text-primary font-serif italic text-lg mb-6">
-                300+ Volunteers across India
+                300+ volunteers across India
               </p>
-              <p className="text-gray-600 font-light leading-relaxed">
-                Aaghaz runs entirely because of volunteers. Our volunteers visit homes,
-                teach students, and manage our study center daily. Many of our old students
-                now work as volunteers to teach others. If you want to help, fill the form
-                on our Become a Volunteer page.
-              </p>
+              <div className="space-y-4 text-gray-600 font-light leading-relaxed">
+                <p>
+                  Volunteers have been at the heart of Aaghaz since 2004. They visit
+                  students and their families, help verify applications, provide
+                  mentoring and teaching, and support our educational programmes.
+                  Many former Aaghaz students have also returned as volunteers,
+                  helping others get the same opportunities they once received.
+                </p>
+                <p>
+                  If you would like to join them, register through our{" "}
+                  <a
+                    href="/services/become-volunteer"
+                    className="text-primary hover:underline"
+                  >
+                    Become a Volunteer
+                  </a>{" "}
+                  page.
+                </p>
+              </div>
             </div>
           </div>
         </div>

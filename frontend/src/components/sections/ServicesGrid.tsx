@@ -1,4 +1,4 @@
-import { services } from "../../data/content";
+import { services, whatWeDoContent } from "../../data/content";
 import { motion, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
@@ -30,20 +30,20 @@ export const ServicesGrid = () => {
             className="inline-flex items-center gap-3 text-primary text-xs font-bold uppercase tracking-[0.4em] mb-4"
           >
             <span className="block w-8 h-px bg-primary" />
-            What We Do
+            {whatWeDoContent.label}
             <span className="block w-8 h-px bg-primary" />
           </motion.p>
           <motion.h2
             variants={itemVariants}
             className="text-3xl md:text-4xl lg:text-5xl font-display text-accent mb-3"
           >
-            Our Programs
+            {whatWeDoContent.heading}
           </motion.h2>
           <motion.p
             variants={itemVariants}
             className="mt-4 text-sm md:text-base text-text-muted max-w-2xl mx-auto"
           >
-            Whether you donate money or give your time, you can help us. All our programs have one goal: to keep poor children in school.
+            {whatWeDoContent.intro}
           </motion.p>
           <motion.div
             variants={itemVariants}
@@ -51,7 +51,7 @@ export const ServicesGrid = () => {
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {services.map((service, index) => {
             return (
               <motion.div
@@ -59,7 +59,7 @@ export const ServicesGrid = () => {
                 variants={itemVariants}
                 className="group relative h-80 md:h-[26rem] overflow-hidden rounded-tl-3xl rounded-br-3xl shadow-lg hover:shadow-2xl transition-shadow duration-500"
               >
-                <Link to={`/services/${service.id}`} className="block w-full h-full">
+                <Link to={service.link} className="block w-full h-full">
                   <img
                     loading="lazy"
                     decoding="async"

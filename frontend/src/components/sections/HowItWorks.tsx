@@ -10,31 +10,27 @@ import {
 const steps = [
   {
     icon: ClipboardCheck,
-    title: "Someone tells us about a student",
+    title: "Apply",
     description:
-      "A teacher, neighbor, or news reporter tells us about a student who needs help. We do not take random applications.",
-    duration: "Day 1",
+      "Students seeking financial assistance submit an application through the Aaghaz website, along with the required information and supporting documents.",
   },
   {
     icon: Home,
-    title: "Two volunteers visit",
+    title: "Verify",
     description:
-      "At least two volunteers visit the student's home and school. They check the family's financial need and the student's marks.",
-    duration: "Within 7 days",
+      "Applications that meet our initial criteria are assigned to Aaghaz volunteers for verification. Two volunteers visit the student and their family to assess their circumstances, review the information provided and, where necessary, verify details with the school or college.",
   },
   {
     icon: Users,
-    title: "Our committee checks the case",
+    title: "Review",
     description:
-      "Our committee reads the volunteer reports. They decide how much money to give and for how long.",
-    duration: "Within 14 days",
+      "The volunteers submit their findings to the Aaghaz committee. Each case is reviewed individually, taking into account financial need, academic record and other relevant circumstances. The committee decides whether assistance should be approved, how much support is required and for how long.",
   },
   {
     icon: HandCoins,
-    title: "We pay the fees directly",
+    title: "Support & Follow Up",
     description:
-      "We pay the school or college directly, not the family. Our volunteers also check on the student every month.",
-    duration: "Same academic year",
+      "Where possible, approved fees are paid directly to the school or college rather than to the student or family. Our volunteers remain in contact with students, follow their progress and report any significant change in their circumstances.",
   },
 ];
 
@@ -54,10 +50,10 @@ export const HowItWorks = () => {
             <span className="block w-8 h-px bg-secondary" />
           </p>
           <h2 className="text-4xl md:text-6xl font-display font-bold leading-tight mb-4">
-            Four steps. No shortcuts.
+            Every application is checked before support is approved
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto text-lg">
-            We do not take random online forms. Every single rupee goes through a real process to help a real student, just like we have done for 20 years.
+            Aaghaz follows a clear process to assess need, verify information and make sure educational assistance is used for its intended purpose.
           </p>
         </div>
 
@@ -87,9 +83,6 @@ export const HowItWorks = () => {
                     <div className="flex items-center gap-3 mb-5">
                       <span className="w-12 h-12 rounded-full bg-primary text-white font-display text-lg font-bold flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                         {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span className="text-[10px] uppercase tracking-[0.3em] text-secondary font-bold">
-                        {step.duration}
                       </span>
                     </div>
 

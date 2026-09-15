@@ -1,9 +1,10 @@
 import {
   GraduationCap,
-  Users,
   HandCoins,
-  BookOpen,
-  Calendar,
+  MapPin,
+  School,
+  Briefcase,
+  Award,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -13,45 +14,45 @@ interface Stat {
   icon: typeof GraduationCap;
   value: string;
   label: string;
-  caption: string;
   image: string;
 }
 
 const stats: Stat[] = [
   {
-    icon: Calendar,
-    value: "20+",
-    label: "Years of work",
-    caption: "We started with one student in 2004 and have now helped thousands across India.",
-    image: statsImages.teacherWriting,
-  },
-  {
     icon: GraduationCap,
-    value: "5,000+",
-    label: "Students helped",
-    caption: "We check the needs of every student in person before helping them.",
+    value: "65,000+",
+    label: "Students supported since 2004",
     image: statsImages.girlGraduate,
   },
   {
     icon: HandCoins,
-    value: "100%",
-    label: "Goes to the student",
-    caption: "Our founders pay for all office costs. Every rupee you donate goes directly to the student.",
+    value: "₹1 lakh+ a day",
+    label: "Provided in educational support",
     image: statsImages.studentsWalking,
   },
   {
-    icon: Users,
-    value: "300+",
-    label: "Active volunteers",
-    caption: "Our volunteers do field checks in 14 states. At least two volunteers visit every home.",
+    icon: MapPin,
+    value: "24 states",
+    label: "Where Aaghaz supports students",
     image: statsImages.classroomDesk,
   },
   {
-    icon: BookOpen,
-    value: "2",
-    label: "Study centers",
-    caption: "We run a guidance center in Lucknow and partner with Rahmani 30 in Uttar Pradesh.",
+    icon: School,
+    value: "550+",
+    label: "Schools & colleges with Aaghaz-supported students",
     image: statsImages.teacherWriting,
+  },
+  {
+    icon: Briefcase,
+    value: "350+",
+    label: "Students who became doctors, engineers & lawyers",
+    image: statsImages.girlGraduate,
+  },
+  {
+    icon: Award,
+    value: "90+",
+    label: "Named & memorial scholarships created",
+    image: statsImages.studentsWalking,
   },
 ];
 
@@ -72,14 +73,14 @@ export const StatsSection = () => {
         <div className="text-center mb-14">
           <p className="inline-flex items-center gap-3 text-primary text-xs font-bold uppercase tracking-[0.4em] mb-4">
             <span className="block w-8 h-px bg-primary" />
-            By The Numbers
+            Our Impact
             <span className="block w-8 h-px bg-primary" />
           </p>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-accent">
-            What We Have Achieved
+            Aaghaz by the Numbers
           </h2>
           <p className="mt-4 text-text-muted max-w-xl mx-auto text-sm md:text-lg">
-            Over the last 20 years, we have kept clean records of every rupee. Hover or click on any number below to see the details.
+            From ₹2,000 and one student in 2004 to thousands of students across India.
           </p>
         </div>
 
@@ -108,18 +109,18 @@ export const StatsSection = () => {
                     "linear-gradient(to top, rgba(15,15,15,0.95) 0%, transparent 100%)",
                 }}
               >
-                <p className="text-secondary text-[10px] uppercase tracking-[0.4em] font-bold mb-2">
-                  Behind the number
+                <p className="font-display text-4xl md:text-5xl font-bold text-secondary leading-none mb-2">
+                  {active.value}
                 </p>
                 <p className="font-display text-xl md:text-2xl leading-tight">
-                  {active.caption}
+                  {active.label}
                 </p>
               </div>
 
               {/* Active-stat badge top-right */}
               <span className="absolute top-4 right-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary text-accent text-[10px] font-bold uppercase tracking-widest">
                 <active.icon size={12} />
-                {active.label}
+                Aaghaz by the Numbers
               </span>
             </motion.div>
           </div>
@@ -193,12 +194,6 @@ export const StatsSection = () => {
                 );
               })}
             </ul>
-
-            {/* Bottom note */}
-            <p className="mt-8 text-text-muted text-sm italic flex items-center gap-3">
-              <span className="block w-6 h-px bg-secondary" />
-              We check our numbers every three months and share reports with our donors.
-            </p>
           </div>
         </div>
       </div>

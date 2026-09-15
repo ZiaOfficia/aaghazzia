@@ -4,6 +4,69 @@
 
 import { heroImages } from "./imageAssets";
 
+// Home page hero — the four sections shown in the HeroSlider.
+// Images live in imageAssets.ts (heroImages.hero*) for easy replacement.
+export type HeroCta = {
+  label: string;
+  to: string;
+  variant: "primary" | "outline";
+};
+
+export type HeroSection = {
+  label: string;
+  heading: string;
+  body: string;
+  source?: string;
+  image: string;
+  imageAlt: string;
+  ctas: HeroCta[];
+};
+
+const defaultHeroCtas: HeroCta[] = [
+  { label: "Donate Now", to: "/contact", variant: "primary" },
+  { label: "Our Story", to: "/about", variant: "outline" },
+];
+
+export const homeHeroSections: HeroSection[] = [
+  {
+    label: "Our Story",
+    heading: "We started with one student. Now we help thousands across India.",
+    body: "Since 2004, Aaghaz has helped students continue their education when their families could not afford it.",
+    image: heroImages.heroOurStory,
+    imageAlt: "Aaghaz — Our Story",
+    ctas: defaultHeroCtas,
+  },
+  {
+    label: "Education at Risk",
+    heading: "Too many students still leave school too soon.",
+    body: "In India, 7% of students at secondary level drop out of school. Aaghaz works with families where financial hardship puts a student's education at risk.",
+    source: "Source: UDISE+ 2025–26, Ministry of Education, Government of India",
+    image: heroImages.heroProblem,
+    imageAlt: "Education at risk",
+    ctas: defaultHeroCtas,
+  },
+  {
+    label: "65,000+ Students",
+    heading: "Aaghaz has supported more than 65,000 students.",
+    body: "Many have gone on to build successful careers. Some have returned as mentors, volunteers and donors, helping other students get the same opportunity they once had.",
+    image: heroImages.heroImpact,
+    imageAlt: "Aaghaz impact — 65,000+ students",
+    ctas: defaultHeroCtas,
+  },
+  {
+    label: "You Can Help",
+    heading: "There is more to do. You can help.",
+    body: "Support a verified student, start a scholarship or volunteer your time. Every contribution helps another student stay in education.",
+    image: heroImages.heroCallToAction,
+    imageAlt: "You can help",
+    ctas: [
+      { label: "Support a Student", to: "/services/join-as-donor", variant: "primary" },
+      { label: "Start a Scholarship", to: "/services/launch-scholarship", variant: "outline" },
+      { label: "Volunteer Your Time", to: "/services/become-volunteer", variant: "outline" },
+    ],
+  },
+];
+
 export const heroSlides = [
   {
     title: "Aaghaz · A Beginning",
@@ -61,60 +124,49 @@ export const portfolioContent = {
     "Read these true stories of children who got help, families who found hope, and donors who supported them. We still keep in touch with these families. Read their stories to know more about our work.",
 };
 
+// "What We Do" — the five programmes shown on the homepage and /services.
+export const whatWeDoContent = {
+  label: "What We Do",
+  heading: "Keeping students in education",
+  intro:
+    "Aaghaz supports students across India where financial hardship puts their education at risk. Our work ranges from direct financial assistance to coaching, community learning and practical skills.",
+};
+
 export const services = [
   {
-    ...heroSlides[0],
-    id: "student-aid",
+    title: "Student Aid",
+    image: heroImages.girlSmiling,
+    link: "/services/student-aid",
     description:
-      "Help with school and college fees for children from poor families. We cover school fees, books, exam fees, and uniforms so they can keep studying.",
+      "We help eligible students with school and college fees, examination costs, books, uniforms and other essential educational expenses. Every application is verified before assistance is approved.",
   },
   {
-    ...heroSlides[1],
-    id: "scholarships",
+    title: "Coaching & Career Guidance",
+    image: heroImages.studentBlackboard,
+    link: "/services",
     description:
-      "Scholarships funded by donors to help students study. We track every rupee and send reports to the donors.",
+      "We provide coaching and guidance to help students prepare for higher education, competitive examinations and careers. Our programmes have included support for students preparing for examinations such as JEE and NEET.",
   },
   {
-    ...heroSlides[2],
-    id: "financial-assistance",
+    title: "Community Learning",
+    image: heroImages.libraryStudy,
+    link: "/services/madarsa-initiative",
     description:
-      "School and college fee help given to good students from poor families after our volunteers visit their homes.",
+      "Working with educational partners, Aaghaz provides affordable learning opportunities in underserved communities. Hundreds of girls currently benefit from our learning centres in Lucknow and Aligarh.",
   },
   {
-    ...heroSlides[4],
-    id: "computer-center",
+    title: "Computer Learning",
+    image: heroImages.classroomTeacher,
+    link: "/services/computer-center",
     description:
-      "Free computer classes and digital training for children from poor families in Lucknow.",
+      "Our free computer learning centre in Lucknow gives students practical digital skills. Several batches have completed the programme and received certificates, helping them become better prepared for further education and work.",
   },
   {
-    ...heroSlides[5],
-    id: "madarsa-initiative",
+    title: "Named & Memorial Scholarships",
+    image: heroImages.outdoorEducation,
+    link: "/services/memorial-scholarship",
     description:
-      "Helping madarsa students learn modern subjects, computer skills, and get job guidance.",
-  },
-  {
-    ...heroSlides[7],
-    id: "memorial-scholarship",
-    description:
-      "Start a scholarship in the memory of a loved one to pay for a child's school fees. We send you yearly progress updates.",
-  },
-  {
-    ...heroSlides[3],
-    id: "become-volunteer",
-    description:
-      "Aaghaz runs because of volunteers. Our team meets students, checks their homes, and guides them in their studies.",
-  },
-  {
-    ...heroSlides[6],
-    id: "join-as-donor",
-    description:
-      "Your donation pays for school fees, hostel rent, books, and study help for poor students. We send you their photos and progress reports.",
-  },
-  {
-    ...heroSlides[7],
-    id: "launch-scholarship",
-    description:
-      "Start a scholarship in the name of a parent, teacher, or friend. You choose who to help, and we send you yearly reports.",
+      "Donors can establish scholarships in their own name or in honour or memory of someone. Aaghaz verifies and selects eligible students, administers the support and provides updates on their progress.",
   },
 ];
 
@@ -136,11 +188,26 @@ export const whyChooseContent = {
 export const aboutContent = {
   heading: "About Aaghaz Foundation",
   text: [
-    "Aaghaz Foundation is a registered charity. It was started in Lucknow in 2004 by journalist Mazhar Farooqui and his friends. They began with just Rs 2,000 to help one poor student. Today, it is one of the most trusted education charities in North India.",
-    "Over the years, we have helped thousands of children across India through our scholarships and fee support. We do not approve cases blindly. Our volunteers meet every student and visit their homes to understand their real needs.",
-    "We work with a large group of donors, teachers, and volunteers. We all believe that every child in India has the right to read, write, and study, and we must do our part to help.",
+    "Aaghaz Foundation is a non-profit organisation founded in Lucknow, India, in 2004 by journalist Mazhar Farooqui and a group of friends. It began with ₹2,000 and a simple goal: to help one student continue his education.",
+    "Since then, Aaghaz has grown through the support of volunteers, donors and well-wishers who share the belief that a child’s education should not be determined by their family’s financial circumstances.",
+    "The Foundation helps students from disadvantaged backgrounds stay in school and continue their education by providing financial and other support where it is needed.",
   ],
   author: "Mazhar Farooqui — Founder",
+  quote:
+    "One person may not be able to support ten students. But ten people can come together to support one. That is how Aaghaz started, and that is how it has grown.",
+  quoteAuthor: "Mazhar Farooqui, Founder",
+};
+
+// "Our Story" — shown on the /about page in place of the About text.
+export const ourStoryContent = {
+  heading: "Our Story",
+  text: [
+    "Aaghaz Foundation was started in Lucknow in 2004 by journalist Mazhar Farooqui and a group of friends. Mazhar had seen children in his neighbourhood out of school because their families could not afford the fees. They started with ₹2,000 and one student.",
+    "There was no larger plan at the time. More students came forward, more people offered to help, and the work gradually spread beyond Lucknow. Today, Aaghaz has supported more than 65,000 students across 22 states, studying in more than 550 schools and colleges.",
+    "Aaghaz is now supported by Indians from different backgrounds, including many living overseas who want to contribute to education back home. We believe education is an important part of nation-building. Helping a student complete school or college gives them a better chance of becoming independent and contributing to the country.",
+    "We have seen that happen. More than 350 Aaghaz-supported students have become doctors, engineers and lawyers, while many others have built careers in different fields. Some have returned to Aaghaz as donors, mentors and volunteers.",
+    "What started with one student has grown across India, but the idea remains simple: one person may not be able to support ten students, but ten people can come together to support one.",
+  ],
 };
 
 export const blogPosts = [
@@ -172,54 +239,84 @@ export const blogPosts = [
 
 export const faqs = [
   {
-    question: "What does Aaghaz Foundation actually do?",
+    question: "What does Aaghaz Foundation do?",
     answer:
-      "Aaghaz Foundation helps clever students from poor families in India finish their education. We provide scholarships, help pay school and college fees, and run free study centers (like LCGC in Lucknow) and coaching classes (like Rahmani 30 in UP).",
+      "Aaghaz helps students from low-income families in India continue their education. We help with school and college fees and other essential educational costs, while also providing mentoring, counselling and educational support.",
   },
   {
-    question: "How do you decide who gets a scholarship?",
+    question: "How do you select students for support?",
     answer:
-      "Every student who asks for help is visited by our volunteers. At least two volunteers visit the student's home and school to check their financial condition and their marks. We only help students who really need it and want to study.",
+      "Every application goes through a verification process. Our volunteers review the documents provided, visit the student's home and, where necessary, verify information with their school or college. We consider the family's financial circumstances, the student's academic record and other relevant factors before assistance is approved.",
   },
   {
-    question: "How can I donate?",
+    question: "Who gets priority?",
     answer:
-      "You can donate through our website. 100% of your donation is used to pay school fees for students, because our founders pay for all administrative and office costs. You also get a tax exemption receipt (Section 80G) for your donation.",
+      "We support students whose education is at risk because of financial hardship. Priority is given to those facing particularly difficult circumstances, including orphans, abandoned children, students without parental support and those from families experiencing severe financial hardship. Every case is considered individually.",
   },
   {
-    question: "Can I launch a memorial or named scholarship?",
+    question: "What does Aaghaz pay for?",
     answer:
-      "Yes. You can start a scholarship in memory of a parent, sibling, teacher, or friend. You can choose the rules, like helping only girls or students from a specific area. We send you progress updates of the students who receive your scholarship.",
+      "Depending on the student's needs, assistance may cover school or college fees, books, uniforms, examination fees and other essential education-related costs. Support varies according to each student's circumstances and the funds available.",
   },
   {
-    question: "How do I become a volunteer?",
+    question: "Can I get support to study outside India?",
     answer:
-      "Aaghaz runs on volunteer support. You can help us by visiting students' homes for verification in your city, or help us online with computer work, social media, or guiding students. Please register on our website and we will contact you.",
+      "No. Aaghaz provides educational assistance only to students studying in India. We do not fund courses, colleges, universities or other educational programmes outside India.",
   },
   {
-    question: "What is Rahmani 30 and how is Aaghaz connected to it?",
+    question: "How can I apply for financial assistance?",
     answer:
-      "Rahmani 30 is a coaching program that prepares poor students for difficult exams like IIT-JEE and NEET. Aaghaz has joined hands with them to run free coaching centers in Uttar Pradesh so village students can get free training.",
+      "Applications can be submitted through the Apply for Student Aid section of this website. Applicants must provide accurate information and supporting documents. Every application goes through our verification process, and submitting an application does not guarantee financial assistance.",
   },
   {
-    question: "What is the Lucknow Coaching & Guidance Centre (LCGC)?",
+    question: "How do I contribute?",
     answer:
-      "Since 2011, Aaghaz runs a free after-school study center in Lucknow. It has a quiet library, computers, and teachers to help children who do not have these resources at home. Over 200 children study here every week.",
+      "Register as a donor on our website and use one of the official donation options provided. Registering allows us to properly record your contribution and issue the relevant acknowledgement or receipt. Please do not send money through unofficial channels or directly to individuals claiming to represent Aaghaz.",
   },
   {
-    question: "How do I apply for student aid for myself or my child?",
+    question: "Can I choose which student I support?",
     answer:
-      "Fill the application form on our website. We help pay school fees, college fees, books, and hostel costs for poor families. After you apply, our volunteers will visit your home to check your details.",
+      "Yes. Registered donors can view students who have been verified and approved for support. You can filter cases by factors such as school or college, fees and gender, and choose a student you would like to support. Every student listed has already gone through Aaghaz's verification process.",
   },
   {
-    question: "Is Aaghaz Foundation registered? Are donations tax-exempt?",
+    question: "How do you make sure donations are properly used?",
     answer:
-      "Yes. Aaghaz Foundation is a registered charity in India. Indian donors get a tax deduction under Section 80G. We will send you a donation receipt within 7 days.",
+      "We maintain records of the assistance provided and, wherever possible, make payments for approved educational expenses through traceable channels. Students are verified before assistance is approved, and their continued support is reviewed periodically.",
   },
   {
-    question: "How can my company partner with Aaghaz?",
+    question: "I am an Indian citizen living abroad. Can I donate?",
     answer:
-      "Companies can support us through CSR funds. You can sponsor a classroom, fund a scholarship group, or sponsor a coaching center. Write to us at aaghaz.foundation@gmail.com and we will help you set it up.",
+      "Indian citizens living outside India may be able to contribute through an eligible Indian bank account, subject to applicable Indian laws and banking requirements. If you live abroad, please contact us before transferring funds so we can confirm that your contribution can be accepted.",
+  },
+  {
+    question: "I am a foreign citizen. Can I donate?",
+    answer:
+      "No. Aaghaz does not currently accept donations from foreign citizens or funds from foreign sources. If you are unsure whether your contribution is eligible, please contact us before transferring any money.",
+  },
+  {
+    question: "Are donations tax-deductible in India?",
+    answer:
+      "Eligible donations may qualify for deduction under Section 80G of the Income-tax Act, subject to applicable rules. Aaghaz issues receipts for eligible donations.",
+  },
+  {
+    question: "Does Aaghaz accept Zakat?",
+    answer:
+      "Yes. Aaghaz accepts Zakat and uses these contributions to support eligible students and their educational needs.",
+  },
+  {
+    question: "Can I set up a scholarship in someone's name or memory?",
+    answer:
+      "Yes. A named or memorial scholarship allows you to support a student's education in honour or memory of someone important to you, such as a parent, family member, friend or teacher. Contact us and we can help you set it up and keep you informed about the students it supports.",
+  },
+  {
+    question: "How can I volunteer?",
+    answer:
+      "Our volunteers help verify applications, stay in touch with students, provide mentoring and support our educational programmes. You can register through our website or contact us to find out how you can help.",
+  },
+  {
+    question: "Is Aaghaz Foundation registered in India?",
+    answer:
+      "Yes. Aaghaz Foundation is registered in India under the Societies Registration Act, 1860. We comply with applicable requirements governing our activities and the contributions we are permitted to accept.",
   },
 ];
 

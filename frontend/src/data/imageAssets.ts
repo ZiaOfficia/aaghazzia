@@ -25,6 +25,13 @@ export const heroImages = {
   libraryStudy: lf(266),
   kidsLearning: u("1542810634-71277d95dcbb", 1920),
   outdoorEducation: lf(85),
+
+  // Home hero — one image per section. Temporary placeholders: to swap in a
+  // final photo, drop the file in /public/images/hero/ and change the path here.
+  heroOurStory: lf(33),
+  heroProblem: lf(45),
+  heroImpact: lf(122),
+  heroCallToAction: "/images/assets/student-1.png",
 };
 
 // ── MISSION PILLARS (3 — Educate / Empower / Elevate) ───────────────
@@ -53,6 +60,10 @@ export const statsImages = {
 export const aboutImage = u("1509062522246-3755977927d7", 1200);
 // quiet study setting — books and learning corner
 
+// Founder photo shown next to the founder quote (homepage About section and
+// /about page).
+export const founderImage = "/images/owner/owner.jpeg";
+
 // ── PROGRAMS / SERVICES (8 — Indian education contexts) ─────────────
 export const serviceImages = {
   studentAid: u("1503676382389-4809596d5290", 1200),        // boys in school uniform
@@ -70,10 +81,12 @@ export const serviceImages = {
 export const howItWorksImages = {};
 
 export const testimonialImages = {
-  studentSumaiya: "/images/assets/student-2.png",     
-  donorFamily: "/images/assets/orphan-1.png",        
-  parentMother: "/images/assets/teacher-2.png",          
-  iitAlumnus: "/images/assets/student-1.png",         
+  yasminParveen: "/images/suceessstories/AdvocateYasmeenParveenToday.jpeg",
+  aamirHannan: "/images/testimonials/AamirHannan.jpeg",
+  irtiqaKhan: "/images/testimonials/IrtiqaKhan.jpeg",
+  mominulIslam: "/images/testimonials/Dr.MominulIslam.jpeg",
+  shibaSami: "/images/testimonials/DrShibaSami.jpeg",
+  imranMustafaMalik: "/images/testimonials/DrImranMustafaMalik.jpeg",
 };
 
 // ── DONATE CTA ──────────────────────────────────────────────────────

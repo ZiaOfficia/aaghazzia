@@ -10,10 +10,16 @@ import {
   Award,
   Gift,
   Sparkles,
+  BookOpen,
+  Monitor,
 } from "lucide-react";
 import { SEO } from "../components/common/SEO";
 import NewsletterSection from "../components/sections/NewsletterSection";
 import { useState } from "react";
+import { services as whatWeDoPrograms, whatWeDoContent } from "../data/content";
+
+// Icons for the five "What We Do" programmes, in order.
+const programIcons = [GraduationCap, BookOpen, Users, Monitor, Award];
 
 export const ServicesPage = () => {
   const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
@@ -25,9 +31,9 @@ export const ServicesPage = () => {
         "Every student who asks for help is visited by our volunteers at home. We only help students who really need it. We do not approve cases without checking in person.",
     },
     {
-      question: "Are donations tax-exempt?",
+      question: "Are donations tax-deductible in India?",
       answer:
-        "Yes. Aaghaz is a registered charity. Donors in India get tax benefits under Section 80G. We send donation receipts within 7 days.",
+        "Eligible donations may qualify for deduction under Section 80G of the Income-tax Act, subject to applicable rules. Aaghaz issues receipts for eligible donations.",
     },
     {
       question: "Can I direct my donation to a specific programme?",
@@ -52,7 +58,7 @@ export const ServicesPage = () => {
       icon: <GraduationCap className="w-8 h-8 text-primary" />,
       title: "Student Aid",
       description:
-        "Help with fees, books, exam fees, and uniforms for school and college students from poor families.",
+        "We help eligible students with school and college fees, examination costs, books, uniforms and other essential educational expenses. Every application is verified before assistance is approved.",
       features: [
         "School and exam fees",
         "College and university fees",
@@ -112,7 +118,7 @@ export const ServicesPage = () => {
       icon: <Heart className="w-8 h-8 text-primary" />,
       title: "Join us as Donor",
       description:
-        "Register to join our donor base. We will call you to discuss how you can help. 100% of your donation is spent on paying student fees.",
+        "Register as an Aaghaz donor and choose how you would like to contribute. You can make a one-time contribution, give regularly or support a verified student directly through our donor platform.",
       features: [
         "One-time or monthly donations",
         "Sponsor a child's yearly fees",
@@ -167,7 +173,7 @@ export const ServicesPage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="inline-block text-secondary text-xs md:text-sm font-bold uppercase tracking-[0.3em] mb-4"
           >
-            What We Do
+            {whatWeDoContent.label}
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -175,7 +181,7 @@ export const ServicesPage = () => {
             transition={{ delay: 0.2 }}
             className="text-4xl md:text-6xl lg:text-7xl font-display mb-6"
           >
-            Programs that help a child study and succeed
+            {whatWeDoContent.heading}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -183,7 +189,7 @@ export const ServicesPage = () => {
             transition={{ delay: 0.4 }}
             className="text-lg md:text-xl text-white/95 font-light max-w-2xl mx-auto leading-relaxed"
           >
-            Checked scholarships, free coaching centers, and a volunteer network that works honestly.
+            {whatWeDoContent.intro}
           </motion.p>
         </div>
       </section>
@@ -214,10 +220,10 @@ export const ServicesPage = () => {
               <span className="w-3 h-3 bg-secondary rounded-full animate-pulse"></span>
             </div>
             <h2 className="text-3xl md:text-5xl font-display text-accent mb-6 leading-tight">
-              Programs that help a child study and succeed
+              {whatWeDoContent.heading}
             </h2>
             <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
-              Aaghaz Foundation helps kids study. From school fee aid to scholarships in memory of loved ones, we make sure no bright child stops studying because of money.
+              {whatWeDoContent.intro}
             </p>
           </div>
 
@@ -289,102 +295,33 @@ export const ServicesPage = () => {
             <h3 className="text-2xl md:text-3xl font-display text-accent text-center mb-12">
               How We Help
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="bg-white rounded-xl p-6 shadow-md border border-primary/10"
-              >
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <GraduationCap className="w-6 h-6 text-primary" />
-                </div>
-                <h4 className="font-display text-lg text-accent mb-3">Student Aid</h4>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Help with school and college fees for kids from poor families. Covers fees, books, uniforms, and hostel.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="bg-white rounded-xl p-6 shadow-md border border-primary/10"
-              >
-                <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Award className="w-6 h-6 text-secondary" />
-                </div>
-                <h4 className="font-display text-lg text-accent mb-3">Scholarships</h4>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Yearly scholarships for clever students across India, given after checking their homes in person.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="bg-white rounded-xl p-6 shadow-md border border-primary/10"
-              >
-                <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-                  <HandCoins className="w-6 h-6 text-accent" />
-                </div>
-                <h4 className="font-display text-lg text-accent mb-3">Financial Assistance</h4>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Quick help for families facing sudden problems, keeping children in school with one-time or ongoing fee support.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="bg-white rounded-xl p-6 shadow-md border border-primary/10"
-              >
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Users className="w-6 h-6 text-primary" />
-                </div>
-                <h4 className="font-display text-lg text-accent mb-3">Volunteer Network</h4>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  A group run by volunteers who check details and guide students. Join our volunteer network in India.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="bg-white rounded-xl p-6 shadow-md border border-primary/10"
-              >
-                <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Heart className="w-6 h-6 text-secondary" />
-                </div>
-                <h4 className="font-display text-lg text-accent mb-3">Donor Partnerships</h4>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Join our donor community to sponsor a child or help a program. 100% of your donation is used for student fees.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                className="bg-white rounded-xl p-6 shadow-md border border-primary/10"
-              >
-                <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-                  <Gift className="w-6 h-6 text-accent" />
-                </div>
-                <h4 className="font-display text-lg text-accent mb-3">Launch Scholarships</h4>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Start a scholarship in memory of a loved one. You choose the rules, and we send you yearly updates.
-                </p>
-              </motion.div>
+            <div className="flex flex-wrap justify-center gap-8">
+              {whatWeDoPrograms.map((program, index) => {
+                const Icon = programIcons[index % programIcons.length];
+                return (
+                  <motion.div
+                    key={program.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]"
+                  >
+                    <Link
+                      to={program.link}
+                      className="block h-full bg-white rounded-xl p-6 shadow-md border border-primary/10 hover:shadow-xl hover:border-primary/30 transition-all duration-300"
+                    >
+                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                        <Icon className="w-6 h-6 text-primary" />
+                      </div>
+                      <h4 className="font-display text-lg text-accent mb-3">{program.title}</h4>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        {program.description}
+                      </p>
+                    </Link>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
 

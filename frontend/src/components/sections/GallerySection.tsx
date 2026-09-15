@@ -34,20 +34,20 @@ export const GallerySection = () => {
           className="inline-flex items-center gap-3 text-primary text-xs font-bold uppercase tracking-[0.4em] mb-3"
         >
           <span className="block w-8 h-px bg-primary" />
-          Photo Gallery
+          Gallery
           <span className="block w-8 h-px bg-primary" />
         </motion.p>
         <motion.h2
           variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
           className="text-3xl md:text-5xl font-display mb-3 mt-2 text-accent"
         >
-          Pictures from our programs
+          Photo Gallery
         </motion.h2>
         <motion.p
           variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
           className="text-text-muted max-w-xl mx-auto mb-10"
         >
-          Real photos from our school visits, learning centers, and student meetings.
+          More than two decades of Aaghaz, in pictures.
         </motion.p>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

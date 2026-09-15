@@ -92,7 +92,7 @@ export const SuccessStoriesPage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-[11px] uppercase tracking-[0.3em] font-semibold text-primary mb-5"
           >
-            Aaghaz Foundation
+            Success Stories
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -100,7 +100,7 @@ export const SuccessStoriesPage = () => {
             transition={{ delay: 0.1 }}
             className="text-5xl md:text-7xl font-display mb-6 tracking-tight"
           >
-            Success Stories
+            Stories from Aaghaz
           </motion.h1>
           <motion.div
             initial={{ opacity: 0, scaleX: 0 }}
@@ -114,7 +114,7 @@ export const SuccessStoriesPage = () => {
             transition={{ delay: 0.2 }}
             className="text-lg font-light text-stone-300 max-w-2xl mx-auto leading-relaxed"
           >
-            Here are stories of some of the students Aaghaz has helped. Many have finished their studies and got good jobs, and others are still studying to achieve their dreams.
+            Meet some of the students we have supported and read about the people and work behind Aaghaz.
           </motion.p>
         </div>
       </section>

@@ -8,8 +8,8 @@ const pillars = [
   {
     icon: BookOpen,
     word: "Educate",
-    sub: "Help them learn",
-    body: "We pay school and college fees, buy books, uniforms, and exam forms. We also partner with Rahmani 30 to offer free coaching. We make sure no child has to stop studying because their family cannot afford it.",
+    sub: "Make education possible",
+    body: "We pay school and college fees and help with books, uniforms, exam costs and other essentials. We also run a counselling and computer centre. The aim is simple: no student should have to stop studying because their family cannot afford it.",
     accent: "from-primary/15 via-primary/5 to-transparent",
     iconBg: "bg-primary",
     image: missionImages.educate,
@@ -18,8 +18,8 @@ const pillars = [
   {
     icon: Sparkles,
     word: "Empower",
-    sub: "Support them daily",
-    body: "Our volunteers visit every student at home to verify their need. We also connect students with mentors to help them all year, and run a quiet study center in Lucknow.",
+    sub: "Support them along the way",
+    body: "Our support does not end when the fees are paid. Volunteers stay in touch with students, track how they are doing and step in when they need help. We also connect them with mentors who can offer guidance through their education and beyond.",
     accent: "from-secondary/15 via-secondary/5 to-transparent",
     iconBg: "bg-secondary",
     image: missionImages.empower,
@@ -28,8 +28,8 @@ const pillars = [
   {
     icon: TrendingUp,
     word: "Elevate",
-    sub: "See them succeed",
-    body: "Many of our students are the first in their families to graduate. They clear exams like IIT and NEET and build great careers. We see them not as numbers, but as real people with bright futures.",
+    sub: "See where they go",
+    body: "Many Aaghaz students are the first in their families to graduate and some have gone on to leading universities and successful careers. We stay connected with former students and encourage them to mentor, volunteer or support another student, keeping the circle going.",
     accent: "from-accent/15 via-accent/5 to-transparent",
     iconBg: "bg-accent",
     image: missionImages.elevate,
@@ -59,7 +59,7 @@ export const MissionStatement = () => {
             <span className="text-gradient-primary"> Elevate.</span>
           </h2>
           <p className="text-text-muted max-w-2xl mx-auto text-lg">
-            These are the three values we have followed since 2004. Here is how we put them into action every day.
+            Three simple ideas have guided Aaghaz since 2004. Here is what they mean to us.
           </p>
         </div>
 

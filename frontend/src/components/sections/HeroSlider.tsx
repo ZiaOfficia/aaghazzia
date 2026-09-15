@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { heroSlides } from "../../data/content";
+import { homeHeroSections as heroSlides } from "../../data/content";
 
 export const HeroSlider = () => {
   const [[currentIndex, direction], setCurrent] = useState<[number, number]>([
@@ -74,7 +74,7 @@ export const HeroSlider = () => {
           >
             <img
               src={current.image}
-              alt={current.title}
+              alt={current.imageAlt}
               className="w-full h-full object-cover"
             />
             {/* Light directional overlay — image stays clearly visible */}
@@ -125,7 +125,7 @@ export const HeroSlider = () => {
                 className="inline-flex items-center gap-2 text-[10px] sm:text-xs uppercase tracking-[0.4em] mb-6 px-4 py-2 rounded-full border border-secondary/70 bg-secondary/10 backdrop-blur-md text-secondary font-bold"
               >
                 <span className="block w-2 h-2 rounded-full bg-secondary animate-pulse" />
-                {current.title}
+                {current.label}
               </motion.span>
             </AnimatePresence>
 
@@ -137,9 +137,9 @@ export const HeroSlider = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -30 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.05] mb-4 sm:mb-6 drop-shadow-2xl"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mb-4 sm:mb-6 drop-shadow-2xl"
               >
-                {current.subtitle}
+                {current.heading}
               </motion.h1>
             </AnimatePresence>
 
@@ -150,30 +150,51 @@ export const HeroSlider = () => {
               <span className="h-px w-24 bg-secondary/50" />
             </div>
 
-            {/* Static descriptive text */}
-            <p className="text-sm sm:text-base md:text-xl text-gray-100 max-w-2xl mb-6 sm:mb-10 leading-relaxed drop-shadow-lg">
-              Since 2004, Aaghaz Foundation has helped poor children go to school. We check every student's need through our volunteer surveys and send regular updates to our donors.
-            </p>
+            {/* Body copy, optional source line and CTAs — change per section */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`body-${currentIndex}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, delay: 0.15 }}
+              >
+                <p className="text-sm sm:text-base md:text-xl text-gray-100 max-w-2xl leading-relaxed drop-shadow-lg">
+                  {current.body}
+                </p>
+                {current.source && (
+                  <p className="mt-2 text-[11px] sm:text-xs italic text-gray-300/80 max-w-2xl drop-shadow">
+                    {current.source}
+                  </p>
+                )}
 
-            {/* ─── FIXED BUTTONS — only two, never change ─── */}
-            <div className="flex flex-wrap gap-3 sm:gap-4">
-              <button
-                onClick={() => navigate("/contact")}
-                className="group inline-flex items-center gap-2 sm:gap-3 bg-primary hover:bg-primary-dark text-white px-6 py-3 sm:px-8 sm:py-4 text-[10px] sm:text-sm uppercase tracking-widest font-bold rounded-tl-2xl rounded-br-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-0.5"
-              >
-                <Heart size={16} fill="currentColor" />
-                Donate Now
-                <span className="group-hover:translate-x-1 transition-transform">
-                  &rarr;
-                </span>
-              </button>
-              <button
-                onClick={() => navigate("/about")}
-                className="inline-flex items-center gap-2 sm:gap-3 border-2 border-secondary text-secondary hover:bg-secondary hover:text-accent px-6 py-3 sm:px-8 sm:py-4 text-[10px] sm:text-sm uppercase tracking-widest font-bold rounded-tl-2xl rounded-br-2xl transition-all duration-300"
-              >
-                Our Story
-              </button>
-            </div>
+                <div className="flex flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-10">
+                  {current.ctas.map((cta) =>
+                    cta.variant === "primary" ? (
+                      <button
+                        key={cta.label}
+                        onClick={() => navigate(cta.to)}
+                        className="group inline-flex items-center gap-2 sm:gap-3 bg-primary hover:bg-primary-dark text-white px-6 py-3 sm:px-8 sm:py-4 text-[10px] sm:text-sm uppercase tracking-widest font-bold rounded-tl-2xl rounded-br-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-0.5"
+                      >
+                        <Heart size={16} fill="currentColor" />
+                        {cta.label}
+                        <span className="group-hover:translate-x-1 transition-transform">
+                          &rarr;
+                        </span>
+                      </button>
+                    ) : (
+                      <button
+                        key={cta.label}
+                        onClick={() => navigate(cta.to)}
+                        className="inline-flex items-center gap-2 sm:gap-3 border-2 border-secondary text-secondary hover:bg-secondary hover:text-accent px-6 py-3 sm:px-8 sm:py-4 text-[10px] sm:text-sm uppercase tracking-widest font-bold rounded-tl-2xl rounded-br-2xl transition-all duration-300"
+                      >
+                        {cta.label}
+                      </button>
+                    )
+                  )}
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>
