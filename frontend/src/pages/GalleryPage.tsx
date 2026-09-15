@@ -6,6 +6,7 @@ import { ServiceGalleryGrid } from "../components/services";
 import { PageHeader } from "../components/ui/PageHeader";
 import { Section } from "../components/ui/Section";
 import { SectionHeading } from "../components/ui/SectionHeading";
+import { allGalleryImages } from "../data/imageAssets";
 
 // Placeholder YouTube ID used before real films were added. Films that still
 // use it are hidden. Replace `id` with the real YouTube video ID to show a film.
@@ -16,51 +17,32 @@ const videoGallery = [
   {
     id: PLACEHOLDER_VIDEO_ID,
     title: "20 Years of Aaghaz — A short film",
-    thumbnail: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=1200&q=80",
+    thumbnail: "",
   },
   {
     id: PLACEHOLDER_VIDEO_ID,
     title: "Inside the LCGC, Lucknow",
-    thumbnail: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80",
+    thumbnail: "",
   },
   {
     id: PLACEHOLDER_VIDEO_ID,
     title: "How a pre-scholarship survey works",
-    thumbnail: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1200&q=80",
+    thumbnail: "",
   },
   {
     id: PLACEHOLDER_VIDEO_ID,
     title: "Rahmani 30 — Cohort highlights",
-    thumbnail: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1200&q=80",
+    thumbnail: "",
   },
   {
     id: PLACEHOLDER_VIDEO_ID,
     title: "Donor stories — A memorial scholarship",
-    thumbnail: "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=1200&q=80",
+    thumbnail: "",
   },
 ];
 
 // Aaghaz Foundation — gallery images (from the field)
-const imageGallery = [
-  "https://loremflickr.com/900/600/india,student/all?lock=2001",
-  "https://loremflickr.com/900/600/india,orphan/all?lock=2002",
-  "https://loremflickr.com/900/600/india,school/all?lock=2003",
-  "https://loremflickr.com/900/600/india,children/all?lock=2004",
-  "https://loremflickr.com/900/600/india,education/all?lock=2005",
-  "https://loremflickr.com/900/600/india,classroom/all?lock=2006",
-  "https://loremflickr.com/900/600/india,orphanage/all?lock=2007",
-  "https://loremflickr.com/900/600/india,teacher/all?lock=2008",
-  "https://loremflickr.com/900/600/india,student/all?lock=2009",
-  "https://loremflickr.com/900/600/india,orphan/all?lock=2010",
-  "https://loremflickr.com/900/600/india,school/all?lock=2011",
-  "https://loremflickr.com/900/600/india,children/all?lock=2012",
-  "https://loremflickr.com/900/600/india,education/all?lock=2013",
-  "https://loremflickr.com/900/600/india,classroom/all?lock=2014",
-  "https://loremflickr.com/900/600/india,orphanage/all?lock=2015",
-  "https://loremflickr.com/900/600/india,teacher/all?lock=2016",
-  "https://loremflickr.com/900/600/india,student/all?lock=2017",
-  "https://loremflickr.com/900/600/india,children/all?lock=2018",
-];
+const imageGallery = allGalleryImages;
 
 const films = videoGallery.filter((v) => v.id !== PLACEHOLDER_VIDEO_ID);
 

@@ -44,7 +44,7 @@ export interface ServiceData {
   };
 }
 
-import { serviceImages } from "./imageAssets";
+import { photos, serviceImages } from "./imageAssets";
 
 export const servicesData: ServiceData[] = [
   {
@@ -147,12 +147,12 @@ export const servicesData: ServiceData[] = [
       },
     ],
     portfolioImages: [
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80",
+      photos.boyStudying,
+      photos.girlStudyingBed,
+      photos.girlStudyingDesk,
+      photos.girlWalkingToSchool,
+      photos.girlWriting,
+      photos.twoGirlsStudying,
     ],
   },
 
@@ -250,12 +250,12 @@ export const servicesData: ServiceData[] = [
       },
     ],
     portfolioImages: [
-      "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80",
+      photos.youngWomanStudent,
+      photos.girlHijabPortrait,
+      photos.scholarshipVisitGroup,
+      photos.schoolgirlPortrait,
+      photos.girlReadingGarden,
+      photos.boyPortrait,
     ],
   },
 
@@ -340,12 +340,12 @@ export const servicesData: ServiceData[] = [
       ],
     },
     portfolioImages: [
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=900&q=80",
+      photos.familyPortrait,
+      photos.girlSchoolBagShop,
+      photos.girlPortrait,
+      photos.bookDistribution,
+      photos.girlLookingUp,
+      photos.childrenByField,
     ],
   },
 
@@ -606,12 +606,12 @@ export const servicesData: ServiceData[] = [
       ],
     },
     portfolioImages: [
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=900&q=80",
+      photos.twoGirlsStudying,
+      photos.classroomTeacher,
+      photos.girlStudyingDesk,
+      photos.studyRoom,
+      photos.childrenWithBooks,
+      photos.girlHijabPortrait,
     ],
   },
 
@@ -736,12 +736,12 @@ export const servicesData: ServiceData[] = [
       },
     ],
     portfolioImages: [
-      "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80",
+      photos.memorialPlaque,
+      photos.scholarshipVisitGroup,
+      photos.scholarshipVisitChildren,
+      photos.childrenWithBooks,
+      photos.youngWomanStudent,
+      photos.girlWithPeacock,
     ],
     faqs: [
       {
@@ -866,12 +866,12 @@ export const servicesData: ServiceData[] = [
       ],
     },
     portfolioImages: [
-      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=900&q=80",
+      photos.volunteersWithChildren,
+      photos.tutoringComputer,
+      photos.childrenWithVolunteer,
+      photos.fieldMeeting,
+      photos.childrenLinedUp,
+      photos.visitorsWithSchoolgirls,
     ],
   },
 
@@ -963,12 +963,12 @@ export const servicesData: ServiceData[] = [
       ],
     },
     portfolioImages: [
-      "https://images.unsplash.com/photo-1488998427799-e3362cec87c3?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80",
+      photos.donorsGroup,
+      photos.bookDistribution,
+      photos.scholarshipVisitGroup,
+      photos.girlReadingGarden,
+      photos.childrenLinedUp,
+      photos.girlStudyingBed,
     ],
   },
 
@@ -1062,12 +1062,12 @@ export const servicesData: ServiceData[] = [
       ],
     },
     portfolioImages: [
-      "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1488998427799-e3362cec87c3?auto=format&fit=crop&w=900&q=80",
+      photos.memorialPlaque,
+      photos.scholarshipVisitChildren,
+      photos.youngWomanStudent,
+      photos.girlHijabPortrait,
+      photos.studyRoom,
+      photos.schoolgirlPortrait,
     ],
   },
 ];

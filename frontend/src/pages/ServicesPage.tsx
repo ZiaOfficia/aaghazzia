@@ -4,6 +4,7 @@ import NewsletterSection from "../components/sections/NewsletterSection";
 import { ServicesGrid } from "../components/sections/ServicesGrid";
 import { FAQList } from "../components/sections/FAQSection";
 import { whatWeDoContent } from "../data/content";
+import { photos } from "../data/imageAssets";
 import { PageHeader } from "../components/ui/PageHeader";
 import { Section } from "../components/ui/Section";
 import { SectionHeading } from "../components/ui/SectionHeading";
@@ -49,8 +50,7 @@ const programs = [
       "Textbooks, notebooks, and uniforms",
       "Hostel rent and food help",
     ],
-    image:
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80",
+    image: photos.boyStudying,
   },
   {
     id: "scholarships",
@@ -63,8 +63,7 @@ const programs = [
       "Company sponsored student groups",
       "Special awards for girl students",
     ],
-    image:
-      "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=1600&q=80",
+    image: photos.youngWomanStudent,
   },
   {
     id: "financial-assistance",
@@ -77,8 +76,7 @@ const programs = [
       "Help when family medical bills are high",
       "Monthly fee support",
     ],
-    image:
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1600&q=80",
+    image: photos.familyPortrait,
   },
   {
     id: "become-volunteer",
@@ -91,8 +89,7 @@ const programs = [
       "Help with writing and photos",
       "Organizing local fundraising",
     ],
-    image:
-      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1600&q=80",
+    image: photos.volunteersWithChildren,
   },
   {
     id: "join-as-donor",
@@ -105,8 +102,7 @@ const programs = [
       "80G tax benefit receipts",
       "Yearly progress reports",
     ],
-    image:
-      "https://images.unsplash.com/photo-1488998427799-e3362cec87c3?auto=format&fit=crop&w=1600&q=80",
+    image: photos.donorsGroup,
   },
   {
     id: "launch-scholarship",
@@ -119,8 +115,7 @@ const programs = [
       "Ongoing scholarships every year",
       "Choose who to help (like girls only)",
     ],
-    image:
-      "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=1600&q=80",
+    image: photos.memorialPlaque,
   },
 ];
 

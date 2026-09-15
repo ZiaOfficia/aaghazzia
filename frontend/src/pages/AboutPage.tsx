@@ -1,7 +1,7 @@
 import { SEO } from "../components/common/SEO";
 import { ContactSection } from "../components/sections/ContactSection";
 import { aboutContent, ourStoryContent } from "../data/content";
-import { founderImage } from "../data/imageAssets";
+import { founderImage, photos } from "../data/imageAssets";
 import NewsletterSection from "../components/sections/NewsletterSection";
 import { TestimonialsSection } from "../components/sections/TestimonialsSection";
 import { FAQSection } from "../components/sections/FAQSection";
@@ -10,12 +10,12 @@ import { Section } from "../components/ui/Section";
 import { SectionHeading } from "../components/ui/SectionHeading";
 import { ButtonLink } from "../components/ui/ButtonLink";
 
-// Image slots on this page (replace the paths when final photos arrive).
+// Image slots on this page (paths live in data/imageAssets.ts).
 const aboutImages = {
-  header: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=1920&q=80",
-  story: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80",
-  howWeWork: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1600&q=80",
-  volunteers: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80",
+  header: photos.childrenByField,
+  story: photos.girlPortrait,
+  howWeWork: photos.familyPortrait,
+  volunteers: photos.volunteersWithChildren,
 };
 
 export const AboutPage = () => {
@@ -31,7 +31,7 @@ export const AboutPage = () => {
         title="Our Story"
         intro="Helping children study to build a better future."
         image={aboutImages.header}
-        imageAlt="Children studying — Aaghaz Foundation"
+        imageAlt="Children in Lucknow — Aaghaz Foundation"
       />
 
       {/* Our Story */}
@@ -56,7 +56,7 @@ export const AboutPage = () => {
           </div>
           <div className="lg:col-span-5">
             <div className="aspect-[4/5] overflow-hidden rounded-md bg-sand">
-              <img src={aboutImages.story} alt="Children studying — Aaghaz Foundation" loading="lazy" className="h-full w-full object-cover" />
+              <img src={aboutImages.story} alt="An Aaghaz-supported student" loading="lazy" className="h-full w-full object-cover" />
             </div>
           </div>
         </div>
@@ -67,7 +67,7 @@ export const AboutPage = () => {
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-6">
             <div className="aspect-[4/3] overflow-hidden rounded-md bg-cream">
-              <img src={aboutImages.howWeWork} alt="Volunteers in conversation — Aaghaz Foundation" loading="lazy" className="h-full w-full object-cover" />
+              <img src={aboutImages.howWeWork} alt="A family supported by Aaghaz Foundation" loading="lazy" className="h-full w-full object-cover" />
             </div>
           </div>
           <div className="lg:col-span-6">
@@ -129,7 +129,7 @@ export const AboutPage = () => {
           {/* Volunteer network */}
           <article aria-labelledby="volunteers-name">
             <div className="aspect-[4/5] max-w-md overflow-hidden rounded-md bg-sand">
-              <img src={aboutImages.volunteers} alt="Volunteer Coordinator — Aaghaz Foundation" loading="lazy" className="h-full w-full object-cover" />
+              <img src={aboutImages.volunteers} alt="Aaghaz volunteers with children" loading="lazy" className="h-full w-full object-cover" />
             </div>
             <h3 id="volunteers-name" className="mt-8 font-display text-3xl font-semibold">
               Our Volunteer Network

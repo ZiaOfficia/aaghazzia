@@ -1,84 +1,96 @@
 /**
- * Aaghaz Foundation — Indian image catalog.
+ * Aaghaz Foundation — image catalogue.
  *
- * Every photo on the home page comes from here.  The catalog is curated to
- * show Indian school children (especially in government / low-income school
- * uniforms), Indian teachers, rural classrooms in UP / Lucknow contexts,
- * orphans, and the kind of underprivileged students Aaghaz actually serves.
- *
- * Each Unsplash ID is referenced exactly once across the homepage so no two
- * sections show the same picture.
+ * All photos are real Aaghaz photographs taken from aaghazfoundation.com and
+ * stored in /public/images/aaghaz (resized for the web). To replace a photo,
+ * add the new file to that folder and change the path below.
  */
 
-const u = (id: string, w: number, q = 78) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=${q}`;
+const p = (file: string) => `/images/aaghaz/${file}`;
 
-// ── HERO SLIDES (8 — sliding carousel, Indian school context) ───────
-const lf = (lock: number) => `https://loremflickr.com/1920/1080/india,school,children/all?lock=${lock}`;
+export const photos = {
+  girlStudyingBed: p("girl-studying-bed.jpg"),
+  girlSchoolBagShop: p("girl-school-bag-shop.jpg"),
+  classroomTeacher: p("classroom-teacher.jpg"),
+  girlLookingUp: p("girl-looking-up.jpg"),
+  boyStudying: p("boy-studying.jpg"),
+  mentorPortrait: p("mentor-portrait.jpg"),
+  twoGirlsStudying: p("two-girls-studying.jpg"),
+  memorialPlaque: p("memorial-plaque.jpg"),
+  girlStudyingDesk: p("girl-studying-desk.jpg"),
+  volunteersWithChildren: p("volunteers-with-children.jpg"),
+  youngWomanStudent: p("young-woman-student.jpg"),
+  scholarshipVisitGroup: p("scholarship-visit-group.jpg"),
+  donorsGroup: p("donors-group.jpg"),
+  tutoringComputer: p("tutoring-computer.jpg"),
+  girlHijabPortrait: p("girl-hijab-portrait.jpg"),
+  girlWithPeacock: p("girl-with-peacock.jpg"),
+  girlReadingGarden: p("girl-reading-garden.jpg"),
+  familyPortrait: p("family-portrait.jpg"),
+  schoolgirlPortrait: p("schoolgirl-portrait.jpg"),
+  visitorsWithSchoolgirls: p("visitors-with-schoolgirls.jpg"),
+  childrenLinedUp: p("children-lined-up.jpg"),
+  bookDistribution: p("book-distribution.jpg"),
+  childrenByField: p("children-by-field.jpg"),
+  girlPortrait: p("girl-portrait.jpg"),
+  girlWalkingToSchool: p("girl-walking-to-school.jpg"),
+  boyPortrait: p("boy-portrait.jpg"),
+  girlWriting: p("girl-writing.jpg"),
+  scholarshipVisitChildren: p("scholarship-visit-children.jpg"),
+  childrenWithBooks: p("children-with-books.jpg"),
+  studyRoom: p("study-room.jpg"),
+  fieldMeeting: p("field-meeting.jpg"),
+  childrenWithVolunteer: p("children-with-volunteer.jpg"),
+  drawingCloseup: p("drawing-closeup.jpg"),
+};
 
+const computerCentre = (n: string) => `/images/computercenter/Screenshot 2026-05-15 ${n}.png`;
+
+// ── HOME HERO + WHAT WE DO CARDS ────────────────────────────────────
 export const heroImages = {
-  girlSmiling: "/images/assets/student-1.png",
-  schoolGroup: lf(122),
-  childReading: lf(33),
-  classroomTeacher: lf(45),
-  studentBlackboard: lf(55),
-  libraryStudy: lf(266),
-  kidsLearning: u("1542810634-71277d95dcbb", 1920),
-  outdoorEducation: lf(85),
+  // Hero screens
+  heroOurStory: photos.girlStudyingBed,
+  heroProblem: photos.girlSchoolBagShop,
+  heroImpact: photos.classroomTeacher,
+  heroCallToAction: photos.girlLookingUp,
 
-  // Home hero — one image per section. Temporary placeholders: to swap in a
-  // final photo, drop the file in /public/images/hero/ and change the path here.
-  heroOurStory: lf(33),
-  heroProblem: lf(45),
-  heroImpact: lf(122),
-  heroCallToAction: "/images/assets/student-1.png",
+  // What We Do programme cards
+  studentAid: photos.boyStudying,
+  coaching: photos.mentorPortrait,
+  communityLearning: photos.twoGirlsStudying,
+  computerLearning: computerCentre("111019"),
+  memorialScholarships: photos.memorialPlaque,
 };
 
-// ── MISSION PILLARS (3 — Educate / Empower / Elevate) ───────────────
+// ── WHY WE EXIST (Educate / Empower / Elevate) ─────────────────────
 export const missionImages = {
-  educate: "https://loremflickr.com/800/600/india,classroom,children/all?lock=501",
-  empower: "https://loremflickr.com/800/600/india,school,kids/all?lock=502",
-  elevate: "https://loremflickr.com/800/600/india,students,success/all?lock=503",
+  educate: photos.girlStudyingDesk,
+  empower: photos.volunteersWithChildren,
+  elevate: photos.youngWomanStudent,
 };
 
-// ── ACTION BLOCKS (3 — Launch / Donate / Volunteer) ─────────────────
+// ── HOW YOU CAN HELP (Scholarship / Donor / Volunteer) ─────────────
 export const actionImages = {
-  launchScholarship: u("1571260899304-425eee4c7efc", 900),  // certificate / award
-  joinDonor: u("1593113646773-028c64a8f1b8", 900),          // helping hand
-  becomeVolunteer: u("1582213782179-e0d53f98f2ca", 900),    // volunteers community
+  launchScholarship: photos.scholarshipVisitGroup,
+  joinDonor: photos.donorsGroup,
+  becomeVolunteer: photos.tutoringComputer,
 };
 
-// ── STATS COLLAGE (4 — corner photos for stats section) ─────────────
-export const statsImages = {
-  studentsWalking: u("1503676260728-1c00da094a0b", 600),    // Indian children studying
-  classroomDesk: u("1604881991720-f91add269bed", 600),      // student at desk
-  teacherWriting: u("1606761568499-6d2451b23c66", 600),     // teacher at blackboard
-  girlGraduate: u("1542810634-71277d95dcbb", 600),          // young Indian student
-};
-
-// ── ABOUT / FOUNDER STORY ───────────────────────────────────────────
-export const aboutImage = u("1509062522246-3755977927d7", 1200);
-// quiet study setting — books and learning corner
-
-// Founder photo shown next to the founder quote (homepage About section and
-// /about page).
+// Founder photo (homepage About section and /about page).
 export const founderImage = "/images/owner/owner.jpeg";
 
-// ── PROGRAMS / SERVICES (8 — Indian education contexts) ─────────────
+// ── PROGRAMME PAGE HEADER IMAGES ───────────────────────────────────
 export const serviceImages = {
-  studentAid: u("1503676382389-4809596d5290", 1200),        // boys in school uniform
-  scholarships: u("1521295121783-8a321d551ad2", 1200),      // graduation moment
-  financialAssistance: u("1531315630201-bb15abeb1653", 1200),// rupee / aid
-  computerCenter: u("1554224155-6726b3ff858f", 1200),       // computer education
-  madarsaInitiative: u("1610484826917-3c7f3d8e1c8a", 1200),  // community education
-  memorialScholarship: u("1623241899289-e2f04b87e7a3", 1200), // memorial / candle
-  becomeVolunteer: u("1469571486292-0ba58a3f068b", 1200),   // volunteers smiling
-  joinDonor: u("1559027615-cd4628902d4a", 1200),            // donation hands
-  launchScholarship: u("1623241899289-e2f04b87e7a3", 1200), // memorial / candle
+  studentAid: photos.boyStudying,
+  scholarships: photos.youngWomanStudent,
+  financialAssistance: photos.familyPortrait,
+  computerCenter: computerCentre("111019"),
+  madarsaInitiative: photos.twoGirlsStudying,
+  memorialScholarship: photos.scholarshipVisitGroup,
+  becomeVolunteer: photos.volunteersWithChildren,
+  joinDonor: photos.donorsGroup,
+  launchScholarship: photos.memorialPlaque,
 };
-
-// ── HOW IT WORKS (placeholder — icons only) ─────────────────────────
-export const howItWorksImages = {};
 
 export const testimonialImages = {
   yasminParveen: "/images/suceessstories/AdvocateYasmeenParveenToday.jpeg",
@@ -89,38 +101,48 @@ export const testimonialImages = {
   imranMustafaMalik: "/images/testimonials/DrImranMustafaMalik.jpeg",
 };
 
-// ── DONATE CTA ──────────────────────────────────────────────────────
-export const donateCtaImage = u("1597392581384-e6c5f3ff9be1", 1920);
-// Indian school setting
-
-// ── GALLERY (8 — masonry grid, all Indian context) ──────────────────
+// ── HOMEPAGE GALLERY PREVIEW (8) ────────────────────────────────────
 export const galleryImages = [
-  "https://loremflickr.com/900/600/india,poor,student/all?lock=301",
-  "https://loremflickr.com/900/600/india,orphan/all?lock=502",
-  "https://loremflickr.com/900/600/india,teacher,student/all?lock=303",
-  "https://loremflickr.com/900/600/india,orphan,child/all?lock=704",
-  "https://loremflickr.com/900/600/india,orphan,kids/all?lock=999",
-  "https://loremflickr.com/900/600/india,education/all?lock=606",
-  "https://loremflickr.com/900/600/india,classroom/all?lock=307",
-  "https://loremflickr.com/900/600/india,poor,kids/all?lock=708",
+  photos.girlHijabPortrait,
+  photos.girlWithPeacock,
+  photos.childrenLinedUp,
+  photos.girlReadingGarden,
+  photos.visitorsWithSchoolgirls,
+  photos.familyPortrait,
+  photos.bookDistribution,
+  photos.schoolgirlPortrait,
 ];
 
-// ── INSTAGRAM FEED (6 — Indian education snapshots) ─────────────────
-export const instagramImages = [
-  u("1523050854058-8df90110c9f1", 600),
-  u("1591125381018-2d1d18a3a32f", 600),
-  u("1576267423048-15c0040fec78", 600),
-  u("1556761175-5973dc0f32e7", 600),
-  u("1588072432836-e10032774350", 600),
-  u("1543269865-cbf427effbad", 600),
+// ── FULL GALLERY PAGE ───────────────────────────────────────────────
+export const allGalleryImages = [
+  photos.girlHijabPortrait,
+  photos.girlWithPeacock,
+  photos.childrenLinedUp,
+  photos.girlReadingGarden,
+  photos.visitorsWithSchoolgirls,
+  photos.familyPortrait,
+  photos.bookDistribution,
+  photos.schoolgirlPortrait,
+  photos.classroomTeacher,
+  photos.girlStudyingBed,
+  photos.volunteersWithChildren,
+  photos.girlPortrait,
+  photos.tutoringComputer,
+  photos.girlWalkingToSchool,
+  photos.scholarshipVisitGroup,
+  photos.boyPortrait,
+  photos.donorsGroup,
+  photos.girlWriting,
+  photos.childrenWithBooks,
+  photos.girlLookingUp,
+  photos.studyRoom,
+  photos.twoGirlsStudying,
+  photos.scholarshipVisitChildren,
+  photos.boyStudying,
+  photos.childrenWithVolunteer,
+  photos.youngWomanStudent,
+  photos.fieldMeeting,
+  photos.girlSchoolBagShop,
+  photos.girlStudyingDesk,
+  photos.childrenByField,
 ];
-
-// ── PORTFOLIO STORIES (6 — story cards, Indian field) ───────────────
-export const portfolioImages = {
-  graveyardOrphans: u("1602052793312-b9716ea5db4d", 1600),  // child amid stones
-  puneScholarship: u("1623241899289-e2f04b87e7a3", 1600),   // memorial moment
-  schoolForPoor: u("1610484826917-3c7f3d8e1c8a", 1600),     // tuition centre
-  rahmaniCohort: u("1554224155-6726b3ff858f", 1600),        // exam-prep cohort
-  hardoiGirls: u("1542810634-71277d95dcbb", 1600),          // Indian schoolgirl
-  csrPartnership: u("1559027615-cd4628902d4a", 1600),       // donation handover
-};

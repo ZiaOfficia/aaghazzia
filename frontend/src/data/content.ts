@@ -67,63 +67,6 @@ export const homeHeroSections: HeroSection[] = [
   },
 ];
 
-export const heroSlides = [
-  {
-    title: "Aaghaz · A Beginning",
-    subtitle: "Every child has the right to study. We make sure they get that chance.",
-    image: heroImages.girlSmiling,
-  },
-  {
-    title: "Twenty Years. One Promise.",
-    subtitle: "Helping children study since 2004.",
-    image: heroImages.schoolGroup,
-  },
-  {
-    title: "From Rs 2,000 to a Movement",
-    subtitle: "We started with one student. Now we help thousands across India.",
-    image: heroImages.childReading,
-  },
-  {
-    title: "Verified. Volunteer-Led. Honest.",
-    subtitle: "We meet every student at home. We track every rupee you donate.",
-    image: heroImages.classroomTeacher,
-  },
-  {
-    title: "Coaching That Cracks Codes",
-    subtitle: "Free coaching classes for IIT, NEET, and CA exams in UP.",
-    image: heroImages.studentBlackboard,
-  },
-  {
-    title: "A Quiet Room To Study",
-    subtitle: "Free study center and library for children in Lucknow since 2011.",
-    image: heroImages.libraryStudy,
-  },
-  {
-    title: "One Donation. One Future.",
-    subtitle: "Many children in India still cannot read or write. Help us change this today.",
-    image: heroImages.kidsLearning,
-  },
-  {
-    title: "Honour Their Name. Fund Their Dream.",
-    subtitle: "Start a scholarship in memory of a loved one to help a child study.",
-    image: heroImages.outdoorEducation,
-  },
-];
-
-export const introContent = {
-  heading: "Pehla Qadam. Phir Taleem. Phir Tabdeeli.",
-  text: [
-    "We started in 2004 in Lucknow. Three friends came together with Rs 2,000 to help one poor student. Today, our goal is still the same: no child should stop going to school just because their family has no money.",
-    "We do not just give money and leave. Our volunteers visit every student's home to meet their family. We pay the school fees directly, keep check on the child's progress, and update the donor who helped them.",
-  ],
-};
-
-export const portfolioContent = {
-  heading: "Twenty Years. Thousands of Stories.",
-  description:
-    "Read these true stories of children who got help, families who found hope, and donors who supported them. We still keep in touch with these families. Read their stories to know more about our work.",
-};
-
 // "What We Do" — the five programmes shown on the homepage and /services.
 export const whatWeDoContent = {
   label: "What We Do",
@@ -135,55 +78,40 @@ export const whatWeDoContent = {
 export const services = [
   {
     title: "Student Aid",
-    image: heroImages.girlSmiling,
+    image: heroImages.studentAid,
     link: "/services/student-aid",
     description:
       "We help eligible students with school and college fees, examination costs, books, uniforms and other essential educational expenses. Every application is verified before assistance is approved.",
   },
   {
     title: "Coaching & Career Guidance",
-    image: heroImages.studentBlackboard,
+    image: heroImages.coaching,
     link: "/services",
     description:
       "We provide coaching and guidance to help students prepare for higher education, competitive examinations and careers. Our programmes have included support for students preparing for examinations such as JEE and NEET.",
   },
   {
     title: "Community Learning",
-    image: heroImages.libraryStudy,
+    image: heroImages.communityLearning,
     link: "/services/madarsa-initiative",
     description:
       "Working with educational partners, Aaghaz provides affordable learning opportunities in underserved communities. Hundreds of girls currently benefit from our learning centres in Lucknow and Aligarh.",
   },
   {
     title: "Computer Learning",
-    image: heroImages.classroomTeacher,
+    image: heroImages.computerLearning,
     link: "/services/computer-center",
     description:
       "Our free computer learning centre in Lucknow gives students practical digital skills. Several batches have completed the programme and received certificates, helping them become better prepared for further education and work.",
   },
   {
     title: "Named & Memorial Scholarships",
-    image: heroImages.outdoorEducation,
+    image: heroImages.memorialScholarships,
     link: "/services/memorial-scholarship",
     description:
       "Donors can establish scholarships in their own name or in honour or memory of someone. Aaghaz verifies and selects eligible students, administers the support and provides updates on their progress.",
   },
 ];
-
-export const whyChooseContent = {
-  heading: "Why Donors and Volunteers Trust Us",
-  description:
-    "We are a small group working since 2004. People trust us because we keep our promises. Our donors stay with us, our volunteers keep helping, and students we once helped now donate to help others.",
-  points: [
-    "Working on the ground for 20 years with the same office, email, and phone number.",
-    "At least two volunteers visit every student's house before we give any help.",
-    "Our founders pay for office costs — so 100% of your donation goes to the child.",
-    "Our study center in Lucknow has been open every weekday since 2011.",
-    "Our partnership with Rahmani 30 helps village students pass IIT and NEET exams.",
-  ],
-  footer:
-    "School fees are not a luxury, and education is not a favor. It is the best way to help families escape poverty, so we keep this support going.",
-};
 
 export const aboutContent = {
   heading: "About Aaghaz Foundation",
@@ -209,33 +137,6 @@ export const ourStoryContent = {
     "What started with one student has grown across India, but the idea remains simple: one person may not be able to support ten students, but ten people can come together to support one.",
   ],
 };
-
-export const blogPosts = [
-  {
-    title: "Aaghaz Foundation Supports Orphans Living In A Graveyard",
-    category: "News",
-    excerpt:
-      "When a news story showed children living and studying in a graveyard near Lucknow, Aaghaz volunteers reached there within 3 days to help...",
-    image:
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "Rs 2 lakh Scholarship in Pune Techie's Name",
-    category: "Scholarships",
-    excerpt:
-      "The family of a young software engineer started a scholarship in his name to pay school fees for three poor students...",
-    image:
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "Aaghaz Opens A School For The Poor In Lucknow",
-    category: "Projects",
-    excerpt:
-      "Our study center in Lucknow now helps more than 200 children every week with free classes...",
-    image:
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=1200&q=80",
-  },
-];
 
 export const faqs = [
   {
@@ -327,61 +228,3 @@ export const ctaContent = {
   ],
 };
 
-export const shortVideos = [
-  {
-    id: 1,
-    title: "Listen to one of our students",
-    videoUrl:
-      "/images/videos/elegantizeevents_reel_11_6_2025_8_30_00-pm3759951878449372084.mp4",
-    thumbnail:
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    id: 2,
-    title: "See inside our coaching center",
-    videoUrl:
-      "/images/videos/djtm_official_reel_12_18_2025_3_23_36-am3789871397074796955.mp4",
-    thumbnail:
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    id: 3,
-    title: "A day at our Lucknow study center",
-    videoUrl:
-      "/images/videos/elegantizeevents_reel_12_12_2024_10_30_00-pm3521561008227581106.mp4",
-    thumbnail:
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    id: 4,
-    title: "How we visit and check student homes",
-    videoUrl:
-      "/images/videos/elegantizeevents_reel_12_29_2025_9_30_33-pm3798394431771591975.mp4",
-    thumbnail:
-      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    id: 5,
-    title: "Our founder talks about 20 years of Aaghaz",
-    videoUrl:
-      "/images/videos/elegantizeevents_reel_12_29_2025_9_30_33-pm3798394431771591975.mp4",
-    thumbnail:
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    id: 6,
-    title: "A donor talks about starting a scholarship",
-    videoUrl:
-      "/images/videos/elegantizeevents_reel_5_27_2022_1_07_26-am2846867921226300535.mp4",
-    thumbnail:
-      "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    id: 7,
-    title: "Our volunteers working on the ground",
-    videoUrl:
-      "/images/videos/elegantizeevents_reel_11_6_2025_8_30_00-pm3759951878449372084.mp4",
-    thumbnail:
-      "https://images.unsplash.com/photo-1488998427799-e3362cec87c3?auto=format&fit=crop&w=600&q=80",
-  },
-];
