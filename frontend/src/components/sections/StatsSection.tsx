@@ -1,202 +1,32 @@
-import {
-  GraduationCap,
-  HandCoins,
-  MapPin,
-  School,
-  Briefcase,
-  Award,
-} from "lucide-react";
-import { motion } from "framer-motion";
-import { useState } from "react";
-import { statsImages } from "../../data/imageAssets";
+import { Section } from "../ui/Section";
+import { SectionHeading } from "../ui/SectionHeading";
 
-interface Stat {
-  icon: typeof GraduationCap;
-  value: string;
-  label: string;
-  image: string;
-}
-
-const stats: Stat[] = [
-  {
-    icon: GraduationCap,
-    value: "65,000+",
-    label: "Students supported since 2004",
-    image: statsImages.girlGraduate,
-  },
-  {
-    icon: HandCoins,
-    value: "₹1 lakh+ a day",
-    label: "Provided in educational support",
-    image: statsImages.studentsWalking,
-  },
-  {
-    icon: MapPin,
-    value: "24 states",
-    label: "Where Aaghaz supports students",
-    image: statsImages.classroomDesk,
-  },
-  {
-    icon: School,
-    value: "550+",
-    label: "Schools & colleges with Aaghaz-supported students",
-    image: statsImages.teacherWriting,
-  },
-  {
-    icon: Briefcase,
-    value: "350+",
-    label: "Students who became doctors, engineers & lawyers",
-    image: statsImages.girlGraduate,
-  },
-  {
-    icon: Award,
-    value: "90+",
-    label: "Named & memorial scholarships created",
-    image: statsImages.studentsWalking,
-  },
+const stats = [
+  { value: "65,000+", label: "Students supported since 2004" },
+  { value: "₹1 lakh+ a day", label: "Provided in educational support" },
+  { value: "24 states", label: "Where Aaghaz supports students" },
+  { value: "550+", label: "Schools & colleges with Aaghaz-supported students" },
+  { value: "350+", label: "Students who became doctors, engineers & lawyers" },
+  { value: "90+", label: "Named & memorial scholarships created" },
 ];
 
-export const StatsSection = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const active = stats[activeIndex];
+export const StatsSection = () => (
+  <Section aria-labelledby="by-the-numbers" tone="cream">
+    <SectionHeading
+      id="by-the-numbers"
+      eyebrow="Our Impact"
+      title="Aaghaz by the Numbers"
+      intro="From ₹2,000 and one student in 2004 to thousands of students across India."
+    />
 
-  return (
-    <section className="relative py-12 md:py-24 px-4 md:px-6 bg-impact-pattern overflow-hidden">
-      {/* Decorative diamond corners */}
-      <span className="absolute top-12 left-12 w-4 h-4 bg-primary rotate-45 opacity-60 hidden lg:block" />
-      <span className="absolute top-12 right-12 w-4 h-4 bg-secondary rotate-45 opacity-60 hidden lg:block" />
-      <span className="absolute bottom-12 left-12 w-4 h-4 bg-secondary rotate-45 opacity-60 hidden lg:block" />
-      <span className="absolute bottom-12 right-12 w-4 h-4 bg-primary rotate-45 opacity-60 hidden lg:block" />
-
-      <div className="max-w-7xl mx-auto relative">
-        {/* Heading */}
-        <div className="text-center mb-14">
-          <p className="inline-flex items-center gap-3 text-primary text-xs font-bold uppercase tracking-[0.4em] mb-4">
-            <span className="block w-8 h-px bg-primary" />
-            Our Impact
-            <span className="block w-8 h-px bg-primary" />
-          </p>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-accent">
-            Aaghaz by the Numbers
-          </h2>
-          <p className="mt-4 text-text-muted max-w-xl mx-auto text-sm md:text-lg">
-            From ₹2,000 and one student in 2004 to thousands of students across India.
-          </p>
+    <dl className="mt-14 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+      {stats.map((stat) => (
+        <div key={stat.label} className="border-t border-ink/15 pt-6">
+          <dt className="sr-only">{stat.label}</dt>
+          <dd className="font-display text-4xl font-semibold text-terracotta md:text-5xl">{stat.value}</dd>
+          <dd className="mt-2 text-muted">{stat.label}</dd>
         </div>
-
-        {/* Interactive grid: stats + live image */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* LEFT — large rotating image driven by hovered stat */}
-          <div className="lg:col-span-5 relative">
-            <div className="absolute -top-3 -left-3 w-full h-full border-2 border-primary/40 rounded-tl-[3rem] rounded-br-[3rem]" />
-            <motion.div
-              key={active.image}
-              initial={{ opacity: 0, scale: 1.03 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              className="relative aspect-[4/5] rounded-tl-[3rem] rounded-br-[3rem] overflow-hidden shadow-2xl"
-            >
-              <img
-                src={active.image}
-                alt={active.label}
-                className="w-full h-full object-cover"
-              />
-              {/* Live overlay caption */}
-              <div
-                className="absolute bottom-0 left-0 right-0 p-6 text-white"
-                style={{
-                  background:
-                    "linear-gradient(to top, rgba(15,15,15,0.95) 0%, transparent 100%)",
-                }}
-              >
-                <p className="font-display text-4xl md:text-5xl font-bold text-secondary leading-none mb-2">
-                  {active.value}
-                </p>
-                <p className="font-display text-xl md:text-2xl leading-tight">
-                  {active.label}
-                </p>
-              </div>
-
-              {/* Active-stat badge top-right */}
-              <span className="absolute top-4 right-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary text-accent text-[10px] font-bold uppercase tracking-widest">
-                <active.icon size={12} />
-                Aaghaz by the Numbers
-              </span>
-            </motion.div>
-          </div>
-
-          {/* RIGHT — stat list */}
-          <div className="lg:col-span-7">
-            <ul className="space-y-3">
-              {stats.map((stat, i) => {
-                const Icon = stat.icon;
-                const isActive = i === activeIndex;
-                return (
-                  <motion.li
-                    key={stat.label}
-                    initial={{ opacity: 0, x: 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: i * 0.06 }}
-                    onMouseEnter={() => setActiveIndex(i)}
-                    onClick={() => setActiveIndex(i)}
-                    className={`group relative p-4 md:p-6 cursor-pointer rounded-tl-2xl rounded-br-2xl border-2 transition-all duration-300 ${
-                      isActive
-                        ? "bg-white border-primary shadow-xl scale-[1.01]"
-                        : "bg-white/40 border-transparent hover:bg-white/70 hover:border-primary/30"
-                    }`}
-                  >
-                    <div className="flex items-center gap-5">
-                      {/* Icon */}
-                      <span
-                        className={`shrink-0 w-14 h-14 rounded-tl-2xl rounded-br-2xl flex items-center justify-center transition-all duration-300 ${
-                          isActive
-                            ? "bg-primary text-white shadow-lg scale-110"
-                            : "bg-mesh-rose text-primary"
-                        }`}
-                      >
-                        <Icon size={24} strokeWidth={1.8} />
-                      </span>
-
-                      {/* Number + label */}
-                      <div className="flex-1 min-w-0 flex items-baseline gap-4 flex-wrap">
-                        <span
-                          className={`font-display text-3xl md:text-5xl font-bold transition-colors ${
-                            isActive ? "text-primary" : "text-accent"
-                          }`}
-                        >
-                          {stat.value}
-                        </span>
-                        <span className="text-xs md:text-sm uppercase tracking-[0.2em] text-text-muted font-bold">
-                          {stat.label}
-                        </span>
-                      </div>
-
-                      {/* Active indicator chevron */}
-                      <span
-                        className={`hidden md:block transition-all duration-300 text-secondary ${
-                          isActive
-                            ? "opacity-100 translate-x-0"
-                            : "opacity-0 -translate-x-2"
-                        }`}
-                      >
-                        &rarr;
-                      </span>
-                    </div>
-
-                    {/* Animated underline when active */}
-                    <span
-                      className={`absolute left-6 right-6 bottom-2 h-px bg-gradient-to-r from-primary to-secondary transition-all duration-500 origin-left ${
-                        isActive ? "scale-x-100 opacity-100" : "scale-x-0 opacity-0"
-                      }`}
-                    />
-                  </motion.li>
-                );
-              })}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
+      ))}
+    </dl>
+  </Section>
+);

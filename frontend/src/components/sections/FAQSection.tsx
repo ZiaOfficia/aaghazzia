@@ -1,81 +1,56 @@
-import { useState } from "react";
-import { ChevronDown, Sparkles } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { faqs } from "../../data/content";
+import { Section } from "../ui/Section";
+import { SectionHeading } from "../ui/SectionHeading";
+import { ButtonLink } from "../ui/ButtonLink";
 
-export const FAQSection = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+interface FAQSectionProps {
+  /** Show only the first N questions and link to the full FAQ page. */
+  limit?: number;
+  tone?: "cream" | "sand";
+}
+
+export const FAQList = ({ items }: { items: { question: string; answer: string }[] }) => (
+  <div className="divide-y divide-ink/15 border-y border-ink/15">
+    {items.map((faq) => (
+      <details key={faq.question} className="group">
+        <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-6 py-5 text-lg font-semibold [&::-webkit-details-marker]:hidden">
+          {faq.question}
+          <ChevronDown
+            size={20}
+            aria-hidden="true"
+            className="shrink-0 text-terracotta transition-transform group-open:rotate-180"
+          />
+        </summary>
+        <p className="max-w-3xl pb-6 text-muted">{faq.answer}</p>
+      </details>
+    ))}
+  </div>
+);
+
+export const FAQSection = ({ limit, tone = "cream" }: FAQSectionProps) => {
+  const items = limit ? faqs.slice(0, limit) : faqs;
 
   return (
-    <section
-      id="faq"
-      className="py-12 md:py-24 px-4 md:px-6 bg-wedding-slate text-white relative overflow-hidden"
-    >
-      {/* Background Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-        <div className="absolute top-1/4 left-10 w-64 h-64 bg-primary rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-primary-dark rounded-full blur-[150px]"></div>
-      </div>
-
-      <div className="max-w-4xl mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-sm">
-            <Sparkles size={14} className="text-primary" />
-            <span className="text-xs uppercase tracking-[0.3em] text-gray-300">
-              Got Questions?
-            </span>
-          </div>
-          <h2 className="text-4xl md:text-6xl font-display mb-6">
-            Common <span className="text-primary italic">Questions</span>
-          </h2>
+    <Section id="faq" aria-labelledby="faq-heading" tone={tone}>
+      <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+        <div className="lg:col-span-4">
+          <SectionHeading
+            id="faq-heading"
+            eyebrow="FAQ"
+            title="Frequently Asked Questions"
+            intro="Common questions about Aaghaz Foundation, how we support students, how donations work and how you can get involved."
+          />
+          {limit && (
+            <ButtonLink to="/faq" variant="text" className="mt-6">
+              See all questions
+            </ButtonLink>
+          )}
         </div>
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className={`group transition-all duration-500 rounded-xl border ${
-                openIndex === index
-                  ? "bg-white/10 border-primary/50 shadow-2xl shadow-primary/10"
-                  : "bg-white/5 border-white/5 hover:border-white/20 hover:bg-white/8"
-              }`}
-            >
-              <button
-                className="w-full text-left px-8 py-6 flex justify-between items-center focus:outline-none"
-                onClick={() => setOpenIndex(index === openIndex ? null : index)}
-              >
-                <span
-                  className={`font-display text-lg tracking-wide transition-colors duration-300 ${
-                    openIndex === index ? "text-primary" : "text-white/90"
-                  }`}
-                >
-                  {faq.question}
-                </span>
-                <span
-                  className={`flex items-center justify-center w-8 h-8 rounded-full border transition-all duration-300 ${
-                    openIndex === index
-                      ? "bg-primary border-primary text-white rotate-180"
-                      : "border-white/20 text-white/50 group-hover:border-white/50 group-hover:text-white"
-                  }`}
-                >
-                  <ChevronDown size={16} />
-                </span>
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                  openIndex === index
-                    ? "max-h-[1000px] opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
-              >
-                <div className="px-8 pb-8 pt-0">
-                  <p className="text-gray-300 leading-relaxed text-base border-t border-white/10 pt-6">
-                    {faq.answer}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
+        <div className="lg:col-span-8">
+          <FAQList items={items} />
         </div>
       </div>
-    </section>
+    </Section>
   );
 };

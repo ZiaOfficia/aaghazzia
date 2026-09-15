@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import { SEO } from "../components/common/SEO";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { ChevronRight } from "lucide-react";
-// import { FeaturedInStrip } from "../components/sections/FeaturedInStrip";
-import { ClientsStrip } from "../components/sections/ClientsStrip";
 import { ContactSection } from "../components/sections/ContactSection";
 // import { AboutSection } from "../components/sections/AboutSection";
 import { aboutContent, faqs, ourStoryContent } from "../data/content";
@@ -435,7 +433,6 @@ export const AboutPage = () => {
       {/* Newsletter Section */}
       <NewsletterSection />
 
-      <ClientsStrip />
       <ContactSection />
     </div>
   );

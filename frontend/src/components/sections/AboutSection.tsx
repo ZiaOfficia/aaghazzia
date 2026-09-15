@@ -1,98 +1,40 @@
 import { aboutContent } from "../../data/content";
-import { motion, type Variants } from "framer-motion";
 import { founderImage } from "../../data/imageAssets";
+import { Section } from "../ui/Section";
+import { ButtonLink } from "../ui/ButtonLink";
 
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-};
-
-export const AboutSection = () => {
-  return (
-    <section
-      id="about"
-      className="py-16 md:py-32 px-4 md:px-6 bg-stripes-warm relative"
-    >
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center relative">
-          {/* Text Content */}
-          <motion.div
-            className="w-full md:w-3/5 z-10 md:pr-12"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ staggerChildren: 0.1 }}
-          >
-            <div className="bg-white p-8 md:p-16 shadow-xl border-l-4 border-primary rounded-tl-3xl rounded-br-3xl">
-              <motion.span
-                variants={itemVariants}
-                className="text-primary text-xs font-bold uppercase tracking-[0.3em] mb-4 block"
-              >
-                Our Story · Since 2004
-              </motion.span>
-              <motion.h2
-                variants={itemVariants}
-                className="text-4xl md:text-6xl font-display text-accent mb-8 leading-tight"
-              >
-                {aboutContent.heading}
-              </motion.h2>
-
-              <div className="space-y-6 text-text-muted font-light text-lg leading-relaxed">
-                {aboutContent.text.map((paragraph, index) => (
-                  <motion.p key={index} variants={itemVariants}>
-                    {paragraph}
-                  </motion.p>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right image — founder photo with quote */}
-          <motion.div
-            className="w-full md:w-1/2 absolute top-0 right-0 h-full hidden md:block z-0"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-          >
-            <div className="w-full h-full bg-primary/10 absolute inset-0 -z-10 transform translate-x-12 translate-y-12 rounded-tl-3xl rounded-br-3xl" />
-            <img
-              loading="lazy"
-              decoding="async"
-              alt="Mazhar Farooqui — Founder, Aaghaz Foundation"
-              className="w-full h-full object-cover opacity-95 rounded-tl-3xl rounded-br-3xl"
-              src={founderImage}
-            />
-            <figure className="absolute bottom-6 right-6 left-[30%] lg:left-[35%] bg-accent/85 backdrop-blur-sm text-white p-6 lg:p-8 rounded-tl-2xl rounded-br-2xl border-l-4 border-secondary shadow-2xl">
-              <blockquote className="font-display italic text-base lg:text-xl leading-relaxed">
-                “{aboutContent.quote}”
-              </blockquote>
-              <figcaption className="mt-4 text-xs uppercase tracking-widest text-secondary font-bold">
-                {aboutContent.quoteAuthor}
-              </figcaption>
-            </figure>
-          </motion.div>
-
-          {/* Mobile fallback image + quote */}
-          <div className="w-full md:hidden mt-8">
-            <img
-              loading="lazy"
-              decoding="async"
-              alt="Mazhar Farooqui — Founder, Aaghaz Foundation"
-              className="w-full h-100 object-cover rounded-tl-3xl rounded-br-3xl"
-              src={founderImage}
-            />
-            <figure className="mt-4 bg-accent text-white p-6 rounded-tl-2xl rounded-br-2xl border-l-4 border-secondary shadow-xl">
-              <blockquote className="font-display italic text-lg leading-relaxed">
-                “{aboutContent.quote}”
-              </blockquote>
-              <figcaption className="mt-4 text-xs uppercase tracking-widest text-secondary font-bold">
-                {aboutContent.quoteAuthor}
-              </figcaption>
-            </figure>
-          </div>
+export const AboutSection = () => (
+  <Section id="about" aria-labelledby="about-heading" tone="sand">
+    <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
+      <div className="lg:col-span-7">
+        <p className="mb-3 text-sm font-semibold text-terracotta">Our Story · Since 2004</p>
+        <h2 id="about-heading" className="font-display text-3xl font-semibold sm:text-4xl md:text-[2.75rem]">
+          {aboutContent.heading}
+        </h2>
+        <div className="mt-8 space-y-5 text-lg text-muted">
+          {aboutContent.text.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
         </div>
+        <ButtonLink to="/about" variant="secondary" className="mt-10">
+          Read our story
+        </ButtonLink>
       </div>
-    </section>
-  );
-};
+
+      <figure className="lg:col-span-5">
+        <div className="aspect-[4/5] overflow-hidden rounded-md bg-cream">
+          <img
+            src={founderImage}
+            alt="Mazhar Farooqui, Founder of Aaghaz Foundation"
+            loading="lazy"
+            className="h-full w-full object-cover object-top"
+          />
+        </div>
+        <blockquote className="mt-8 border-l-2 border-terracotta pl-6 font-display text-xl italic leading-relaxed md:text-2xl">
+          “{aboutContent.quote}”
+        </blockquote>
+        <figcaption className="mt-4 pl-6 text-muted">{aboutContent.quoteAuthor}</figcaption>
+      </figure>
+    </div>
+  </Section>
+);
