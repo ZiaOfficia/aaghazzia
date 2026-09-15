@@ -2,34 +2,33 @@
 
 /* ──────────────────────────────────────────────────────────
    AAGHAZ DESIGN TOKENS
-   Warm cream ground, deep ink text, one terracotta accent.
+   Calm mint-white ground, deep teal text, one teal accent.
    ────────────────────────────────────────────────────────── */
 @theme {
-  /* Core palette */
-  --color-cream: #FAF6EF;            /* page background */
-  --color-sand: #F1EADF;             /* alternate sections */
-  --color-ink: #1F2A33;              /* headings, body, dark sections */
-  --color-ink-soft: #2B3843;         /* hover on dark surfaces */
-  --color-muted: #5B6670;            /* secondary text */
-  --color-line: #E4DACB;             /* thin dividers */
-  --color-terracotta: #B03A2E;       /* the single accent */
-  --color-terracotta-dark: #8F2E24;
-  --color-sand-light: #E8D9C3;       /* accent text on dark surfaces */
+  /* Calm palette: soft mint-white ground, deep teal ink, one gentle teal accent. */
+  --color-cream: #F6FAF8;            /* page background (soft mint-white) */
+  --color-sand: #E6F0EC;             /* alternate sections (pale sage) */
+  --color-ink: #16373D;              /* headings, body, dark sections (deep teal) */
+  --color-ink-soft: #20474E;         /* hover on dark surfaces */
+  --color-muted: #4A6266;            /* secondary text */
+  --color-line: #D3E3DD;             /* thin dividers */
+  --color-terracotta: #1A6F68;       /* the single accent (calm teal) — token name kept */
+  --color-terracotta-dark: #13544F;
+  --color-sand-light: #A8DDD2;       /* accent text on dark surfaces (soft mint) */
 
-  /* Legacy names — mapped onto the new palette so pages not yet
-     redesigned pick up the calmer look automatically. */
-  --color-primary: #B03A2E;
-  --color-primary-dark: #8F2E24;
-  --color-secondary: #E8D9C3;
-  --color-secondary-dark: #B03A2E;
-  --color-accent: #1F2A33;
-  --color-accent-soft: #2B3843;
-  --color-background-light: #FAF6EF;
-  --color-background-cream: #FAF6EF;
-  --color-background-dark: #1F2A33;
-  --color-text-main: #1F2A33;
-  --color-text-muted: #5B6670;
-  --color-text-light: #F1EADF;
+  /* Legacy names — mapped onto the palette. */
+  --color-primary: #1A6F68;
+  --color-primary-dark: #13544F;
+  --color-secondary: #A8DDD2;
+  --color-secondary-dark: #1A6F68;
+  --color-accent: #16373D;
+  --color-accent-soft: #20474E;
+  --color-background-light: #F6FAF8;
+  --color-background-cream: #F6FAF8;
+  --color-background-dark: #16373D;
+  --color-text-main: #16373D;
+  --color-text-muted: #4A6266;
+  --color-text-light: #E6F0EC;
 
   --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
   --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
