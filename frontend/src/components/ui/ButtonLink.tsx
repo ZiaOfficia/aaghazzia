@@ -10,10 +10,10 @@ interface ButtonLinkProps {
   onClick?: () => void;
 }
 
-/** Router link styled as a button. External URLs render a plain anchor. */
+/** Router link styled as a button. External URLs and #anchors render a plain anchor. */
 export const ButtonLink = ({ to, children, variant = "primary", className, onClick }: ButtonLinkProps) => {
   const classes = buttonStyles(variant, className);
-  if (/^(https?:|mailto:|tel:)/.test(to)) {
+  if (/^(https?:|mailto:|tel:|#)/.test(to)) {
     return (
       <a href={to} className={classes} onClick={onClick}>
         {children}

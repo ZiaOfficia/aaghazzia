@@ -3,16 +3,28 @@ import { services, whatWeDoContent } from "../../data/content";
 import { Section } from "../ui/Section";
 import { SectionHeading } from "../ui/SectionHeading";
 
-export const ServicesGrid = () => (
-  <Section id="services" aria-labelledby="what-we-do" tone="cream">
-    <SectionHeading
-      id="what-we-do"
-      eyebrow={whatWeDoContent.label}
-      title={whatWeDoContent.heading}
-      intro={whatWeDoContent.intro}
-    />
+interface ServicesGridProps {
+  /** Hide the heading when the page header already shows it (e.g. /services). */
+  withHeading?: boolean;
+}
 
-    <div className="mt-14 grid gap-x-10 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
+export const ServicesGrid = ({ withHeading = true }: ServicesGridProps) => (
+  <Section
+    id="services"
+    aria-labelledby={withHeading ? "what-we-do" : undefined}
+    tone="cream"
+    className={withHeading ? undefined : "!pt-4 md:!pt-8"}
+  >
+    {withHeading && (
+      <SectionHeading
+        id="what-we-do"
+        eyebrow={whatWeDoContent.label}
+        title={whatWeDoContent.heading}
+        intro={whatWeDoContent.intro}
+      />
+    )}
+
+    <div className={`${withHeading ? "mt-14" : ""} grid gap-x-10 gap-y-14 md:grid-cols-2 lg:grid-cols-3`}>
       {services.map((service) => (
         <article key={service.title} className="flex flex-col">
           <div className="aspect-[3/2] overflow-hidden rounded-md bg-sand">

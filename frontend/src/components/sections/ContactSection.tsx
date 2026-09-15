@@ -7,7 +7,7 @@ import { Section } from "../ui/Section";
 import { buttonStyles } from "../ui/buttonStyles";
 import { fieldClass, labelClass } from "../ui/formStyles";
 
-export const ContactSection = () => {
+export const ContactSection = ({ tone = "sand" }: { tone?: "cream" | "sand" }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -55,7 +55,7 @@ export const ContactSection = () => {
   };
 
   return (
-    <Section id="contact" aria-labelledby="contact-heading" tone="sand">
+    <Section id="contact" aria-labelledby="contact-heading" tone={tone}>
       <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
           <p className="mb-3 text-sm font-semibold text-terracotta">Contact Us</p>
@@ -80,7 +80,7 @@ export const ContactSection = () => {
           </address>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-5 rounded-md bg-cream p-6 sm:p-8 lg:col-span-7">
+        <form onSubmit={handleSubmit} className={`space-y-5 rounded-md p-6 sm:p-8 lg:col-span-7 ${tone === "sand" ? "bg-cream" : "bg-sand"}`}>
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
               <label htmlFor="contact-first-name" className={labelClass}>First name</label>

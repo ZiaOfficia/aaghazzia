@@ -62,6 +62,11 @@
     text-wrap: pretty;
   }
 
+  /* Keep in-page anchors clear of the sticky header. */
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+
   a,
   button,
   input,

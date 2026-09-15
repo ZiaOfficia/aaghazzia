@@ -57,13 +57,13 @@ const stories: Story[] = [
   },
 ];
 
-export const TestimonialsSection = () => {
+export const TestimonialsSection = ({ tone = "cream" }: { tone?: "cream" | "sand" }) => {
   const [index, setIndex] = useState(0);
   const story = stories[index];
   const go = (next: number) => setIndex((next + stories.length) % stories.length);
 
   return (
-    <Section aria-labelledby="stories-heading" tone="cream">
+    <Section aria-labelledby="stories-heading" tone={tone}>
       <div className="flex flex-wrap items-end justify-between gap-6">
         <SectionHeading
           id="stories-heading"
@@ -78,7 +78,7 @@ export const TestimonialsSection = () => {
 
       <div className="mt-14 grid items-start gap-10 md:grid-cols-12 md:gap-14">
         <div className="md:col-span-4">
-          <div className="aspect-[4/5] overflow-hidden rounded-md bg-sand">
+          <div className="aspect-[4/5] overflow-hidden rounded-md bg-ink/5">
             <img
               key={story.image}
               src={story.image}
