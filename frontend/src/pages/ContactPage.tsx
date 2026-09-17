@@ -89,7 +89,7 @@ export const ContactPage = () => {
               </div>
               <div className="py-5">
                 <dt className="text-sm font-semibold text-muted">Registered Office</dt>
-                <dd className="mt-1 text-lg">57 Ganesh Gunj, Lucknow, UP — 226018</dd>
+                <dd className="mt-1 text-lg">Near Guds Tiraha, Main Road, Nishatganj, Lucknow</dd>
               </div>
               <div className="py-5">
                 <dt className="text-sm font-semibold text-muted">Email</dt>
@@ -166,14 +166,20 @@ export const ContactPage = () => {
             <p className="mt-2 text-muted">Monday to Saturday · 10 AM to 6 PM</p>
             <address className="mt-6 space-y-2 text-lg not-italic">
               <p>
-                57 Ganesh Gunj
+                Aaghaz Foundation
                 <br />
-                Lucknow, UP — 226018
+                Near Guds Tiraha,
+                <br />
+                Main Road,
+                <br />
+                Nishatganj
+                <br />
+                Lucknow
               </p>
               <p>+91 98765 43210</p>
             </address>
             <a
-              href="https://www.google.com/maps/search/?api=1&query=Ganesh+Gunj,+Lucknow,+UP"
+              href="https://www.google.com/maps/search/?api=1&query=Guds+Tiraha,+Nishatganj,+Lucknow"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-6 inline-block font-semibold text-terracotta underline decoration-terracotta/30 underline-offset-4 hover:decoration-terracotta"
@@ -187,7 +193,7 @@ export const ContactPage = () => {
               style={{ border: 0 }}
               loading="lazy"
               allowFullScreen
-              src="https://maps.google.com/maps?q=Ganesh%20Gunj%2C%20Lucknow&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=Guds%20Tiraha%2C%20Nishatganj%2C%20Lucknow&t=&z=15&ie=UTF8&iwloc=&output=embed"
               title="Aaghaz Foundation Office Location"
             />
           </div>

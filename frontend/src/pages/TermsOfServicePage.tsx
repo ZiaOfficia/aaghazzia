@@ -130,7 +130,7 @@ export const TermsOfServicePage = () => {
               <strong>Phone:</strong> +91 99716 48900
             </p>
             <p>
-              <strong>Address:</strong> 57 Ganesh Gunj, Lucknow, UP — 226018
+              <strong>Address:</strong> Near Guds Tiraha, Main Road, Nishatganj, Lucknow
             </p>
           </div>
           <p className="mt-6 italic">
