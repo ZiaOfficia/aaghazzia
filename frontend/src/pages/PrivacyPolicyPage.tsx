@@ -154,7 +154,7 @@ export const PrivacyPolicyPage = () => {
               <strong>Phone:</strong> +91 99716 48900
             </p>
             <p>
-              <strong>Address:</strong> Near Guds Tiraha, Main Road, Nishatganj, Lucknow
+              <strong>Address:</strong> Near Guds Tiraha, Main Road, Nishatganj, Lucknow, UP — 226006
             </p>
           </div>
           <p className="mt-6 italic">

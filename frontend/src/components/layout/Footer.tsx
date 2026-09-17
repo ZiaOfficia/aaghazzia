@@ -54,7 +54,7 @@ export const Footer = () => (
             <p>
               Near Guds Tiraha, Main Road,
               <br />
-              Nishatganj, Lucknow, Uttar Pradesh, India
+              Nishatganj, Lucknow, Uttar Pradesh 226006, India
             </p>
             <p>
               <a href="tel:+919876543210" className="hover:text-white">

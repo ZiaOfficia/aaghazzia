@@ -71,7 +71,7 @@ export const ContactSection = ({ tone = "sand" }: { tone?: "cream" | "sand" }) =
             <p>
               <a href="tel:+919876543210" className="hover:text-terracotta">+91 98765 43210</a>
             </p>
-            <p>Near Guds Tiraha, Main Road, Nishatganj, Lucknow</p>
+            <p>Near Guds Tiraha, Main Road, Nishatganj, Lucknow, UP — 226006</p>
             <p>
               <a href="mailto:aaghaz.foundation@gmail.com" className="break-all hover:text-terracotta">
                 aaghaz.foundation@gmail.com

@@ -89,7 +89,7 @@ export const ContactPage = () => {
               </div>
               <div className="py-5">
                 <dt className="text-sm font-semibold text-muted">Registered Office</dt>
-                <dd className="mt-1 text-lg">Near Guds Tiraha, Main Road, Nishatganj, Lucknow</dd>
+                <dd className="mt-1 text-lg">57 Ganesh Gunj, Lucknow, UP — 226018</dd>
               </div>
               <div className="py-5">
                 <dt className="text-sm font-semibold text-muted">Email</dt>
@@ -174,7 +174,7 @@ export const ContactPage = () => {
                 <br />
                 Nishatganj
                 <br />
-                Lucknow
+                Lucknow — 226006
               </p>
               <p>+91 98765 43210</p>
             </address>
