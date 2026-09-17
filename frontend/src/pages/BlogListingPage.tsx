@@ -8,6 +8,7 @@ import { blogPosts as staticBlogPosts, getBlogPostUrl } from "../data/blogData";
 import { SEO } from "../components/common/SEO";
 import { PageHeader } from "../components/ui/PageHeader";
 import { Container } from "../components/ui/Container";
+import { FitImage } from "../components/ui/FitImage";
 
 const ITEMS_PER_PAGE = 7; // 1 featured + 6 cards
 
@@ -147,7 +148,7 @@ export const BlogListingPage = () => {
                       aria-hidden="true"
                       className="block aspect-[4/3] overflow-hidden rounded-md bg-sand"
                     >
-                      <img src={featuredPost.image} alt="" className="h-full w-full object-cover" />
+                      <FitImage src={featuredPost.image} alt="" />
                     </Link>
                     <div className="flex flex-col justify-center">
                       <p className="text-sm text-muted">

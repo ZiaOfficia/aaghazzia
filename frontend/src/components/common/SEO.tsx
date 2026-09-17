@@ -12,7 +12,7 @@ interface SEOProps {
 
 export const SEO = ({
   title,
-  description = "Aaghaz Foundation is a non-profit founded in 2004 in Lucknow. We support meritorious students from economically weak backgrounds across India through scholarships, financial assistance, mentorship and learning centres.",
+  description = "Aaghaz Foundation is a non-profit founded in 2004 in Lucknow. We support talented students who need support across India through scholarships, financial assistance, mentorship and learning centres.",
   keywords,
   name = "Aaghaz Foundation",
   type = "website",

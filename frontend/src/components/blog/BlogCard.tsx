@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import type { BlogPost } from "../../data/blogData";
 import { getBlogPostUrl } from "../../data/blogData";
+import { FitImage } from "../ui/FitImage";
 
 interface BlogCardProps {
   post: BlogPost;
@@ -12,12 +13,11 @@ export const BlogCard = ({ post }: BlogCardProps) => {
   return (
     <article className="group flex h-full flex-col">
       <Link to={url} tabIndex={-1} aria-hidden="true" className="block aspect-[3/2] overflow-hidden rounded-md bg-sand">
-        <img
+        <FitImage
           loading="lazy"
           decoding="async"
           src={post.image}
           alt=""
-          className="h-full w-full object-cover"
         />
       </Link>
 

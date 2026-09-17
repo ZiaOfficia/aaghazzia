@@ -93,7 +93,7 @@ export const services = [
   {
     title: "Community Learning",
     image: heroImages.communityLearning,
-    link: "/services/madarsa-initiative",
+    link: "/services/community-learning-centres",
     description:
       "Working with educational partners, Aaghaz provides affordable learning opportunities in underserved communities. Hundreds of girls currently benefit from our learning centres in Lucknow and Aligarh.",
   },
@@ -105,7 +105,7 @@ export const services = [
       "Our free computer learning centre in Lucknow gives students practical digital skills. Several batches have completed the programme and received certificates, helping them become better prepared for further education and work.",
   },
   {
-    title: "Named & Memorial Scholarships",
+    title: "Memorial Scholarships",
     image: heroImages.memorialScholarships,
     link: "/services/memorial-scholarship",
     description:
@@ -118,7 +118,7 @@ export const aboutContent = {
   text: [
     "Aaghaz Foundation is a non-profit organisation founded in Lucknow, India, in 2004 by journalist Mazhar Farooqui and a group of friends. It began with ₹2,000 and a simple goal: to help one student continue his education.",
     "Since then, Aaghaz has grown through the support of volunteers, donors and well-wishers who share the belief that a child’s education should not be determined by their family’s financial circumstances.",
-    "The Foundation helps students from disadvantaged backgrounds stay in school and continue their education by providing financial and other support where it is needed.",
+    "The Foundation helps students who need support stay in school and continue their education by providing financial and other support where it is needed.",
   ],
   author: "Mazhar Farooqui — Founder",
   quote:
@@ -207,7 +207,7 @@ export const faqs = [
   {
     question: "Can I set up a scholarship in someone's name or memory?",
     answer:
-      "Yes. A named or memorial scholarship allows you to support a student's education in honour or memory of someone important to you, such as a parent, family member, friend or teacher. Contact us and we can help you set it up and keep you informed about the students it supports.",
+      "Yes. A memorial scholarship allows you to support a student's education in honour or memory of someone important to you, such as a parent, family member, friend or teacher. Contact us and we can help you set it up and keep you informed about the students it supports.",
   },
   {
     question: "How can I volunteer?",

@@ -16,8 +16,8 @@ const programmeLinks = [
   { name: "Scholarships", path: "/services/scholarships" },
   { name: "Financial Assistance", path: "/services/financial-assistance" },
   { name: "Computer Learning", path: "/services/computer-center" },
-  { name: "Community Learning", path: "/services/madarsa-initiative" },
-  { name: "Named & Memorial Scholarships", path: "/services/memorial-scholarship" },
+  { name: "Community Learning Centres", path: "/services/community-learning-centres" },
+  { name: "Memorial Scholarships", path: "/services/memorial-scholarship" },
 ];
 
 const involvedLinks = [

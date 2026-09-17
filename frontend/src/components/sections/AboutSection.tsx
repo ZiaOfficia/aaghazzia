@@ -2,6 +2,8 @@ import { aboutContent } from "../../data/content";
 import { founderImage } from "../../data/imageAssets";
 import { Section } from "../ui/Section";
 import { ButtonLink } from "../ui/ButtonLink";
+import { LinkedText } from "../ui/LinkedText";
+import { FitImage } from "../ui/FitImage";
 
 export const AboutSection = () => (
   <Section id="about" aria-labelledby="about-heading" tone="sand">
@@ -13,7 +15,7 @@ export const AboutSection = () => (
         </h2>
         <div className="mt-8 space-y-5 text-lg text-muted">
           {aboutContent.text.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+            <p key={paragraph}><LinkedText text={paragraph} /></p>
           ))}
         </div>
         <ButtonLink to="/about" variant="secondary" className="mt-10">
@@ -23,17 +25,16 @@ export const AboutSection = () => (
 
       <figure className="lg:col-span-5">
         <div className="aspect-[4/5] overflow-hidden rounded-md bg-cream">
-          <img
+          <FitImage
             src={founderImage}
             alt="Mazhar Farooqui, Founder of Aaghaz Foundation"
             loading="lazy"
-            className="h-full w-full object-cover object-top"
           />
         </div>
         <blockquote className="mt-8 border-l-2 border-terracotta pl-6 font-display text-xl italic leading-relaxed md:text-2xl">
           “{aboutContent.quote}”
         </blockquote>
-        <figcaption className="mt-4 pl-6 text-muted">{aboutContent.quoteAuthor}</figcaption>
+        <figcaption className="mt-4 pl-6 text-muted"><LinkedText text={aboutContent.quoteAuthor} /></figcaption>
       </figure>
     </div>
   </Section>

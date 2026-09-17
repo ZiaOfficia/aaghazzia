@@ -358,10 +358,10 @@ export const servicesData: ServiceData[] = [
     intro: {
       heading: "Learn Computers for Free with Aaghaz Foundation",
       subheading:
-        "Free, certified computer training for girls and poor youth in Lucknow.",
+        "Free, certified computer training for girls and young people in Lucknow who want to grow.",
       description: [
         "Our Computer Learning Center (AFCLC) is located in Balda Colony, near the New Hyderabad Post Office in Lucknow. It is run for free by Co-Founder Suhel Khaleel and Tariq Khan.",
-        "We help poor students learn computer skills to find jobs. More than 150 students have completed our courses, built their confidence, and found good jobs.",
+        "We help students who need support learn computer skills to find jobs. More than 150 students have completed our courses, built their confidence, and found good jobs.",
         "Under our center head, Mr. Mohd Ebad, and teacher Waheed Uz Zama, students get hands-on computer practice and mock tests. We make sure every student gets proper attention."
       ],
     },
@@ -371,7 +371,7 @@ export const servicesData: ServiceData[] = [
         {
           title: "Free computer training",
           description:
-            "The center is open to all poor youth, especially girls and minorities who want to learn computers.",
+            "The center is open to all young people who want to learn and grow, especially girls and minorities who want to learn computers.",
         },
         {
           title: "Practical training",
@@ -520,12 +520,12 @@ export const servicesData: ServiceData[] = [
   },
 
   {
-    id: "madarsa-initiative",
-    title: "Community Learning",
-    heroImage: serviceImages.madarsaInitiative,
-    heroTitle: "Community Learning Initiative",
+    id: "community-learning-centres",
+    title: "Community Learning Centres",
+    heroImage: serviceImages.communityLearningCentres,
+    heroTitle: "Community Learning Centres",
     intro: {
-      heading: "Community Learning Initiative",
+      heading: "Community Learning Centres",
       subheading:
         "Affordable learning opportunities in underserved communities.",
       description: [
@@ -535,7 +535,7 @@ export const servicesData: ServiceData[] = [
       ],
     },
     whyChooseUs: {
-      title: "Why We Help Madarsa Students",
+      title: "Why Community Learning Centres Matter",
       items: [
         {
           title: "Education for everyone",
@@ -560,7 +560,7 @@ export const servicesData: ServiceData[] = [
         {
           title: "School Subject Classes",
           description:
-            "Extra classes for math, science, and English inside the madarsa.",
+            "Extra classes for math, science, and English at our Community Learning Centres.",
         },
         {
           title: "Computer & Job Skills",
@@ -584,9 +584,9 @@ export const servicesData: ServiceData[] = [
       description: "",
       steps: [
         {
-          title: "1. Partner with Madarsas",
+          title: "1. Partner with Community Learning Centres",
           description:
-            "We work with madarsa heads to set up classes.",
+            "We work with centre heads to set up classes.",
         },
         {
           title: "2. Check student needs",
@@ -596,7 +596,7 @@ export const servicesData: ServiceData[] = [
         {
           title: "3. Start classes",
           description:
-            "Our teachers hold regular classes and workshops inside the madarsa.",
+            "Our teachers hold regular classes and workshops at the centres.",
         },
         {
           title: "4. Track progress",
@@ -625,8 +625,8 @@ export const servicesData: ServiceData[] = [
       subheading:
         "A meaningful way to remember someone special who is no longer with us.",
       description: [
-        "Starting a scholarship in the name of a loved one who has passed away is a beautiful tribute. Your gift will pay for the school or college fees of a poor student who is struggling to study.",
-        "Today, we run around 80 memorial scholarships every year, helping hundreds of poor students across India.",
+        "Starting a scholarship in the name of a loved one who has passed away is a beautiful tribute. Your gift will pay for the school or college fees of a talented student who needs support to continue studying.",
+        "Today, we run around 80 memorial scholarships every year, helping hundreds of students who need support across India.",
       ],
     },
     whyChooseUs: {
@@ -835,7 +835,7 @@ export const servicesData: ServiceData[] = [
         {
           title: "Fundraising Help",
           description:
-            "Help us organize small events to raise funds for poor students.",
+            "Help us organize small events to raise funds for students who need support.",
         },
       ],
     },
@@ -905,7 +905,7 @@ export const servicesData: ServiceData[] = [
             "View verified student cases and choose a student you would like to support.",
         },
         {
-          title: "Named or memorial scholarship",
+          title: "Memorial scholarship",
           description:
             "Create a scholarship in your name or in honour or memory of someone.",
         },
@@ -978,10 +978,10 @@ export const servicesData: ServiceData[] = [
     heroImage: serviceImages.launchScholarship,
     heroTitle: "Start a Scholarship",
     intro: {
-      heading: "Start a Named or Memorial Scholarship",
+      heading: "Start a Memorial Scholarship",
       subheading: "Create something that lasts",
       description: [
-        "A named or memorial scholarship can give a student the opportunity to continue their education while recognising someone or something important to you.",
+        "A memorial scholarship can give a student the opportunity to continue their education while recognising someone or something important to you.",
         "We work with you to define the scholarship and its budget and criteria. Students are selected from cases verified by Aaghaz, and we keep you updated on their progress.",
       ],
     },
@@ -1031,7 +1031,7 @@ export const servicesData: ServiceData[] = [
         {
           title: "Specific Help",
           description:
-            "Scholarships only for girls studying science, or kids from a particular poor district.",
+            "Scholarships only for girls studying science, or students from a particular district.",
         },
       ],
     },

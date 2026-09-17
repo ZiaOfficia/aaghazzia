@@ -12,7 +12,9 @@ import { PageHeader } from "../components/ui/PageHeader";
 import { Section } from "../components/ui/Section";
 import { SectionHeading } from "../components/ui/SectionHeading";
 import { ButtonLink } from "../components/ui/ButtonLink";
+import { LinkedText } from "../components/ui/LinkedText";
 import { getOptimizedImage } from "../utils/imageUtils";
+import { FitImage } from "../components/ui/FitImage";
 
 export const ServiceDetailPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -60,7 +62,7 @@ export const ServiceDetailPage = () => {
             </h2>
             <div className="mt-6 space-y-5 text-lg leading-relaxed text-muted">
               {service.intro.description.map((para) => (
-                <p key={para}>{para}</p>
+                <p key={para}><LinkedText text={para} /></p>
               ))}
             </div>
           </div>
@@ -241,7 +243,7 @@ export const ServiceDetailPage = () => {
             <li key={s.id}>
               <Link to={`/services/${s.id}`} className="group block">
                 <div className="aspect-[4/3] overflow-hidden rounded-md bg-cream">
-                  <img loading="lazy" decoding="async" src={getOptimizedImage(s.heroImage, 800)} alt="" className="h-full w-full object-cover" />
+                  <FitImage loading="lazy" decoding="async" src={getOptimizedImage(s.heroImage, 800)} alt="" />
                 </div>
                 <span className="mt-3 block font-semibold group-hover:text-terracotta">{s.title}</span>
               </Link>

@@ -9,6 +9,7 @@ import { PageHeader } from "../components/ui/PageHeader";
 import { Section } from "../components/ui/Section";
 import { SectionHeading } from "../components/ui/SectionHeading";
 import { ButtonLink } from "../components/ui/ButtonLink";
+import { FitImage } from "../components/ui/FitImage";
 
 const faqs = [
   {
@@ -34,7 +35,7 @@ const faqs = [
   {
     question: "How do I apply for student aid for myself or my child?",
     answer:
-      "Fill the application form on our website. We help pay fees, books, uniforms, and hostel costs for poor families. Our volunteers will call you to visit your home.",
+      "Fill the application form on our website. We help pay fees, books, uniforms, and hostel costs for students who need support. Our volunteers will call you to visit your home.",
   },
 ];
 
@@ -148,7 +149,7 @@ export const ServicesPage = () => {
               className="grid items-center gap-8 md:grid-cols-2 md:gap-14"
             >
               <div className={`aspect-[4/3] overflow-hidden rounded-md bg-cream ${index % 2 === 1 ? "md:order-2" : ""}`}>
-                <img loading="lazy" decoding="async" src={program.image} alt="" className="h-full w-full object-cover" />
+                <FitImage loading="lazy" decoding="async" src={program.image} alt="" />
               </div>
               <div>
                 <h3 id={`program-${program.id}`} className="font-display text-3xl font-semibold">
@@ -180,7 +181,7 @@ export const ServicesPage = () => {
             id="memorial-spotlight"
             eyebrow="Featured Program"
             title="Memorial Scholarships"
-            intro="Aaghaz Foundation runs more than 80 scholarships in memory of loved ones across India. We give nearly Rs 1 crore every year to help hundreds of poor students and orphans finish their studies."
+            intro="Aaghaz Foundation runs more than 80 scholarships in memory of loved ones across India. We give nearly Rs 1 crore every year to help hundreds of students who need support finish their studies."
           />
           <ButtonLink to="/services/memorial-scholarship" className="mt-8">
             Find out more about Memorial Scholarships

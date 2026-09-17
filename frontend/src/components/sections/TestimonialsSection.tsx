@@ -4,6 +4,7 @@ import { testimonialImages } from "../../data/imageAssets";
 import { Section } from "../ui/Section";
 import { SectionHeading } from "../ui/SectionHeading";
 import { ButtonLink } from "../ui/ButtonLink";
+import { FitImage } from "../ui/FitImage";
 
 interface Story {
   image: string;
@@ -79,11 +80,10 @@ export const TestimonialsSection = ({ tone = "cream" }: { tone?: "cream" | "sand
       <div className="mt-14 grid items-start gap-10 md:grid-cols-12 md:gap-14">
         <div className="md:col-span-4">
           <div className="aspect-[4/5] overflow-hidden rounded-md bg-ink/5">
-            <img
+            <FitImage
               key={story.image}
               src={story.image}
               alt={`Portrait of ${story.author}`}
-              className="h-full w-full object-cover object-top"
             />
           </div>
         </div>

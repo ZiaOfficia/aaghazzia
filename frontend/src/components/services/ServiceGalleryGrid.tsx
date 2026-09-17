@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import { getOptimizedImage } from "../../utils/imageUtils";
+import { FitImage } from "../ui/FitImage";
 
 interface ServiceGalleryGridProps {
   images: string[];
@@ -31,12 +32,12 @@ export const ServiceGalleryGrid = ({ images, title = "Programme", limit = 6 }: S
               className="block aspect-square w-full overflow-hidden rounded-md bg-sand"
               aria-label={`Open photo ${idx + 1} of ${title}`}
             >
-              <img
+              <FitImage
                 loading="lazy"
                 decoding="async"
                 src={getOptimizedImage(img, 800)}
                 alt=""
-                className="h-full w-full object-cover transition-opacity hover:opacity-90"
+                imgClassName="transition-opacity hover:opacity-90"
               />
             </button>
           </li>

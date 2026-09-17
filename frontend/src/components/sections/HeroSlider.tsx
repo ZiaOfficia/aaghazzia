@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { homeHeroSections as screens } from "../../data/content";
 import { ButtonLink } from "../ui/ButtonLink";
 import { Container } from "../ui/Container";
+import { FitImage } from "../ui/FitImage";
 
 const INTERVAL_MS = 8000;
 
@@ -80,17 +81,20 @@ export const HeroSlider = () => {
         <div className="lg:col-span-6">
           <div className="relative aspect-[4/3] overflow-hidden rounded-md bg-sand">
             {screens.map((screen, i) => (
-              <img
+              <div
                 key={screen.label}
-                src={screen.image}
-                alt={i === index ? screen.imageAlt : ""}
                 aria-hidden={i !== index}
-                loading={i === 0 ? "eager" : "lazy"}
                 className={clsx(
-                  "absolute inset-0 h-full w-full object-cover transition-opacity duration-500",
+                  "absolute inset-0 transition-opacity duration-500",
                   i === index ? "opacity-100" : "opacity-0",
                 )}
-              />
+              >
+                <FitImage
+                  src={screen.image}
+                  alt={i === index ? screen.imageAlt : ""}
+                  loading={i === 0 ? "eager" : "lazy"}
+                />
+              </div>
             ))}
           </div>
         </div>

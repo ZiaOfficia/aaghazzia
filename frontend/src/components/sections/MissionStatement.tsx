@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { missionImages } from "../../data/imageAssets";
 import { Section } from "../ui/Section";
 import { SectionHeading } from "../ui/SectionHeading";
+import { FitImage } from "../ui/FitImage";
 
 const pillars = [
   {
@@ -40,7 +41,7 @@ export const MissionStatement = () => (
       {pillars.map((pillar) => (
         <article key={pillar.word}>
           <div className="aspect-[4/3] overflow-hidden rounded-md bg-cream">
-            <img src={pillar.image} alt="" loading="lazy" className="h-full w-full object-cover" />
+            <FitImage src={pillar.image} alt="" loading="lazy" />
           </div>
           <h3 className="mt-6 font-display text-2xl font-semibold">{pillar.word}</h3>
           <p className="mt-1 font-semibold text-terracotta">{pillar.sub}</p>

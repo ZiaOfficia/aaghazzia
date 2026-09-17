@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { getBlogPostUrl, blogPosts as staticBlogPosts } from "../../data/blogData";
 import { ButtonLink } from "../ui/ButtonLink";
 import { fieldClass } from "../ui/formStyles";
+import { FitImage } from "../ui/FitImage";
 
 export const BlogSidebar = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -78,7 +79,7 @@ export const BlogSidebar = () => {
             <li key={post.id}>
               <Link to={getBlogPostUrl(post.slug, post.createdAt)} className="group flex gap-4">
                 <div className="h-16 w-16 shrink-0 overflow-hidden rounded-md bg-sand">
-                  <img loading="lazy" decoding="async" src={post.image} alt="" className="h-full w-full object-cover" />
+                  <FitImage loading="lazy" decoding="async" src={post.image} alt="" />
                 </div>
                 <span className="min-w-0">
                   <span className="line-clamp-2 font-semibold leading-snug group-hover:text-terracotta">{post.title}</span>
@@ -96,7 +97,7 @@ export const BlogSidebar = () => {
           Sponsor a Student
         </h2>
         <p className="mt-2 text-cream/75">
-          With just Rs 2,000, you can pay a poor student's school fees and help them study.
+          With just Rs 2,000, you can pay the school fees of a student who needs support.
         </p>
         <ButtonLink to="/contact" variant="inverse" className="mt-5 w-full">
           Sponsor Now

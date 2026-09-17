@@ -3,12 +3,13 @@ import { ContactSection } from "../components/sections/ContactSection";
 import { SEO } from "../components/common/SEO";
 import { PageHeader } from "../components/ui/PageHeader";
 import { Container } from "../components/ui/Container";
+import { FitImage } from "../components/ui/FitImage";
 
 const ssImg = (name: string) => `/images/suceessstories/${encodeURIComponent(name)}.jpeg`;
 
 const StoryImage = ({ name, alt }: { name: string; alt?: string }) => (
   <div className="aspect-[4/3] overflow-hidden rounded-md bg-sand">
-    <img src={ssImg(name)} alt={alt ?? name} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+    <FitImage src={ssImg(name)} alt={alt ?? name} loading="lazy" decoding="async" />
   </div>
 );
 
@@ -136,7 +137,7 @@ export const SuccessStoriesPage = () => {
             </div>
             <div className="mt-6 max-w-3xl">
               <StoryText>
-                <strong>Yasmeen Parveen</strong> grew up in a slum in Noida. Her mother worked in houses and her father was very sick. She studied law in Mumbai with Aaghaz's help and is now training to become a lawyer. The left photo shows our volunteer visiting her Noida home to check details, and the right photo shows her today.
+                <strong>Yasmeen Parveen</strong> grew up in Noida. Her mother worked in houses and her father was very sick. She studied law in Mumbai with Aaghaz's help and is now training to become a lawyer. The left photo shows our volunteer visiting her Noida home to check details, and the right photo shows her today.
               </StoryText>
             </div>
           </div>

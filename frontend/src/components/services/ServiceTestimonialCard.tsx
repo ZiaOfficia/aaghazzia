@@ -1,3 +1,5 @@
+import { FitImage } from "../ui/FitImage";
+
 interface TestimonialCardProps {
   quote: string;
   author: string;
@@ -10,7 +12,7 @@ export const ServiceTestimonialCard = ({ quote, author, location, image }: Testi
     <blockquote className="font-display text-xl leading-relaxed">“{quote}”</blockquote>
     <figcaption className="mt-6 flex items-center gap-4">
       {image && (
-        <img loading="lazy" decoding="async" src={image} alt="" className="h-12 w-12 rounded-full object-cover" />
+        <FitImage src={image} className="h-14 w-14 shrink-0 rounded-md" />
       )}
       <span>
         <span className="block font-semibold">{author}</span>

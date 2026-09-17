@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { services, whatWeDoContent } from "../../data/content";
 import { Section } from "../ui/Section";
 import { SectionHeading } from "../ui/SectionHeading";
+import { FitImage } from "../ui/FitImage";
 
 interface ServicesGridProps {
   /** Hide the heading when the page header already shows it (e.g. /services). */
@@ -28,7 +29,7 @@ export const ServicesGrid = ({ withHeading = true }: ServicesGridProps) => (
       {services.map((service) => (
         <article key={service.title} className="flex flex-col">
           <div className="aspect-[3/2] overflow-hidden rounded-md bg-sand">
-            <img src={service.image} alt="" loading="lazy" className="h-full w-full object-cover" />
+            <FitImage src={service.image} alt="" loading="lazy" />
           </div>
           <h3 className="mt-6 font-display text-2xl font-semibold">{service.title}</h3>
           <p className="mt-3 flex-1 text-muted">{service.description}</p>

@@ -14,7 +14,6 @@ export const photos = {
   classroomTeacher: p("classroom-teacher.jpg"),
   girlLookingUp: p("girl-looking-up.jpg"),
   boyStudying: p("boy-studying.jpg"),
-  mentorPortrait: p("mentor-portrait.jpg"),
   twoGirlsStudying: p("two-girls-studying.jpg"),
   memorialPlaque: p("memorial-plaque.jpg"),
   girlStudyingDesk: p("girl-studying-desk.jpg"),
@@ -56,7 +55,7 @@ export const heroImages = {
 
   // What We Do programme cards
   studentAid: photos.boyStudying,
-  coaching: photos.mentorPortrait,
+  coaching: photos.girlWriting,
   communityLearning: photos.twoGirlsStudying,
   computerLearning: computerCentre("111019"),
   memorialScholarships: photos.memorialPlaque,
@@ -85,7 +84,7 @@ export const serviceImages = {
   scholarships: photos.youngWomanStudent,
   financialAssistance: photos.familyPortrait,
   computerCenter: computerCentre("111019"),
-  madarsaInitiative: photos.twoGirlsStudying,
+  communityLearningCentres: photos.twoGirlsStudying,
   memorialScholarship: photos.scholarshipVisitGroup,
   becomeVolunteer: photos.volunteersWithChildren,
   joinDonor: photos.donorsGroup,

@@ -29,7 +29,7 @@ export const TermsOfServicePage = () => {
           </h2>
           <p>
             Aaghaz Foundation is a registered education trust based in Lucknow, India.
-            We help clever students from poor families finish their education through:
+            We help talented students who need support finish their education through:
           </p>
           <ul>
             <li>Need-based financial help and scholarships for school and college fees.</li>

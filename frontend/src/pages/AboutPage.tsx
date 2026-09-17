@@ -9,10 +9,12 @@ import { PageHeader } from "../components/ui/PageHeader";
 import { Section } from "../components/ui/Section";
 import { SectionHeading } from "../components/ui/SectionHeading";
 import { ButtonLink } from "../components/ui/ButtonLink";
+import { LinkedText } from "../components/ui/LinkedText";
+import { FitImage } from "../components/ui/FitImage";
 
 // Image slots on this page (paths live in data/imageAssets.ts).
 const aboutImages = {
-  header: photos.childrenByField,
+  header: photos.schoolgirlPortrait,
   story: photos.girlPortrait,
   howWeWork: photos.familyPortrait,
   volunteers: photos.volunteersWithChildren,
@@ -23,7 +25,7 @@ export const AboutPage = () => {
     <>
       <SEO
         title="About Us — Aaghaz Foundation"
-        description="Aaghaz Foundation is a non-profit founded in 2004 in Lucknow. We support meritorious students from economically weak backgrounds across India through scholarships, financial aid, mentorship and learning centres."
+        description="Aaghaz Foundation is a non-profit founded in 2004 in Lucknow. We support talented students who need support across India through scholarships, financial aid, mentorship and learning centres."
       />
 
       <PageHeader
@@ -31,7 +33,7 @@ export const AboutPage = () => {
         title="Our Story"
         intro="Helping children study to build a better future."
         image={aboutImages.header}
-        imageAlt="Children in Lucknow — Aaghaz Foundation"
+        imageAlt="A young schoolgirl in uniform on her way to school"
       />
 
       {/* Our Story */}
@@ -44,19 +46,13 @@ export const AboutPage = () => {
             </h2>
             <div className="space-y-6 text-lg leading-relaxed">
               {ourStoryContent.text.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
+                <p key={paragraph}><LinkedText text={paragraph} /></p>
               ))}
             </div>
-            <p className="mt-10 border-t border-line pt-6">
-              <span className="block font-display text-xl font-semibold">
-                {aboutContent.author.split("—")[0].trim()}
-              </span>
-              <span className="text-muted">{aboutContent.author.split("—")[1]?.trim() || "Founder"}</span>
-            </p>
           </div>
           <div className="lg:col-span-5">
             <div className="aspect-[4/5] overflow-hidden rounded-md bg-sand">
-              <img src={aboutImages.story} alt="An Aaghaz-supported student" loading="lazy" className="h-full w-full object-cover" />
+              <FitImage src={aboutImages.story} alt="An Aaghaz-supported student" loading="lazy" />
             </div>
           </div>
         </div>
@@ -67,7 +63,7 @@ export const AboutPage = () => {
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-6">
             <div className="aspect-[4/3] overflow-hidden rounded-md bg-cream">
-              <img src={aboutImages.howWeWork} alt="A family supported by Aaghaz Foundation" loading="lazy" className="h-full w-full object-cover" />
+              <FitImage src={aboutImages.howWeWork} alt="A family supported by Aaghaz Foundation" loading="lazy" />
             </div>
           </div>
           <div className="lg:col-span-6">
@@ -91,7 +87,7 @@ export const AboutPage = () => {
           {/* Founder */}
           <article aria-labelledby="founder-name">
             <div className="aspect-[4/5] max-w-md overflow-hidden rounded-md bg-sand">
-              <img src={founderImage} alt="Mazhar Farooqui, Founder & President" loading="lazy" className="h-full w-full object-cover object-top" />
+              <FitImage src={founderImage} alt="Mazhar Farooqui, Founder & President" loading="lazy" />
             </div>
             <h3 id="founder-name" className="mt-8 font-display text-3xl font-semibold">
               Mazhar Farooqui
@@ -122,14 +118,14 @@ export const AboutPage = () => {
             </div>
             <figure className="mt-8 border-l-2 border-terracotta pl-6">
               <blockquote className="font-display text-xl italic leading-relaxed">“{aboutContent.quote}”</blockquote>
-              <figcaption className="mt-3 text-muted">{aboutContent.quoteAuthor}</figcaption>
+              <figcaption className="mt-3 text-muted"><LinkedText text={aboutContent.quoteAuthor} /></figcaption>
             </figure>
           </article>
 
           {/* Volunteer network */}
           <article aria-labelledby="volunteers-name">
             <div className="aspect-[4/5] max-w-md overflow-hidden rounded-md bg-sand">
-              <img src={aboutImages.volunteers} alt="Aaghaz volunteers with children" loading="lazy" className="h-full w-full object-cover" />
+              <FitImage src={aboutImages.volunteers} alt="Aaghaz volunteers with children" loading="lazy" />
             </div>
             <h3 id="volunteers-name" className="mt-8 font-display text-3xl font-semibold">
               Our Volunteer Network

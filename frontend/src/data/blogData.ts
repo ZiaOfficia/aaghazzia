@@ -33,7 +33,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: "1",
     slug: "from-noida-slums-to-courtrooms-yasmeen-parveen",
-    title: "From Slums to Court: How Yasmeen Parveen Became a Lawyer",
+    title: "From Noida to the Courtroom: How Yasmeen Parveen Became a Lawyer",
     excerpt: "Yasmeen's mother worked in houses and her father was very sick. With Aaghaz's help, she finished law school and is now ready to work as a lawyer.",
     content: `
       <p>Growing up in Noida, Yasmeen Parveen's family had very little money. Her father was sick, and her mother worked in other people's houses to buy food. In their situation, going to college and studying law seemed impossible.</p>
@@ -46,13 +46,13 @@ export const blogPosts: BlogPost[] = [
       </blockquote>
       
       <h3>A New Advocate for Justice</h3>
-      <p>Today, Yasmeen has finished her law studies and is working as an intern. She has shown that if poor children get the right support, they can achieve big things.</p>
+      <p>Today, Yasmeen has finished her law studies and is working as an intern. She has shown that when talented children get the right support, they can achieve big things.</p>
     `,
     image: "/images/suceessstories/AdvocateYasmeenParveenToday.jpeg",
     date: "Feb 10, 2026",
     author: "Saima Khan",
     category: "Success Stories",
-    tags: "Law, Noida Slums, Women Empowerment",
+    tags: "Law, Noida, Women Empowerment",
     createdAt: "2026-02-10T12:00:00.000Z",
   },
   {
@@ -72,7 +72,7 @@ export const blogPosts: BlogPost[] = [
         <li><strong>Mohd Shajid</strong> is studying engineering (B.Tech) at Netaji Subhas University in Delhi.</li>
         <li><strong>Mohd Shahid</strong> is studying botany (B.Sc) at Dyal Singh College, Delhi University.</li>
       </ul>
-      <p>This shows how Aaghaz helps poor families keep their children in school and college when they face sudden problems.</p>
+      <p>This shows how Aaghaz helps families keep their children in school and college when they face sudden problems.</p>
     `,
     image: "/images/suceessstories/AftabAlam2.jpeg",
     date: "Jan 28, 2026",
@@ -92,7 +92,7 @@ export const blogPosts: BlogPost[] = [
       <h3>A Journey of Perseverance</h3>
       <p>But Mominul got very good marks. When he got a seat in medical college, Aaghaz paid his fees and other expenses. Year after year, Mominul proved that hard work and timely help can solve any problem.</p>
       
-      <h3>Serving the Underprivileged</h3>
+      <h3>Serving Those Who Need Support</h3>
       <p>Today, he is <strong>Dr. Mominul Islam</strong>, a surgeon for children at Bengal Medical College. His story shows how helping one student can change many lives.</p>
     `,
     image: "/images/suceessstories/Dr.MominulIslamtoday.jpeg",
@@ -129,7 +129,7 @@ export const blogPosts: BlogPost[] = [
     title: "Shumaila's Journey to Becoming a Lawyer in Delhi High Court",
     excerpt: "Shumaila lost her father early and worked odd jobs to support her family. Aaghaz paid her law college fees, and today she practices at the High Court.",
     content: `
-      <p>Losing a parent is very hard for any child. Shumaila grew up in a poor family in Old Delhi. After finishing school, she did small jobs to help her family, but she always wanted to study law.</p>
+      <p>Losing a parent is very hard for any child. Shumaila grew up in Old Delhi, in a family that faced many challenges. After finishing school, she did small jobs to help her family, but she always wanted to study law.</p>
       
       <h3>Aaghaz's Legal Aid Scholarship</h3>
       <p>When she got a seat to study law, she did not have enough savings to pay the fees. Aaghaz paid her college dues so she could study and participate in court practice sessions. She worked hard and got very good marks.</p>
@@ -203,7 +203,7 @@ export const blogPosts: BlogPost[] = [
       <p>Knowing how bright Arbaaz was, Aaghaz paid his exam fees and preparation costs. Free from money worries, Arbaaz studied hard and got All India Rank 85 in the NEET exam.</p>
       
       <h3>AIIMS Delhi and Beyond</h3>
-      <p>Today, Dr. Arbaaz is working at AIIMS Delhi, India's top medical hospital. His journey shows what poor children can do when we help them.</p>
+      <p>Today, Dr. Arbaaz is working at AIIMS Delhi, India's top medical hospital. His journey shows what talented children can achieve when they get the right support.</p>
     `,
     image: "/images/suceessstories/Dr.Arbaaz.jpeg",
     date: "Oct 22, 2025",
@@ -218,7 +218,7 @@ export const blogPosts: BlogPost[] = [
     title: "From Student to Professor: Anam Mehendi Abidi's Story",
     excerpt: "Aaghaz paid Anam's post-graduate fees, and today she is working as an Assistant Professor at Calcutta University.",
     content: `
-      <p>Higher studies like master's degrees are often too expensive for poor families. Anam faced this problem when she wanted to study further. Her family could not pay the semester fees.</p>
+      <p>Higher studies like master's degrees are often too expensive for many families. Anam faced this problem when she wanted to study further. Her family could not pay the semester fees.</p>
       
       <h3>The Gift of Learning</h3>
       <p>Aaghaz paid her college fees so she could study and focus on her research. Anam did very well and completed her Master's degree with honors.</p>
@@ -245,7 +245,7 @@ export const blogPosts: BlogPost[] = [
       <p>Yusuf wanted to work in hotels but could not afford the training. Aaghaz paid his fees at a hotel management school where he learned professional skills.</p>
       
       <h3>Working at ITC Hotels</h3>
-      <p>After finishing his course, Yusuf got a job at ITC Hotels. He is now earning well, supporting his family, and showing how practical courses can help poor youth get jobs quickly.</p>
+      <p>After finishing his course, Yusuf got a job at ITC Hotels. He is now earning well, supporting his family, and showing how practical courses can help young people who want to grow get jobs quickly.</p>
     `,
     image: "/images/suceessstories/Yusuf.jpeg",
     date: "Sep 18, 2025",

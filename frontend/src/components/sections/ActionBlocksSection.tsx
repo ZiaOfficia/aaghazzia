@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { actionImages } from "../../data/imageAssets";
 import { Section } from "../ui/Section";
 import { SectionHeading } from "../ui/SectionHeading";
+import { FitImage } from "../ui/FitImage";
 
 const blocks = [
   {
@@ -40,7 +41,7 @@ export const ActionBlocksSection = () => (
       {blocks.map((block) => (
         <article key={block.title} className="flex flex-col">
           <div className="aspect-[3/2] overflow-hidden rounded-md bg-cream">
-            <img src={block.image} alt="" loading="lazy" className="h-full w-full object-cover" />
+            <FitImage src={block.image} alt="" loading="lazy" />
           </div>
           <h3 className="mt-6 font-display text-2xl font-semibold">{block.title}</h3>
           <p className="mt-1 font-semibold text-terracotta">{block.subtitle}</p>

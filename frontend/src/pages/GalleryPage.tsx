@@ -7,6 +7,7 @@ import { PageHeader } from "../components/ui/PageHeader";
 import { Section } from "../components/ui/Section";
 import { SectionHeading } from "../components/ui/SectionHeading";
 import { allGalleryImages } from "../data/imageAssets";
+import { FitImage } from "../components/ui/FitImage";
 
 // Placeholder YouTube ID used before real films were added. Films that still
 // use it are hidden. Replace `id` with the real YouTube video ID to show a film.
@@ -82,7 +83,7 @@ export const GalleryPage = () => {
               <li key={film.id + film.title}>
                 <button type="button" onClick={() => setSelectedVideo(film.id)} className="group block w-full text-left">
                   <div className="aspect-video overflow-hidden rounded-md bg-cream">
-                    <img loading="lazy" src={film.thumbnail} alt="" className="h-full w-full object-cover" />
+                    <FitImage loading="lazy" src={film.thumbnail} alt="" />
                   </div>
                   <span className="mt-4 block font-display text-xl font-semibold group-hover:text-terracotta">
                     {film.title}

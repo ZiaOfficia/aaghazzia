@@ -7,7 +7,7 @@ const stats = [
   { value: "24 states", label: "Where Aaghaz supports students" },
   { value: "550+", label: "Schools & colleges with Aaghaz-supported students" },
   { value: "350+", label: "Students who became doctors, engineers & lawyers" },
-  { value: "90+", label: "Named & memorial scholarships created" },
+  { value: "90+", label: "Memorial scholarships created" },
 ];
 
 export const StatsSection = () => (

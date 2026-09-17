@@ -30,7 +30,7 @@ export const PrivacyPolicyPage = () => {
           </h2>
           <p>
             Aaghaz Foundation is a registered education trust based in Lucknow, India.
-            We help clever students from poor families finish their education through
+            We help talented students who need support finish their education through
             scholarships and financial aid. Our website address is:
             [https://aaghazfoundation.com].
           </p>

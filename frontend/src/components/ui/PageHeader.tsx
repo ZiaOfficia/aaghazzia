@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { Container } from "./Container";
+import { FitImage } from "./FitImage";
 
 interface PageHeaderProps {
   eyebrow?: string;
@@ -38,7 +39,7 @@ export const PageHeader = ({ eyebrow, title, intro, parent, image, imageAlt = ""
     {image && (
       <Container className="pb-12 md:pb-16">
         <div className="aspect-[16/9] overflow-hidden rounded-md bg-sand md:aspect-[21/9]">
-          <img src={image} alt={imageAlt} className="h-full w-full object-cover" />
+          <FitImage src={image} alt={imageAlt} />
         </div>
       </Container>
     )}

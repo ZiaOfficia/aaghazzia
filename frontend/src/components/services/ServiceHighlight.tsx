@@ -24,7 +24,7 @@ const MemorialScholarshipHighlight = () => (
         <div className="mt-6 space-y-4 text-lg text-muted">
           <p>
             Aaghaz Foundation runs <strong className="font-semibold text-ink">more than 80 memorial scholarships</strong> in India. We give nearly{" "}
-            <strong className="font-semibold text-ink">Rs 1 crore every year</strong> to help hundreds of poor students. Many of these students are orphans or come from families struggling to pay for school.
+            <strong className="font-semibold text-ink">Rs 1 crore every year</strong> to help hundreds of talented students who need support. Many of these students have lost a parent or come from families that find it hard to pay for school.
           </p>
           <p>
             We start many of these scholarships during our annual Ramadan campaign,{" "}
@@ -45,7 +45,7 @@ const MemorialScholarshipHighlight = () => (
           &ldquo;Starting a scholarship is a beautiful way to remember someone special who has passed away.&rdquo;
         </blockquote>
         <figcaption className="mt-4 text-muted">
-          With our Memorial Scholarship Program, you can start a scholarship in the name of a loved one who has passed away. This helps poor students continue their education and keeps your loved one's memory alive through their success.
+          With our Memorial Scholarship Program, you can start a scholarship in the name of a loved one who has passed away. This helps students who need support continue their education and keeps your loved one's memory alive through their success.
         </figcaption>
       </figure>
     </div>
