@@ -58,14 +58,15 @@ export const heroImages = {
   coaching: photos.girlWriting,
   communityLearning: photos.twoGirlsStudying,
   computerLearning: computerCentre("111019"),
-  memorialScholarships: photos.memorialPlaque,
+  memorialScholarships: photos.scholarshipVisitChildren,
 };
 
 // ── WHY WE EXIST (Educate / Empower / Elevate) ─────────────────────
 export const missionImages = {
   educate: photos.girlStudyingDesk,
   empower: photos.volunteersWithChildren,
-  elevate: photos.youngWomanStudent,
+  // Aaghaz alumnus, now a doctor
+  elevate: "/images/suceessstories/DrMdAshrafulHaque.jpeg",
 };
 
 // ── HOW YOU CAN HELP (Scholarship / Donor / Volunteer) ─────────────
