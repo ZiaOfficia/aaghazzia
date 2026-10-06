@@ -14,6 +14,7 @@ import { BlogPostPage } from "./pages/BlogPostPage";
 import { SuccessStoriesPage } from "./pages/SuccessStoriesPage";
 import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
 import { TermsOfServicePage } from "./pages/TermsOfServicePage";
+import { ApplyForStudentAidPage } from "./pages/ApplyForStudentAidPage";
 import AdminLoginPage from "./pages/admin/AdminLoginPage";
 import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
 import BlogEditorPage from "./pages/admin/BlogEditorPage";
@@ -54,6 +55,7 @@ function App() {
           <Route path="/portfolio/:id" element={<SuccessStoriesPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+          <Route path="/apply-for-student-aid" element={<ApplyForStudentAidPage />} />
           <Route path="/thank-you" element={<ThankYouPage />} />
         </Route>
 

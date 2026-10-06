@@ -19,7 +19,7 @@ const columns = [
       { name: "Support a Student", to: "/services/join-as-donor" },
       { name: "Start a Scholarship", to: "/services/launch-scholarship" },
       { name: "Volunteer Your Time", to: "/services/become-volunteer" },
-      { name: "Apply for Student Aid", to: "/services/student-aid" },
+      { name: "Apply for Student Aid", to: "/apply-for-student-aid" },
     ],
   },
   {

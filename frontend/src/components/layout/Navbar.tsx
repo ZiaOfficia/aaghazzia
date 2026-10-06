@@ -82,6 +82,8 @@ export const Navbar = () => {
     ? "text-cream/85 hover:text-white"
     : "text-ink/80 hover:text-ink";
   const linkActive = HEADER_ON_DARK ? "text-white" : "text-ink";
+  // Compact buttons so the header stays thin.
+  const navButton = "!min-h-9 !px-4 !py-1.5 !text-sm";
 
   return (
     <header
@@ -97,14 +99,14 @@ export const Navbar = () => {
         Skip to content
       </a>
 
-      <Container className="flex h-18 items-center justify-between gap-6 md:h-20">
+      <Container className="flex h-14 items-center justify-between gap-8 md:h-16">
         <Link to="/" className="flex shrink-0 items-center" aria-label="Aaghaz Foundation — home">
-          <img src={LOGO_SRC} alt="Aaghaz Foundation" className="h-10 w-auto md:h-12" />
+          <img src={LOGO_SRC} alt="Aaghaz Foundation" className="h-8 w-auto md:h-9" />
         </Link>
 
         {/* Desktop navigation */}
-        <nav aria-label="Main" className="hidden xl:block">
-          <ul className="flex items-center gap-7 text-[0.95rem] font-medium">
+        <nav aria-label="Main" className="hidden flex-1 xl:block">
+          <ul className="flex items-center justify-evenly text-[0.95rem] font-medium">
             {navLinks.map((link) =>
               link.hasDropdown ? (
                 <li
@@ -120,7 +122,7 @@ export const Navbar = () => {
                     aria-controls="programmes-menu"
                     onClick={() => setDropdownOpen((o) => !o)}
                     className={clsx(
-                      "flex min-h-11 items-center gap-1 transition-colors",
+                      "flex min-h-10 items-center gap-1 transition-colors",
                       location.pathname.startsWith("/services") ? linkActive : linkBase,
                     )}
                   >
@@ -174,7 +176,7 @@ export const Navbar = () => {
                   <NavLink
                     to={link.path}
                     className={({ isActive }) =>
-                      clsx("flex min-h-11 items-center transition-colors", isActive ? linkActive : linkBase)
+                      clsx("flex min-h-10 items-center transition-colors", isActive ? linkActive : linkBase)
                     }
                   >
                     {link.name}
@@ -185,18 +187,27 @@ export const Navbar = () => {
           </ul>
         </nav>
 
-        <div className="hidden items-center gap-5 xl:flex">
+        <div className="hidden shrink-0 items-center gap-4 xl:flex">
           <Link to="/services/become-volunteer" className={clsx("font-medium transition-colors", linkBase)}>
             Volunteer
           </Link>
-          <ButtonLink to="/services/join-as-donor">Support a Student</ButtonLink>
+          <ButtonLink
+            to="/apply-for-student-aid"
+            variant={HEADER_ON_DARK ? "light" : "secondary"}
+            className={navButton}
+          >
+            Apply for Student Aid
+          </ButtonLink>
+          <ButtonLink to="/services/join-as-donor" className={navButton}>
+            Support a Student
+          </ButtonLink>
         </div>
 
         {/* Mobile toggle */}
         <button
           type="button"
           className={clsx(
-            "flex h-11 w-11 items-center justify-center rounded-md xl:hidden",
+            "flex h-10 w-10 items-center justify-center rounded-md xl:hidden",
             HEADER_ON_DARK ? "text-cream" : "text-ink",
           )}
           aria-expanded={mobileOpen}
@@ -212,7 +223,7 @@ export const Navbar = () => {
       {mobileOpen && (
         <div
           id="mobile-menu"
-          className="fixed inset-x-0 bottom-0 top-18 overflow-y-auto bg-cream text-ink md:top-20 xl:hidden"
+          className="fixed inset-x-0 bottom-0 top-14 overflow-y-auto bg-cream text-ink md:top-16 xl:hidden"
         >
           <Container className="py-8">
             <nav aria-label="Mobile">
@@ -245,6 +256,9 @@ export const Navbar = () => {
             </nav>
             <div className="mt-8 grid gap-3">
               <ButtonLink to="/services/join-as-donor">Support a Student</ButtonLink>
+              <ButtonLink to="/apply-for-student-aid" variant="secondary">
+                Apply for Student Aid
+              </ButtonLink>
               <ButtonLink to="/services/become-volunteer" variant="secondary">
                 Volunteer Your Time
               </ButtonLink>
