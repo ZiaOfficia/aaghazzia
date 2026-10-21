@@ -28,7 +28,7 @@ const columns = [
       { name: "FAQ", to: "/faq" },
       { name: "Contact Us", to: "/contact" },
       { name: "Privacy Policy", to: "/privacy-policy" },
-      { name: "Terms of Service", to: "/terms-of-service" },
+      { name: "Terms and Conditions", to: "/terms-of-service" },
     ],
   },
 ];
@@ -104,7 +104,22 @@ export const Footer = () => (
       </div>
 
       <div className="mt-14 border-t border-cream/15 pt-8 text-sm text-cream/60">
-        <p>© {new Date().getFullYear()} Aaghaz Foundation. All rights reserved.</p>
+        <h2 className="font-sans text-sm font-semibold text-sand-light">Donation Disclaimer</h2>
+        <p className="mt-3 max-w-4xl">
+          Donations support Aaghaz Foundation’s educational and charitable objectives and do not entitle donors to
+          goods, services or financial returns. Tax benefits under Section 80G are subject to applicable law and the
+          donor’s tax regime. This facility accepts eligible domestic contributions, including donations from Indian
+          citizens residing abroad, in accordance with our{" "}
+          <Link to="/terms-of-service" className="underline hover:text-white">
+            Terms and Conditions
+          </Link>
+          . Refund requests are governed by our{" "}
+          <Link to="/terms-of-service" className="underline hover:text-white">
+            Cancellation and Refund Policy
+          </Link>
+          .
+        </p>
+        <p className="mt-6">© {new Date().getFullYear()} Aaghaz Foundation. All rights reserved.</p>
       </div>
     </Container>
   </footer>
