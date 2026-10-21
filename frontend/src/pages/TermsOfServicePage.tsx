@@ -233,7 +233,7 @@ export const TermsOfServicePage = () => {
             </p>
             <p className="mb-1">
               <strong>Telephone:</strong>{" "}
-              <a href="tel:+919415016831">+91 94150 16831</a>
+              <a href="tel:+919876543210">+91 98765 43210</a>
             </p>
             <p>
               <strong>Website:</strong>{" "}
