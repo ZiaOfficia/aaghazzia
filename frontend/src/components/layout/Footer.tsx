@@ -52,13 +52,13 @@ export const Footer = () => (
 
           <address className="mt-8 space-y-2 not-italic text-cream/75">
             <p>
-              Near Guds Tiraha, Main Road,
+              57, Ganeshganj, Lucknow
               <br />
-              Nishatganj, Lucknow, Uttar Pradesh 226006, India
+              Uttar Pradesh – 226018, India
             </p>
             <p>
-              <a href="tel:+919876543210" className="hover:text-white">
-                +91 98765 43210
+              <a href="tel:+919415016831" className="hover:text-white">
+                +91 94150 16831
               </a>
             </p>
             <p>
