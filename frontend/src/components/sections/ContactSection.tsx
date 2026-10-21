@@ -69,9 +69,9 @@ export const ContactSection = ({ tone = "sand" }: { tone?: "cream" | "sand" }) =
           </div>
           <address className="mt-8 space-y-2 not-italic">
             <p>
-              <a href="tel:+919415016831" className="hover:text-terracotta">+91 94150 16831</a>
+              <a href="tel:+919876543210" className="hover:text-terracotta">+91 98765 43210</a>
             </p>
-            <p>57, Ganeshganj, Lucknow, Uttar Pradesh – 226018, India</p>
+            <p>Near Guds Tiraha, Main Road, Nishatganj, Lucknow, UP — 226006</p>
             <p>
               <a href="mailto:aaghaz.foundation@gmail.com" className="break-all hover:text-terracotta">
                 aaghaz.foundation@gmail.com

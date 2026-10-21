@@ -84,7 +84,7 @@ export const ContactPage = () => {
               <div className="py-5">
                 <dt className="text-sm font-semibold text-muted">Phone</dt>
                 <dd className="mt-1 text-lg">
-                  <a href="tel:+919415016831" className="hover:text-terracotta">+91 94150 16831</a>
+                  <a href="tel:+919876543210" className="hover:text-terracotta">+91 98765 43210</a>
                 </dd>
               </div>
               <div className="py-5">
@@ -168,14 +168,24 @@ export const ContactPage = () => {
               <p>
                 Aaghaz Foundation
                 <br />
+                Near Guds Tiraha,
+                <br />
+                Main Road,
+                <br />
+                Nishatganj
+                <br />
+                Lucknow — 226006
+              </p>
+              <p>+91 98765 43210</p>
+              <p className="pt-4 text-base text-muted">
+                <span className="block font-semibold text-ink">Registered Office</span>
                 57, Ganeshganj, Lucknow
                 <br />
                 Uttar Pradesh – 226018, India
               </p>
-              <p>+91 94150 16831</p>
             </address>
             <a
-              href="https://www.google.com/maps/search/?api=1&query=57+Ganeshganj,+Lucknow,+Uttar+Pradesh+226018"
+              href="https://www.google.com/maps/search/?api=1&query=Guds+Tiraha,+Nishatganj,+Lucknow"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-6 inline-block font-semibold text-terracotta underline decoration-terracotta/30 underline-offset-4 hover:decoration-terracotta"
@@ -189,7 +199,7 @@ export const ContactPage = () => {
               style={{ border: 0 }}
               loading="lazy"
               allowFullScreen
-              src="https://maps.google.com/maps?q=57%20Ganeshganj%2C%20Lucknow%2C%20Uttar%20Pradesh%20226018&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=Guds%20Tiraha%2C%20Nishatganj%2C%20Lucknow&t=&z=15&ie=UTF8&iwloc=&output=embed"
               title="Aaghaz Foundation Office Location"
             />
           </div>

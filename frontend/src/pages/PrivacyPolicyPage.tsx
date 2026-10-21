@@ -151,10 +151,13 @@ export const PrivacyPolicyPage = () => {
               <strong>Email:</strong> aaghaz.foundation@gmail.com
             </p>
             <p className="mb-1">
-              <strong>Phone:</strong> +91 94150 16831
+              <strong>Phone:</strong> +91 98765 43210
+            </p>
+            <p className="mb-1">
+              <strong>Office:</strong> Near Guds Tiraha, Main Road, Nishatganj, Lucknow, UP — 226006
             </p>
             <p>
-              <strong>Address:</strong> 57, Ganeshganj, Lucknow, Uttar Pradesh – 226018, India
+              <strong>Registered Office:</strong> 57, Ganeshganj, Lucknow, Uttar Pradesh – 226018, India
             </p>
           </div>
           <p className="mt-6 italic">

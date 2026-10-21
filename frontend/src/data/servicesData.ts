@@ -776,7 +776,7 @@ export const servicesData: ServiceData[] = [
       name: "Saima Rehman",
       role: "Memorial Scholarship Coordinator",
       email: "aaghaz.foundation@gmail.com",
-      phone: "+91 94150 16831",
+      phone: "+91 98765 43210",
       note: "If you want to start a scholarship in memory of a loved one, we are here to help. Send us an email or WhatsApp message, and Saima will guide you.",
     },
   },
